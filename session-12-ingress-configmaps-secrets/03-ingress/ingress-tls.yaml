@@ -1,0 +1,55 @@
+# =============================================================================
+# Hybrid Ingress: host-based routing + path-based routing + TLS termination
+#   - portal.campus.local  ->  frontend (Nginx)      [host-based, Task 11]
+#   - api.campus.local     ->  backend  (Python API) [host + path-based, Task 12]
+#   - HTTPS/443 terminated with the self-signed campus-tls-cert  [Task 13]
+# Reuses the Services created by 04-full-demo (frontend/backend).
+# =============================================================================
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: campus-ingress-tls
+  namespace: default
+  labels:
+    app: yatri-app
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - portal.campus.local
+        - api.campus.local
+      secretName: campus-tls-cert
+  rules:
+    # ---- Virtual host 1: portal -> frontend (root path) ----
+    - host: portal.campus.local
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: yatri-frontend-service
+                port:
+                  number: 80
+    # ---- Virtual host 2: api -> backend (hybrid: /api/* and /) ----
+    - host: api.campus.local
+      http:
+        paths:
+          - path: /api(/|$)(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: yatri-backend-service
+                port:
+                  number: 80
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: yatri-backend-service
+                port:
+                  number: 80
