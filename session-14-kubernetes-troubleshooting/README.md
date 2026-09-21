@@ -184,6 +184,12 @@ After running the examples, the demo resources were removed:
 
 ![Real Terminal screenshot: cleanup](screenshots/terminal-18-cleanup.png)
 
+## Final Pod Verification
+
+At the end, all fixed/demo pods were started together and verified with `kubectl get pods`.
+
+![Real Terminal screenshot: all pods running](screenshots/terminal-19-all-pods-running.png)
+
 ## Useful Commands
 
 ```bash
