@@ -1,344 +1,535 @@
-# Kubernetes Troubleshooting
+# Session 14: Kubernetes Troubleshooting
 
-The goal is to learn how to answer:
+This session covers practical Kubernetes troubleshooting with `kubectl get`, `describe`, `logs`, `exec`, Events, and common failure states.
 
-> "My Kubernetes application is not working. How do I find out why?"
+All examples were run on the `minikube` context.
 
----
+```bash
+$ kubectl config current-context
+minikube
 
-## Topics
-
-We will cover:
-
-* `kubectl get`
-* `kubectl describe`
-* `kubectl logs`
-* `kubectl exec`
-* `Events`
-* `CrashLoopBackOff`
-* `ImagePullBackOff`
-* `Pending Pods`
-* `Service Troubleshooting`
-* `DNS Troubleshooting`
-
----
+$ kubectl cluster-info
+Kubernetes control plane is running at https://127.0.0.1:54552
+CoreDNS is running at https://127.0.0.1:54552/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
+```
 
 ## Folder Structure
 
 ```text
-01-kubectl-get
-02-kubectl-describe
-03-kubectl-logs
-04-kubectl-exec
-05-events
-06-crashloopbackoff
-07-imagepullbackoff
-08-pending-pod
-09-service-dns
-mini-project
+session-14-kubernetes-troubleshooting/
+├── 01-kubectl-get/
+├── 02-kubectl-describe/
+├── 03-kubectl-logs/
+├── 04-kubectl-exec/
+├── 05-events/
+├── 06-crashloopbackoff/
+├── 07-imagepullbackoff/
+├── 08-pending-pods/
+├── 09-service-dns-troubleshooting/
+└── mini-project/
 ```
 
-Each folder contains a small practical example.
-
----
-
-## Troubleshooting Mindset
-
-When an application is not working, don't randomly run commands.
-
-Follow a process:
+## Troubleshooting Flow
 
 ```text
-1. Observe
-      │
-      ▼
-2. Identify the resource
-      │
-      ▼
-3. Check status
-      │
-      ▼
-4. Check details
-      │
-      ▼
-5. Check events
-      │
-      ▼
-6. Check logs
-      │
-      ▼
-7. Enter container if possible
-      │
-      ▼
-8. Test connectivity
-      │
-      ▼
-9. Find root cause
-      │
-      ▼
-10. Fix
-      │
-      ▼
-11. Verify
+Observe -> Check status -> Describe -> Read events -> Check logs -> Exec if needed -> Fix -> Verify
 ```
 
----
+## 01-kubectl-get
 
-## The Five Commands
+File run: `01-kubectl-get/sample-workload.yaml`
 
-### 1. `kubectl get`
+```bash
+$ kubectl apply -f 01-kubectl-get/sample-workload.yaml
+pod/get-demo created
 
-Use it for a quick view.
+$ kubectl wait --for=condition=Ready pod/get-demo --timeout=90s
+pod/get-demo condition met
+
+$ kubectl get pods get-demo
+NAME       READY   STATUS    RESTARTS   AGE
+get-demo   1/1     Running   0          1s
+
+$ kubectl get pods get-demo -o wide
+NAME       READY   STATUS    RESTARTS   AGE   IP            NODE       NOMINATED NODE   READINESS GATES
+get-demo   1/1     Running   0          1s    10.244.0.15   minikube   <none>           <none>
+
+$ kubectl get all -l app=get-demo
+NAME           READY   STATUS    RESTARTS   AGE
+pod/get-demo   1/1     Running   0          1s
+```
+
+Learning: `kubectl get` gives the quick current state of Kubernetes resources.
+
+## 02-kubectl-describe
+
+File run: `02-kubectl-describe/demo-pod.yaml`
+
+```bash
+$ kubectl apply -f 02-kubectl-describe/demo-pod.yaml
+pod/describe-demo created
+
+$ kubectl wait --for=condition=Ready pod/describe-demo --timeout=90s
+pod/describe-demo condition met
+
+$ kubectl get pod describe-demo
+NAME            READY   STATUS    RESTARTS   AGE
+describe-demo   1/1     Running   0          0s
+
+$ kubectl describe pod describe-demo
+Name:             describe-demo
+Namespace:        default
+Node:             minikube/192.168.49.2
+Status:           Running
+IP:               10.244.0.16
+Containers:
+  nginx:
+    Image:          nginx:1.27
+    State:          Running
+    Ready:          True
+    Restart Count:  0
+Events:
+  Type    Reason     Age   From               Message
+  ----    ------     ----  ----               -------
+  Normal  Scheduled  0s    default-scheduler  Successfully assigned default/describe-demo to minikube
+  Normal  Pulled     0s    kubelet            spec.containers{nginx}: Container image "nginx:1.27" already present on machine and can be accessed by the pod
+  Normal  Created    0s    kubelet            spec.containers{nginx}: Container created
+  Normal  Started    0s    kubelet            spec.containers{nginx}: Container started
+```
+
+Learning: `kubectl describe` shows details, container state, restart count, and Events.
+
+## 03-kubectl-logs
+
+File run: `03-kubectl-logs/pod.yaml`
+
+```bash
+$ kubectl apply -f 03-kubectl-logs/pod.yaml
+pod/logs-demo created
+
+$ kubectl wait --for=condition=Ready pod/logs-demo --timeout=90s
+pod/logs-demo condition met
+
+$ kubectl get pod logs-demo
+NAME        READY   STATUS    RESTARTS   AGE
+logs-demo   1/1     Running   0          0s
+
+$ kubectl logs logs-demo --tail=8
+Application started
+Connecting to database...
+Database connection successful
+Application is running
+Application is healthy
+```
+
+Learning: `kubectl logs` shows what the application printed to stdout/stderr.
+
+## 04-kubectl-exec
+
+File run: `04-kubectl-exec/pod.yaml`
+
+```bash
+$ kubectl apply -f 04-kubectl-exec/pod.yaml
+pod/exec-demo created
+
+$ kubectl wait --for=condition=Ready pod/exec-demo --timeout=90s
+pod/exec-demo condition met
+
+$ kubectl get pod exec-demo
+NAME        READY   STATUS    RESTARTS   AGE
+exec-demo   1/1     Running   0          1s
+
+$ kubectl exec exec-demo -- hostname
+exec-demo
+
+$ kubectl exec exec-demo -- ls /usr/share/nginx/html
+50x.html
+index.html
+
+$ kubectl exec exec-demo -- sh -c "wget -qO- http://localhost | sed -n 1,5p"
+sh: 1: wget: not found
+```
+
+Learning: `kubectl exec` works only when the container is running. This nginx image did not include `wget`, which is itself a useful troubleshooting observation.
+
+## 05-events
+
+File run: `05-events/pod.yaml`
+
+```bash
+$ kubectl apply -f 05-events/pod.yaml
+pod/events-demo created
+
+$ kubectl wait --for=condition=Ready pod/events-demo --timeout=90s
+pod/events-demo condition met
+
+$ kubectl get events --field-selector involvedObject.name=events-demo --sort-by=.lastTimestamp
+LAST SEEN   TYPE     REASON      OBJECT            MESSAGE
+0s          Normal   Scheduled   pod/events-demo   Successfully assigned default/events-demo to minikube
+0s          Normal   Pulled      pod/events-demo   Container image "nginx:1.27" already present on machine and can be accessed by the pod
+0s          Normal   Created     pod/events-demo   Container created
+0s          Normal   Started     pod/events-demo   Container started
+
+$ kubectl describe pod events-demo
+Events:
+  Type    Reason     Age   From               Message
+  ----    ------     ----  ----               -------
+  Normal  Scheduled  0s    default-scheduler  Successfully assigned default/events-demo to minikube
+  Normal  Pulled     0s    kubelet            spec.containers{nginx}: Container image "nginx:1.27" already present on machine and can be accessed by the pod
+  Normal  Created    0s    kubelet            spec.containers{nginx}: Container created
+  Normal  Started    0s    kubelet            spec.containers{nginx}: Container started
+```
+
+Learning: Events show what Kubernetes tried and what happened.
+
+## 06-crashloopbackoff
+
+Files run:
+
+```text
+06-crashloopbackoff/broken-pod.yaml
+06-crashloopbackoff/fixed-pod.yaml
+```
+
+```bash
+$ kubectl apply -f 06-crashloopbackoff/broken-pod.yaml
+pod/crash-demo created
+
+$ kubectl get pod crash-demo
+NAME         READY   STATUS   RESTARTS      AGE
+crash-demo   0/1     Error    1 (15s ago)   16s
+
+$ kubectl describe pod crash-demo
+Containers:
+  app:
+    Image:         busybox:1.36
+    State:          Terminated
+      Reason:       Error
+      Exit Code:    1
+    Last State:     Terminated
+      Reason:       Error
+      Exit Code:    1
+    Ready:          False
+    Restart Count:  1
+Events:
+  Warning  BackOff    14s    kubelet    spec.containers{app}: Back-off restarting failed container app in pod crash-demo_default(...)
+
+$ kubectl logs crash-demo
+Application starting...
+Something went wrong!
+
+$ kubectl delete pod crash-demo --wait=true
+pod "crash-demo" deleted from default namespace
+
+$ kubectl apply -f 06-crashloopbackoff/fixed-pod.yaml
+pod/crash-demo created
+
+$ kubectl wait --for=condition=Ready pod/crash-demo --timeout=90s
+pod/crash-demo condition met
+
+$ kubectl get pod crash-demo
+NAME         READY   STATUS    RESTARTS   AGE
+crash-demo   1/1     Running   0          1s
+
+$ kubectl logs crash-demo
+Application starting...
+Application is healthy
+```
+
+Root cause: the broken pod exits with `exit 1`, so Kubernetes restarts it repeatedly.
+
+## 07-imagepullbackoff
+
+Files run:
+
+```text
+07-imagepullbackoff/broken-pod.yaml
+07-imagepullbackoff/fixed-pod.yaml
+```
+
+```bash
+$ kubectl apply -f 07-imagepullbackoff/broken-pod.yaml
+pod/image-demo created
+
+$ kubectl get pod image-demo
+NAME         READY   STATUS         RESTARTS   AGE
+image-demo   0/1     ErrImagePull   0          15s
+
+$ kubectl describe pod image-demo
+Events:
+  Type     Reason     Age   From     Message
+  ----     ------     ----  ----     -------
+  Normal   Pulling    15s   kubelet  spec.containers{app}: Pulling image "nginx:this-image-does-not-exist"
+  Warning  Failed     9s    kubelet  spec.containers{app}: Failed to pull image "nginx:this-image-does-not-exist": ... not found
+  Warning  Failed     9s    kubelet  spec.containers{app}: Error: ErrImagePull
+  Normal   BackOff    8s    kubelet  spec.containers{app}: Back-off pulling image "nginx:this-image-does-not-exist"
+  Warning  Failed     8s    kubelet  spec.containers{app}: Error: ImagePullBackOff
+
+$ kubectl delete pod image-demo --wait=true
+pod "image-demo" deleted from default namespace
+
+$ kubectl apply -f 07-imagepullbackoff/fixed-pod.yaml
+pod/image-demo created
+
+$ kubectl wait --for=condition=Ready pod/image-demo --timeout=90s
+pod/image-demo condition met
+
+$ kubectl get pod image-demo
+NAME         READY   STATUS    RESTARTS   AGE
+image-demo   1/1     Running   0          1s
+```
+
+Root cause: the image tag `nginx:this-image-does-not-exist` does not exist.
+
+## 08-pending-pods
+
+Files run:
+
+```text
+08-pending-pods/broken-pod.yaml
+08-pending-pods/fixed-pod.yaml
+```
+
+```bash
+$ kubectl apply -f 08-pending-pods/broken-pod.yaml
+pod/pending-demo created
+
+$ kubectl get pod pending-demo -o wide
+NAME           READY   STATUS    RESTARTS   AGE   IP       NODE     NOMINATED NODE   READINESS GATES
+pending-demo   0/1     Pending   0          5s    <none>   <none>   <none>           <none>
+
+$ kubectl describe pod pending-demo
+Conditions:
+  Type           Status
+  PodScheduled   False
+Events:
+  Type     Reason            Age   From               Message
+  ----     ------            ----  ----               -------
+  Warning  FailedScheduling  5s    default-scheduler  0/1 nodes are available: 1 node(s) didn't match Pod's node affinity/selector. preemption: 0/1 nodes are available: 1 Preemption is not helpful for scheduling.
+
+$ kubectl get nodes
+NAME       STATUS   ROLES           AGE   VERSION
+minikube   Ready    control-plane   13d   v1.37.0
+
+$ kubectl delete pod pending-demo --wait=true
+pod "pending-demo" deleted from default namespace
+
+$ kubectl apply -f 08-pending-pods/fixed-pod.yaml
+pod/pending-demo created
+
+$ kubectl wait --for=condition=Ready pod/pending-demo --timeout=90s
+pod/pending-demo condition met
+
+$ kubectl get pod pending-demo -o wide
+NAME           READY   STATUS    RESTARTS   AGE   IP            NODE       NOMINATED NODE   READINESS GATES
+pending-demo   1/1     Running   0          1s    10.244.0.24   minikube   <none>           <none>
+```
+
+Root cause: the broken pod asks for `node-that-does-not-exist` using `nodeSelector`.
+
+## 09-service-dns-troubleshooting
+
+Files run:
+
+```text
+09-service-dns-troubleshooting/deployment.yaml
+09-service-dns-troubleshooting/service.yaml
+09-service-dns-troubleshooting/dns-test-pod.yaml
+09-service-dns-troubleshooting/broken-service.yaml
+```
+
+```bash
+$ kubectl apply -f 09-service-dns-troubleshooting/deployment.yaml
+deployment.apps/web created
+
+$ kubectl rollout status deployment/web --timeout=120s
+deployment "web" successfully rolled out
+
+$ kubectl apply -f 09-service-dns-troubleshooting/service.yaml
+service/web-service created
+
+$ kubectl get pods -l app=web -o wide
+NAME                   READY   STATUS    RESTARTS   AGE   IP            NODE
+web-557577df75-7xjlp   1/1     Running   0          0s    10.244.0.26   minikube
+web-557577df75-k657v   1/1     Running   0          0s    10.244.0.25   minikube
+
+$ kubectl get service web-service
+NAME          TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)   AGE
+web-service   ClusterIP   10.105.245.25   <none>        80/TCP    0s
+
+$ kubectl describe service web-service
+Selector:                 app=web
+Type:                     ClusterIP
+IP:                       10.105.245.25
+Port:                     <unset>  80/TCP
+TargetPort:               80/TCP
+Endpoints:                10.244.0.26:80,10.244.0.25:80
+
+$ kubectl get endpoints web-service
+NAME          ENDPOINTS                       AGE
+web-service   10.244.0.25:80,10.244.0.26:80   0s
+```
+
+The DNS test pod file was also run, but the image currently fails to pull:
+
+```bash
+$ kubectl apply -f 09-service-dns-troubleshooting/dns-test-pod.yaml
+pod/dns-test created
+
+$ kubectl get pod dns-test -o wide
+NAME       READY   STATUS             RESTARTS   AGE   IP            NODE
+dns-test   0/1     ImagePullBackOff   0          20s   10.244.0.34   minikube
+
+$ kubectl describe pod dns-test
+Containers:
+  dns-test:
+    Image:         registry.k8s.io/e2e-test-images/dnsutils:1.3
+    State:          Waiting
+      Reason:       ImagePullBackOff
+Events:
+  Warning  Failed  kubelet  Failed to pull image "registry.k8s.io/e2e-test-images/dnsutils:1.3": ... not found
+  Warning  Failed  kubelet  Error: ErrImagePull
+```
+
+Broken service selector test:
+
+```bash
+$ kubectl apply -f 09-service-dns-troubleshooting/broken-service.yaml
+service/broken-service created
+
+$ kubectl get service broken-service
+NAME             TYPE        CLUSTER-IP    EXTERNAL-IP   PORT(S)   AGE
+broken-service   ClusterIP   10.108.5.32   <none>        80/TCP    0s
+
+$ kubectl describe service broken-service
+Selector:                 app=does-not-exist
+Endpoints:
+
+$ kubectl get endpoints broken-service
+NAME             ENDPOINTS   AGE
+broken-service   <none>      0s
+```
+
+Learning: a Service with a selector that matches pods gets endpoints. A Service with a selector that matches nothing has `<none>` endpoints.
+
+## Mini Project
+
+Files run:
+
+```text
+mini-project/deployment.yaml
+mini-project/service.yaml
+mini-project/broken-pod.yaml
+```
+
+```bash
+$ kubectl apply -f mini-project/deployment.yaml
+deployment.apps/troubleshooting-app created
+
+$ kubectl rollout status deployment/troubleshooting-app --timeout=120s
+deployment "troubleshooting-app" successfully rolled out
+
+$ kubectl apply -f mini-project/service.yaml
+service/troubleshooting-service created
+
+$ kubectl get pods -l app=troubleshooting-app -o wide
+NAME                                   READY   STATUS    RESTARTS   AGE   IP            NODE
+troubleshooting-app-59d4957864-bd422   1/1     Running   0          0s    10.244.0.28   minikube
+troubleshooting-app-59d4957864-wfl5z   1/1     Running   0          0s    10.244.0.29   minikube
+
+$ kubectl get service troubleshooting-service
+NAME                      TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)   AGE
+troubleshooting-service   ClusterIP   10.101.70.188   <none>        80/TCP    0s
+
+$ kubectl describe service troubleshooting-service
+Selector:                 app=troubleshooting-app
+Type:                     ClusterIP
+IP:                       10.101.70.188
+Port:                     <unset>  80/TCP
+TargetPort:               80/TCP
+Endpoints:                10.244.0.28:80,10.244.0.29:80
+
+$ kubectl get endpoints troubleshooting-service
+NAME                      ENDPOINTS                       AGE
+troubleshooting-service   10.244.0.28:80,10.244.0.29:80   1s
+
+$ kubectl logs troubleshooting-app-59d4957864-bd422 --tail=5
+2026/09/21 06:51:47 [notice] 1#1: start worker process 31
+2026/09/21 06:51:47 [notice] 1#1: start worker process 32
+2026/09/21 06:51:47 [notice] 1#1: start worker process 33
+2026/09/21 06:51:47 [notice] 1#1: start worker process 34
+2026/09/21 06:51:47 [notice] 1#1: start worker process 35
+```
+
+Broken pod challenge:
+
+```bash
+$ kubectl apply -f mini-project/broken-pod.yaml
+pod/project-broken-pod created
+
+$ kubectl get pod project-broken-pod
+NAME                 READY   STATUS         RESTARTS   AGE
+project-broken-pod   0/1     ErrImagePull   0          15s
+
+$ kubectl describe pod project-broken-pod
+Events:
+  Type     Reason     Age   From     Message
+  ----     ------     ----  ----     -------
+  Normal   Pulling    15s   kubelet  spec.containers{app}: Pulling image "nginx:this-tag-does-not-exist"
+  Warning  Failed     7s    kubelet  spec.containers{app}: Failed to pull image "nginx:this-tag-does-not-exist": ... not found
+  Warning  Failed     7s    kubelet  spec.containers{app}: Error: ErrImagePull
+  Normal   BackOff    7s    kubelet  spec.containers{app}: Back-off pulling image "nginx:this-tag-does-not-exist"
+  Warning  Failed     7s    kubelet  spec.containers{app}: Error: ImagePullBackOff
+```
+
+Challenge answers:
+
+| Question | Answer |
+| --- | --- |
+| What is the Pod status? | `ErrImagePull`, then it can become `ImagePullBackOff` after retries. |
+| What is the actual error? | Kubernetes cannot pull `nginx:this-tag-does-not-exist`. |
+| Which command helped find the reason? | `kubectl describe pod project-broken-pod` and the Events section. |
+| What is wrong with the image? | The image tag does not exist. |
+| How would you fix it? | Use a valid image tag such as `nginx:1.27`, then recreate/apply the fixed pod spec. |
+
+## Cleanup
+
+After running the examples, the demo resources were removed:
+
+```bash
+$ kubectl delete pod get-demo describe-demo logs-demo exec-demo events-demo crash-demo image-demo pending-demo project-broken-pod dns-test --ignore-not-found=true
+pod "get-demo" deleted from default namespace
+pod "describe-demo" deleted from default namespace
+pod "logs-demo" deleted from default namespace
+pod "exec-demo" deleted from default namespace
+pod "events-demo" deleted from default namespace
+pod "crash-demo" deleted from default namespace
+pod "image-demo" deleted from default namespace
+pod "pending-demo" deleted from default namespace
+pod "project-broken-pod" deleted from default namespace
+pod "dns-test" deleted from default namespace
+
+$ kubectl delete deploy web troubleshooting-app --ignore-not-found=true
+deployment.apps "web" deleted from default namespace
+deployment.apps "troubleshooting-app" deleted from default namespace
+
+$ kubectl delete svc web-service broken-service troubleshooting-service --ignore-not-found=true
+service "web-service" deleted from default namespace
+service "broken-service" deleted from default namespace
+service "troubleshooting-service" deleted from default namespace
+```
+
+## Useful Commands
 
 ```bash
 kubectl get pods
-```
-
-**Question:**
-> "What is happening?"
-
----
-
-### 2. `kubectl describe`
-
-Use it for detailed information.
-
-```bash
+kubectl get pods -o wide
 kubectl describe pod <pod-name>
-```
-
-**Question:**
-> "What details can explain the problem?"
-
----
-
-### 3. `kubectl logs`
-
-Use it to see application output.
-
-```bash
-kubectl logs <pod-name>
-```
-
-**Question:**
-> "What is the application saying?"
-
----
-
-### 4. `kubectl exec`
-
-Use it to run commands inside a running container.
-
-```bash
-kubectl exec -it <pod-name> -- sh
-```
-
-**Question:**
-> "What can I see from inside the container?"
-
----
-
-### 5. `Events`
-
-Use Events to understand what Kubernetes tried to do.
-
-```bash
-kubectl get events
-```
-
-or:
-
-```bash
-kubectl describe pod <pod-name>
-```
-
-**Question:**
-> "What did Kubernetes try, and what happened?"
-
----
-
-## Common Kubernetes Problems
-
-### CrashLoopBackOff
-
-```text
-Container starts
-      │
-      ▼
-Application crashes
-      │
-      ▼
-Container restarts
-      │
-      ▼
-Crash again
-      │
-      ▼
-CrashLoopBackOff
-```
-
-**Check:**
-
-```bash
 kubectl logs <pod-name>
 kubectl logs <pod-name> --previous
-kubectl describe pod <pod-name>
-```
-
----
-
-### ImagePullBackOff
-
-```text
-Kubernetes
-    │
-    ▼
-Needs image
-    │
-    ▼
-Pull fails
-    │
-    ▼
-Retries
-    │
-    ▼
-ImagePullBackOff
-```
-
-**Check:**
-
-```bash
-kubectl describe pod <pod-name>
-```
-
-Look at Events.
-
----
-
-### Pending Pod
-
-```text
-Pod created
-    │
-    ▼
-Scheduler tries to find a node
-    │
-    ▼
-Cannot schedule
-    │
-    ▼
-Pending
-```
-
-**Check:**
-
-```bash
-kubectl describe pod <pod-name>
-```
-
-Look at Events.
-
----
-
-### Service Problem
-
-**Check:**
-
-```bash
-kubectl get pods
-kubectl get service
-kubectl describe service <service-name>
+kubectl exec <pod-name> -- <command>
+kubectl get events --sort-by=.lastTimestamp
 kubectl get endpoints <service-name>
 ```
 
-Most importantly:
-
-```text
-Pod labels
-    │
-    ▼
-Service selector
-    │
-    ▼
-Endpoints
-```
-
-They need to match correctly.
-
----
-
-### DNS Problem
-
-Test from inside a Pod:
-
-```bash
-nslookup <service-name>
-```
-
-Check CoreDNS:
-
-```bash
-kubectl get pods -n kube-system
-```
-
-Check CoreDNS logs:
-
-```bash
-kubectl logs -n kube-system -l k8s-app=kube-dns
-```
-
----
-
-## Golden Troubleshooting Flow
-
-Students should remember this:
-
-```text
-              PROBLEM
-                 │
-                 ▼
-            kubectl get
-                 │
-                 ▼
-           What is the status?
-                 │
-                 ▼
-         kubectl describe
-                 │
-                 ▼
-              Events
-                 │
-                 ▼
-           kubectl logs
-                 │
-                 ▼
-           kubectl exec
-                 │
-                 ▼
-           Test connectivity
-                 │
-                 ▼
-            Find root cause
-                 │
-                 ▼
-                FIX
-                 │
-                 ▼
-              VERIFY
-```
-
----
-
-## Learning
-
-* Check Kubernetes resource status
-* Inspect detailed resource information
-* Read application logs
-* Execute commands inside containers
-* Understand Kubernetes Events
-* Troubleshoot `CrashLoopBackOff`
-* Troubleshoot `ImagePullBackOff`
-* Troubleshoot `Pending` Pods
-* Troubleshoot Services
-* Test Kubernetes DNS
-* Identify root causes instead of guessing
+No Git commit or push was performed.
