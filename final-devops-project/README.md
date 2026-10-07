@@ -317,249 +317,241 @@ A nonexistent Ingress Service port initially produced a controller `service port
 Every image below is a real OS screenshot of the actual Terminal/browser window, with no surrounding desktop. Capture commands run in a separate helper window and do not appear in the Terminal evidence. Commands and full output are preserved in the adjacent text transcripts. Browser screenshots show real running pages; there are no simulated pipeline results, cloud screenshots or fabricated monitoring values.
 
 
-<details>
-<summary><strong>Application, tests, Docker and infrastructure</strong></summary>
+### Application, tests, Docker and infrastructure
 
-### 01 · Project and branch
+#### 01 · Project and branch
 
 ![Project and branch](Output/01-project-and-branch.png)
 
 [Commands and actual output](Output/logs/01-project-and-branch.txt).
 
-### 02 · Api tests
+#### 02 · Api tests
 
 ![Api tests](Output/02-api-tests.png)
 
 [Commands and actual output](Output/logs/02-api-tests.txt).
 
-### 03 · Frontend build
+#### 03 · Frontend build
 
 ![Frontend build](Output/03-frontend-build.png)
 
 [Commands and actual output](Output/logs/03-frontend-build.txt).
 
-### 04 · Security source
+#### 04 · Security source
 
 ![Security source](Output/04-security-source.png)
 
 [Commands and actual output](Output/logs/04-security-source.txt).
 
-### 05 · Compose running
+#### 05 · Compose running
 
 ![Compose running](Output/05-compose-running.png)
 
 [Commands and actual output](Output/logs/05-compose-running.txt).
 
-### 06 · Compose business
+#### 06 · Compose business
 
 ![Compose business](Output/06-compose-business.png)
 
 [Commands and actual output](Output/logs/06-compose-business.txt).
 
-### 07 · Terraform validation
+#### 07 · Terraform validation
 
 ![Terraform validation](Output/07-terraform-validation.png)
 
 [Commands and actual output](Output/logs/07-terraform-validation.txt).
 
-### 08 · Aws access pending
+#### 08 · Aws access pending
 
 ![Aws access pending](Output/08-aws-access-pending.png)
 
 [Commands and actual output](Output/logs/08-aws-access-pending.txt).
 
-### 09 · Compose app browser
+#### 09 · Compose app browser
 
 ![Compose app browser](Output/09-compose-app-browser.png)
 
-### 10 · Ingress app browser
+#### 10 · Ingress app browser
 
 ![Ingress app browser](Output/10-ingress-app-browser.png)
 
-</details>
 
-<details>
-<summary><strong>Kubernetes, monitoring and initial GitOps release</strong></summary>
+### Kubernetes, monitoring and initial GitOps release
 
-### 11 · Helm and kubernetes
+#### 11 · Helm and kubernetes
 
 ![Helm and kubernetes](Output/11-helm-and-kubernetes.png)
 
 [Commands and actual output](Output/logs/11-helm-and-kubernetes.txt).
 
-### 12 · Config secret storage
+#### 12 · Config secret storage
 
 ![Config secret storage](Output/12-config-secret-storage.png)
 
 [Commands and actual output](Output/logs/12-config-secret-storage.txt).
 
-### 13 · Api metrics
+#### 13 · Api metrics
 
 ![Api metrics](Output/13-api-metrics.png)
 
 [Commands and actual output](Output/logs/13-api-metrics.txt).
 
-### 14 · Live api and database
+#### 14 · Live api and database
 
 ![Live api and database](Output/14-live-api-and-database.png)
 
 [Commands and actual output](Output/logs/14-live-api-and-database.txt).
 
-### 15 · Prometheus targets browser
+#### 15 · Prometheus targets browser
 
 ![Prometheus targets browser](Output/15-prometheus-targets-browser.png)
 
-### 16 · Grafana dashboard browser
+#### 16 · Grafana dashboard browser
 
 ![Grafana dashboard browser](Output/16-grafana-dashboard-browser.png)
 
-### 17 · Gitops initial browser
+#### 17 · Gitops initial browser
 
 ![Gitops initial browser](Output/17-gitops-initial-browser.png)
 
-### 18 · Gitops before release
+#### 18 · Gitops before release
 
 ![Gitops before release](Output/18-gitops-before-release.png)
 
 [Commands and actual output](Output/logs/18-gitops-before-release.txt).
 
-</details>
 
-<details>
-<summary><strong>Deliberate failures and recovery</strong></summary>
+### Deliberate failures and recovery
 
-### 19 · Fault image
+#### 19 · Fault image
 
 ![Fault image](Output/19-fault-image.png)
 
 [Commands and actual output](Output/logs/19-fault-image.txt).
 
-### 20 · Fix image
+#### 20 · Fix image
 
 ![Fix image](Output/20-fix-image.png)
 
 [Commands and actual output](Output/logs/20-fix-image.txt).
 
-### 21 · Fault service
+#### 21 · Fault service
 
 ![Fault service](Output/21-fault-service.png)
 
 [Commands and actual output](Output/logs/21-fault-service.txt).
 
-### 22 · Fix service
+#### 22 · Fix service
 
 ![Fix service](Output/22-fix-service.png)
 
 [Commands and actual output](Output/logs/22-fix-service.txt).
 
-### 23 · Fault ingress
+#### 23 · Fault ingress
 
 ![Fault ingress](Output/23-fault-ingress.png)
 
 [Commands and actual output](Output/logs/23-fault-ingress.txt).
 
-### 24 · Fix ingress
+#### 24 · Fix ingress
 
 ![Fix ingress](Output/24-fix-ingress.png)
 
 [Commands and actual output](Output/logs/24-fix-ingress.txt).
 
-### 25 · Fault database
+#### 25 · Fault database
 
 ![Fault database](Output/25-fault-database.png)
 
 [Commands and actual output](Output/logs/25-fault-database.txt).
 
-### 26 · Fix database
+#### 26 · Fix database
 
 ![Fix database](Output/26-fix-database.png)
 
 [Commands and actual output](Output/logs/26-fix-database.txt).
 
-### 27 · Request logs
+#### 27 · Request logs
 
 ![Request logs](Output/27-request-logs.png)
 
 [Commands and actual output](Output/logs/27-request-logs.txt).
 
-</details>
 
-<details>
-<summary><strong>CI, registry, autoscaling and final release</strong></summary>
+### CI, registry, autoscaling and final release
 
-### 28 · Ci green browser
+#### 28 · Ci green browser
 
 ![Ci green browser](Output/28-ci-green-browser.png)
 
-### 29 · Hpa under load
+#### 29 · Hpa under load
 
 ![Hpa under load](Output/29-hpa-under-load.png)
 
 [Commands and actual output](Output/logs/29-hpa-under-load.txt).
 
-### 30 · Ghcr backend browser
+#### 30 · Ghcr backend browser
 
 ![Ghcr backend browser](Output/30-ghcr-backend-browser.png)
 
-### 31 · Ghcr frontend browser
+#### 31 · Ghcr frontend browser
 
 ![Ghcr frontend browser](Output/31-ghcr-frontend-browser.png)
 
-### 32 · Ci security deployment browser
+#### 32 · Ci security deployment browser
 
 ![Ci security deployment browser](Output/32-ci-security-deployment-browser.png)
 
-### 33 · Hpa healthy load
+#### 33 · Hpa healthy load
 
 ![Hpa healthy load](Output/33-hpa-healthy-load.png)
 
 [Commands and actual output](Output/logs/33-hpa-healthy-load.txt).
 
-### 34 · Hpa recovered
+#### 34 · Hpa recovered
 
 ![Hpa recovered](Output/34-hpa-recovered.png)
 
 [Commands and actual output](Output/logs/34-hpa-recovered.txt).
 
-### 35 · Release verification
+#### 35 · Release verification
 
 ![Release verification](Output/35-release-verification.png)
 
 [Commands and actual output](Output/logs/35-release-verification.txt).
 
-### 36 · Gitops final browser
+#### 36 · Gitops final browser
 
 ![Gitops final browser](Output/36-gitops-final-browser.png)
 
-### 37 · Updated app browser
+#### 37 · Updated app browser
 
 ![Updated app browser](Output/37-updated-app-browser.png)
 
-### 38 · Commit history
+#### 38 · Commit history
 
 ![Commit history](Output/38-commit-history.png)
 
 [Commands and actual output](Output/logs/38-commit-history.txt).
 
-### 39 · Trivy and registry
+#### 39 · Trivy and registry
 
 ![Trivy and registry](Output/39-trivy-and-registry.png)
 
 [Commands and actual output](Output/logs/39-trivy-and-registry.txt).
 
-### 40 · Frontend regressions
+#### 40 · Frontend regressions
 
 ![Frontend regressions](Output/40-frontend-regressions.png)
 
 [Commands and actual output](Output/logs/40-frontend-regressions.txt).
 
-### 41 · Api test cases
+#### 41 · Api test cases
 
 ![Api test cases](Output/41-api-test-cases.png)
 
 [Commands and actual output](Output/logs/41-api-test-cases.txt).
 
-</details>
 
 ## Lessons learned and operating limits
 
