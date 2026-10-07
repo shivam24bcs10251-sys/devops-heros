@@ -1,0 +1,12 @@
+shivamjaiswal@Shivams-MacBook-Air session-11-kubernetes-services % git branch --show-current
+session-11-kubernetes-services
+shivamjaiswal@Shivams-MacBook-Air session-11-kubernetes-services % kubectl version
+Client Version: v1.35.0
+Kustomize Version: v5.7.1
+Server Version: v1.35.0
+shivamjaiswal@Shivams-MacBook-Air session-11-kubernetes-services % kubectl get nodes
+NAME                STATUS   ROLES           AGE     VERSION
+devops-assignment   Ready    control-plane   2m49s   v1.35.0
+shivamjaiswal@Shivams-MacBook-Air session-11-kubernetes-services % kubectl apply -f namespace.yaml
+namespace/session11 created
+shivamjaiswal@Shivams-MacBook-Air session-11-kubernetes-services %

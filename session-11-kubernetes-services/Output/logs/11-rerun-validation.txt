@@ -1,0 +1,112 @@
+namespace/session11 unchanged
+deployment.apps/web-app-clusterip unchanged
+pod/curl-client unchanged
+service/web-service-clusterip unchanged
+deployment.apps/web-app-nodeport unchanged
+service/web-service-nodeport unchanged
+deployment.apps/web-app-loadbalancer unchanged
+service/web-service-loadbalancer unchanged
+pod/dns-test-client unchanged
+service/external-database-service unchanged
+statefulset.apps/web-stateful unchanged
+pod/headless-dns-client unchanged
+service/web-service-headless unchanged
+deployment "web-app-clusterip" successfully rolled out
+deployment "web-app-nodeport" successfully rolled out
+deployment "web-app-loadbalancer" successfully rolled out
+partitioned roll out complete: 3 new pods have been updated...
+pod/curl-client condition met
+pod/dns-test-client condition met
+pod/headless-dns-client condition met
+NAME                        TYPE           CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
+external-database-service   ExternalName   <none>          example.com   <none>           6m22s
+web-service-clusterip       ClusterIP      10.104.87.123   <none>        8080/TCP         7m1s
+web-service-headless        ClusterIP      None            <none>        80/TCP           6m22s
+web-service-loadbalancer    LoadBalancer   10.102.33.249   127.0.0.1     8081:30995/TCP   6m22s
+web-service-nodeport        NodePort       10.97.181.180   <none>        80:30080/TCP     6m22s
+NAME                                   READY   STATUS    RESTARTS   AGE
+curl-client                            1/1     Running   0          7m1s
+dns-test-client                        1/1     Running   0          6m22s
+headless-dns-client                    1/1     Running   0          6m22s
+web-app-clusterip-6676b4f459-w265t     1/1     Running   0          7m1s
+web-app-clusterip-6676b4f459-x7l7f     1/1     Running   0          7m1s
+web-app-clusterip-6676b4f459-xxxzm     1/1     Running   0          7m1s
+web-app-loadbalancer-8989dbc9c-82gdg   1/1     Running   0          6m22s
+web-app-loadbalancer-8989dbc9c-wvgs2   1/1     Running   0          6m22s
+web-app-loadbalancer-8989dbc9c-zhm72   1/1     Running   0          6m22s
+web-app-nodeport-75d6d64d9b-s9w62      1/1     Running   0          6m22s
+web-app-nodeport-75d6d64d9b-zx98b      1/1     Running   0          6m22s
+web-stateful-0                         1/1     Running   0          6m22s
+web-stateful-1                         1/1     Running   0          6m21s
+web-stateful-2                         1/1     Running   0          6m20s
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to nginx!</title>
+<style>
+html { color-scheme: light dark; }
+body { width: 35em; margin: 0 auto;
+font-family: Tahoma, Verdana, Arial, sans-serif; }
+</style>
+</head>
+<body>
+<h1>Welcome to nginx!</h1>
+<p>If you see this page, the nginx web server is successfully installed and
+working. Further configuration is required.</p>
+
+<p>For online documentation and support please refer to
+<a href="http://nginx.org/">nginx.org</a>.<br/>
+Commercial support is available at
+<a href="http://nginx.com/">nginx.com</a>.</p>
+
+<p><em>Thank you for using nginx.</em></p>
+</body>
+</html>
+Server:		10.96.0.10
+Address:	10.96.0.10:53
+
+external-database-service.session11.svc.cluster.local	canonical name = example.com
+
+Connecting to external-database-service (104.20.23.154:80)
+  HTTP/1.1 200 OK
+  Date: Wed, 07 Oct 2026 07:41:14 GMT
+  Content-Type: text/html; charset=utf-8
+  Transfer-Encoding: chunked
+  Connection: close
+  Server: cloudflare
+  Last-Modified: Fri, 02 Oct 2026 16:11:02 GMT
+  Allow: GET, HEAD
+  Accept-Ranges: bytes
+  Age: 12550
+  cf-cache-status: HIT
+  CF-RAY: a46b43279acb7f69-MAA
+  alt-svc: h3=":443"; ma=86400
+
+saving to '/dev/null'
+null                 100% |********************************|   577  0:00:00 ETA
+'/dev/null' saved
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to nginx!</title>
+<style>
+html { color-scheme: light dark; }
+body { width: 35em; margin: 0 auto;
+font-family: Tahoma, Verdana, Arial, sans-serif; }
+</style>
+</head>
+<body>
+<h1>Welcome to nginx!</h1>
+<p>If you see this page, the nginx web server is successfully installed and
+working. Further configuration is required.</p>
+
+<p>For online documentation and support please refer to
+<a href="http://nginx.org/">nginx.org</a>.<br/>
+Commercial support is available at
+<a href="http://nginx.com/">nginx.com</a>.</p>
+
+<p><em>Thank you for using nginx.</em></p>
+</body>
+</html>
+
+For host NodePort and LoadBalancer tests, start the tunnels described in README.md.

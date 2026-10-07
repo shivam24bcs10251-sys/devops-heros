@@ -1,0 +1,20 @@
+shivamjaiswal@Shivams-MacBook-Air session-11-kubernetes-services % kubectl -n kube-system get configmap coredns -o jsonpath='{.data.Corefile}' | nl -ba | sed -n '1,18p'
+     1	.:53 {
+     2	    log
+     3	    errors
+     4	    health {
+     5	       lameduck 5s
+     6	    }
+     7	    ready
+     8	    kubernetes cluster.local in-addr.arpa ip6.arpa {
+     9	       pods insecure
+    10	       fallthrough in-addr.arpa ip6.arpa
+    11	       ttl 30
+    12	    }
+    13	    prometheus :9153
+    14	    hosts {
+    15	       192.168.65.254 host.minikube.internal
+    16	       fallthrough
+    17	    }
+    18	    forward . /etc/resolv.conf {
+shivamjaiswal@Shivams-MacBook-Air session-11-kubernetes-services %

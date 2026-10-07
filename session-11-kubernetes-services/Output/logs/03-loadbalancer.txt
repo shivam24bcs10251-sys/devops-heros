@@ -1,0 +1,16 @@
+shivamjaiswal@Shivams-MacBook-Air session-11-kubernetes-services % kubectl -n session11 get svc web-service-loadbalancer
+NAME                       TYPE           CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
+web-service-loadbalancer   LoadBalancer   10.102.33.249   127.0.0.1     8081:30995/TCP   74s
+shivamjaiswal@Shivams-MacBook-Air session-11-kubernetes-services % kubectl -n session11 get pods -l app=web-loadbalancer
+NAME                                   READY   STATUS    RESTARTS   AGE
+web-app-loadbalancer-8989dbc9c-82gdg   1/1     Running   0          75s
+web-app-loadbalancer-8989dbc9c-wvgs2   1/1     Running   0          75s
+web-app-loadbalancer-8989dbc9c-zhm72   1/1     Running   0          75s
+shivamjaiswal@Shivams-MacBook-Air session-11-kubernetes-services % kubectl -n session11 get endpointslices -l kubernetes.io/service-name=web-service-loadbalancer
+NAME                             ADDRESSTYPE   PORTS   ENDPOINTS                            AGE
+web-service-loadbalancer-dh5lk   IPv4          80      10.244.0.10,10.244.0.11,10.244.0.9   75s
+shivamjaiswal@Shivams-MacBook-Air session-11-kubernetes-services % curl -fsS -o /dev/null -w "LoadBalancer HTTP status: %{http_code}\n" http://127.0.0.1:8081
+LoadBalancer HTTP status: 200
+shivamjaiswal@Shivams-MacBook-Air session-11-kubernetes-services % curl -fsS http://127.0.0.1:8081 | sed -n "/<h1>/p"
+<h1>Welcome to nginx!</h1>
+shivamjaiswal@Shivams-MacBook-Air session-11-kubernetes-services %

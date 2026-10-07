@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: nginx-stateful
-          image: nginx:1.25-alpine
+          image: nginx:1.28-alpine
           ports:
             - name: web
               containerPort: 80

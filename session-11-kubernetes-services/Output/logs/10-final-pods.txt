@@ -1,0 +1,17 @@
+shivamjaiswal@Shivams-MacBook-Air session-11-kubernetes-services % kubectl -n session11 get pods
+NAME                                   READY   STATUS    RESTARTS   AGE
+curl-client                            1/1     Running   0          6m39s
+dns-test-client                        1/1     Running   0          6m
+headless-dns-client                    1/1     Running   0          6m
+web-app-clusterip-6676b4f459-w265t     1/1     Running   0          6m39s
+web-app-clusterip-6676b4f459-x7l7f     1/1     Running   0          6m39s
+web-app-clusterip-6676b4f459-xxxzm     1/1     Running   0          6m39s
+web-app-loadbalancer-8989dbc9c-82gdg   1/1     Running   0          6m
+web-app-loadbalancer-8989dbc9c-wvgs2   1/1     Running   0          6m
+web-app-loadbalancer-8989dbc9c-zhm72   1/1     Running   0          6m
+web-app-nodeport-75d6d64d9b-s9w62      1/1     Running   0          6m
+web-app-nodeport-75d6d64d9b-zx98b      1/1     Running   0          6m
+web-stateful-0                         1/1     Running   0          6m
+web-stateful-1                         1/1     Running   0          5m59s
+web-stateful-2                         1/1     Running   0          5m58s
+shivamjaiswal@Shivams-MacBook-Air session-11-kubernetes-services %

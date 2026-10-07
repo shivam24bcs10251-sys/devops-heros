@@ -1,0 +1,16 @@
+shivamjaiswal@Shivams-MacBook-Air session-11-kubernetes-services % kubectl -n session11 exec curl-client -- cat /etc/resolv.conf
+search session11.svc.cluster.local svc.cluster.local cluster.local
+nameserver 10.96.0.10
+options ndots:5
+shivamjaiswal@Shivams-MacBook-Air session-11-kubernetes-services % kubectl -n session11 exec curl-client -- nslookup -type=A web-service-clusterip.session11.svc.cluster.local.
+Server:		10.96.0.10
+Address:	10.96.0.10:53
+
+Name:	web-service-clusterip.session11.svc.cluster.local
+Address: 10.104.87.123
+
+shivamjaiswal@Shivams-MacBook-Air session-11-kubernetes-services % kubectl -n session11 exec curl-client -- wget -qO- http://web-service-clusterip:8080 | sed -n "/<h1>/p"
+<h1>Welcome to nginx!</h1>
+shivamjaiswal@Shivams-MacBook-Air session-11-kubernetes-services % kubectl -n session11 exec curl-client -- wget -qO- http://web-service-clusterip.session11.svc.cluster.local:8080 | sed -n "/<h1>/p"
+<h1>Welcome to nginx!</h1>
+shivamjaiswal@Shivams-MacBook-Air session-11-kubernetes-services %

@@ -1,0 +1,16 @@
+shivamjaiswal@Shivams-MacBook-Air session-11-kubernetes-services % kubectl -n session11 get deployments,statefulsets
+NAME                                   READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/web-app-clusterip      3/3     3            3           6m36s
+deployment.apps/web-app-loadbalancer   3/3     3            3           5m57s
+deployment.apps/web-app-nodeport       2/2     2            2           5m57s
+
+NAME                            READY   AGE
+statefulset.apps/web-stateful   3/3     5m57s
+shivamjaiswal@Shivams-MacBook-Air session-11-kubernetes-services % kubectl -n session11 get services
+NAME                        TYPE           CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
+external-database-service   ExternalName   <none>          example.com   <none>           5m58s
+web-service-clusterip       ClusterIP      10.104.87.123   <none>        8080/TCP         6m37s
+web-service-headless        ClusterIP      None            <none>        80/TCP           5m58s
+web-service-loadbalancer    LoadBalancer   10.102.33.249   127.0.0.1     8081:30995/TCP   5m58s
+web-service-nodeport        NodePort       10.97.181.180   <none>        80:30080/TCP     5m58s
+shivamjaiswal@Shivams-MacBook-Air session-11-kubernetes-services %

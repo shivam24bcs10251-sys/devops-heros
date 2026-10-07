@@ -1,0 +1,22 @@
+shivamjaiswal@Shivams-MacBook-Air session-11-kubernetes-services % kubectl -n session11 get svc web-service-clusterip
+NAME                    TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
+web-service-clusterip   ClusterIP   10.104.87.123   <none>        8080/TCP   50s
+shivamjaiswal@Shivams-MacBook-Air session-11-kubernetes-services % kubectl -n session11 get pods -l app=web-clusterip -o wide
+NAME                                 READY   STATUS    RESTARTS   AGE   IP           NODE                NOMINATED NODE   READINESS GATES
+web-app-clusterip-6676b4f459-w265t   1/1     Running   0          51s   10.244.0.4   devops-assignment   <none>           <none>
+web-app-clusterip-6676b4f459-x7l7f   1/1     Running   0          51s   10.244.0.5   devops-assignment   <none>           <none>
+web-app-clusterip-6676b4f459-xxxzm   1/1     Running   0          51s   10.244.0.6   devops-assignment   <none>           <none>
+shivamjaiswal@Shivams-MacBook-Air session-11-kubernetes-services % kubectl -n session11 get endpointslices -l kubernetes.io/service-name=web-service-clusterip
+NAME                          ADDRESSTYPE   PORTS   ENDPOINTS                          AGE
+web-service-clusterip-f6zt6   IPv4          80      10.244.0.5,10.244.0.4,10.244.0.6   51s
+shivamjaiswal@Shivams-MacBook-Air session-11-kubernetes-services % kubectl -n session11 exec curl-client -- nslookup web-service-clusterip.session11.svc.cluster.local
+Server:		10.96.0.10
+Address:	10.96.0.10:53
+
+Name:	web-service-clusterip.session11.svc.cluster.local
+Address: 10.104.87.123
+
+
+shivamjaiswal@Shivams-MacBook-Air session-11-kubernetes-services % kubectl -n session11 exec curl-client -- wget -qO- http://web-service-clusterip:8080 | sed -n "/<h1>/p"
+<h1>Welcome to nginx!</h1>
+shivamjaiswal@Shivams-MacBook-Air session-11-kubernetes-services %

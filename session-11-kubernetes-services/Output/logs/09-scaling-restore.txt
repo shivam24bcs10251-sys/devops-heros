@@ -1,0 +1,16 @@
+shivamjaiswal@Shivams-MacBook-Air session-11-kubernetes-services % kubectl -n session11 scale deployment web-app-clusterip --replicas=3
+deployment.apps/web-app-clusterip scaled
+shivamjaiswal@Shivams-MacBook-Air session-11-kubernetes-services % kubectl -n session11 rollout status deployment/web-app-clusterip --timeout=120s
+deployment "web-app-clusterip" successfully rolled out
+shivamjaiswal@Shivams-MacBook-Air session-11-kubernetes-services % kubectl -n session11 get replicasets -l app=web-clusterip
+NAME                           DESIRED   CURRENT   READY   AGE
+web-app-clusterip-6676b4f459   3         3         3       5m54s
+shivamjaiswal@Shivams-MacBook-Air session-11-kubernetes-services % kubectl -n session11 get pods -l app=web-clusterip
+NAME                                 READY   STATUS    RESTARTS   AGE
+web-app-clusterip-6676b4f459-w265t   1/1     Running   0          5m54s
+web-app-clusterip-6676b4f459-x7l7f   1/1     Running   0          5m54s
+web-app-clusterip-6676b4f459-xxxzm   1/1     Running   0          5m54s
+shivamjaiswal@Shivams-MacBook-Air session-11-kubernetes-services % kubectl -n session11 get endpointslices -l kubernetes.io/service-name=web-service-clusterip
+NAME                          ADDRESSTYPE   PORTS   ENDPOINTS                          AGE
+web-service-clusterip-f6zt6   IPv4          80      10.244.0.5,10.244.0.4,10.244.0.6   5m55s
+shivamjaiswal@Shivams-MacBook-Air session-11-kubernetes-services %

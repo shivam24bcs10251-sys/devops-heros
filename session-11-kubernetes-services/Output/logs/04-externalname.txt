@@ -1,0 +1,17 @@
+shivamjaiswal@Shivams-MacBook-Air session-11-kubernetes-services % kubectl -n session11 get svc external-database-service
+NAME                        TYPE           CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
+external-database-service   ExternalName   <none>       example.com   <none>    119s
+shivamjaiswal@Shivams-MacBook-Air session-11-kubernetes-services % kubectl -n session11 exec dns-test-client -- nslookup -type=CNAME external-database-service.session11.svc.cluster.local
+Server:		10.96.0.10
+Address:	10.96.0.10:53
+
+external-database-service.session11.svc.cluster.local	canonical name = example.com
+
+shivamjaiswal@Shivams-MacBook-Air session-11-kubernetes-services % kubectl -n session11 get endpointslices -l kubernetes.io/service-name=external-database-service
+No resources found in session11 namespace.
+shivamjaiswal@Shivams-MacBook-Air session-11-kubernetes-services % kubectl -n session11 exec dns-test-client -- wget -S -O /dev/null --header "Host: example.com" http://external-database-service 2>&1 | head -n 4
+Connecting to external-database-service (172.66.147.243:80)
+  HTTP/1.1 200 OK
+  Date: Wed, 07 Oct 2026 07:36:46 GMT
+  Content-Type: text/html; charset=utf-8
+shivamjaiswal@Shivams-MacBook-Air session-11-kubernetes-services %

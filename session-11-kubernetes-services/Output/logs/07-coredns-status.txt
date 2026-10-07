@@ -1,0 +1,18 @@
+shivamjaiswal@Shivams-MacBook-Air session-11-kubernetes-services % kubectl -n kube-system get deployment coredns
+NAME      READY   UP-TO-DATE   AVAILABLE   AGE
+coredns   1/1     1            1           8m57s
+shivamjaiswal@Shivams-MacBook-Air session-11-kubernetes-services % kubectl -n kube-system get pods -l k8s-app=kube-dns
+NAME                       READY   STATUS    RESTARTS   AGE
+coredns-7d764666f9-7ss2z   1/1     Running   0          8m52s
+shivamjaiswal@Shivams-MacBook-Air session-11-kubernetes-services % kubectl -n kube-system get svc kube-dns
+NAME       TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)                  AGE
+kube-dns   ClusterIP   10.96.0.10   <none>        53/UDP,53/TCP,9153/TCP   8m58s
+shivamjaiswal@Shivams-MacBook-Air session-11-kubernetes-services % kubectl -n session11 exec curl-client -- nslookup kubernetes.default.svc.cluster.local
+Server:		10.96.0.10
+Address:	10.96.0.10:53
+
+
+Name:	kubernetes.default.svc.cluster.local
+Address: 10.96.0.1
+
+shivamjaiswal@Shivams-MacBook-Air session-11-kubernetes-services %

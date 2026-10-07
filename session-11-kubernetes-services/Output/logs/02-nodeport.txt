@@ -1,0 +1,15 @@
+shivamjaiswal@Shivams-MacBook-Air session-11-kubernetes-services % kubectl -n session11 get svc web-service-nodeport
+NAME                   TYPE       CLUSTER-IP      EXTERNAL-IP   PORT(S)        AGE
+web-service-nodeport   NodePort   10.97.181.180   <none>        80:30080/TCP   48s
+shivamjaiswal@Shivams-MacBook-Air session-11-kubernetes-services % kubectl -n session11 get pods -l app=web-nodeport
+NAME                                READY   STATUS    RESTARTS   AGE
+web-app-nodeport-75d6d64d9b-s9w62   1/1     Running   0          49s
+web-app-nodeport-75d6d64d9b-zx98b   1/1     Running   0          49s
+shivamjaiswal@Shivams-MacBook-Air session-11-kubernetes-services % kubectl -n session11 get endpointslices -l kubernetes.io/service-name=web-service-nodeport
+NAME                         ADDRESSTYPE   PORTS   ENDPOINTS               AGE
+web-service-nodeport-54vdz   IPv4          80      10.244.0.8,10.244.0.7   49s
+shivamjaiswal@Shivams-MacBook-Air session-11-kubernetes-services % kubectl -n session11 exec curl-client -- wget -qO- http://devops-assignment:30080 | sed -n "/<h1>/p"
+<h1>Welcome to nginx!</h1>
+shivamjaiswal@Shivams-MacBook-Air session-11-kubernetes-services % curl -fsS -o /dev/null -w "NodePort HTTP status: %{http_code}\n" http://127.0.0.1:56406
+NodePort HTTP status: 200
+shivamjaiswal@Shivams-MacBook-Air session-11-kubernetes-services %

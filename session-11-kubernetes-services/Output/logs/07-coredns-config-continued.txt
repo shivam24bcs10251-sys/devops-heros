@@ -1,0 +1,12 @@
+shivamjaiswal@Shivams-MacBook-Air session-11-kubernetes-services % kubectl -n kube-system get configmap coredns -o jsonpath='{.data.Corefile}' | nl -ba | sed -n '19,40p'
+    19	       max_concurrent 1000
+    20	    }
+    21	    cache 30 {
+    22	       disable success cluster.local
+    23	       disable denial cluster.local
+    24	    }
+    25	    loop
+    26	    reload
+    27	    loadbalance
+    28	}
+shivamjaiswal@Shivams-MacBook-Air session-11-kubernetes-services %
