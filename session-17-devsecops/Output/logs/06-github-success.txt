@@ -1,0 +1,13 @@
+shivamjaiswal@Shivams-MacBook-Air session-17-devsecops % gh run view 37595230720 --repo shivam24bcs10251-sys/devops-heros --json conclusion,url,jobs --jq '.conclusion, .url, (.jobs[].steps[]|select(.name|test("Application build|Unit tests|gate|image build|Publish|Kubernetes"))| .name + ": " + .conclusion)'
+success
+https://github.com/shivam24bcs10251-sys/devops-heros/actions/runs/37595230720
+Application build: success
+Unit tests: success
+SAST gate - Bandit: success
+SCA gate - pip-audit: success
+Secret scanning gate - Gitleaks: success
+Docker image build: success
+Container security gate - Trivy: success
+Publish gated image to GHCR: success
+Kubernetes deploy and verify: success
+shivamjaiswal@Shivams-MacBook-Air session-17-devsecops %

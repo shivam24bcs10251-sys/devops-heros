@@ -1,0 +1,9 @@
+shivamjaiswal@Shivams-MacBook-Air session-17-devsecops % gh api repos/shivam24bcs10251-sys/devops-heros/actions/runs/37595230720/artifacts --jq '.artifacts[]|{name,size_in_bytes,expired}'
+{
+  "expired": false,
+  "name": "session17-devsecops-reports",
+  "size_in_bytes": 42102
+}
+shivamjaiswal@Shivams-MacBook-Air session-17-devsecops % python3 -c 'import xml.etree.ElementTree as E; s=E.parse("Output/reports/tests.xml").getroot().find("testsuite"); print("JUnit tests:", s.get("tests"), "failures:", s.get("failures"), "errors:", s.get("errors"))'
+JUnit tests: 8 failures: 0 errors: 0
+shivamjaiswal@Shivams-MacBook-Air session-17-devsecops %

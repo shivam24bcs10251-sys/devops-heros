@@ -1,0 +1,23 @@
+deployment.apps/session17-python created
+service/session17-python created
+Waiting for deployment "session17-python" rollout to finish: 0 of 2 updated replicas are available...
+Waiting for deployment "session17-python" rollout to finish: 1 of 2 updated replicas are available...
+deployment "session17-python" successfully rolled out
+NAME                                   READY   STATUS    RESTARTS   AGE
+pod/session17-python-f9578bbd6-pxk4n   1/1     Running   0          11s
+pod/session17-python-f9578bbd6-zv9zs   1/1     Running   0          11s
+
+NAME                       TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)   AGE
+service/kubernetes         ClusterIP   10.96.0.1      <none>        443/TCP   38s
+service/session17-python   ClusterIP   10.96.190.81   <none>        80/TCP    11s
+session17-python-f9578bbd6-pxk4n docker.io/library/import-2026-10-07@sha256:2e565e5339d28126457d104204bf50cf1447c4f2aecfda9514e35444f9f2e4bf
+session17-python-f9578bbd6-zv9zs docker.io/library/import-2026-10-07@sha256:2e565e5339d28126457d104204bf50cf1447c4f2aecfda9514e35444f9f2e4bf
+Health verified: healthy
+API verified: {'number1': 10.0, 'number2': 20.0, 'operation': 'addition', 'result': 30.0}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="DevSecOps Dashboard — real-time CI/CD pipeline simulator, API playgrou
+Deployment verified successfully.

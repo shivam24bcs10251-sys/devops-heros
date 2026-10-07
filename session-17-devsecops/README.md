@@ -13,7 +13,7 @@ The supplied Flask dashboard is built, tested, scanned, containerized, published
 | Application build | Install pinned dependencies; compile application Python. |
 | Unit tests | Pytest and coverage; any failed test stops delivery. |
 | SAST | Bandit scans `demo/app`; medium/high severity findings fail. |
-| SCA | pip-audit scans every locked runtime dependency; known vulnerabilities fail. |
+| SCA | pip-audit audits runtime requirements; known vulnerabilities fail. |
 | Secrets | Gitleaks default rules scan demo source, tests, config, manifests and active workflow; findings are redacted and fail. This scope excludes other sessions and prior Git history. |
 | Docker build | Non-root Python/Gunicorn image built once and tagged with the full Git SHA. |
 | Image scan | Trivy blocks fixable HIGH/CRITICAL findings; the complete policy is in [SECURITY.md](demo/SECURITY.md). |
@@ -55,4 +55,138 @@ The [second run](https://github.com/shivam24bcs10251-sys/devops-heros/actions/ru
 
 ## Run evidence
 
-Actual successful run, reports, registry digest and screenshots are added after execution.
+[Successful full pipeline](https://github.com/shivam24bcs10251-sys/devops-heros/actions/runs/37595230720) tested commit `6fc02d455af1d871618f2ffcfe0d8ba4d417b373`. All eight tests and all security gates passed, the SHA-tagged image was published, and Kubernetes completed rollout and live HTTP verification. [Run metadata](Output/run.json), [complete runner log](Output/github-run.log), [test results](Output/reports/tests.xml), [Bandit](Output/reports/bandit.json), [pip-audit](Output/reports/pip-audit.json), [Gitleaks](Output/reports/gitleaks.json), [Trivy](Output/reports/trivy.json), [registry digest](Output/reports/image-digests.json) and [deployment log](Output/reports/deployment.txt) preserve actual evidence.
+
+GitHub artifacts expire after seven days; these downloaded reports and screenshots remain in this branch. The published image remains in GHCR. The Kubernetes demonstration cluster is deleted after verification, so it is not a permanently hosted website.
+
+## Commands, output and screenshots
+
+All screenshots show live Terminal commands and results. Screen capture runs in a separate window. Text transcripts preserve the visible output.
+
+### Inspect the supplied project
+
+The existing Flask dashboard, source, tests and Kubernetes examples were inspected before changes.
+
+```bash
+find demo -maxdepth 2 -type f | sort | head -19
+cat demo/requirements.txt
+```
+
+![Inspect the supplied project](Output/01-project-inspection.png)
+
+[Actual output](Output/logs/01-project-inspection.txt).
+
+### Local unit tests
+
+All eight existing tests pass; application coverage is 69%.
+
+```bash
+cd demo
+/tmp/session17-venv/bin/python -m pytest -q --cov=app
+```
+
+![Local unit tests](Output/02-local-tests.png)
+
+[Actual output](Output/logs/02-local-tests.txt).
+
+### Local SAST and SCA
+
+Actual Bandit and pip-audit results before pushing.
+
+```bash
+cd demo
+/tmp/session17-venv/bin/bandit -r app -c security/bandit.yaml -ll
+/tmp/session17-venv/bin/pip-audit -r requirements.txt
+```
+
+![Local SAST and SCA](Output/03-local-security.png)
+
+[Actual output](Output/logs/03-local-security.txt).
+
+### Reject and fix an unsafe debugger
+
+The temporary copy triggers Bandit B201. Restoring debug=False passes the same gate; repository source remains intact.
+
+```bash
+/tmp/session17-venv/bin/python scripts/security-gate-demo.py
+```
+
+![Reject and fix an unsafe debugger](Output/04-security-gate-rejection.png)
+
+[Actual output](Output/logs/04-security-gate-rejection.txt).
+
+### Container gate stops delivery
+
+The first actual run blocked publishing and deployment. Four fixable HIGH findings identified the installer/vendor packages removed from the runtime image.
+
+```bash
+gh run view 37594603923 --repo shivam24bcs10251-sys/devops-heros --json conclusion,jobs --jq '.conclusion, (.jobs[].steps[]|select(.conclusion=="failure" or .conclusion=="skipped")| .name + ": " + .conclusion)'
+python3 scripts/report-summary.py Output/first-run
+```
+
+![Container gate stops delivery](Output/05-first-container-gate.png)
+
+[Actual output](Output/logs/05-first-container-gate.txt).
+
+### Successful complete DevSecOps run
+
+Every required build, security, registry and deployment step completed successfully.
+
+```bash
+gh run view 37595230720 --repo shivam24bcs10251-sys/devops-heros --json conclusion,url,jobs --jq '.conclusion, .url, (.jobs[].steps[]|select(.name|test("Application build|Unit tests|gate|image build|Publish|Kubernetes"))| .name + ": " + .conclusion)'
+```
+
+![Successful complete DevSecOps run](Output/06-github-success.png)
+
+[Actual output](Output/logs/06-github-success.txt).
+
+### Inspect downloaded security reports
+
+These summaries read actual JSON artifacts from the successful GitHub run. Trivy reports are filtered by the declared fixable HIGH/CRITICAL policy; zero policy findings does not mean the image has no lower-severity/unfixed vulnerabilities.
+
+```bash
+python3 scripts/report-summary.py Output/reports
+ls Output/reports
+```
+
+![Inspect downloaded security reports](Output/07-security-reports.png)
+
+[Actual output](Output/logs/07-security-reports.txt).
+
+### Verify registry publication
+
+The registry push output and immutable digest are saved from the actual runner.
+
+```bash
+cat Output/reports/registry-push.txt
+cat Output/reports/image-digests.json
+```
+
+![Verify registry publication](Output/08-registry-push.png)
+
+[Actual output](Output/logs/08-registry-push.txt).
+
+### Kubernetes rollout and live HTTP checks
+
+Actual runner output shows two Ready replicas, image IDs, healthy status, result 30 and successful deployment completion.
+
+```bash
+cat Output/reports/deployment.txt
+```
+
+![Kubernetes rollout and live HTTP checks](Output/09-kubernetes-verification.png)
+
+[Actual output](Output/logs/09-kubernetes-verification.txt).
+
+### Verify the retained reports artifact
+
+Tests, security results, registry digest and deployment logs were downloaded and committed for lasting evidence.
+
+```bash
+gh api repos/shivam24bcs10251-sys/devops-heros/actions/runs/37595230720/artifacts --jq '.artifacts[]|{name,size_in_bytes,expired}'
+python3 -c 'import xml.etree.ElementTree as E; s=E.parse("Output/reports/tests.xml").getroot().find("testsuite"); print("JUnit tests:", s.get("tests"), "failures:", s.get("failures"), "errors:", s.get("errors"))'
+```
+
+![Verify the retained reports artifact](Output/10-artifacts.png)
+
+[Actual output](Output/logs/10-artifacts.txt).

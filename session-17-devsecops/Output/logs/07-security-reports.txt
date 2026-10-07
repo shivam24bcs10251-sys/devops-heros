@@ -1,0 +1,9 @@
+shivamjaiswal@Shivams-MacBook-Air session-17-devsecops % python3 scripts/report-summary.py Output/reports
+Bandit: 0 findings; 0 medium/high findings.
+pip-audit: 8 dependencies; 0 known vulnerabilities.
+Gitleaks: 0 detected secrets (redacted report).
+Trivy report: 0 findings; 0 fixable HIGH/CRITICAL findings.
+shivamjaiswal@Shivams-MacBook-Air session-17-devsecops % ls Output/reports
+bandit.json		gitleaks.json		pip-audit.json		tests.xml
+deployment.txt		image-digests.json	registry-push.txt	trivy.json
+shivamjaiswal@Shivams-MacBook-Air session-17-devsecops %

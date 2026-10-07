@@ -1,0 +1,766 @@
+Build, security gates, publish and deploy	Set up job	﻿2026-10-07T08:39:36.8409903Z Current runner version: '2.337.0'
+Build, security gates, publish and deploy	Set up job	2026-10-07T08:39:36.8435943Z ##[group]Runner Image Provisioner
+Build, security gates, publish and deploy	Set up job	2026-10-07T08:39:36.8436843Z Hosted Compute Agent
+Build, security gates, publish and deploy	Set up job	2026-10-07T08:39:36.8437544Z Version: 20261002.596
+Build, security gates, publish and deploy	Set up job	2026-10-07T08:39:36.8438226Z Commit: c3d12f3313a95f25162a1503be624f3b0617f8c0
+Build, security gates, publish and deploy	Set up job	2026-10-07T08:39:36.8440192Z Build Date: 2026-10-02T22:28:27Z
+Build, security gates, publish and deploy	Set up job	2026-10-07T08:39:36.8441795Z Worker ID: {a2adf6a8-a4ec-42c1-8bd8-7a1741dc3549}
+Build, security gates, publish and deploy	Set up job	2026-10-07T08:39:36.8443158Z Region: northcentralus
+Build, security gates, publish and deploy	Set up job	2026-10-07T08:39:36.8444267Z Cloud: Azure
+Build, security gates, publish and deploy	Set up job	2026-10-07T08:39:36.8445271Z ##[endgroup]
+Build, security gates, publish and deploy	Set up job	2026-10-07T08:39:36.8447847Z ##[group]Operating System
+Build, security gates, publish and deploy	Set up job	2026-10-07T08:39:36.8449086Z Ubuntu
+Build, security gates, publish and deploy	Set up job	2026-10-07T08:39:36.8449949Z 24.04.5
+Build, security gates, publish and deploy	Set up job	2026-10-07T08:39:36.8451072Z LTS
+Build, security gates, publish and deploy	Set up job	2026-10-07T08:39:36.8451839Z ##[endgroup]
+Build, security gates, publish and deploy	Set up job	2026-10-07T08:39:36.8452426Z ##[group]Runner Image
+Build, security gates, publish and deploy	Set up job	2026-10-07T08:39:36.8453167Z Image: ubuntu-24.04
+Build, security gates, publish and deploy	Set up job	2026-10-07T08:39:36.8453756Z Version: 20261004.327.1
+Build, security gates, publish and deploy	Set up job	2026-10-07T08:39:36.8455255Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261004.327/images/ubuntu/Ubuntu2404-Readme.md
+Build, security gates, publish and deploy	Set up job	2026-10-07T08:39:36.8458072Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261004.327
+Build, security gates, publish and deploy	Set up job	2026-10-07T08:39:36.8459484Z ##[endgroup]
+Build, security gates, publish and deploy	Set up job	2026-10-07T08:39:36.8460959Z ##[group]GITHUB_TOKEN Permissions
+Build, security gates, publish and deploy	Set up job	2026-10-07T08:39:36.8463377Z Contents: read
+Build, security gates, publish and deploy	Set up job	2026-10-07T08:39:36.8464013Z Metadata: read
+Build, security gates, publish and deploy	Set up job	2026-10-07T08:39:36.8464748Z Packages: write
+Build, security gates, publish and deploy	Set up job	2026-10-07T08:39:36.8465340Z ##[endgroup]
+Build, security gates, publish and deploy	Set up job	2026-10-07T08:39:36.8467537Z Secret source: Actions
+Build, security gates, publish and deploy	Set up job	2026-10-07T08:39:36.8468659Z Cache mode: write
+Build, security gates, publish and deploy	Set up job	2026-10-07T08:39:36.8469359Z Prepare workflow directory
+Build, security gates, publish and deploy	Set up job	2026-10-07T08:39:36.9041868Z Prepare all required actions
+Build, security gates, publish and deploy	Set up job	2026-10-07T08:39:36.9092169Z Getting action download info
+Build, security gates, publish and deploy	Set up job	2026-10-07T08:39:37.1717945Z Download action repository 'actions/checkout@v7' (SHA:3d3c42e5aac5ba805825da76410c181273ba90b1)
+Build, security gates, publish and deploy	Set up job	2026-10-07T08:39:37.2582680Z Download action repository 'actions/setup-python@v7' (SHA:5fda3b95a4ea91299a34e894583c3862153e4b97)
+Build, security gates, publish and deploy	Set up job	2026-10-07T08:39:37.3339971Z Download action repository 'actions/upload-artifact@v7' (SHA:043fb46d1a93c77aae656e7c1c64a875d1fc6a0a)
+Build, security gates, publish and deploy	Set up job	2026-10-07T08:39:37.5068858Z Complete job name: Build, security gates, publish and deploy
+Build, security gates, publish and deploy	Run actions/checkout@v7	﻿2026-10-07T08:39:37.5900937Z ##[group]Run actions/checkout@v7
+Build, security gates, publish and deploy	Run actions/checkout@v7	2026-10-07T08:39:37.5901935Z with:
+Build, security gates, publish and deploy	Run actions/checkout@v7	2026-10-07T08:39:37.5902486Z   repository: shivam24bcs10251-sys/devops-heros
+Build, security gates, publish and deploy	Run actions/checkout@v7	2026-10-07T08:39:37.5906460Z   token: ***
+Build, security gates, publish and deploy	Run actions/checkout@v7	2026-10-07T08:39:37.5906900Z   ssh-strict: true
+Build, security gates, publish and deploy	Run actions/checkout@v7	2026-10-07T08:39:37.5907351Z   ssh-user: git
+Build, security gates, publish and deploy	Run actions/checkout@v7	2026-10-07T08:39:37.5907805Z   persist-credentials: true
+Build, security gates, publish and deploy	Run actions/checkout@v7	2026-10-07T08:39:37.5908295Z   clean: true
+Build, security gates, publish and deploy	Run actions/checkout@v7	2026-10-07T08:39:37.5908753Z   sparse-checkout-cone-mode: true
+Build, security gates, publish and deploy	Run actions/checkout@v7	2026-10-07T08:39:37.5909278Z   fetch-depth: 1
+Build, security gates, publish and deploy	Run actions/checkout@v7	2026-10-07T08:39:37.5909721Z   fetch-tags: false
+Build, security gates, publish and deploy	Run actions/checkout@v7	2026-10-07T08:39:37.5910184Z   show-progress: true
+Build, security gates, publish and deploy	Run actions/checkout@v7	2026-10-07T08:39:37.5910904Z   lfs: false
+Build, security gates, publish and deploy	Run actions/checkout@v7	2026-10-07T08:39:37.5911355Z   submodules: false
+Build, security gates, publish and deploy	Run actions/checkout@v7	2026-10-07T08:39:37.5911825Z   set-safe-directory: true
+Build, security gates, publish and deploy	Run actions/checkout@v7	2026-10-07T08:39:37.5912351Z   allow-unsafe-pr-checkout: false
+Build, security gates, publish and deploy	Run actions/checkout@v7	2026-10-07T08:39:37.5913139Z env:
+Build, security gates, publish and deploy	Run actions/checkout@v7	2026-10-07T08:39:37.5913952Z   IMAGE: ghcr.io/shivam24bcs10251-sys/devops-heros-session17:6fc02d455af1d871618f2ffcfe0d8ba4d417b373
+Build, security gates, publish and deploy	Run actions/checkout@v7	2026-10-07T08:39:37.5914856Z ##[endgroup]
+Build, security gates, publish and deploy	Run actions/checkout@v7	2026-10-07T08:39:37.6972212Z Syncing repository: shivam24bcs10251-sys/devops-heros
+Build, security gates, publish and deploy	Run actions/checkout@v7	2026-10-07T08:39:37.6974882Z ##[group]Getting Git version info
+Build, security gates, publish and deploy	Run actions/checkout@v7	2026-10-07T08:39:37.6976117Z Working directory is '/home/runner/work/devops-heros/devops-heros'
+Build, security gates, publish and deploy	Run actions/checkout@v7	2026-10-07T08:39:37.6978080Z [command]/usr/bin/git version
+Build, security gates, publish and deploy	Run actions/checkout@v7	2026-10-07T08:39:37.7079335Z git version 2.55.0
+Build, security gates, publish and deploy	Run actions/checkout@v7	2026-10-07T08:39:37.7102032Z ##[endgroup]
+Build, security gates, publish and deploy	Run actions/checkout@v7	2026-10-07T08:39:37.7115039Z Temporarily overriding HOME='/home/runner/work/_temp/02187045-29cd-4a7d-ba1d-9d86adcddc87' before making global git config changes
+Build, security gates, publish and deploy	Run actions/checkout@v7	2026-10-07T08:39:37.7117870Z Adding repository directory to the temporary git global config as a safe directory
+Build, security gates, publish and deploy	Run actions/checkout@v7	2026-10-07T08:39:37.7124751Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/devops-heros/devops-heros
+Build, security gates, publish and deploy	Run actions/checkout@v7	2026-10-07T08:39:37.7179305Z Deleting the contents of '/home/runner/work/devops-heros/devops-heros'
+Build, security gates, publish and deploy	Run actions/checkout@v7	2026-10-07T08:39:37.7183676Z ##[group]Determining repository object format
+Build, security gates, publish and deploy	Run actions/checkout@v7	2026-10-07T08:39:37.7185245Z ##[endgroup]
+Build, security gates, publish and deploy	Run actions/checkout@v7	2026-10-07T08:39:37.7186485Z ##[group]Initializing the repository
+Build, security gates, publish and deploy	Run actions/checkout@v7	2026-10-07T08:39:37.7189945Z [command]/usr/bin/git init /home/runner/work/devops-heros/devops-heros
+Build, security gates, publish and deploy	Run actions/checkout@v7	2026-10-07T08:39:37.7302010Z hint: Using 'master' as the name for the initial branch. This default branch name
+Build, security gates, publish and deploy	Run actions/checkout@v7	2026-10-07T08:39:37.7303288Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+Build, security gates, publish and deploy	Run actions/checkout@v7	2026-10-07T08:39:37.7304249Z hint: to use in all of your new repositories, which will suppress this warning,
+Build, security gates, publish and deploy	Run actions/checkout@v7	2026-10-07T08:39:37.7304997Z hint: call:
+Build, security gates, publish and deploy	Run actions/checkout@v7	2026-10-07T08:39:37.7305429Z hint:
+Build, security gates, publish and deploy	Run actions/checkout@v7	2026-10-07T08:39:37.7305969Z hint: 	git config --global init.defaultBranch <name>
+Build, security gates, publish and deploy	Run actions/checkout@v7	2026-10-07T08:39:37.7306611Z hint:
+Build, security gates, publish and deploy	Run actions/checkout@v7	2026-10-07T08:39:37.7307214Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+Build, security gates, publish and deploy	Run actions/checkout@v7	2026-10-07T08:39:37.7308177Z hint: 'development'. The just-created branch can be renamed via this command:
+Build, security gates, publish and deploy	Run actions/checkout@v7	2026-10-07T08:39:37.7308971Z hint:
+Build, security gates, publish and deploy	Run actions/checkout@v7	2026-10-07T08:39:37.7309401Z hint: 	git branch -m <name>
+Build, security gates, publish and deploy	Run actions/checkout@v7	2026-10-07T08:39:37.7309938Z hint:
+Build, security gates, publish and deploy	Run actions/checkout@v7	2026-10-07T08:39:37.7310587Z hint: Disable this message with "git config set advice.defaultBranchName false"
+Build, security gates, publish and deploy	Run actions/checkout@v7	2026-10-07T08:39:37.7317096Z Initialized empty Git repository in /home/runner/work/devops-heros/devops-heros/.git/
+Build, security gates, publish and deploy	Run actions/checkout@v7	2026-10-07T08:39:37.7328799Z [command]/usr/bin/git remote add origin https://github.com/shivam24bcs10251-sys/devops-heros
+Build, security gates, publish and deploy	Run actions/checkout@v7	2026-10-07T08:39:37.7388728Z ##[endgroup]
+Build, security gates, publish and deploy	Run actions/checkout@v7	2026-10-07T08:39:37.7390389Z ##[group]Disabling automatic garbage collection
+Build, security gates, publish and deploy	Run actions/checkout@v7	2026-10-07T08:39:37.7392655Z [command]/usr/bin/git config --local gc.auto 0
+Build, security gates, publish and deploy	Run actions/checkout@v7	2026-10-07T08:39:37.7434211Z ##[endgroup]
+Build, security gates, publish and deploy	Run actions/checkout@v7	2026-10-07T08:39:37.7436254Z ##[group]Setting up auth
+Build, security gates, publish and deploy	Run actions/checkout@v7	2026-10-07T08:39:37.7437501Z Removing SSH command configuration
+Build, security gates, publish and deploy	Run actions/checkout@v7	2026-10-07T08:39:37.7441742Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+Build, security gates, publish and deploy	Run actions/checkout@v7	2026-10-07T08:39:37.7482711Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Build, security gates, publish and deploy	Run actions/checkout@v7	2026-10-07T08:39:37.7859442Z Removing HTTP extra header
+Build, security gates, publish and deploy	Run actions/checkout@v7	2026-10-07T08:39:37.7865341Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+Build, security gates, publish and deploy	Run actions/checkout@v7	2026-10-07T08:39:37.7901305Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Build, security gates, publish and deploy	Run actions/checkout@v7	2026-10-07T08:39:37.8125913Z Removing includeIf entries pointing to credentials config files
+Build, security gates, publish and deploy	Run actions/checkout@v7	2026-10-07T08:39:37.8131836Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+Build, security gates, publish and deploy	Run actions/checkout@v7	2026-10-07T08:39:37.8170042Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+Build, security gates, publish and deploy	Run actions/checkout@v7	2026-10-07T08:39:37.8406822Z [command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-b16d100c-35e2-498e-b0ca-187959e97ef3.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+Build, security gates, publish and deploy	Run actions/checkout@v7	2026-10-07T08:39:37.8446723Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/devops-heros/devops-heros/.git.path /home/runner/work/_temp/git-credentials-b16d100c-35e2-498e-b0ca-187959e97ef3.config
+Build, security gates, publish and deploy	Run actions/checkout@v7	2026-10-07T08:39:37.8480229Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/devops-heros/devops-heros/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-b16d100c-35e2-498e-b0ca-187959e97ef3.config
+Build, security gates, publish and deploy	Run actions/checkout@v7	2026-10-07T08:39:37.8520102Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-b16d100c-35e2-498e-b0ca-187959e97ef3.config
+Build, security gates, publish and deploy	Run actions/checkout@v7	2026-10-07T08:39:37.8565515Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-b16d100c-35e2-498e-b0ca-187959e97ef3.config
+Build, security gates, publish and deploy	Run actions/checkout@v7	2026-10-07T08:39:37.8601323Z ##[endgroup]
+Build, security gates, publish and deploy	Run actions/checkout@v7	2026-10-07T08:39:37.8602391Z ##[group]Fetching the repository
+Build, security gates, publish and deploy	Run actions/checkout@v7	2026-10-07T08:39:37.8611640Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +6fc02d455af1d871618f2ffcfe0d8ba4d417b373:refs/remotes/origin/session17-devsecops
+Build, security gates, publish and deploy	Run actions/checkout@v7	2026-10-07T08:39:38.6187252Z From https://github.com/shivam24bcs10251-sys/devops-heros
+Build, security gates, publish and deploy	Run actions/checkout@v7	2026-10-07T08:39:38.6191014Z  * [new ref]         6fc02d455af1d871618f2ffcfe0d8ba4d417b373 -> origin/session17-devsecops
+Build, security gates, publish and deploy	Run actions/checkout@v7	2026-10-07T08:39:38.6197521Z [command]/usr/bin/git branch --list --remote origin/session17-devsecops
+Build, security gates, publish and deploy	Run actions/checkout@v7	2026-10-07T08:39:38.6227450Z   origin/session17-devsecops
+Build, security gates, publish and deploy	Run actions/checkout@v7	2026-10-07T08:39:38.6235477Z [command]/usr/bin/git rev-parse refs/remotes/origin/session17-devsecops
+Build, security gates, publish and deploy	Run actions/checkout@v7	2026-10-07T08:39:38.6262189Z 6fc02d455af1d871618f2ffcfe0d8ba4d417b373
+Build, security gates, publish and deploy	Run actions/checkout@v7	2026-10-07T08:39:38.6267033Z ##[endgroup]
+Build, security gates, publish and deploy	Run actions/checkout@v7	2026-10-07T08:39:38.6268337Z ##[group]Determining the checkout info
+Build, security gates, publish and deploy	Run actions/checkout@v7	2026-10-07T08:39:38.6269848Z ##[endgroup]
+Build, security gates, publish and deploy	Run actions/checkout@v7	2026-10-07T08:39:38.6271578Z [command]/usr/bin/git sparse-checkout disable
+Build, security gates, publish and deploy	Run actions/checkout@v7	2026-10-07T08:39:38.6328801Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+Build, security gates, publish and deploy	Run actions/checkout@v7	2026-10-07T08:39:38.6369637Z ##[group]Checking out the ref
+Build, security gates, publish and deploy	Run actions/checkout@v7	2026-10-07T08:39:38.6374149Z [command]/usr/bin/git checkout --progress --force -B session17-devsecops refs/remotes/origin/session17-devsecops
+Build, security gates, publish and deploy	Run actions/checkout@v7	2026-10-07T08:39:38.7021223Z Switched to a new branch 'session17-devsecops'
+Build, security gates, publish and deploy	Run actions/checkout@v7	2026-10-07T08:39:38.7025164Z branch 'session17-devsecops' set up to track 'origin/session17-devsecops'.
+Build, security gates, publish and deploy	Run actions/checkout@v7	2026-10-07T08:39:38.7041018Z ##[endgroup]
+Build, security gates, publish and deploy	Run actions/checkout@v7	2026-10-07T08:39:38.7091557Z [command]/usr/bin/git log -1 --format=%H
+Build, security gates, publish and deploy	Run actions/checkout@v7	2026-10-07T08:39:38.7122411Z 6fc02d455af1d871618f2ffcfe0d8ba4d417b373
+Build, security gates, publish and deploy	Run actions/setup-python@v7	﻿2026-10-07T08:39:38.7573275Z ##[group]Run actions/setup-python@v7
+Build, security gates, publish and deploy	Run actions/setup-python@v7	2026-10-07T08:39:38.7574618Z with:
+Build, security gates, publish and deploy	Run actions/setup-python@v7	2026-10-07T08:39:38.7575524Z   python-version: 3.12
+Build, security gates, publish and deploy	Run actions/setup-python@v7	2026-10-07T08:39:38.7576574Z   check-latest: false
+Build, security gates, publish and deploy	Run actions/setup-python@v7	2026-10-07T08:39:38.7587253Z   token: ***
+Build, security gates, publish and deploy	Run actions/setup-python@v7	2026-10-07T08:39:38.7588240Z   update-environment: true
+Build, security gates, publish and deploy	Run actions/setup-python@v7	2026-10-07T08:39:38.7589403Z   allow-prereleases: false
+Build, security gates, publish and deploy	Run actions/setup-python@v7	2026-10-07T08:39:38.7590527Z   freethreaded: false
+Build, security gates, publish and deploy	Run actions/setup-python@v7	2026-10-07T08:39:38.7591723Z env:
+Build, security gates, publish and deploy	Run actions/setup-python@v7	2026-10-07T08:39:38.7593527Z   IMAGE: ghcr.io/shivam24bcs10251-sys/devops-heros-session17:6fc02d455af1d871618f2ffcfe0d8ba4d417b373
+Build, security gates, publish and deploy	Run actions/setup-python@v7	2026-10-07T08:39:38.7595717Z ##[endgroup]
+Build, security gates, publish and deploy	Run actions/setup-python@v7	2026-10-07T08:39:38.8788731Z ##[group]Installed versions
+Build, security gates, publish and deploy	Run actions/setup-python@v7	2026-10-07T08:39:38.8877664Z Successfully set up CPython (3.12.15)
+Build, security gates, publish and deploy	Run actions/setup-python@v7	2026-10-07T08:39:38.8880429Z ##[endgroup]
+Build, security gates, publish and deploy	Application build	﻿2026-10-07T08:39:38.9055213Z ##[group]Run mkdir -p reports
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:38.9056508Z ^[[36;1mmkdir -p reports^[[0m
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:38.9057820Z ^[[36;1mpython -m pip install -r requirements-dev.txt^[[0m
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:38.9059301Z ^[[36;1mpython -m compileall -q app^[[0m
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:38.9368008Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:38.9369639Z env:
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:38.9371687Z   IMAGE: ghcr.io/shivam24bcs10251-sys/devops-heros-session17:6fc02d455af1d871618f2ffcfe0d8ba4d417b373
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:38.9374088Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:38.9376006Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:38.9377879Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:38.9379581Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:38.9381444Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:38.9383194Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:38.9384721Z ##[endgroup]
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:39.8022566Z Collecting Flask==3.1.3 (from -r /home/runner/work/devops-heros/devops-heros/session-17-devsecops/demo/requirements.txt (line 1))
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:39.8490274Z   Downloading flask-3.1.3-py3-none-any.whl.metadata (3.2 kB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:39.8677504Z Collecting gunicorn==26.2.0 (from -r /home/runner/work/devops-heros/devops-heros/session-17-devsecops/demo/requirements.txt (line 2))
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:39.8709706Z   Downloading gunicorn-26.2.0-py3-none-any.whl.metadata (5.5 kB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:39.8849436Z Collecting blinker==1.9.0 (from -r /home/runner/work/devops-heros/devops-heros/session-17-devsecops/demo/requirements.txt (line 3))
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:39.8880373Z   Downloading blinker-1.9.0-py3-none-any.whl.metadata (1.6 kB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:39.9038583Z Collecting click==8.5.0 (from -r /home/runner/work/devops-heros/devops-heros/session-17-devsecops/demo/requirements.txt (line 4))
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:39.9069427Z   Downloading click-8.5.0-py3-none-any.whl.metadata (2.6 kB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:39.9176251Z Collecting itsdangerous==2.2.0 (from -r /home/runner/work/devops-heros/devops-heros/session-17-devsecops/demo/requirements.txt (line 5))
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:39.9207402Z   Downloading itsdangerous-2.2.0-py3-none-any.whl.metadata (1.9 kB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:39.9337232Z Collecting Jinja2==3.1.6 (from -r /home/runner/work/devops-heros/devops-heros/session-17-devsecops/demo/requirements.txt (line 6))
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:39.9367159Z   Downloading jinja2-3.1.6-py3-none-any.whl.metadata (2.9 kB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:39.9946532Z Collecting MarkupSafe==3.0.4 (from -r /home/runner/work/devops-heros/devops-heros/session-17-devsecops/demo/requirements.txt (line 7))
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:39.9980098Z   Downloading markupsafe-3.0.4-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.7 kB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:40.0156289Z Collecting Werkzeug==3.1.9 (from -r /home/runner/work/devops-heros/devops-heros/session-17-devsecops/demo/requirements.txt (line 8))
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:40.0190601Z   Downloading werkzeug-3.1.9-py3-none-any.whl.metadata (4.1 kB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:40.0339170Z Collecting packaging==26.3 (from -r /home/runner/work/devops-heros/devops-heros/session-17-devsecops/demo/requirements.txt (line 9))
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:40.0370537Z   Downloading packaging-26.3-py3-none-any.whl.metadata (3.5 kB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:40.0727400Z Collecting pytest==9.1.1 (from -r requirements-dev.txt (line 2))
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:40.0759341Z   Downloading pytest-9.1.1-py3-none-any.whl.metadata (7.6 kB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:40.0909419Z Collecting pytest-cov==7.1.0 (from -r requirements-dev.txt (line 3))
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:40.0945961Z   Downloading pytest_cov-7.1.0-py3-none-any.whl.metadata (32 kB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:40.1163369Z Collecting bandit==1.9.4 (from -r requirements-dev.txt (line 4))
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:40.1199353Z   Downloading bandit-1.9.4-py3-none-any.whl.metadata (7.1 kB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:40.1411751Z Collecting pip_audit==2.10.1 (from -r requirements-dev.txt (line 5))
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:40.1435449Z   Downloading pip_audit-2.10.1-py3-none-any.whl.metadata (28 kB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:40.1683747Z Collecting iniconfig>=1.0.1 (from pytest==9.1.1->-r requirements-dev.txt (line 2))
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:40.1714916Z   Downloading iniconfig-2.3.1-py3-none-any.whl.metadata (2.8 kB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:40.1837476Z Collecting pluggy<2,>=1.5 (from pytest==9.1.1->-r requirements-dev.txt (line 2))
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:40.1874858Z   Downloading pluggy-1.6.0-py3-none-any.whl.metadata (4.8 kB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:40.2051752Z Collecting pygments>=2.7.2 (from pytest==9.1.1->-r requirements-dev.txt (line 2))
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:40.2084870Z   Downloading pygments-2.21.0-py3-none-any.whl.metadata (2.5 kB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:40.6379861Z Collecting coverage>=7.10.6 (from coverage[toml]>=7.10.6->pytest-cov==7.1.0->-r requirements-dev.txt (line 3))
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:40.6415458Z   Downloading coverage-7.16.2-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (8.2 kB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:40.6969279Z Collecting PyYAML>=5.3.1 (from bandit==1.9.4->-r requirements-dev.txt (line 4))
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:40.7005440Z   Downloading pyyaml-6.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.4 kB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:40.7228404Z Collecting stevedore>=1.20.0 (from bandit==1.9.4->-r requirements-dev.txt (line 4))
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:40.7269037Z   Downloading stevedore-5.9.1-py3-none-any.whl.metadata (2.3 kB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:40.7667104Z Collecting rich (from bandit==1.9.4->-r requirements-dev.txt (line 4))
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:40.7701204Z   Downloading rich-15.0.0-py3-none-any.whl.metadata (18 kB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:40.7857520Z Collecting CacheControl>=0.13.0 (from CacheControl[filecache]>=0.13.0->pip_audit==2.10.1->-r requirements-dev.txt (line 5))
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:40.7888480Z   Downloading cachecontrol-0.14.4-py3-none-any.whl.metadata (3.1 kB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:40.8178511Z Collecting cyclonedx-python-lib<12,>=5 (from pip_audit==2.10.1->-r requirements-dev.txt (line 5))
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:40.8219583Z   Downloading cyclonedx_python_lib-11.12.0-py3-none-any.whl.metadata (6.9 kB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:40.8361993Z Collecting pip-api>=0.0.28 (from pip_audit==2.10.1->-r requirements-dev.txt (line 5))
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:40.8395500Z   Downloading pip_api-0.0.35-py3-none-any.whl.metadata (17 kB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:40.8521988Z Collecting pip-requirements-parser>=32.0.0 (from pip_audit==2.10.1->-r requirements-dev.txt (line 5))
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:40.8553093Z   Downloading pip_requirements_parser-32.0.1-py3-none-any.whl.metadata (9.3 kB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:40.8771239Z Collecting requests>=2.31.0 (from pip_audit==2.10.1->-r requirements-dev.txt (line 5))
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:40.8802213Z   Downloading requests-2.34.2-py3-none-any.whl.metadata (4.8 kB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:40.9051657Z Collecting tomli>=2.2.1 (from pip_audit==2.10.1->-r requirements-dev.txt (line 5))
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:40.9084996Z   Downloading tomli-2.4.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (10 kB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:40.9195311Z Collecting tomli-w>=1.2.0 (from pip_audit==2.10.1->-r requirements-dev.txt (line 5))
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:40.9229127Z   Downloading tomli_w-1.2.0-py3-none-any.whl.metadata (5.7 kB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:40.9411606Z Collecting platformdirs>=4.2.0 (from pip_audit==2.10.1->-r requirements-dev.txt (line 5))
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:40.9441626Z   Downloading platformdirs-4.12.3-py3-none-any.whl.metadata (5.5 kB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:40.9605623Z Collecting license-expression<31,>=30 (from cyclonedx-python-lib<12,>=5->pip_audit==2.10.1->-r requirements-dev.txt (line 5))
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:40.9635116Z   Downloading license_expression-30.4.4-py3-none-any.whl.metadata (11 kB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:40.9801932Z Collecting packageurl-python<2,>=0.11 (from cyclonedx-python-lib<12,>=5->pip_audit==2.10.1->-r requirements-dev.txt (line 5))
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:40.9834204Z   Downloading packageurl_python-0.17.6-py3-none-any.whl.metadata (5.1 kB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:40.9994916Z Collecting py-serializable<3.0.0,>=2.1.0 (from cyclonedx-python-lib<12,>=5->pip_audit==2.10.1->-r requirements-dev.txt (line 5))
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:41.0027938Z   Downloading py_serializable-2.1.0-py3-none-any.whl.metadata (4.3 kB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:41.0156469Z Collecting sortedcontainers<3.0.0,>=2.4.0 (from cyclonedx-python-lib<12,>=5->pip_audit==2.10.1->-r requirements-dev.txt (line 5))
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:41.0186173Z   Downloading sortedcontainers-2.4.0-py2.py3-none-any.whl.metadata (10 kB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:41.0511698Z Collecting typing_extensions<5.0,>=4.6 (from cyclonedx-python-lib<12,>=5->pip_audit==2.10.1->-r requirements-dev.txt (line 5))
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:41.0543746Z   Downloading typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:41.0679284Z Collecting boolean.py>=4.0 (from license-expression<31,>=30->cyclonedx-python-lib<12,>=5->pip_audit==2.10.1->-r requirements-dev.txt (line 5))
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:41.0709204Z   Downloading boolean_py-5.0-py3-none-any.whl.metadata (2.3 kB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:41.0836097Z Collecting defusedxml<0.8.0,>=0.7.1 (from py-serializable<3.0.0,>=2.1.0->cyclonedx-python-lib<12,>=5->pip_audit==2.10.1->-r requirements-dev.txt (line 5))
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:41.0866657Z   Downloading defusedxml-0.7.1-py2.py3-none-any.whl.metadata (32 kB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:41.1703495Z Collecting msgpack<2.0.0,>=0.5.2 (from CacheControl>=0.13.0->CacheControl[filecache]>=0.13.0->pip_audit==2.10.1->-r requirements-dev.txt (line 5))
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:41.1736306Z   Downloading msgpack-1.2.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (8.3 kB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:41.2006508Z Collecting filelock>=3.8.0 (from CacheControl[filecache]>=0.13.0->pip_audit==2.10.1->-r requirements-dev.txt (line 5))
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:41.2037567Z   Downloading filelock-4.0.12-py3-none-any.whl.metadata (2.0 kB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:41.2095262Z Requirement already satisfied: pip in /opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages (from pip-api>=0.0.28->pip_audit==2.10.1->-r requirements-dev.txt (line 5)) (26.2.1)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:41.2292738Z Collecting pyparsing (from pip-requirements-parser>=32.0.0->pip_audit==2.10.1->-r requirements-dev.txt (line 5))
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:41.2324110Z   Downloading pyparsing-3.3.3-py3-none-any.whl.metadata (5.9 kB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:41.3585481Z Collecting charset_normalizer<4,>=2 (from requests>=2.31.0->pip_audit==2.10.1->-r requirements-dev.txt (line 5))
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:41.3624057Z   Downloading charset_normalizer-3.5.2-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (46 kB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:41.3793340Z Collecting idna<4,>=2.5 (from requests>=2.31.0->pip_audit==2.10.1->-r requirements-dev.txt (line 5))
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:41.3823116Z   Downloading idna-3.20-py3-none-any.whl.metadata (7.2 kB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:41.4043504Z Collecting urllib3<3,>=1.26 (from requests>=2.31.0->pip_audit==2.10.1->-r requirements-dev.txt (line 5))
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:41.4080588Z   Downloading urllib3-2.8.0-py3-none-any.whl.metadata (7.4 kB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:41.4251464Z Collecting certifi>=2023.5.7 (from requests>=2.31.0->pip_audit==2.10.1->-r requirements-dev.txt (line 5))
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:41.4282122Z   Downloading certifi-2026.7.22-py3-none-any.whl.metadata (2.5 kB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:41.4442134Z Collecting markdown-it-py>=2.2.0 (from rich->bandit==1.9.4->-r requirements-dev.txt (line 4))
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:41.4474555Z   Downloading markdown_it_py-4.2.0-py3-none-any.whl.metadata (7.4 kB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:41.4616785Z Collecting mdurl~=0.1 (from markdown-it-py>=2.2.0->rich->bandit==1.9.4->-r requirements-dev.txt (line 4))
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:41.4646736Z   Downloading mdurl-0.1.2-py3-none-any.whl.metadata (1.6 kB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:41.4747533Z Downloading flask-3.1.3-py3-none-any.whl (103 kB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:41.4812719Z Downloading gunicorn-26.2.0-py3-none-any.whl (228 kB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:41.4883360Z Downloading blinker-1.9.0-py3-none-any.whl (8.5 kB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:41.4931133Z Downloading click-8.5.0-py3-none-any.whl (125 kB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:41.4982141Z Downloading itsdangerous-2.2.0-py3-none-any.whl (16 kB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:41.5032970Z Downloading jinja2-3.1.6-py3-none-any.whl (134 kB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:41.5085045Z Downloading markupsafe-3.0.4-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (22 kB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:41.5134489Z Downloading werkzeug-3.1.9-py3-none-any.whl (228 kB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:41.5187721Z Downloading packaging-26.3-py3-none-any.whl (129 kB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:41.5241294Z Downloading pytest-9.1.1-py3-none-any.whl (386 kB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:41.5300897Z Downloading pytest_cov-7.1.0-py3-none-any.whl (22 kB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:41.5350941Z Downloading bandit-1.9.4-py3-none-any.whl (134 kB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:41.5402693Z Downloading pip_audit-2.10.1-py3-none-any.whl (62 kB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:41.5451407Z Downloading cyclonedx_python_lib-11.12.0-py3-none-any.whl (529 kB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:41.5510545Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 529.5/529.5 kB 82.1 MB/s  0:00:00
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:41.5541285Z Downloading license_expression-30.4.4-py3-none-any.whl (120 kB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:41.5595366Z Downloading packageurl_python-0.17.6-py3-none-any.whl (36 kB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:41.5646100Z Downloading pluggy-1.6.0-py3-none-any.whl (20 kB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:41.5694278Z Downloading py_serializable-2.1.0-py3-none-any.whl (23 kB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:41.5742171Z Downloading defusedxml-0.7.1-py2.py3-none-any.whl (25 kB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:41.5791837Z Downloading sortedcontainers-2.4.0-py2.py3-none-any.whl (29 kB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:41.5842171Z Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:41.5892111Z Downloading boolean_py-5.0-py3-none-any.whl (26 kB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:41.5939929Z Downloading cachecontrol-0.14.4-py3-none-any.whl (22 kB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:41.5990265Z Downloading msgpack-1.2.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (472 kB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:41.6051818Z Downloading coverage-7.16.2-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (258 kB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:41.6107429Z Downloading filelock-4.0.12-py3-none-any.whl (111 kB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:41.6160932Z Downloading iniconfig-2.3.1-py3-none-any.whl (7.6 kB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:41.6210759Z Downloading pip_api-0.0.35-py3-none-any.whl (123 kB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:41.6265254Z Downloading pip_requirements_parser-32.0.1-py3-none-any.whl (35 kB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:41.6316775Z Downloading platformdirs-4.12.3-py3-none-any.whl (32 kB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:41.6394984Z Downloading pygments-2.21.0-py3-none-any.whl (1.3 MB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:41.6469302Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.3/1.3 MB 201.6 MB/s  0:00:00
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:41.6502337Z Downloading pyyaml-6.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (807 kB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:41.6558897Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 807.9/807.9 kB 167.7 MB/s  0:00:00
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:41.6589469Z Downloading requests-2.34.2-py3-none-any.whl (73 kB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:41.6643394Z Downloading charset_normalizer-3.5.2-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (257 kB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:41.6701176Z Downloading idna-3.20-py3-none-any.whl (69 kB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:41.6753420Z Downloading urllib3-2.8.0-py3-none-any.whl (135 kB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:41.6806311Z Downloading certifi-2026.7.22-py3-none-any.whl (136 kB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:41.6859271Z Downloading rich-15.0.0-py3-none-any.whl (310 kB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:41.6916839Z Downloading markdown_it_py-4.2.0-py3-none-any.whl (91 kB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:41.6976146Z Downloading mdurl-0.1.2-py3-none-any.whl (10.0 kB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:41.7026037Z Downloading stevedore-5.9.1-py3-none-any.whl (54 kB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:41.7081015Z Downloading tomli-2.4.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (253 kB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:41.7138623Z Downloading tomli_w-1.2.0-py3-none-any.whl (6.7 kB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:41.7187990Z Downloading pyparsing-3.3.3-py3-none-any.whl (126 kB)
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:41.9203847Z Installing collected packages: sortedcontainers, boolean.py, urllib3, typing_extensions, tomli-w, tomli, stevedore, PyYAML, pyparsing, pygments, pluggy, platformdirs, pip-api, packaging, packageurl-python, msgpack, mdurl, MarkupSafe, license-expression, itsdangerous, iniconfig, idna, gunicorn, filelock, defusedxml, coverage, click, charset_normalizer, certifi, blinker, Werkzeug, requests, pytest, py-serializable, pip-requirements-parser, markdown-it-py, Jinja2, rich, pytest-cov, Flask, cyclonedx-python-lib, CacheControl, bandit, pip_audit
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:45.0277570Z
+Build, security gates, publish and deploy	Application build	2026-10-07T08:39:45.0321036Z Successfully installed CacheControl-0.14.4 Flask-3.1.3 Jinja2-3.1.6 MarkupSafe-3.0.4 PyYAML-6.0.3 Werkzeug-3.1.9 bandit-1.9.4 blinker-1.9.0 boolean.py-5.0 certifi-2026.7.22 charset_normalizer-3.5.2 click-8.5.0 coverage-7.16.2 cyclonedx-python-lib-11.12.0 defusedxml-0.7.1 filelock-4.0.12 gunicorn-26.2.0 idna-3.20 iniconfig-2.3.1 itsdangerous-2.2.0 license-expression-30.4.4 markdown-it-py-4.2.0 mdurl-0.1.2 msgpack-1.2.3 packageurl-python-0.17.6 packaging-26.3 pip-api-0.0.35 pip-requirements-parser-32.0.1 pip_audit-2.10.1 platformdirs-4.12.3 pluggy-1.6.0 py-serializable-2.1.0 pygments-2.21.0 pyparsing-3.3.3 pytest-9.1.1 pytest-cov-7.1.0 requests-2.34.2 rich-15.0.0 sortedcontainers-2.4.0 stevedore-5.9.1 tomli-2.4.1 tomli-w-1.2.0 typing_extensions-4.16.0 urllib3-2.8.0
+Build, security gates, publish and deploy	Unit tests	﻿2026-10-07T08:39:45.1781457Z ##[group]Run python -m pytest -v --cov=app --cov-report=term-missing --junitxml=reports/tests.xml
+Build, security gates, publish and deploy	Unit tests	2026-10-07T08:39:45.1782200Z ^[[36;1mpython -m pytest -v --cov=app --cov-report=term-missing --junitxml=reports/tests.xml^[[0m
+Build, security gates, publish and deploy	Unit tests	2026-10-07T08:39:45.1849130Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+Build, security gates, publish and deploy	Unit tests	2026-10-07T08:39:45.1849473Z env:
+Build, security gates, publish and deploy	Unit tests	2026-10-07T08:39:45.1849887Z   IMAGE: ghcr.io/shivam24bcs10251-sys/devops-heros-session17:6fc02d455af1d871618f2ffcfe0d8ba4d417b373
+Build, security gates, publish and deploy	Unit tests	2026-10-07T08:39:45.1850445Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+Build, security gates, publish and deploy	Unit tests	2026-10-07T08:39:45.1851247Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+Build, security gates, publish and deploy	Unit tests	2026-10-07T08:39:45.1851686Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+Build, security gates, publish and deploy	Unit tests	2026-10-07T08:39:45.1852068Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+Build, security gates, publish and deploy	Unit tests	2026-10-07T08:39:45.1852439Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+Build, security gates, publish and deploy	Unit tests	2026-10-07T08:39:45.1852818Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+Build, security gates, publish and deploy	Unit tests	2026-10-07T08:39:45.1853179Z ##[endgroup]
+Build, security gates, publish and deploy	Unit tests	2026-10-07T08:39:45.6791828Z ============================= test session starts ==============================
+Build, security gates, publish and deploy	Unit tests	2026-10-07T08:39:45.6793185Z platform linux -- Python 3.12.15, pytest-9.1.1, pluggy-1.6.0 -- /opt/hostedtoolcache/Python/3.12.15/x64/bin/python
+Build, security gates, publish and deploy	Unit tests	2026-10-07T08:39:45.6794149Z cachedir: .pytest_cache
+Build, security gates, publish and deploy	Unit tests	2026-10-07T08:39:45.6794808Z rootdir: /home/runner/work/devops-heros/devops-heros/session-17-devsecops/demo
+Build, security gates, publish and deploy	Unit tests	2026-10-07T08:39:45.6795527Z configfile: pytest.ini
+Build, security gates, publish and deploy	Unit tests	2026-10-07T08:39:45.6795919Z testpaths: tests
+Build, security gates, publish and deploy	Unit tests	2026-10-07T08:39:45.6796331Z plugins: platformdirs-4.12.3, cov-7.1.0
+Build, security gates, publish and deploy	Unit tests	2026-10-07T08:39:45.9530024Z collecting ... collected 8 items
+Build, security gates, publish and deploy	Unit tests	2026-10-07T08:39:45.9530447Z
+Build, security gates, publish and deploy	Unit tests	2026-10-07T08:39:46.0121064Z tests/test_app.py::test_home PASSED                                      [ 12%]
+Build, security gates, publish and deploy	Unit tests	2026-10-07T08:39:46.0147435Z tests/test_app.py::test_health PASSED                                    [ 25%]
+Build, security gates, publish and deploy	Unit tests	2026-10-07T08:39:46.0173269Z tests/test_app.py::test_greet PASSED                                     [ 37%]
+Build, security gates, publish and deploy	Unit tests	2026-10-07T08:39:46.0195704Z tests/test_app.py::test_add_numbers PASSED                               [ 50%]
+Build, security gates, publish and deploy	Unit tests	2026-10-07T08:39:46.0216600Z tests/test_app.py::test_add_numbers_missing_fields PASSED                [ 62%]
+Build, security gates, publish and deploy	Unit tests	2026-10-07T08:39:46.0238391Z tests/test_app.py::test_calculator_multiply PASSED                       [ 75%]
+Build, security gates, publish and deploy	Unit tests	2026-10-07T08:39:46.0259027Z tests/test_app.py::test_calculator_divide_by_zero PASSED                 [ 87%]
+Build, security gates, publish and deploy	Unit tests	2026-10-07T08:39:46.0753117Z tests/test_app.py::test_status PASSED                                    [100%]
+Build, security gates, publish and deploy	Unit tests	2026-10-07T08:39:46.0753809Z
+Build, security gates, publish and deploy	Unit tests	2026-10-07T08:39:46.0754469Z - generated xml file: /home/runner/work/devops-heros/devops-heros/session-17-devsecops/demo/reports/tests.xml -
+Build, security gates, publish and deploy	Unit tests	2026-10-07T08:39:46.0755316Z ================================ tests coverage ================================
+Build, security gates, publish and deploy	Unit tests	2026-10-07T08:39:46.0755935Z _______________ coverage: platform linux, python 3.12.15-final-0 _______________
+Build, security gates, publish and deploy	Unit tests	2026-10-07T08:39:46.0756365Z
+Build, security gates, publish and deploy	Unit tests	2026-10-07T08:39:46.0756517Z Name              Stmts   Miss  Cover   Missing
+Build, security gates, publish and deploy	Unit tests	2026-10-07T08:39:46.0756951Z -----------------------------------------------
+Build, security gates, publish and deploy	Unit tests	2026-10-07T08:39:46.0757344Z app/__init__.py       0      0   100%
+Build, security gates, publish and deploy	Unit tests	2026-10-07T08:39:46.0757882Z app/app.py          103     32    69%   95, 105-106, 122, 129, 133-134, 146, 180-210, 226, 231, 235
+Build, security gates, publish and deploy	Unit tests	2026-10-07T08:39:46.0758451Z -----------------------------------------------
+Build, security gates, publish and deploy	Unit tests	2026-10-07T08:39:46.0758833Z TOTAL               103     32    69%
+Build, security gates, publish and deploy	Unit tests	2026-10-07T08:39:46.0759255Z ============================== 8 passed in 0.39s ===============================
+Build, security gates, publish and deploy	SAST gate - Bandit	﻿2026-10-07T08:39:46.1152537Z ##[group]Run bandit -r app -c security/bandit.yaml -ll -f json -o reports/bandit.json
+Build, security gates, publish and deploy	SAST gate - Bandit	2026-10-07T08:39:46.1153185Z ^[[36;1mbandit -r app -c security/bandit.yaml -ll -f json -o reports/bandit.json^[[0m
+Build, security gates, publish and deploy	SAST gate - Bandit	2026-10-07T08:39:46.1216813Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+Build, security gates, publish and deploy	SAST gate - Bandit	2026-10-07T08:39:46.1217161Z env:
+Build, security gates, publish and deploy	SAST gate - Bandit	2026-10-07T08:39:46.1217572Z   IMAGE: ghcr.io/shivam24bcs10251-sys/devops-heros-session17:6fc02d455af1d871618f2ffcfe0d8ba4d417b373
+Build, security gates, publish and deploy	SAST gate - Bandit	2026-10-07T08:39:46.1218132Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+Build, security gates, publish and deploy	SAST gate - Bandit	2026-10-07T08:39:46.1218559Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+Build, security gates, publish and deploy	SAST gate - Bandit	2026-10-07T08:39:46.1219145Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+Build, security gates, publish and deploy	SAST gate - Bandit	2026-10-07T08:39:46.1219522Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+Build, security gates, publish and deploy	SAST gate - Bandit	2026-10-07T08:39:46.1219893Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+Build, security gates, publish and deploy	SAST gate - Bandit	2026-10-07T08:39:46.1220271Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+Build, security gates, publish and deploy	SAST gate - Bandit	2026-10-07T08:39:46.1220915Z ##[endgroup]
+Build, security gates, publish and deploy	SAST gate - Bandit	2026-10-07T08:39:46.2743909Z [main]	INFO	profile include tests: None
+Build, security gates, publish and deploy	SAST gate - Bandit	2026-10-07T08:39:46.2744578Z [main]	INFO	profile exclude tests: None
+Build, security gates, publish and deploy	SAST gate - Bandit	2026-10-07T08:39:46.2745129Z [main]	INFO	cli include tests: None
+Build, security gates, publish and deploy	SAST gate - Bandit	2026-10-07T08:39:46.2745667Z [main]	INFO	cli exclude tests: None
+Build, security gates, publish and deploy	SAST gate - Bandit	2026-10-07T08:39:46.2959650Z [json]	INFO	JSON output written to file: reports/bandit.json
+Build, security gates, publish and deploy	SCA gate - pip-audit	﻿2026-10-07T08:39:46.3176789Z ##[group]Run pip-audit -r requirements.txt -f json -o reports/pip-audit.json
+Build, security gates, publish and deploy	SCA gate - pip-audit	2026-10-07T08:39:46.3177371Z ^[[36;1mpip-audit -r requirements.txt -f json -o reports/pip-audit.json^[[0m
+Build, security gates, publish and deploy	SCA gate - pip-audit	2026-10-07T08:39:46.3241306Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+Build, security gates, publish and deploy	SCA gate - pip-audit	2026-10-07T08:39:46.3241676Z env:
+Build, security gates, publish and deploy	SCA gate - pip-audit	2026-10-07T08:39:46.3242096Z   IMAGE: ghcr.io/shivam24bcs10251-sys/devops-heros-session17:6fc02d455af1d871618f2ffcfe0d8ba4d417b373
+Build, security gates, publish and deploy	SCA gate - pip-audit	2026-10-07T08:39:46.3242681Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+Build, security gates, publish and deploy	SCA gate - pip-audit	2026-10-07T08:39:46.3243121Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+Build, security gates, publish and deploy	SCA gate - pip-audit	2026-10-07T08:39:46.3243547Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+Build, security gates, publish and deploy	SCA gate - pip-audit	2026-10-07T08:39:46.3243920Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+Build, security gates, publish and deploy	SCA gate - pip-audit	2026-10-07T08:39:46.3244294Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+Build, security gates, publish and deploy	SCA gate - pip-audit	2026-10-07T08:39:46.3244673Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+Build, security gates, publish and deploy	SCA gate - pip-audit	2026-10-07T08:39:46.3245003Z ##[endgroup]
+Build, security gates, publish and deploy	SCA gate - pip-audit	2026-10-07T08:39:52.3651346Z No known vulnerabilities found
+Build, security gates, publish and deploy	Install Gitleaks and Trivy	﻿2026-10-07T08:39:52.4113074Z ##[group]Run curl -fsSL https://github.com/gitleaks/gitleaks/releases/download/v8.30.1/gitleaks_8.30.1_linux_x64.tar.gz -o /tmp/gitleaks.tar.gz
+Build, security gates, publish and deploy	Install Gitleaks and Trivy	2026-10-07T08:39:52.4114151Z ^[[36;1mcurl -fsSL https://github.com/gitleaks/gitleaks/releases/download/v8.30.1/gitleaks_8.30.1_linux_x64.tar.gz -o /tmp/gitleaks.tar.gz^[[0m
+Build, security gates, publish and deploy	Install Gitleaks and Trivy	2026-10-07T08:39:52.4114821Z ^[[36;1mtar -xzf /tmp/gitleaks.tar.gz -C /tmp gitleaks^[[0m
+Build, security gates, publish and deploy	Install Gitleaks and Trivy	2026-10-07T08:39:52.4115203Z ^[[36;1msudo install /tmp/gitleaks /usr/local/bin/gitleaks^[[0m
+Build, security gates, publish and deploy	Install Gitleaks and Trivy	2026-10-07T08:39:52.4115858Z ^[[36;1mcurl -fsSL https://github.com/aquasecurity/trivy/releases/download/v0.75.0/trivy_0.75.0_Linux-64bit.tar.gz -o /tmp/trivy.tar.gz^[[0m
+Build, security gates, publish and deploy	Install Gitleaks and Trivy	2026-10-07T08:39:52.4116485Z ^[[36;1mtar -xzf /tmp/trivy.tar.gz -C /tmp trivy^[[0m
+Build, security gates, publish and deploy	Install Gitleaks and Trivy	2026-10-07T08:39:52.4116823Z ^[[36;1msudo install /tmp/trivy /usr/local/bin/trivy^[[0m
+Build, security gates, publish and deploy	Install Gitleaks and Trivy	2026-10-07T08:39:52.4178268Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+Build, security gates, publish and deploy	Install Gitleaks and Trivy	2026-10-07T08:39:52.4178610Z env:
+Build, security gates, publish and deploy	Install Gitleaks and Trivy	2026-10-07T08:39:52.4179030Z   IMAGE: ghcr.io/shivam24bcs10251-sys/devops-heros-session17:6fc02d455af1d871618f2ffcfe0d8ba4d417b373
+Build, security gates, publish and deploy	Install Gitleaks and Trivy	2026-10-07T08:39:52.4179632Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+Build, security gates, publish and deploy	Install Gitleaks and Trivy	2026-10-07T08:39:52.4180062Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+Build, security gates, publish and deploy	Install Gitleaks and Trivy	2026-10-07T08:39:52.4180491Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+Build, security gates, publish and deploy	Install Gitleaks and Trivy	2026-10-07T08:39:52.4181155Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+Build, security gates, publish and deploy	Install Gitleaks and Trivy	2026-10-07T08:39:52.4181545Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+Build, security gates, publish and deploy	Install Gitleaks and Trivy	2026-10-07T08:39:52.4181926Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+Build, security gates, publish and deploy	Install Gitleaks and Trivy	2026-10-07T08:39:52.4182242Z ##[endgroup]
+Build, security gates, publish and deploy	Secret scanning gate - Gitleaks	﻿2026-10-07T08:39:54.0141975Z ##[group]Run mkdir -p /tmp/session17-secret-scope
+Build, security gates, publish and deploy	Secret scanning gate - Gitleaks	2026-10-07T08:39:54.0142410Z ^[[36;1mmkdir -p /tmp/session17-secret-scope^[[0m
+Build, security gates, publish and deploy	Secret scanning gate - Gitleaks	2026-10-07T08:39:54.0142945Z ^[[36;1mcp -R app tests security k8s Dockerfile requirements*.txt deploy.sh /tmp/session17-secret-scope/^[[0m
+Build, security gates, publish and deploy	Secret scanning gate - Gitleaks	2026-10-07T08:39:54.0143635Z ^[[36;1mcp ../../.github/workflows/session17-devsecops.yml /tmp/session17-secret-scope/workflow.yml^[[0m
+Build, security gates, publish and deploy	Secret scanning gate - Gitleaks	2026-10-07T08:39:54.0144520Z ^[[36;1mgitleaks dir /tmp/session17-secret-scope --config security/gitleaks.toml --redact --exit-code 1 --report-format json --report-path reports/gitleaks.json^[[0m
+Build, security gates, publish and deploy	Secret scanning gate - Gitleaks	2026-10-07T08:39:54.0207541Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+Build, security gates, publish and deploy	Secret scanning gate - Gitleaks	2026-10-07T08:39:54.0207887Z env:
+Build, security gates, publish and deploy	Secret scanning gate - Gitleaks	2026-10-07T08:39:54.0208309Z   IMAGE: ghcr.io/shivam24bcs10251-sys/devops-heros-session17:6fc02d455af1d871618f2ffcfe0d8ba4d417b373
+Build, security gates, publish and deploy	Secret scanning gate - Gitleaks	2026-10-07T08:39:54.0208890Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+Build, security gates, publish and deploy	Secret scanning gate - Gitleaks	2026-10-07T08:39:54.0209324Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+Build, security gates, publish and deploy	Secret scanning gate - Gitleaks	2026-10-07T08:39:54.0209789Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+Build, security gates, publish and deploy	Secret scanning gate - Gitleaks	2026-10-07T08:39:54.0210172Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+Build, security gates, publish and deploy	Secret scanning gate - Gitleaks	2026-10-07T08:39:54.0210549Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+Build, security gates, publish and deploy	Secret scanning gate - Gitleaks	2026-10-07T08:39:54.0211286Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+Build, security gates, publish and deploy	Secret scanning gate - Gitleaks	2026-10-07T08:39:54.0211614Z ##[endgroup]
+Build, security gates, publish and deploy	Secret scanning gate - Gitleaks	2026-10-07T08:39:54.3393539Z
+Build, security gates, publish and deploy	Secret scanning gate - Gitleaks	2026-10-07T08:39:54.3394379Z     ○
+Build, security gates, publish and deploy	Secret scanning gate - Gitleaks	2026-10-07T08:39:54.3394673Z     │╲
+Build, security gates, publish and deploy	Secret scanning gate - Gitleaks	2026-10-07T08:39:54.3394893Z     │ ○
+Build, security gates, publish and deploy	Secret scanning gate - Gitleaks	2026-10-07T08:39:54.3395096Z     ○ ░
+Build, security gates, publish and deploy	Secret scanning gate - Gitleaks	2026-10-07T08:39:54.3395367Z     ░    gitleaks
+Build, security gates, publish and deploy	Secret scanning gate - Gitleaks	2026-10-07T08:39:54.3395603Z
+Build, security gates, publish and deploy	Secret scanning gate - Gitleaks	2026-10-07T08:39:54.5393870Z ^[[90m8:39AM^[[0m ^[[32mINF^[[0m ^[[1mscanned ~68267 bytes (68.27 KB) in 17.1ms^[[0m
+Build, security gates, publish and deploy	Secret scanning gate - Gitleaks	2026-10-07T08:39:54.5394696Z ^[[90m8:39AM^[[0m ^[[32mINF^[[0m ^[[1mno leaks found^[[0m
+Build, security gates, publish and deploy	Docker image build	﻿2026-10-07T08:39:54.5596355Z ##[group]Run docker build --pull -t "$IMAGE" .
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:39:54.5596978Z ^[[36;1mdocker build --pull -t "$IMAGE" .^[[0m
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:39:54.5667203Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:39:54.5667550Z env:
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:39:54.5667971Z   IMAGE: ghcr.io/shivam24bcs10251-sys/devops-heros-session17:6fc02d455af1d871618f2ffcfe0d8ba4d417b373
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:39:54.5668550Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:39:54.5668999Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:39:54.5669427Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:39:54.5669826Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:39:54.5670201Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:39:54.5670584Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:39:54.5671162Z ##[endgroup]
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:39:56.2990097Z #0 building with "default" instance using docker driver
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:39:56.2991054Z
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:39:56.2991334Z #1 [internal] load build definition from Dockerfile
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:39:56.2991988Z #1 transferring dockerfile: 479B done
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:39:56.2992732Z #1 DONE 0.0s
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:39:56.2992944Z
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:39:56.2993242Z #2 [auth] library/python:pull token for registry-1.docker.io
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:39:56.4499753Z #2 DONE 0.0s
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:39:56.4500004Z
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:39:56.4500294Z #3 [internal] load metadata for docker.io/library/python:3.12-slim
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:39:56.6655915Z #3 DONE 0.4s
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:39:56.7885897Z
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:39:56.7887229Z #4 [internal] load .dockerignore
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:39:56.7890123Z #4 transferring context: 122B done
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:39:56.7891187Z #4 DONE 0.0s
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:39:56.7891938Z
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:39:56.7892131Z #5 [internal] load build context
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:39:56.7893230Z #5 transferring context: 49.06kB done
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:39:56.7893991Z #5 DONE 0.0s
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:39:56.7894120Z
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:39:56.7895361Z #6 [1/5] FROM docker.io/library/python:3.12-slim@sha256:05cda9777409a9c3ffddd94a4c476b79f0769a0b4857f0c7ed9226b6800b0d6f
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:39:56.7897061Z #6 resolve docker.io/library/python:3.12-slim@sha256:05cda9777409a9c3ffddd94a4c476b79f0769a0b4857f0c7ed9226b6800b0d6f done
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:39:56.7898986Z #6 sha256:05cda9777409a9c3ffddd94a4c476b79f0769a0b4857f0c7ed9226b6800b0d6f 10.37kB / 10.37kB done
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:39:56.7900533Z #6 sha256:2b4f19dae3a777dfc3b76730bda1e82e1f66ab2a2686fa93ca78edbfb4f04ffe 1.75kB / 1.75kB done
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:39:56.7902025Z #6 sha256:df18428df8a0f9189c84e7424d214b4c50092af1f9dca5842a00c41c39bda316 5.66kB / 5.66kB done
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:39:56.7903707Z #6 sha256:ecc510c1e359bdc007b39802570bb7e4dec7d6ebccf357c3201a74299113e05e 20.97MB / 29.84MB 0.1s
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:39:56.7904427Z #6 sha256:75b6a36c64a1cf3520fc4b4aae4739d5caa8a6a05c27835a920a61784c9c32f8 1.29MB / 1.29MB 0.1s done
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:39:56.7905259Z #6 sha256:6912e23eb44595b44dc6d9882b34f305ad6f6e9667cec70b13e5dbc4f8cd97f4 0B / 12.12MB 0.1s
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:39:56.7905972Z #6 sha256:bbc5a12237474ec0b23b5051260d56d6436a24d70d9cad961adebe7a037ed813 0B / 249B 0.1s
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:39:56.9672927Z #6 sha256:ecc510c1e359bdc007b39802570bb7e4dec7d6ebccf357c3201a74299113e05e 29.84MB / 29.84MB 0.1s done
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:39:56.9674295Z #6 sha256:6912e23eb44595b44dc6d9882b34f305ad6f6e9667cec70b13e5dbc4f8cd97f4 12.12MB / 12.12MB 0.2s done
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:39:56.9675421Z #6 sha256:bbc5a12237474ec0b23b5051260d56d6436a24d70d9cad961adebe7a037ed813 249B / 249B 0.1s done
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:39:56.9676210Z #6 extracting sha256:ecc510c1e359bdc007b39802570bb7e4dec7d6ebccf357c3201a74299113e05e 0.1s
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:39:57.8131257Z #6 extracting sha256:ecc510c1e359bdc007b39802570bb7e4dec7d6ebccf357c3201a74299113e05e 0.9s done
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:39:57.8132734Z #6 extracting sha256:75b6a36c64a1cf3520fc4b4aae4739d5caa8a6a05c27835a920a61784c9c32f8
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:39:57.9132822Z #6 extracting sha256:75b6a36c64a1cf3520fc4b4aae4739d5caa8a6a05c27835a920a61784c9c32f8 0.1s done
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:39:59.3678213Z #6 extracting sha256:6912e23eb44595b44dc6d9882b34f305ad6f6e9667cec70b13e5dbc4f8cd97f4
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:39:59.9558123Z #6 extracting sha256:6912e23eb44595b44dc6d9882b34f305ad6f6e9667cec70b13e5dbc4f8cd97f4 0.5s done
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:39:59.9558975Z #6 extracting sha256:bbc5a12237474ec0b23b5051260d56d6436a24d70d9cad961adebe7a037ed813
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:40:00.1503161Z #6 extracting sha256:bbc5a12237474ec0b23b5051260d56d6436a24d70d9cad961adebe7a037ed813 done
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:40:00.1503714Z #6 DONE 3.3s
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:40:00.1503840Z
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:40:00.1503949Z #7 [2/5] WORKDIR /application
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:40:00.1504202Z #7 DONE 0.0s
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:40:00.1504315Z
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:40:00.1504447Z #8 [3/5] COPY requirements.txt .
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:40:00.1504709Z #8 DONE 0.0s
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:40:00.1504824Z
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:40:00.1505398Z #9 [4/5] RUN python -m pip install --no-cache-dir --upgrade pip && python -m pip install --no-cache-dir -r requirements.txt && python -m pip uninstall -y pip setuptools
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:40:01.4134706Z #9 1.414 Requirement already satisfied: pip in /usr/local/lib/python3.12/site-packages (25.0.1)
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:40:01.5202508Z #9 1.462 Collecting pip
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:40:01.5203417Z #9 1.483   Downloading pip-26.2.1-py3-none-any.whl.metadata (4.6 kB)
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:40:01.5204254Z #9 1.488 Downloading pip-26.2.1-py3-none-any.whl (1.8 MB)
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:40:01.5205488Z #9 1.506    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.8/1.8 MB 173.7 MB/s eta 0:00:00
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:40:01.5206259Z #9 1.521 Installing collected packages: pip
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:40:01.7277762Z #9 1.521   Attempting uninstall: pip
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:40:01.7278483Z #9 1.524     Found existing installation: pip 25.0.1
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:40:01.7279162Z #9 1.568     Uninstalling pip-25.0.1:
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:40:01.7279770Z #9 1.578       Successfully uninstalled pip-25.0.1
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:40:02.3867726Z #9 2.388 Successfully installed pip-26.2.1
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:40:02.5377257Z #9 2.388 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:40:02.8571358Z #9 2.858 Collecting Flask==3.1.3 (from -r requirements.txt (line 1))
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:40:02.9969958Z #9 2.883   Downloading flask-3.1.3-py3-none-any.whl.metadata (3.2 kB)
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:40:02.9971318Z #9 2.895 Collecting gunicorn==26.2.0 (from -r requirements.txt (line 2))
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:40:02.9972252Z #9 2.898   Downloading gunicorn-26.2.0-py3-none-any.whl.metadata (5.5 kB)
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:40:02.9973518Z #9 2.907 Collecting blinker==1.9.0 (from -r requirements.txt (line 3))
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:40:02.9974377Z #9 2.910   Downloading blinker-1.9.0-py3-none-any.whl.metadata (1.6 kB)
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:40:02.9975201Z #9 2.920 Collecting click==8.5.0 (from -r requirements.txt (line 4))
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:40:02.9975853Z #9 2.924   Downloading click-8.5.0-py3-none-any.whl.metadata (2.6 kB)
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:40:02.9976366Z #9 2.930 Collecting itsdangerous==2.2.0 (from -r requirements.txt (line 5))
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:40:02.9976889Z #9 2.933   Downloading itsdangerous-2.2.0-py3-none-any.whl.metadata (1.9 kB)
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:40:02.9977375Z #9 2.942 Collecting Jinja2==3.1.6 (from -r requirements.txt (line 6))
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:40:02.9977823Z #9 2.946   Downloading jinja2-3.1.6-py3-none-any.whl.metadata (2.9 kB)
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:40:02.9978280Z #9 2.998 Collecting MarkupSafe==3.0.4 (from -r requirements.txt (line 7))
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:40:03.1251942Z #9 3.001   Downloading markupsafe-3.0.4-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.7 kB)
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:40:03.1252884Z #9 3.014 Collecting Werkzeug==3.1.9 (from -r requirements.txt (line 8))
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:40:03.1253396Z #9 3.017   Downloading werkzeug-3.1.9-py3-none-any.whl.metadata (4.1 kB)
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:40:03.1253882Z #9 3.027 Collecting packaging==26.3 (from -r requirements.txt (line 9))
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:40:03.1254634Z #9 3.030   Downloading packaging-26.3-py3-none-any.whl.metadata (3.5 kB)
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:40:03.1255069Z #9 3.040 Downloading flask-3.1.3-py3-none-any.whl (103 kB)
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:40:03.1255467Z #9 3.047 Downloading gunicorn-26.2.0-py3-none-any.whl (228 kB)
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:40:03.1255862Z #9 3.053 Downloading blinker-1.9.0-py3-none-any.whl (8.5 kB)
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:40:03.1256226Z #9 3.056 Downloading click-8.5.0-py3-none-any.whl (125 kB)
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:40:03.1256609Z #9 3.059 Downloading itsdangerous-2.2.0-py3-none-any.whl (16 kB)
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:40:03.1257007Z #9 3.062 Downloading jinja2-3.1.6-py3-none-any.whl (134 kB)
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:40:03.1257616Z #9 3.066 Downloading markupsafe-3.0.4-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (22 kB)
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:40:03.1258234Z #9 3.069 Downloading werkzeug-3.1.9-py3-none-any.whl (228 kB)
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:40:03.1258622Z #9 3.074 Downloading packaging-26.3-py3-none-any.whl (129 kB)
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:40:03.1259232Z #9 3.126 Installing collected packages: packaging, MarkupSafe, itsdangerous, gunicorn, click, blinker, Werkzeug, Jinja2, Flask
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:40:03.6776788Z #9 3.678
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:40:03.8299730Z #9 3.680 Successfully installed Flask-3.1.3 Jinja2-3.1.6 MarkupSafe-3.0.4 Werkzeug-3.1.9 blinker-1.9.0 click-8.5.0 gunicorn-26.2.0 itsdangerous-2.2.0 packaging-26.3
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:40:03.8302992Z #9 3.680 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:40:03.9735847Z #9 3.974 Found existing installation: pip 26.2.1
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:40:04.1055684Z #9 4.017 Uninstalling pip-26.2.1:
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:40:04.1056223Z #9 4.025   Successfully uninstalled pip-26.2.1
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:40:04.1056896Z #9 4.057 WARNING: Skipping setuptools as it is not installed.
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:40:04.1058700Z #9 4.057 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:40:04.1061139Z #9 DONE 4.1s
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:40:04.2747550Z
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:40:04.2748922Z #10 [5/5] COPY app ./app
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:40:04.2749417Z #10 DONE 0.0s
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:40:04.2749626Z
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:40:04.2750200Z #11 exporting to image
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:40:04.2750599Z #11 exporting layers
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:40:05.0121111Z #11 exporting layers 0.9s done
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:40:05.0290512Z #11 writing image sha256:75b645caa94c1a98eab3b01746fabfb6b7ae10925ab8480bea373b55d5df1888 done
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:40:05.0291961Z #11 naming to ghcr.io/shivam24bcs10251-sys/devops-heros-session17:6fc02d455af1d871618f2ffcfe0d8ba4d417b373 done
+Build, security gates, publish and deploy	Docker image build	2026-10-07T08:40:05.0292712Z #11 DONE 0.9s
+Build, security gates, publish and deploy	Container security gate - Trivy	﻿2026-10-07T08:40:05.0371237Z ##[group]Run trivy image --config security/trivy.yaml --format json --output reports/trivy.json "$IMAGE"
+Build, security gates, publish and deploy	Container security gate - Trivy	2026-10-07T08:40:05.0372101Z ^[[36;1mtrivy image --config security/trivy.yaml --format json --output reports/trivy.json "$IMAGE"^[[0m
+Build, security gates, publish and deploy	Container security gate - Trivy	2026-10-07T08:40:05.0372683Z ^[[36;1mtrivy image --config security/trivy.yaml --format table "$IMAGE"^[[0m
+Build, security gates, publish and deploy	Container security gate - Trivy	2026-10-07T08:40:05.0435464Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+Build, security gates, publish and deploy	Container security gate - Trivy	2026-10-07T08:40:05.0435843Z env:
+Build, security gates, publish and deploy	Container security gate - Trivy	2026-10-07T08:40:05.0436277Z   IMAGE: ghcr.io/shivam24bcs10251-sys/devops-heros-session17:6fc02d455af1d871618f2ffcfe0d8ba4d417b373
+Build, security gates, publish and deploy	Container security gate - Trivy	2026-10-07T08:40:05.0436881Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+Build, security gates, publish and deploy	Container security gate - Trivy	2026-10-07T08:40:05.0437320Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+Build, security gates, publish and deploy	Container security gate - Trivy	2026-10-07T08:40:05.0437751Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+Build, security gates, publish and deploy	Container security gate - Trivy	2026-10-07T08:40:05.0438131Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+Build, security gates, publish and deploy	Container security gate - Trivy	2026-10-07T08:40:05.0438509Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+Build, security gates, publish and deploy	Container security gate - Trivy	2026-10-07T08:40:05.0438933Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+Build, security gates, publish and deploy	Container security gate - Trivy	2026-10-07T08:40:05.0439262Z ##[endgroup]
+Build, security gates, publish and deploy	Container security gate - Trivy	2026-10-07T08:40:05.1306171Z 2026-10-07T08:40:05Z	INFO	Loaded	file_path="security/trivy.yaml"
+Build, security gates, publish and deploy	Container security gate - Trivy	2026-10-07T08:40:05.1338498Z 2026-10-07T08:40:05Z	INFO	[vulndb] Need to update DB
+Build, security gates, publish and deploy	Container security gate - Trivy	2026-10-07T08:40:05.1339216Z 2026-10-07T08:40:05Z	INFO	[vulndb] Downloading vulnerability DB...
+Build, security gates, publish and deploy	Container security gate - Trivy	2026-10-07T08:40:05.1340179Z 2026-10-07T08:40:05Z	INFO	[vulndb] Downloading artifact...	repo="mirror.gcr.io/aquasec/trivy-db:2"
+Build, security gates, publish and deploy	Container security gate - Trivy	2026-10-07T08:40:09.2223823Z 21.98 MiB / 119.43 MiB [----------->________________________________________________] 18.41% ? p/s ?84.26 MiB / 119.43 MiB [------------------------------------------>_________________] 70.55% ? p/s ?119.43 MiB / 119.43 MiB [--------------------------------------------------------->] 100.00% ? p/s ?119.43 MiB / 119.43 MiB [------------------------------------------->] 100.00% 162.52 MiB p/s ETA 0s119.43 MiB / 119.43 MiB [------------------------------------------->] 100.00% 162.52 MiB p/s ETA 0s119.43 MiB / 119.43 MiB [------------------------------------------->] 100.00% 162.52 MiB p/s ETA 0s119.43 MiB / 119.43 MiB [------------------------------------------->] 100.00% 152.04 MiB p/s ETA 0s119.43 MiB / 119.43 MiB [------------------------------------------->] 100.00% 152.04 MiB p/s ETA 0s119.43 MiB / 119.43 MiB [------------------------------------------->] 100.00% 152.04 MiB p/s ETA 0s119.43 MiB / 119.43 MiB [------------------------------------------->] 100.00% 142.23 MiB p/s ETA 0s119.43 MiB / 119.43 MiB [------------------------------------------->] 100.00% 142.23 MiB p/s ETA 0s119.43 MiB / 119.43 MiB [------------------------------------------->] 100.00% 142.23 MiB p/s ETA 0s119.43 MiB / 119.43 MiB [------------------------------------------->] 100.00% 133.05 MiB p/s ETA 0s119.43 MiB / 119.43 MiB [------------------------------------------->] 100.00% 133.05 MiB p/s ETA 0s119.43 MiB / 119.43 MiB [------------------------------------------->] 100.00% 133.05 MiB p/s ETA 0s119.43 MiB / 119.43 MiB [------------------------------------------->] 100.00% 124.47 MiB p/s ETA 0s119.43 MiB / 119.43 MiB [------------------------------------------->] 100.00% 124.47 MiB p/s ETA 0s119.43 MiB / 119.43 MiB [------------------------------------------->] 100.00% 124.47 MiB p/s ETA 0s119.43 MiB / 119.43 MiB [-----------------------------------------------] 100.00% 33.49 MiB p/s 3.8s2026-10-07T08:40:09Z	INFO	[vulndb] Artifact successfully downloaded	repo="mirror.gcr.io/aquasec/trivy-db:2"
+Build, security gates, publish and deploy	Container security gate - Trivy	2026-10-07T08:40:09.2235693Z 2026-10-07T08:40:09Z	INFO	[vuln] Vulnerability scanning is enabled
+Build, security gates, publish and deploy	Container security gate - Trivy	2026-10-07T08:40:13.2202591Z 2026-10-07T08:40:13Z	INFO	[python] Licenses acquired from one or more METADATA files may be subject to additional terms. Use `--debug` flag to see all affected packages.
+Build, security gates, publish and deploy	Container security gate - Trivy	2026-10-07T08:40:13.2652127Z 2026-10-07T08:40:13Z	INFO	Detected OS	family="debian" version="13.7"
+Build, security gates, publish and deploy	Container security gate - Trivy	2026-10-07T08:40:13.2653152Z 2026-10-07T08:40:13Z	INFO	[debian] Detecting vulnerabilities...	os_version="13" pkg_num=87
+Build, security gates, publish and deploy	Container security gate - Trivy	2026-10-07T08:40:13.2761669Z 2026-10-07T08:40:13Z	INFO	Number of language-specific files	num=1
+Build, security gates, publish and deploy	Container security gate - Trivy	2026-10-07T08:40:13.2770009Z 2026-10-07T08:40:13Z	INFO	[python-pkg] Detecting vulnerabilities...
+Build, security gates, publish and deploy	Container security gate - Trivy	2026-10-07T08:40:13.2771865Z 2026-10-07T08:40:13Z	WARN	Using severities from other vendors for some vulnerabilities. Read https://trivy.dev/docs/v0.75/guide/scanner/vulnerability#severity-selection for details.
+Build, security gates, publish and deploy	Container security gate - Trivy	2026-10-07T08:40:13.3759841Z 2026-10-07T08:40:13Z	INFO	Loaded	file_path="security/trivy.yaml"
+Build, security gates, publish and deploy	Container security gate - Trivy	2026-10-07T08:40:13.3796143Z 2026-10-07T08:40:13Z	INFO	[vuln] Vulnerability scanning is enabled
+Build, security gates, publish and deploy	Container security gate - Trivy	2026-10-07T08:40:13.3942179Z 2026-10-07T08:40:13Z	INFO	Detected OS	family="debian" version="13.7"
+Build, security gates, publish and deploy	Container security gate - Trivy	2026-10-07T08:40:13.3960558Z 2026-10-07T08:40:13Z	INFO	[debian] Detecting vulnerabilities...	os_version="13" pkg_num=87
+Build, security gates, publish and deploy	Container security gate - Trivy	2026-10-07T08:40:13.4111625Z 2026-10-07T08:40:13Z	INFO	Number of language-specific files	num=1
+Build, security gates, publish and deploy	Container security gate - Trivy	2026-10-07T08:40:13.4112467Z 2026-10-07T08:40:13Z	INFO	[python-pkg] Detecting vulnerabilities...
+Build, security gates, publish and deploy	Container security gate - Trivy	2026-10-07T08:40:13.4121251Z 2026-10-07T08:40:13Z	WARN	Using severities from other vendors for some vulnerabilities. Read https://trivy.dev/docs/v0.75/guide/scanner/vulnerability#severity-selection for details.
+Build, security gates, publish and deploy	Container security gate - Trivy	2026-10-07T08:40:13.4150368Z
+Build, security gates, publish and deploy	Container security gate - Trivy	2026-10-07T08:40:13.4152880Z Report Summary
+Build, security gates, publish and deploy	Container security gate - Trivy	2026-10-07T08:40:13.4153121Z
+Build, security gates, publish and deploy	Container security gate - Trivy	2026-10-07T08:40:13.4153987Z ┌──────────────────────────────────────────────────────────────────────────────────┬────────────┬─────────────────┐
+Build, security gates, publish and deploy	Container security gate - Trivy	2026-10-07T08:40:13.4154704Z │                                      Target                                      │    Type    │ Vulnerabilities │
+Build, security gates, publish and deploy	Container security gate - Trivy	2026-10-07T08:40:13.4155371Z ├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┤
+Build, security gates, publish and deploy	Container security gate - Trivy	2026-10-07T08:40:13.4156130Z │ ghcr.io/shivam24bcs10251-sys/devops-heros-session17:6fc02d455af1d871618f2ffcfe0- │   debian   │        0        │
+Build, security gates, publish and deploy	Container security gate - Trivy	2026-10-07T08:40:13.4156884Z │ d8ba4d417b373 (debian 13.7)                                                      │            │                 │
+Build, security gates, publish and deploy	Container security gate - Trivy	2026-10-07T08:40:13.4157557Z ├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┤
+Build, security gates, publish and deploy	Container security gate - Trivy	2026-10-07T08:40:13.4158321Z │ usr/local/lib/python3.12/site-packages/blinker-1.9.0.dist-info/METADATA          │ python-pkg │        0        │
+Build, security gates, publish and deploy	Container security gate - Trivy	2026-10-07T08:40:13.4159063Z ├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┤
+Build, security gates, publish and deploy	Container security gate - Trivy	2026-10-07T08:40:13.4159753Z │ usr/local/lib/python3.12/site-packages/click-8.5.0.dist-info/METADATA            │ python-pkg │        0        │
+Build, security gates, publish and deploy	Container security gate - Trivy	2026-10-07T08:40:13.4161239Z ├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┤
+Build, security gates, publish and deploy	Container security gate - Trivy	2026-10-07T08:40:13.4161982Z │ usr/local/lib/python3.12/site-packages/flask-3.1.3.dist-info/METADATA            │ python-pkg │        0        │
+Build, security gates, publish and deploy	Container security gate - Trivy	2026-10-07T08:40:13.4162735Z ├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┤
+Build, security gates, publish and deploy	Container security gate - Trivy	2026-10-07T08:40:13.4163663Z │ usr/local/lib/python3.12/site-packages/gunicorn-26.2.0.dist-info/METADATA        │ python-pkg │        0        │
+Build, security gates, publish and deploy	Container security gate - Trivy	2026-10-07T08:40:13.4164408Z ├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┤
+Build, security gates, publish and deploy	Container security gate - Trivy	2026-10-07T08:40:13.4165108Z │ usr/local/lib/python3.12/site-packages/itsdangerous-2.2.0.dist-info/METADATA     │ python-pkg │        0        │
+Build, security gates, publish and deploy	Container security gate - Trivy	2026-10-07T08:40:13.4165850Z ├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┤
+Build, security gates, publish and deploy	Container security gate - Trivy	2026-10-07T08:40:13.4166547Z │ usr/local/lib/python3.12/site-packages/jinja2-3.1.6.dist-info/METADATA           │ python-pkg │        0        │
+Build, security gates, publish and deploy	Container security gate - Trivy	2026-10-07T08:40:13.4167283Z ├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┤
+Build, security gates, publish and deploy	Container security gate - Trivy	2026-10-07T08:40:13.4168016Z │ usr/local/lib/python3.12/site-packages/markupsafe-3.0.4.dist-info/METADATA       │ python-pkg │        0        │
+Build, security gates, publish and deploy	Container security gate - Trivy	2026-10-07T08:40:13.4168790Z ├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┤
+Build, security gates, publish and deploy	Container security gate - Trivy	2026-10-07T08:40:13.4169480Z │ usr/local/lib/python3.12/site-packages/packaging-26.3.dist-info/METADATA         │ python-pkg │        0        │
+Build, security gates, publish and deploy	Container security gate - Trivy	2026-10-07T08:40:13.4170215Z ├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┤
+Build, security gates, publish and deploy	Container security gate - Trivy	2026-10-07T08:40:13.4171192Z │ usr/local/lib/python3.12/site-packages/werkzeug-3.1.9.dist-info/METADATA         │ python-pkg │        0        │
+Build, security gates, publish and deploy	Container security gate - Trivy	2026-10-07T08:40:13.4172200Z └──────────────────────────────────────────────────────────────────────────────────┴────────────┴─────────────────┘
+Build, security gates, publish and deploy	Container security gate - Trivy	2026-10-07T08:40:13.4172836Z Legend:
+Build, security gates, publish and deploy	Container security gate - Trivy	2026-10-07T08:40:13.4173143Z - '-': Not scanned
+Build, security gates, publish and deploy	Container security gate - Trivy	2026-10-07T08:40:13.4173532Z - '0': Clean (no security findings detected)
+Build, security gates, publish and deploy	Container security gate - Trivy	2026-10-07T08:40:13.4173866Z
+Build, security gates, publish and deploy	Publish gated image to GHCR	﻿2026-10-07T08:40:13.4208262Z ##[group]Run echo "$REGISTRY_TOKEN" | docker login ghcr.io -u "$GITHUB_ACTOR" --password-stdin
+Build, security gates, publish and deploy	Publish gated image to GHCR	2026-10-07T08:40:13.4208932Z ^[[36;1mecho "$REGISTRY_TOKEN" | docker login ghcr.io -u "$GITHUB_ACTOR" --password-stdin^[[0m
+Build, security gates, publish and deploy	Publish gated image to GHCR	2026-10-07T08:40:13.4209448Z ^[[36;1mdocker push "$IMAGE" | tee reports/registry-push.txt^[[0m
+Build, security gates, publish and deploy	Publish gated image to GHCR	2026-10-07T08:40:13.4209992Z ^[[36;1mdocker image inspect "$IMAGE" --format '{{json .RepoDigests}}' | tee reports/image-digests.json^[[0m
+Build, security gates, publish and deploy	Publish gated image to GHCR	2026-10-07T08:40:13.4272531Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+Build, security gates, publish and deploy	Publish gated image to GHCR	2026-10-07T08:40:13.4272870Z env:
+Build, security gates, publish and deploy	Publish gated image to GHCR	2026-10-07T08:40:13.4273285Z   IMAGE: ghcr.io/shivam24bcs10251-sys/devops-heros-session17:6fc02d455af1d871618f2ffcfe0d8ba4d417b373
+Build, security gates, publish and deploy	Publish gated image to GHCR	2026-10-07T08:40:13.4274008Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+Build, security gates, publish and deploy	Publish gated image to GHCR	2026-10-07T08:40:13.4274428Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+Build, security gates, publish and deploy	Publish gated image to GHCR	2026-10-07T08:40:13.4274844Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+Build, security gates, publish and deploy	Publish gated image to GHCR	2026-10-07T08:40:13.4275218Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+Build, security gates, publish and deploy	Publish gated image to GHCR	2026-10-07T08:40:13.4275641Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+Build, security gates, publish and deploy	Publish gated image to GHCR	2026-10-07T08:40:13.4276015Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+Build, security gates, publish and deploy	Publish gated image to GHCR	2026-10-07T08:40:13.4278892Z   REGISTRY_TOKEN: ***
+Build, security gates, publish and deploy	Publish gated image to GHCR	2026-10-07T08:40:13.4279131Z ##[endgroup]
+Build, security gates, publish and deploy	Publish gated image to GHCR	2026-10-07T08:40:13.7080553Z
+Build, security gates, publish and deploy	Publish gated image to GHCR	2026-10-07T08:40:13.7081387Z Login Succeeded
+Build, security gates, publish and deploy	Publish gated image to GHCR	2026-10-07T08:40:13.7082504Z WARNING! Your credentials are stored unencrypted in '/home/runner/.docker/config.json'.
+Build, security gates, publish and deploy	Publish gated image to GHCR	2026-10-07T08:40:13.7083243Z Configure a credential helper to remove this warning. See
+Build, security gates, publish and deploy	Publish gated image to GHCR	2026-10-07T08:40:13.7083792Z https://docs.docker.com/go/credential-store/
+Build, security gates, publish and deploy	Publish gated image to GHCR	2026-10-07T08:40:13.7084121Z
+Build, security gates, publish and deploy	Publish gated image to GHCR	2026-10-07T08:40:13.7285836Z The push refers to repository [ghcr.io/shivam24bcs10251-sys/devops-heros-session17]
+Build, security gates, publish and deploy	Publish gated image to GHCR	2026-10-07T08:40:13.8006694Z a03e25593ce8: Preparing
+Build, security gates, publish and deploy	Publish gated image to GHCR	2026-10-07T08:40:13.8007963Z 18be35000c76: Preparing
+Build, security gates, publish and deploy	Publish gated image to GHCR	2026-10-07T08:40:13.8008263Z 491252dc8d59: Preparing
+Build, security gates, publish and deploy	Publish gated image to GHCR	2026-10-07T08:40:13.8008566Z 5a092cfa8b27: Preparing
+Build, security gates, publish and deploy	Publish gated image to GHCR	2026-10-07T08:40:13.8008841Z dca2a125b490: Preparing
+Build, security gates, publish and deploy	Publish gated image to GHCR	2026-10-07T08:40:13.8009259Z b361fa3b9794: Preparing
+Build, security gates, publish and deploy	Publish gated image to GHCR	2026-10-07T08:40:13.8009673Z e1fa2746ad6d: Preparing
+Build, security gates, publish and deploy	Publish gated image to GHCR	2026-10-07T08:40:13.8010089Z 15f1c8eb1ab1: Preparing
+Build, security gates, publish and deploy	Publish gated image to GHCR	2026-10-07T08:40:13.8012024Z e1fa2746ad6d: Waiting
+Build, security gates, publish and deploy	Publish gated image to GHCR	2026-10-07T08:40:13.8012631Z 15f1c8eb1ab1: Waiting
+Build, security gates, publish and deploy	Publish gated image to GHCR	2026-10-07T08:40:13.8013174Z b361fa3b9794: Waiting
+Build, security gates, publish and deploy	Publish gated image to GHCR	2026-10-07T08:40:14.0395515Z dca2a125b490: Layer already exists
+Build, security gates, publish and deploy	Publish gated image to GHCR	2026-10-07T08:40:14.1187274Z b361fa3b9794: Layer already exists
+Build, security gates, publish and deploy	Publish gated image to GHCR	2026-10-07T08:40:14.2140686Z e1fa2746ad6d: Layer already exists
+Build, security gates, publish and deploy	Publish gated image to GHCR	2026-10-07T08:40:15.2959552Z a03e25593ce8: Pushed
+Build, security gates, publish and deploy	Publish gated image to GHCR	2026-10-07T08:40:15.3335163Z 5a092cfa8b27: Pushed
+Build, security gates, publish and deploy	Publish gated image to GHCR	2026-10-07T08:40:15.4227839Z 491252dc8d59: Pushed
+Build, security gates, publish and deploy	Publish gated image to GHCR	2026-10-07T08:40:15.7863544Z 18be35000c76: Pushed
+Build, security gates, publish and deploy	Publish gated image to GHCR	2026-10-07T08:40:18.2965779Z 15f1c8eb1ab1: Pushed
+Build, security gates, publish and deploy	Publish gated image to GHCR	2026-10-07T08:40:20.2009818Z 6fc02d455af1d871618f2ffcfe0d8ba4d417b373: digest: sha256:170d438b24485e8f264f0fe7bf64a18f2a1a3cbed4cbc2de62ad74322d8a6042 size: 1993
+Build, security gates, publish and deploy	Publish gated image to GHCR	2026-10-07T08:40:20.2161629Z ["ghcr.io/shivam24bcs10251-sys/devops-heros-session17@sha256:170d438b24485e8f264f0fe7bf64a18f2a1a3cbed4cbc2de62ad74322d8a6042"]
+Build, security gates, publish and deploy	Install Kind	﻿2026-10-07T08:40:20.2206374Z ##[group]Run curl -fsSL https://kind.sigs.k8s.io/dl/v0.33.0/kind-linux-amd64 -o /tmp/kind
+Build, security gates, publish and deploy	Install Kind	2026-10-07T08:40:20.2207041Z ^[[36;1mcurl -fsSL https://kind.sigs.k8s.io/dl/v0.33.0/kind-linux-amd64 -o /tmp/kind^[[0m
+Build, security gates, publish and deploy	Install Kind	2026-10-07T08:40:20.2207499Z ^[[36;1msudo install /tmp/kind /usr/local/bin/kind^[[0m
+Build, security gates, publish and deploy	Install Kind	2026-10-07T08:40:20.2269832Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+Build, security gates, publish and deploy	Install Kind	2026-10-07T08:40:20.2270182Z env:
+Build, security gates, publish and deploy	Install Kind	2026-10-07T08:40:20.2270596Z   IMAGE: ghcr.io/shivam24bcs10251-sys/devops-heros-session17:6fc02d455af1d871618f2ffcfe0d8ba4d417b373
+Build, security gates, publish and deploy	Install Kind	2026-10-07T08:40:20.2271636Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+Build, security gates, publish and deploy	Install Kind	2026-10-07T08:40:20.2272072Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+Build, security gates, publish and deploy	Install Kind	2026-10-07T08:40:20.2272532Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+Build, security gates, publish and deploy	Install Kind	2026-10-07T08:40:20.2272911Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+Build, security gates, publish and deploy	Install Kind	2026-10-07T08:40:20.2273276Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+Build, security gates, publish and deploy	Install Kind	2026-10-07T08:40:20.2273708Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+Build, security gates, publish and deploy	Install Kind	2026-10-07T08:40:20.2274032Z ##[endgroup]
+Build, security gates, publish and deploy	Kubernetes deploy and verify	﻿2026-10-07T08:40:20.5180555Z ##[group]Run bash deploy.sh | tee reports/deployment.txt
+Build, security gates, publish and deploy	Kubernetes deploy and verify	2026-10-07T08:40:20.5181267Z ^[[36;1mbash deploy.sh | tee reports/deployment.txt^[[0m
+Build, security gates, publish and deploy	Kubernetes deploy and verify	2026-10-07T08:40:20.5243747Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+Build, security gates, publish and deploy	Kubernetes deploy and verify	2026-10-07T08:40:20.5244086Z env:
+Build, security gates, publish and deploy	Kubernetes deploy and verify	2026-10-07T08:40:20.5244506Z   IMAGE: ghcr.io/shivam24bcs10251-sys/devops-heros-session17:6fc02d455af1d871618f2ffcfe0d8ba4d417b373
+Build, security gates, publish and deploy	Kubernetes deploy and verify	2026-10-07T08:40:20.5245090Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+Build, security gates, publish and deploy	Kubernetes deploy and verify	2026-10-07T08:40:20.5245538Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+Build, security gates, publish and deploy	Kubernetes deploy and verify	2026-10-07T08:40:20.5245959Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+Build, security gates, publish and deploy	Kubernetes deploy and verify	2026-10-07T08:40:20.5246336Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+Build, security gates, publish and deploy	Kubernetes deploy and verify	2026-10-07T08:40:20.5246712Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+Build, security gates, publish and deploy	Kubernetes deploy and verify	2026-10-07T08:40:20.5247091Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+Build, security gates, publish and deploy	Kubernetes deploy and verify	2026-10-07T08:40:20.5247408Z ##[endgroup]
+Build, security gates, publish and deploy	Kubernetes deploy and verify	2026-10-07T08:40:20.7557963Z Creating cluster "session17" ...
+Build, security gates, publish and deploy	Kubernetes deploy and verify	2026-10-07T08:40:20.7558892Z  • Ensuring node image (kindest/node:v1.37.0) 🖼️  ...
+Build, security gates, publish and deploy	Kubernetes deploy and verify	2026-10-07T08:40:28.6749244Z  ✓ Ensuring node image (kindest/node:v1.37.0) 🖼️
+Build, security gates, publish and deploy	Kubernetes deploy and verify	2026-10-07T08:40:28.6749693Z  • Preparing nodes 📦   ...
+Build, security gates, publish and deploy	Kubernetes deploy and verify	2026-10-07T08:40:30.6538592Z  ✓ Preparing nodes 📦
+Build, security gates, publish and deploy	Kubernetes deploy and verify	2026-10-07T08:40:30.6788447Z  • Writing configuration 📜  ...
+Build, security gates, publish and deploy	Kubernetes deploy and verify	2026-10-07T08:40:30.8571505Z  ✓ Writing configuration 📜
+Build, security gates, publish and deploy	Kubernetes deploy and verify	2026-10-07T08:40:30.8572608Z  • Starting control-plane 🕹️  ...
+Build, security gates, publish and deploy	Kubernetes deploy and verify	2026-10-07T08:40:38.1052079Z  ✓ Starting control-plane 🕹️
+Build, security gates, publish and deploy	Kubernetes deploy and verify	2026-10-07T08:40:38.1052621Z  • Installing CNI 🔌  ...
+Build, security gates, publish and deploy	Kubernetes deploy and verify	2026-10-07T08:40:38.4109544Z  ✓ Installing CNI 🔌
+Build, security gates, publish and deploy	Kubernetes deploy and verify	2026-10-07T08:40:38.4110188Z  • Installing StorageClass 💾  ...
+Build, security gates, publish and deploy	Kubernetes deploy and verify	2026-10-07T08:40:38.7440151Z  ✓ Installing StorageClass 💾
+Build, security gates, publish and deploy	Kubernetes deploy and verify	2026-10-07T08:40:38.7719778Z  • Waiting ≤ 2m0s for control-plane = Ready ⏳  ...
+Build, security gates, publish and deploy	Kubernetes deploy and verify	2026-10-07T08:40:55.1073868Z  ✓ Waiting ≤ 2m0s for control-plane = Ready ⏳
+Build, security gates, publish and deploy	Kubernetes deploy and verify	2026-10-07T08:40:55.1074634Z  • Ready after 16s 💚
+Build, security gates, publish and deploy	Kubernetes deploy and verify	2026-10-07T08:40:55.2475843Z Set kubectl context to "kind-session17"
+Build, security gates, publish and deploy	Kubernetes deploy and verify	2026-10-07T08:40:55.2476791Z You can now use your cluster with:
+Build, security gates, publish and deploy	Kubernetes deploy and verify	2026-10-07T08:40:55.2477293Z
+Build, security gates, publish and deploy	Kubernetes deploy and verify	2026-10-07T08:40:55.2477674Z kubectl cluster-info --context kind-session17
+Build, security gates, publish and deploy	Kubernetes deploy and verify	2026-10-07T08:40:55.2478240Z
+Build, security gates, publish and deploy	Kubernetes deploy and verify	2026-10-07T08:40:55.2478900Z Have a nice day! 👋
+Build, security gates, publish and deploy	Kubernetes deploy and verify	2026-10-07T08:40:55.4033918Z Image: "ghcr.io/shivam24bcs10251-sys/devops-heros-session17:6fc02d455af1d871618f2ffcfe0d8ba4d417b373" with ID "sha256:75b645caa94c1a98eab3b01746fabfb6b7ae10925ab8480bea373b55d5df1888" not yet present on node "session17-control-plane", loading...
+Build, security gates, publish and deploy	Kubernetes deploy and verify	2026-10-07T08:41:03.3604298Z deployment.apps/session17-python created
+Build, security gates, publish and deploy	Kubernetes deploy and verify	2026-10-07T08:41:03.4877090Z service/session17-python created
+Build, security gates, publish and deploy	Kubernetes deploy and verify	2026-10-07T08:41:03.5516482Z Waiting for deployment "session17-python" rollout to finish: 0 of 2 updated replicas are available...
+Build, security gates, publish and deploy	Kubernetes deploy and verify	2026-10-07T08:41:14.2521497Z Waiting for deployment "session17-python" rollout to finish: 1 of 2 updated replicas are available...
+Build, security gates, publish and deploy	Kubernetes deploy and verify	2026-10-07T08:41:14.2588480Z deployment "session17-python" successfully rolled out
+Build, security gates, publish and deploy	Kubernetes deploy and verify	2026-10-07T08:41:14.3374987Z NAME                                   READY   STATUS    RESTARTS   AGE
+Build, security gates, publish and deploy	Kubernetes deploy and verify	2026-10-07T08:41:14.3375797Z pod/session17-python-f9578bbd6-pxk4n   1/1     Running   0          11s
+Build, security gates, publish and deploy	Kubernetes deploy and verify	2026-10-07T08:41:14.3376315Z pod/session17-python-f9578bbd6-zv9zs   1/1     Running   0          11s
+Build, security gates, publish and deploy	Kubernetes deploy and verify	2026-10-07T08:41:14.3376613Z
+Build, security gates, publish and deploy	Kubernetes deploy and verify	2026-10-07T08:41:14.3377085Z NAME                       TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)   AGE
+Build, security gates, publish and deploy	Kubernetes deploy and verify	2026-10-07T08:41:14.3377555Z service/kubernetes         ClusterIP   10.96.0.1      <none>        443/TCP   38s
+Build, security gates, publish and deploy	Kubernetes deploy and verify	2026-10-07T08:41:14.3378057Z service/session17-python   ClusterIP   10.96.190.81   <none>        80/TCP    11s
+Build, security gates, publish and deploy	Kubernetes deploy and verify	2026-10-07T08:41:14.3886943Z session17-python-f9578bbd6-pxk4n docker.io/library/import-2026-10-07@sha256:2e565e5339d28126457d104204bf50cf1447c4f2aecfda9514e35444f9f2e4bf
+Build, security gates, publish and deploy	Kubernetes deploy and verify	2026-10-07T08:41:14.3888042Z session17-python-f9578bbd6-zv9zs docker.io/library/import-2026-10-07@sha256:2e565e5339d28126457d104204bf50cf1447c4f2aecfda9514e35444f9f2e4bf
+Build, security gates, publish and deploy	Kubernetes deploy and verify	2026-10-07T08:41:15.4306842Z Health verified: healthy
+Build, security gates, publish and deploy	Kubernetes deploy and verify	2026-10-07T08:41:15.4624247Z API verified: {'number1': 10.0, 'number2': 20.0, 'operation': 'addition', 'result': 30.0}
+Build, security gates, publish and deploy	Kubernetes deploy and verify	2026-10-07T08:41:15.4781329Z <!DOCTYPE html>
+Build, security gates, publish and deploy	Kubernetes deploy and verify	2026-10-07T08:41:15.4782180Z <html lang="en">
+Build, security gates, publish and deploy	Kubernetes deploy and verify	2026-10-07T08:41:15.4782709Z <head>
+Build, security gates, publish and deploy	Kubernetes deploy and verify	2026-10-07T08:41:15.4783227Z   <meta charset="UTF-8" />
+Build, security gates, publish and deploy	Kubernetes deploy and verify	2026-10-07T08:41:15.4784262Z   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+Build, security gates, publish and deploy	Kubernetes deploy and verify	2026-10-07T08:41:15.4786122Z   <meta name="description" content="DevSecOps Dashboard — real-time CI/CD pipeline simulator, API playgrou
+Build, security gates, publish and deploy	Kubernetes deploy and verify	2026-10-07T08:41:15.4786829Z Deployment verified successfully.
+Build, security gates, publish and deploy	Kubernetes deploy and verify	2026-10-07T08:41:15.4924514Z Deleting cluster "session17" ...
+Build, security gates, publish and deploy	Kubernetes deploy and verify	2026-10-07T08:41:17.0088350Z Deleted nodes: ["session17-control-plane"]
+Build, security gates, publish and deploy	Upload test and security reports	﻿2026-10-07T08:41:17.0168714Z ##[group]Run actions/upload-artifact@v7
+Build, security gates, publish and deploy	Upload test and security reports	2026-10-07T08:41:17.0169017Z with:
+Build, security gates, publish and deploy	Upload test and security reports	2026-10-07T08:41:17.0169224Z   name: session17-devsecops-reports
+Build, security gates, publish and deploy	Upload test and security reports	2026-10-07T08:41:17.0169512Z   path: session-17-devsecops/demo/reports/
+Build, security gates, publish and deploy	Upload test and security reports	2026-10-07T08:41:17.0169798Z   if-no-files-found: error
+Build, security gates, publish and deploy	Upload test and security reports	2026-10-07T08:41:17.0170027Z   retention-days: 7
+Build, security gates, publish and deploy	Upload test and security reports	2026-10-07T08:41:17.0170231Z   compression-level: 6
+Build, security gates, publish and deploy	Upload test and security reports	2026-10-07T08:41:17.0170441Z   overwrite: false
+Build, security gates, publish and deploy	Upload test and security reports	2026-10-07T08:41:17.0170978Z   include-hidden-files: false
+Build, security gates, publish and deploy	Upload test and security reports	2026-10-07T08:41:17.0171295Z   archive: true
+Build, security gates, publish and deploy	Upload test and security reports	2026-10-07T08:41:17.0171489Z env:
+Build, security gates, publish and deploy	Upload test and security reports	2026-10-07T08:41:17.0171925Z   IMAGE: ghcr.io/shivam24bcs10251-sys/devops-heros-session17:6fc02d455af1d871618f2ffcfe0d8ba4d417b373
+Build, security gates, publish and deploy	Upload test and security reports	2026-10-07T08:41:17.0172480Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+Build, security gates, publish and deploy	Upload test and security reports	2026-10-07T08:41:17.0172904Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+Build, security gates, publish and deploy	Upload test and security reports	2026-10-07T08:41:17.0173329Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+Build, security gates, publish and deploy	Upload test and security reports	2026-10-07T08:41:17.0173701Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+Build, security gates, publish and deploy	Upload test and security reports	2026-10-07T08:41:17.0174117Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+Build, security gates, publish and deploy	Upload test and security reports	2026-10-07T08:41:17.0174494Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+Build, security gates, publish and deploy	Upload test and security reports	2026-10-07T08:41:17.0174810Z ##[endgroup]
+Build, security gates, publish and deploy	Upload test and security reports	2026-10-07T08:41:17.1608228Z With the provided path, there will be 8 files uploaded
+Build, security gates, publish and deploy	Upload test and security reports	2026-10-07T08:41:17.1614479Z Artifact name is valid!
+Build, security gates, publish and deploy	Upload test and security reports	2026-10-07T08:41:17.1616128Z Root directory input is valid!
+Build, security gates, publish and deploy	Upload test and security reports	2026-10-07T08:41:17.3872809Z Uploading artifact: session17-devsecops-reports.zip
+Build, security gates, publish and deploy	Upload test and security reports	2026-10-07T08:41:17.3946463Z Beginning upload of artifact content to blob storage
+Build, security gates, publish and deploy	Upload test and security reports	2026-10-07T08:41:17.5811659Z Uploaded bytes 42102
+Build, security gates, publish and deploy	Upload test and security reports	2026-10-07T08:41:17.6118438Z Finished uploading artifact content to blob storage!
+Build, security gates, publish and deploy	Upload test and security reports	2026-10-07T08:41:17.6119482Z SHA256 digest of uploaded artifact is b72192f89659e620016f16186098edb308943dee5c19c62b59a73922c3f434dc
+Build, security gates, publish and deploy	Upload test and security reports	2026-10-07T08:41:17.6120421Z Finalizing artifact upload
+Build, security gates, publish and deploy	Upload test and security reports	2026-10-07T08:41:17.8904830Z Artifact session17-devsecops-reports successfully finalized. Artifact ID 11470158366
+Build, security gates, publish and deploy	Upload test and security reports	2026-10-07T08:41:17.8906287Z Artifact session17-devsecops-reports has been successfully uploaded! Final size is 42102 bytes. Artifact ID is 11470158366
+Build, security gates, publish and deploy	Upload test and security reports	2026-10-07T08:41:17.8909463Z Artifact download URL: https://github.com/shivam24bcs10251-sys/devops-heros/actions/runs/37595230720/artifacts/11470158366
+Build, security gates, publish and deploy	Post Run actions/setup-python@v7	﻿2026-10-07T08:41:17.9079884Z Post job cleanup.
+Build, security gates, publish and deploy	Post Run actions/checkout@v7	﻿2026-10-07T08:41:18.0396434Z Post job cleanup.
+Build, security gates, publish and deploy	Post Run actions/checkout@v7	2026-10-07T08:41:18.1271232Z [command]/usr/bin/git version
+Build, security gates, publish and deploy	Post Run actions/checkout@v7	2026-10-07T08:41:18.1316471Z git version 2.55.0
+Build, security gates, publish and deploy	Post Run actions/checkout@v7	2026-10-07T08:41:18.1372626Z Temporarily overriding HOME='/home/runner/work/_temp/e4ad08bc-42c5-46ba-b7fb-4485c252188c' before making global git config changes
+Build, security gates, publish and deploy	Post Run actions/checkout@v7	2026-10-07T08:41:18.1374277Z Adding repository directory to the temporary git global config as a safe directory
+Build, security gates, publish and deploy	Post Run actions/checkout@v7	2026-10-07T08:41:18.1375306Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/devops-heros/devops-heros
+Build, security gates, publish and deploy	Post Run actions/checkout@v7	2026-10-07T08:41:18.1400552Z Removing SSH command configuration
+Build, security gates, publish and deploy	Post Run actions/checkout@v7	2026-10-07T08:41:18.1407444Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+Build, security gates, publish and deploy	Post Run actions/checkout@v7	2026-10-07T08:41:18.1444192Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Build, security gates, publish and deploy	Post Run actions/checkout@v7	2026-10-07T08:41:18.1708953Z Removing HTTP extra header
+Build, security gates, publish and deploy	Post Run actions/checkout@v7	2026-10-07T08:41:18.1715803Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+Build, security gates, publish and deploy	Post Run actions/checkout@v7	2026-10-07T08:41:18.1755694Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Build, security gates, publish and deploy	Post Run actions/checkout@v7	2026-10-07T08:41:18.2012589Z Removing includeIf entries pointing to credentials config files
+Build, security gates, publish and deploy	Post Run actions/checkout@v7	2026-10-07T08:41:18.2014147Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+Build, security gates, publish and deploy	Post Run actions/checkout@v7	2026-10-07T08:41:18.2064642Z includeif.gitdir:/home/runner/work/devops-heros/devops-heros/.git.path
+Build, security gates, publish and deploy	Post Run actions/checkout@v7	2026-10-07T08:41:18.2071495Z includeif.gitdir:/home/runner/work/devops-heros/devops-heros/.git/worktrees/*.path
+Build, security gates, publish and deploy	Post Run actions/checkout@v7	2026-10-07T08:41:18.2089900Z includeif.gitdir:/github/workspace/.git.path
+Build, security gates, publish and deploy	Post Run actions/checkout@v7	2026-10-07T08:41:18.2091091Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+Build, security gates, publish and deploy	Post Run actions/checkout@v7	2026-10-07T08:41:18.2093395Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/devops-heros/devops-heros/.git.path
+Build, security gates, publish and deploy	Post Run actions/checkout@v7	2026-10-07T08:41:18.2126444Z /home/runner/work/_temp/git-credentials-b16d100c-35e2-498e-b0ca-187959e97ef3.config
+Build, security gates, publish and deploy	Post Run actions/checkout@v7	2026-10-07T08:41:18.2138851Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/devops-heros/devops-heros/.git.path \/home\/runner\/work\/_temp\/git\-credentials\-b16d100c\-35e2\-498e\-b0ca\-187959e97ef3\.config
+Build, security gates, publish and deploy	Post Run actions/checkout@v7	2026-10-07T08:41:18.2193971Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/devops-heros/devops-heros/.git/worktrees/*.path
+Build, security gates, publish and deploy	Post Run actions/checkout@v7	2026-10-07T08:41:18.2235322Z /home/runner/work/_temp/git-credentials-b16d100c-35e2-498e-b0ca-187959e97ef3.config
+Build, security gates, publish and deploy	Post Run actions/checkout@v7	2026-10-07T08:41:18.2247235Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/devops-heros/devops-heros/.git/worktrees/*.path \/home\/runner\/work\/_temp\/git\-credentials\-b16d100c\-35e2\-498e\-b0ca\-187959e97ef3\.config
+Build, security gates, publish and deploy	Post Run actions/checkout@v7	2026-10-07T08:41:18.2325038Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+Build, security gates, publish and deploy	Post Run actions/checkout@v7	2026-10-07T08:41:18.2349897Z /github/runner_temp/git-credentials-b16d100c-35e2-498e-b0ca-187959e97ef3.config
+Build, security gates, publish and deploy	Post Run actions/checkout@v7	2026-10-07T08:41:18.2363587Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path \/github\/runner_temp\/git\-credentials\-b16d100c\-35e2\-498e\-b0ca\-187959e97ef3\.config
+Build, security gates, publish and deploy	Post Run actions/checkout@v7	2026-10-07T08:41:18.2415376Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+Build, security gates, publish and deploy	Post Run actions/checkout@v7	2026-10-07T08:41:18.2445866Z /github/runner_temp/git-credentials-b16d100c-35e2-498e-b0ca-187959e97ef3.config
+Build, security gates, publish and deploy	Post Run actions/checkout@v7	2026-10-07T08:41:18.2455656Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path \/github\/runner_temp\/git\-credentials\-b16d100c\-35e2\-498e\-b0ca\-187959e97ef3\.config
+Build, security gates, publish and deploy	Post Run actions/checkout@v7	2026-10-07T08:41:18.2502250Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+Build, security gates, publish and deploy	Post Run actions/checkout@v7	2026-10-07T08:41:18.2750936Z Removing credentials config '/home/runner/work/_temp/git-credentials-b16d100c-35e2-498e-b0ca-187959e97ef3.config'
+Build, security gates, publish and deploy	Complete job	﻿2026-10-07T08:41:18.2930354Z Cleaning up orphan processes

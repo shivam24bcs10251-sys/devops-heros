@@ -1,0 +1,21 @@
+The push refers to repository [ghcr.io/shivam24bcs10251-sys/devops-heros-session17]
+a03e25593ce8: Preparing
+18be35000c76: Preparing
+491252dc8d59: Preparing
+5a092cfa8b27: Preparing
+dca2a125b490: Preparing
+b361fa3b9794: Preparing
+e1fa2746ad6d: Preparing
+15f1c8eb1ab1: Preparing
+e1fa2746ad6d: Waiting
+15f1c8eb1ab1: Waiting
+b361fa3b9794: Waiting
+dca2a125b490: Layer already exists
+b361fa3b9794: Layer already exists
+e1fa2746ad6d: Layer already exists
+a03e25593ce8: Pushed
+5a092cfa8b27: Pushed
+491252dc8d59: Pushed
+18be35000c76: Pushed
+15f1c8eb1ab1: Pushed
+6fc02d455af1d871618f2ffcfe0d8ba4d417b373: digest: sha256:170d438b24485e8f264f0fe7bf64a18f2a1a3cbed4cbc2de62ad74322d8a6042 size: 1993
