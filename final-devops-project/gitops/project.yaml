@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: session21
+  namespace: session20-argocd
+spec:
+  sourceRepos: [https://github.com/shivam24bcs10251-sys/devops-heros.git]
+  destinations:
+  - {namespace: session21, server: https://kubernetes.default.svc}
+  namespaceResourceWhitelist:
+  - {group: '', kind: Service}
+  - {group: '', kind: ConfigMap}
+  - {group: '', kind: PersistentVolumeClaim}
+  - {group: apps, kind: Deployment}
+  - {group: apps, kind: StatefulSet}
+  - {group: batch, kind: Job}
+  - {group: networking.k8s.io, kind: Ingress}
+  - {group: autoscaling, kind: HorizontalPodAutoscaler}

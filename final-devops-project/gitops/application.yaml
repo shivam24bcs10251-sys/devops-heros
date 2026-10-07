@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: labledger
+  namespace: session20-argocd
+spec:
+  project: session21
+  sources:
+  - repoURL: https://github.com/shivam24bcs10251-sys/devops-heros.git
+    targetRevision: session21-final-devops-project
+    path: final-devops-project/helm/labledger
+    helm:
+      releaseName: labledger
+      valueFiles: [$values/final-devops-project/gitops/values.yaml]
+  - repoURL: https://github.com/shivam24bcs10251-sys/devops-heros.git
+    targetRevision: session21-final-devops-project
+    ref: values
+  destination: {namespace: session21, server: https://kubernetes.default.svc}
+  syncPolicy:
+    automated: {prune: true, selfHeal: true}
+    syncOptions: [RespectIgnoreDifferences=true]
