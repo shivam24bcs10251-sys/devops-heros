@@ -1,0 +1,18 @@
+shivamjaiswal@Shivams-MacBook-Air session20-monitoring-observability-gitops % kubectl get deploy session20-mini -n session20 -o jsonpath='{.spec.replicas}{" actual replicas after self-heal\n"}'
+3 actual replicas after self-heal
+shivamjaiswal@Shivams-MacBook-Air session20-monitoring-observability-gitops % kubectl get application session20-mini -n session20-argocd
+NAME             SYNC STATUS   HEALTH STATUS
+session20-mini   Synced        Healthy
+shivamjaiswal@Shivams-MacBook-Air session20-monitoring-observability-gitops % kubectl get pods -n session20 -l app=session20-mini
+NAME                              READY   STATUS    RESTARTS   AGE
+session20-mini-649f9bbcfd-ch8nv   1/1     Running   0          41s
+session20-mini-649f9bbcfd-tpff2   1/1     Running   0          47s
+session20-mini-649f9bbcfd-wr7m8   1/1     Running   0          41s
+shivamjaiswal@Shivams-MacBook-Air session20-monitoring-observability-gitops % kubectl get events -n session20-argocd --field-selector involvedObject.name=session20-mini --sort-by=.metadata.creationTimestamp | tail -6
+42s         Normal   ResourceUpdated      application/session20-mini   Updated sync status: Synced -> OutOfSync
+42s         Normal   ResourceUpdated      application/session20-mini   Updated health status: Progressing -> Healthy
+41s         Normal   OperationCompleted   application/session20-mini   Partial sync operation to 2c146f06505e808ad078c147a3423fa3d6d5e7d4 succeeded
+41s         Normal   ResourceUpdated      application/session20-mini   Updated sync status: OutOfSync -> Synced
+41s         Normal   ResourceUpdated      application/session20-mini   Updated health status: Healthy -> Progressing
+39s         Normal   ResourceUpdated      application/session20-mini   Updated health status: Progressing -> Healthy
+shivamjaiswal@Shivams-MacBook-Air session20-monitoring-observability-gitops %

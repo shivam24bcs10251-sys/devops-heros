@@ -1,0 +1,12 @@
+shivamjaiswal@Shivams-MacBook-Air session20-monitoring-observability-gitops % git log -1 --oneline
+1cee791 (HEAD -> session20-monitoring-observability-gitops, origin/session20-monitoring-observability-gitops) Session 20: add instrumented app, monitoring and Argo CD GitOps source
+shivamjaiswal@Shivams-MacBook-Air session20-monitoring-observability-gitops % kubectl get application session20-mini -n session20-argocd
+NAME             SYNC STATUS   HEALTH STATUS
+session20-mini   Synced        Healthy
+shivamjaiswal@Shivams-MacBook-Air session20-monitoring-observability-gitops % kubectl get deployment,pods,svc -n session20 -l app=session20-mini
+NAME                                  READY   STATUS    RESTARTS   AGE
+pod/session20-mini-699fc44cbf-9dfl7   1/1     Running   0          79s
+pod/session20-mini-699fc44cbf-f6wcj   1/1     Running   0          79s
+shivamjaiswal@Shivams-MacBook-Air session20-monitoring-observability-gitops % kubectl get deploy session20-mini -n session20 -o jsonpath='{.spec.replicas}{" replicas; version "}{.spec.template.spec.containers[0].env[0].value}{"\n"}'
+2 replicas; version v1
+shivamjaiswal@Shivams-MacBook-Air session20-monitoring-observability-gitops %

@@ -1,0 +1,30 @@
+/Users/shivamjaiswal/Library/Mobile Documents/com~apple~CloudDocs/iCloud-Keep/Scaler/Semester_5_Term_1/Devops_SWE/devops-heros/session20-monitoring-observability-gitops
+shivamjaiswal@Shivams-MacBook-Air session20-monitoring-observability-gitops % ls -1
+01-monitoring-vs-observability
+01-monitoring-vs-observability 2
+02-metrics-logs-traces
+02-metrics-logs-traces 2
+03-prometheus
+03-prometheus 2
+04-grafana
+04-grafana 2
+05-introduction-to-gitops
+05-introduction-to-gitops 2
+06-git-as-source-of-truth
+06-git-as-source-of-truth 2
+07-argocd
+07-argocd 2
+08-mini-project
+08-mini-project 2
+Output
+README.md
+shivamjaiswal@Shivams-MacBook-Air session20-monitoring-observability-gitops % git branch --show-current
+session20-monitoring-observability-gitops
+shivamjaiswal@Shivams-MacBook-Air session20-monitoring-observability-gitops % git log -1 --oneline
+1cee791 (HEAD -> session20-monitoring-observability-gitops, origin/session20-monitoring-observability-gitops) Session 20: add instrumented app, monitoring and Argo CD GitOps source
+shivamjaiswal@Shivams-MacBook-Air session20-monitoring-observability-gitops % kubectl config current-context
+devops-assignment
+shivamjaiswal@Shivams-MacBook-Air session20-monitoring-observability-gitops % kubectl get nodes
+NAME                STATUS   ROLES           AGE    VERSION
+devops-assignment   Ready    control-plane   3h1m   v1.35.0
+shivamjaiswal@Shivams-MacBook-Air session20-monitoring-observability-gitops %

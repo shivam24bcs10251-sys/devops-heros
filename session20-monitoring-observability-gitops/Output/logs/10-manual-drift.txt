@@ -1,0 +1,16 @@
+shivamjaiswal@Shivams-MacBook-Air session20-monitoring-observability-gitops % kubectl scale deployment session20-mini -n session20 --replicas=1
+deployment.apps/session20-mini scaled
+shivamjaiswal@Shivams-MacBook-Air session20-monitoring-observability-gitops % kubectl get deploy session20-mini -n session20 -o jsonpath='{.spec.replicas}{" actual replicas immediately after manual change\n"}'
+1 actual replicas immediately after manual change
+shivamjaiswal@Shivams-MacBook-Air session20-monitoring-observability-gitops % git show HEAD:session20-monitoring-observability-gitops/08-mini-project/app/deployment.yaml | head -10
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: session20-mini
+  namespace: session20
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: session20-mini
+shivamjaiswal@Shivams-MacBook-Air session20-monitoring-observability-gitops %

@@ -1,0 +1,10 @@
+shivamjaiswal@Shivams-MacBook-Air session20-monitoring-observability-gitops % curl -fsS http://127.0.0.1:8084/health; echo
+{"session": 20, "version": "v1", "pod": "session20-mini-699fc44cbf-f6wcj", "healthy": true, "trace_id": "c1b0d28329e44c189ba42ed1a9754717"}
+shivamjaiswal@Shivams-MacBook-Air session20-monitoring-observability-gitops % curl -fsS -H "X-Trace-ID: session20-request-001" http://127.0.0.1:8084/work; echo
+{"session": 20, "version": "v1", "pod": "session20-mini-699fc44cbf-f6wcj", "healthy": true, "trace_id": "session20-request-001"}
+shivamjaiswal@Shivams-MacBook-Air session20-monitoring-observability-gitops % kubectl logs -l app=session20-mini -n session20 --tail=3 --prefix=true
+[pod/session20-mini-699fc44cbf-9dfl7/app] {"event": "startup", "session": 20, "version": "v1", "pod": "session20-mini-699fc44cbf-9dfl7"}
+[pod/session20-mini-699fc44cbf-f6wcj/app] {"event": "http_request", "path": "/health", "status": 200, "version": "v1", "pod": "session20-mini-699fc44cbf-f6wcj", "trace_id": "4dc688d30e004cfaa4994b25fec4ecee", "duration_ms": 0.363}
+[pod/session20-mini-699fc44cbf-f6wcj/app] {"event": "http_request", "path": "/health", "status": 200, "version": "v1", "pod": "session20-mini-699fc44cbf-f6wcj", "trace_id": "c1b0d28329e44c189ba42ed1a9754717", "duration_ms": 0.33}
+[pod/session20-mini-699fc44cbf-f6wcj/app] {"event": "http_request", "path": "/work", "status": 200, "version": "v1", "pod": "session20-mini-699fc44cbf-f6wcj", "trace_id": "session20-request-001", "duration_ms": 275.76}
+shivamjaiswal@Shivams-MacBook-Air session20-monitoring-observability-gitops %

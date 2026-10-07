@@ -1,0 +1,15 @@
+shivamjaiswal@Shivams-MacBook-Air session20-monitoring-observability-gitops % git log -3 --oneline
+e253fd6 (HEAD -> session20-monitoring-observability-gitops, origin/session20-monitoring-observability-gitops) Session 20: restore two replicas and stabilize local Grafana startup
+2c146f0 Session 20: release v2 with three replicas through GitOps
+1cee791 Session 20: add instrumented app, monitoring and Argo CD GitOps source
+shivamjaiswal@Shivams-MacBook-Air session20-monitoring-observability-gitops % kubectl get application session20-mini -n session20-argocd
+NAME             SYNC STATUS   HEALTH STATUS
+session20-mini   Synced        Healthy
+shivamjaiswal@Shivams-MacBook-Air session20-monitoring-observability-gitops % kubectl get deployment session20-mini -n session20
+NAME             READY   UP-TO-DATE   AVAILABLE   AGE
+session20-mini   2/2     2            2           8m6s
+shivamjaiswal@Shivams-MacBook-Air session20-monitoring-observability-gitops % kubectl get deploy session20-mini -n session20 -o jsonpath='{.spec.replicas}{" replicas; version "}{.spec.template.spec.containers[0].env[0].value}{"\n"}'
+2 replicas; version v2
+shivamjaiswal@Shivams-MacBook-Air session20-monitoring-observability-gitops % curl -fsS http://127.0.0.1:8084/health; echo
+{"session": 20, "version": "v2", "pod": "session20-mini-649f9bbcfd-ch8nv", "healthy": true, "trace_id": "03e957eb39314b76aa34adc933c5312e"}
+shivamjaiswal@Shivams-MacBook-Air session20-monitoring-observability-gitops %

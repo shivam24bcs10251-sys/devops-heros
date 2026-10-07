@@ -1,6 +1,6 @@
 # Session 20 — Monitoring, observability and GitOps
 
-This assignment uses the local `devops-assignment` Kubernetes cluster, Prometheus 3.15.0, Grafana 13.2.3 and Argo CD 3.5.4 (Helm chart 10.9.7). The supplied folders were inspected; [the mini-project](08-mini-project/README.md) was extended with an instrumented application, monitoring configuration and a real GitOps release workflow. No AWS resources are required.
+This assignment uses the local `devops-assignment` Kubernetes cluster, Prometheus 3.15.0, Grafana 12.1.1 and Argo CD 3.5.4 (Helm chart 10.9.7). The supplied folders were inspected; [the mini-project](08-mini-project/README.md) was extended with an instrumented application, monitoring configuration and a real GitOps release workflow. No AWS resources are required.
 
 ## Assignment coverage
 
@@ -74,3 +74,225 @@ Application health and scrape health measure different things. Resource utilizat
 ## References
 
 [Prometheus alerting rules](https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/) · [Prometheus query functions](https://prometheus.io/docs/prometheus/latest/querying/functions/) · [Grafana dashboard provisioning](https://grafana.com/docs/grafana/latest/administration/provisioning/#dashboards) · [Argo CD automated sync and self-heal](https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/) · [Kubernetes resource metrics](https://kubernetes.io/docs/tasks/debug/debug-cluster/resource-metrics-pipeline/) · [OpenTelemetry signals](https://opentelemetry.io/docs/concepts/signals/)
+
+## Execution results
+
+Verified on 7 October 2026 on the local cluster. All ten live checks passed. Application health failure produced a real firing alert and recovery resolved it. Argo CD automatically delivered the Git change from two/v1 to three/v2, repaired a manual scale to one back to three, then delivered the final Git state of two/v2. No AWS resources were created for this session.
+
+| Git revision | Observed outcome |
+|---|---|
+| `1cee791` | Initial automatic synchronization: two ready replicas, v1. |
+| `2c146f0` | Automatic release: three ready replicas, v2; self-heal repaired drift to one. |
+| `e253fd6` | Git restored the required two replicas; v2 remained healthy. |
+
+The final evidence/configuration commit is a later revision. Its workload path remains two replicas/v2, so Argo CD can update its observed revision without changing application behavior.
+
+### Dashboard and controller screenshots
+
+These screenshots show the actual browser window, with no surrounding desktop.
+
+![Prometheus firing alert](Output/13-prometheus-alert-ui.png)
+
+![Grafana CPU, memory, health and request dashboard](Output/14-grafana-dashboard-ui.png)
+
+![Argo CD automatic synchronization and healthy application](Output/15-argocd-gitops-ui.png)
+
+### Troubleshooting during implementation
+
+The initial Grafana 13.2.3 setup experienced dashboard API timeouts and partially loaded panels while starting plugins/internal services. Disabling background plugin preinstallation helped startup, but the dashboard check still timed out. The final implementation uses the supplied teaching version, Grafana 12.1.1, with plugin preinstallation disabled; its dashboard API and all six panels were verified. Port 3000 was occupied by another local process, so the lab uses loopback port 3004. Port-forwards were restarted after their selected Pods changed during rollouts.
+
+The first server-side dry-run was attempted before the namespace existed, which produced namespace-not-found errors for namespaced objects. After Argo CD created the namespace, the same dry-run passed for every workload manifest. These checks did not manually deploy the Git-managed app.
+
+## Commands, output and screenshots
+
+Terminal screenshots below show live commands and results. Screen capture runs in a separate window. Text transcripts preserve the visible output.
+
+### Inspected folders and selected the session branch
+
+The existing Session 20 teaching folders were inspected. Work uses its own branch and the existing local cluster.
+
+```bash
+pwd
+ls -1
+git branch --show-current
+git log -1 --oneline
+kubectl config current-context
+kubectl get nodes
+```
+
+![Inspected folders and selected the session branch](Output/01-folder-and-branch.png)
+
+[Actual output](Output/logs/01-folder-and-branch.txt).
+
+### Argo CD installed and project scoped
+
+The Helm release and controller Pods are running; the AppProject and Application exist.
+
+```bash
+helm list -n session20-argocd
+kubectl get pods -n session20-argocd
+kubectl get appproject session20 -n session20-argocd
+kubectl get application session20-mini -n session20-argocd
+```
+
+![Argo CD installed and project scoped](Output/02-argocd-installed.png)
+
+[Actual output](Output/logs/02-argocd-installed.txt).
+
+### Initial Git deployment: two replicas, v1
+
+Argo CD automatically synchronized Git revision 1cee791. Two real application Pods are Ready and the live manifest reports v1.
+
+```bash
+git log -1 --oneline
+kubectl get application session20-mini -n session20-argocd
+kubectl get deployment,pods,svc -n session20 -l app=session20-mini
+kubectl get deploy session20-mini -n session20 -o jsonpath='{.spec.replicas}{" replicas; version "}{.spec.template.spec.containers[0].env[0].value}{"\n"}'
+```
+
+![Initial Git deployment: two replicas, v1](Output/03-gitops-initial-sync.png)
+
+[Actual output](Output/logs/03-gitops-initial-sync.txt).
+
+### Monitoring stack and valid Prometheus rules
+
+Application, Prometheus and Grafana Pods are Running. Promtool checks the live scrape configuration and both alert rules.
+
+```bash
+kubectl get deployment,pods,svc -n session20
+kubectl exec -n session20 deploy/session20-prometheus -- promtool check config /etc/prometheus/prometheus.yaml
+```
+
+![Monitoring stack and valid Prometheus rules](Output/04-monitoring-stack.png)
+
+[Actual output](Output/logs/04-monitoring-stack.txt).
+
+### HTTP health and correlated logs
+
+A real /work request carries session20-request-001. The same ID appears in the app response and Kubernetes JSON request log.
+
+```bash
+curl -fsS http://127.0.0.1:8084/health; echo
+curl -fsS -H "X-Trace-ID: session20-request-001" http://127.0.0.1:8084/work; echo
+kubectl logs -l app=session20-mini -n session20 --tail=3 --prefix=true
+```
+
+![HTTP health and correlated logs](Output/05-health-and-logs.png)
+
+[Actual output](Output/logs/05-health-and-logs.txt).
+
+### Real CPU, memory and scrape metrics
+
+The bounded load generator made 325 real CPU-work requests over ninety seconds. Kubernetes top and Prometheus show actual utilization and successful scrapes of both Pods.
+
+```bash
+kubectl top pods -n session20
+python3 08-mini-project/tools/query.py '100 * sum(rate(process_cpu_seconds_total{job="session20-app"}[1m]))'
+python3 08-mini-project/tools/query.py 'sum(process_resident_memory_bytes{job="session20-app"})'
+python3 08-mini-project/tools/query.py 'up{job="session20-app"}'
+```
+
+![Real CPU, memory and scrape metrics](Output/06-cpu-memory-metrics.png)
+
+[Actual output](Output/logs/06-cpu-memory-metrics.txt).
+
+### Failed application health and firing alert
+
+The selected Pod returns HTTP 503; its health gauge becomes zero and DemoApplicationUnhealthy enters firing state after ten seconds.
+
+```bash
+curl -s -o /dev/null -w "HTTP health status: %{http_code}\n" http://127.0.0.1:8084/health
+python3 08-mini-project/tools/query.py 'demo_dependency_healthy{job="session20-app"}'
+python3 08-mini-project/tools/alerts.py
+```
+
+![Failed application health and firing alert](Output/07-alert-firing.png)
+
+[Actual output](Output/logs/07-alert-firing.txt).
+
+### Recovery and alert resolution
+
+The recovery endpoint restores HTTP 200 and healthy gauges. The live Prometheus alerts API returns an empty list.
+
+```bash
+curl -fsS http://127.0.0.1:8084/demo/recover; echo
+curl -s -o /dev/null -w "HTTP health status: %{http_code}\n" http://127.0.0.1:8084/health
+python3 08-mini-project/tools/query.py 'demo_dependency_healthy{job="session20-app"}'
+python3 08-mini-project/tools/alerts.py
+```
+
+![Recovery and alert resolution](Output/08-alert-recovered.png)
+
+[Actual output](Output/logs/08-alert-recovered.txt).
+
+### Git release: three replicas, v2
+
+Commit 2c146f0 changed Git to three replicas and v2. It was pushed and automatically delivered by Argo CD; no direct apply of the Deployment was used.
+
+```bash
+git log -2 --oneline
+kubectl get application session20-mini -n session20-argocd
+kubectl get deployment,pods -n session20 -l app=session20-mini
+kubectl get deploy session20-mini -n session20 -o jsonpath='{.spec.replicas}{" replicas; version "}{.spec.template.spec.containers[0].env[0].value}{"\n"}'
+```
+
+![Git release: three replicas, v2](Output/09-git-release-three.png)
+
+[Actual output](Output/logs/09-git-release-three.txt).
+
+### Introduced manual replica drift
+
+A manual scale changes the actual replica count to one, while the committed Deployment still declares three.
+
+```bash
+kubectl scale deployment session20-mini -n session20 --replicas=1
+kubectl get deploy session20-mini -n session20 -o jsonpath='{.spec.replicas}{" actual replicas immediately after manual change\n"}'
+git show HEAD:session20-monitoring-observability-gitops/08-mini-project/app/deployment.yaml | head -10
+```
+
+![Introduced manual replica drift](Output/10-manual-drift.png)
+
+[Actual output](Output/logs/10-manual-drift.txt).
+
+### Argo CD repaired replica drift
+
+After self-heal, the actual replica count is three again, all app Pods are Ready and Argo CD is Synced/Healthy. Controller events record the reconciliation.
+
+```bash
+kubectl get deploy session20-mini -n session20 -o jsonpath='{.spec.replicas}{" actual replicas after self-heal\n"}'
+kubectl get application session20-mini -n session20-argocd
+kubectl get pods -n session20 -l app=session20-mini
+kubectl get events -n session20-argocd --field-selector involvedObject.name=session20-mini --sort-by=.metadata.creationTimestamp | tail -6
+```
+
+![Argo CD repaired replica drift](Output/11-self-heal.png)
+
+[Actual output](Output/logs/11-self-heal.txt).
+
+### Final required state: two replicas, v2
+
+Commit e253fd6 restores Git to two replicas. Argo CD synchronizes it and /health returns healthy v2.
+
+```bash
+git log -3 --oneline
+kubectl get application session20-mini -n session20-argocd
+kubectl get deployment session20-mini -n session20
+kubectl get deploy session20-mini -n session20 -o jsonpath='{.spec.replicas}{" replicas; version "}{.spec.template.spec.containers[0].env[0].value}{"\n"}'
+curl -fsS http://127.0.0.1:8084/health; echo
+```
+
+![Final required state: two replicas, v2](Output/12-final-state.png)
+
+[Actual output](Output/logs/12-final-state.txt).
+
+### Ten live verification checks
+
+HTTP behavior, request/log correlation, real metrics, two scrape targets, resolved alerts, Grafana dashboard and Argo CD final desired/actual state pass.
+
+```bash
+python3 08-mini-project/tools/verify.py
+```
+
+![Ten live verification checks](Output/16-live-verification.png)
+
+[Actual output](Output/logs/16-live-verification.txt).

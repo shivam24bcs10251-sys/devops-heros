@@ -1,0 +1,13 @@
+shivamjaiswal@Shivams-MacBook-Air session20-monitoring-observability-gitops % python3 08-mini-project/tools/verify.py
+PASS: HTTP application health and Git release version v2
+PASS: request correlation ID in response and header
+PASS: unknown route returns 404
+PASS: real CPU counter and nonzero Linux resident memory
+PASS: Prometheus scrapes two healthy application targets and memory
+PASS: all demo alerts resolved
+PASS: Grafana health and six provisioned dashboard panels
+PASS: Argo CD Synced/Healthy, automated delivery and self-heal enabled
+PASS: final Git desired state has two ready replicas / v2
+PASS: matching correlation ID in real Kubernetes logs
+ALL 10 LIVE CHECKS PASSED
+shivamjaiswal@Shivams-MacBook-Air session20-monitoring-observability-gitops %

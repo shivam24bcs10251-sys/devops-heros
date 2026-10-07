@@ -1,0 +1,15 @@
+shivamjaiswal@Shivams-MacBook-Air session20-monitoring-observability-gitops % git log -2 --oneline
+2c146f0 (HEAD -> session20-monitoring-observability-gitops, origin/session20-monitoring-observability-gitops) Session 20: release v2 with three replicas through GitOps
+1cee791 Session 20: add instrumented app, monitoring and Argo CD GitOps source
+shivamjaiswal@Shivams-MacBook-Air session20-monitoring-observability-gitops % kubectl get application session20-mini -n session20-argocd
+NAME             SYNC STATUS   HEALTH STATUS
+session20-mini   Synced        Progressing
+shivamjaiswal@Shivams-MacBook-Air session20-monitoring-observability-gitops % kubectl get deployment,pods -n session20 -l app=session20-mini
+NAME                                  READY   STATUS    RESTARTS   AGE
+pod/session20-mini-649f9bbcfd-tpff2   0/1     Running   0          2s
+pod/session20-mini-699fc44cbf-9dfl7   1/1     Running   0          5m5s
+pod/session20-mini-699fc44cbf-f6wcj   1/1     Running   0          5m5s
+pod/session20-mini-699fc44cbf-zv8k6   0/1     Running   0          2s
+shivamjaiswal@Shivams-MacBook-Air session20-monitoring-observability-gitops % kubectl get deploy session20-mini -n session20 -o jsonpath='{.spec.replicas}{" replicas; version "}{.spec.template.spec.containers[0].env[0].value}{"\n"}'
+3 replicas; version v2
+shivamjaiswal@Shivams-MacBook-Air session20-monitoring-observability-gitops %

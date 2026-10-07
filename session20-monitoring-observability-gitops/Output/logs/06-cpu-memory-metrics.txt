@@ -1,0 +1,16 @@
+shivamjaiswal@Shivams-MacBook-Air session20-monitoring-observability-gitops % kubectl top pods -n session20
+NAME                                    CPU(cores)   MEMORY(bytes)
+session20-mini-699fc44cbf-9dfl7         2m           11Mi
+session20-mini-699fc44cbf-f6wcj         5m           12Mi
+session20-prometheus-7b6bf649fb-86kbt   14m          69Mi
+shivamjaiswal@Shivams-MacBook-Air session20-monitoring-observability-gitops % python3 08-mini-project/tools/query.py '100 * sum(rate(process_cpu_seconds_total{job="session20-app"}[1m]))'
+PromQL: 100 * sum(rate(process_cpu_seconds_total{job="session20-app"}[1m]))
+{"labels": {}, "value": "13.863830179227135"}
+shivamjaiswal@Shivams-MacBook-Air session20-monitoring-observability-gitops % python3 08-mini-project/tools/query.py 'sum(process_resident_memory_bytes{job="session20-app"})'
+PromQL: sum(process_resident_memory_bytes{job="session20-app"})
+{"labels": {}, "value": "40357888"}
+shivamjaiswal@Shivams-MacBook-Air session20-monitoring-observability-gitops % python3 08-mini-project/tools/query.py 'up{job="session20-app"}'
+PromQL: up{job="session20-app"}
+{"labels": {"__name__": "up", "instance": "10.244.0.81:8080", "job": "session20-app", "pod": "session20-mini-699fc44cbf-f6wcj"}, "value": "1"}
+{"labels": {"__name__": "up", "instance": "10.244.0.82:8080", "job": "session20-app", "pod": "session20-mini-699fc44cbf-9dfl7"}, "value": "1"}
+shivamjaiswal@Shivams-MacBook-Air session20-monitoring-observability-gitops %

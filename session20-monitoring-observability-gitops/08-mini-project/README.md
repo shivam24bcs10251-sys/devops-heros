@@ -21,7 +21,7 @@ kubectl rollout status deployment/session20-prometheus -n session20 --timeout=30
 kubectl rollout status deployment/session20-grafana -n session20 --timeout=300s
 ```
 
-Run each port-forward in its own terminal (bound to loopback):
+Run each port-forward in its own terminal (bound to loopback). Restart a port-forward after its selected Pod is replaced during a rollout:
 
 ```bash
 kubectl port-forward -n session20 svc/session20-mini 8084:80
@@ -74,3 +74,7 @@ kubectl delete namespace session20-argocd
 ```
 
 This affects the two lab namespaces only; do not delete the shared cluster. Argo CD CRDs installed by Helm may remain for reuse.
+
+## Final live verification
+
+Run `python3 tools/verify.py` after the final two-replica/v2 release and all three port-forwards are running. It asserts ten live HTTP, metrics, dashboard, GitOps and log checks. Use `python3 tools/load.py` for a bounded ninety-second CPU workload; it prints the actual completed request count.

@@ -1,0 +1,16 @@
+shivamjaiswal@Shivams-MacBook-Air session20-monitoring-observability-gitops % helm list -n session20-argocd
+NAME            	NAMESPACE       	REVISION	UPDATED                             	STATUS  	CHART         	APP VERSION
+session20-argocd	session20-argocd	1       	2026-10-07 15:58:49.796112 +0530 IST	deployed	argo-cd-10.9.7	v3.5.4
+shivamjaiswal@Shivams-MacBook-Air session20-monitoring-observability-gitops % kubectl get pods -n session20-argocd
+NAME                                            READY   STATUS    RESTARTS   AGE
+session20-argocd-application-controller-0       1/1     Running   0          2m29s
+session20-argocd-redis-65864bb78-hxt5b          1/1     Running   0          2m29s
+session20-argocd-repo-server-67bc66978d-4cqpq   1/1     Running   0          2m29s
+session20-argocd-server-64c9676fdf-zszkl        1/1     Running   0          2m29s
+shivamjaiswal@Shivams-MacBook-Air session20-monitoring-observability-gitops % kubectl get appproject session20 -n session20-argocd
+NAME        AGE
+session20   85s
+shivamjaiswal@Shivams-MacBook-Air session20-monitoring-observability-gitops % kubectl get application session20-mini -n session20-argocd
+NAME             SYNC STATUS   HEALTH STATUS
+session20-mini   Synced        Healthy
+shivamjaiswal@Shivams-MacBook-Air session20-monitoring-observability-gitops %

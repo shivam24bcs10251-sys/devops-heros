@@ -1,0 +1,11 @@
+shivamjaiswal@Shivams-MacBook-Air session20-monitoring-observability-gitops % curl -fsS http://127.0.0.1:8084/demo/recover; echo
+{"session": 20, "version": "v1", "pod": "session20-mini-699fc44cbf-f6wcj", "healthy": true, "trace_id": "3853f979c81e4dd7b21c32d1144f9b88"}
+shivamjaiswal@Shivams-MacBook-Air session20-monitoring-observability-gitops % curl -s -o /dev/null -w "HTTP health status: %{http_code}\n" http://127.0.0.1:8084/health
+HTTP health status: 200
+shivamjaiswal@Shivams-MacBook-Air session20-monitoring-observability-gitops % python3 08-mini-project/tools/query.py 'demo_dependency_healthy{job="session20-app"}'
+PromQL: demo_dependency_healthy{job="session20-app"}
+{"labels": {"__name__": "demo_dependency_healthy", "instance": "10.244.0.81:8080", "job": "session20-app", "pod": "session20-mini-699fc44cbf-f6wcj"}, "value": "1"}
+{"labels": {"__name__": "demo_dependency_healthy", "instance": "10.244.0.82:8080", "job": "session20-app", "pod": "session20-mini-699fc44cbf-9dfl7"}, "value": "1"}
+shivamjaiswal@Shivams-MacBook-Air session20-monitoring-observability-gitops % python3 08-mini-project/tools/alerts.py
+[]
+shivamjaiswal@Shivams-MacBook-Air session20-monitoring-observability-gitops %

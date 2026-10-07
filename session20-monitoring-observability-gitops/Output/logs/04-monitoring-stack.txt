@@ -1,0 +1,25 @@
+shivamjaiswal@Shivams-MacBook-Air session20-monitoring-observability-gitops % kubectl get deployment,pods,svc -n session20
+NAME                                   READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/session20-grafana      1/1     1            1           10m
+deployment.apps/session20-mini         2/2     2            2           10m
+deployment.apps/session20-prometheus   1/1     1            1           10m
+
+NAME                                        READY   STATUS    RESTARTS   AGE
+pod/session20-grafana-bd5bb64f7-ppfqg       1/1     Running   0          2m4s
+pod/session20-mini-649f9bbcfd-ch8nv         1/1     Running   0          5m33s
+pod/session20-mini-649f9bbcfd-wr7m8         1/1     Running   0          5m33s
+pod/session20-prometheus-7b6bf649fb-86kbt   1/1     Running   0          10m
+
+NAME                           TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
+service/session20-grafana      ClusterIP   10.105.215.15   <none>        3000/TCP   10m
+service/session20-mini         ClusterIP   10.104.184.11   <none>        80/TCP     10m
+service/session20-prometheus   ClusterIP   10.106.60.104   <none>        9090/TCP   10m
+shivamjaiswal@Shivams-MacBook-Air session20-monitoring-observability-gitops % kubectl exec -n session20 deploy/session20-prometheus -- promtool check config /etc/prometheus/prometheus.yaml
+Checking /etc/prometheus/prometheus.yaml
+  SUCCESS: 1 rule files found
+ SUCCESS: /etc/prometheus/prometheus.yaml is valid prometheus config file syntax
+
+Checking /etc/prometheus/alerts.yaml
+  SUCCESS: 2 rules found
+
+shivamjaiswal@Shivams-MacBook-Air session20-monitoring-observability-gitops %
