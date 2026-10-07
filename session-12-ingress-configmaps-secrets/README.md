@@ -164,7 +164,7 @@ kubectl -n session12 get endpointslices -l kubernetes.io/service-name=broken-bac
 Patch the selector to app=yatri-backend. The EndpointSlice now includes the backend addresses. The original broken YAML is retained as the reproducible failure fixture.
 
 ```bash
-kubectl -n session12 patch svc broken-backend -p '{"spec":{"selector":{"app":"yatri-backend"}}}' 
+kubectl -n session12 patch svc broken-backend -p '{"spec":{"selector":{"app":"yatri-backend"}}}'
 kubectl -n session12 get endpointslices -l kubernetes.io/service-name=broken-backend
 kubectl -n session12 get pods
 curl -fsS -H "Host: yatri.local" http://127.0.0.1:8082/api/ | head -n 3
