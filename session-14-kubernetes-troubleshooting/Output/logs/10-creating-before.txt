@@ -1,0 +1,13 @@
+shivamjaiswal@Shivams-MacBook-Air session-14-kubernetes-troubleshooting % kubectl -n session14 get pod creating-demo
+NAME            READY   STATUS              RESTARTS   AGE
+creating-demo   0/1     ContainerCreating   0          3m5s
+shivamjaiswal@Shivams-MacBook-Air session-14-kubernetes-troubleshooting % kubectl -n session14 describe pod creating-demo | tail -n 8
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type     Reason       Age                 From               Message
+  ----     ------       ----                ----               -------
+  Normal   Scheduled    3m5s                default-scheduler  Successfully assigned session14/creating-demo to devops-assignment
+  Warning  FailedMount  56s (x9 over 3m4s)  kubelet            MountVolume.SetUp failed for volume "settings" : configmap "required-volume" not found
+shivamjaiswal@Shivams-MacBook-Air session-14-kubernetes-troubleshooting %

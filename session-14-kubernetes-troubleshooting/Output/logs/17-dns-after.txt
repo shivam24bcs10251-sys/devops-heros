@@ -1,0 +1,10 @@
+shivamjaiswal@Shivams-MacBook-Air session-14-kubernetes-troubleshooting % kubectl -n session14 exec dns-test -- nslookup -type=A web-service.session14.svc.cluster.local.
+Server:		10.96.0.10
+Address:	10.96.0.10:53
+
+Name:	web-service.session14.svc.cluster.local
+Address: 10.100.172.98
+
+shivamjaiswal@Shivams-MacBook-Air session-14-kubernetes-troubleshooting % kubectl -n session14 exec dns-test -- wget -qO- http://web-service.session14.svc.cluster.local | sed -n "/<h1>/p"
+<h1>Welcome to nginx!</h1>
+shivamjaiswal@Shivams-MacBook-Air session-14-kubernetes-troubleshooting %

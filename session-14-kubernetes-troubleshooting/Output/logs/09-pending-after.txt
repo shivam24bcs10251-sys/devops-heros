@@ -1,0 +1,10 @@
+shivamjaiswal@Shivams-MacBook-Air session-14-kubernetes-troubleshooting % kubectl -n session14 delete pod pending-demo
+pod "pending-demo" deleted from session14 namespace
+shivamjaiswal@Shivams-MacBook-Air session-14-kubernetes-troubleshooting % kubectl -n session14 apply -f 08-pending-pods/fixed-pod.yaml
+pod/pending-demo created
+shivamjaiswal@Shivams-MacBook-Air session-14-kubernetes-troubleshooting % kubectl -n session14 wait --for=condition=Ready pod/pending-demo --timeout=120s
+pod/pending-demo condition met
+shivamjaiswal@Shivams-MacBook-Air session-14-kubernetes-troubleshooting % kubectl -n session14 get pod pending-demo -o wide
+NAME           READY   STATUS    RESTARTS   AGE   IP            NODE                NOMINATED NODE   READINESS GATES
+pending-demo   1/1     Running   0          1s    10.244.0.66   devops-assignment   <none>           <none>
+shivamjaiswal@Shivams-MacBook-Air session-14-kubernetes-troubleshooting %

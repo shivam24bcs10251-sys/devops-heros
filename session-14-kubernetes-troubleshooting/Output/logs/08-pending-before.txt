@@ -1,0 +1,16 @@
+shivamjaiswal@Shivams-MacBook-Air session-14-kubernetes-troubleshooting % kubectl -n session14 get pod pending-demo
+NAME           READY   STATUS    RESTARTS   AGE
+pending-demo   0/1     Pending   0          2m57s
+shivamjaiswal@Shivams-MacBook-Air session-14-kubernetes-troubleshooting % kubectl -n session14 describe pod pending-demo | tail -n 8
+QoS Class:                   BestEffort
+Node-Selectors:              kubernetes.io/hostname=node-that-does-not-exist
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type     Reason            Age    From               Message
+  ----     ------            ----   ----               -------
+  Warning  FailedScheduling  2m57s  default-scheduler  0/1 nodes are available: 1 node(s) didn't match Pod's node affinity/selector. no new claims to deallocate, preemption: 0/1 nodes are available: 1 Preemption is not helpful for scheduling.
+shivamjaiswal@Shivams-MacBook-Air session-14-kubernetes-troubleshooting % kubectl get nodes --show-labels | cut -c 1-150
+NAME                STATUS   ROLES           AGE   VERSION   LABELS
+devops-assignment   Ready    control-plane   40m   v1.35.0   beta.kubernetes.io/arch=arm64,beta.kubernetes.io/os=linux,kubernetes.io/arch=arm64,kubern
+shivamjaiswal@Shivams-MacBook-Air session-14-kubernetes-troubleshooting %

@@ -1,0 +1,5 @@
+shivamjaiswal@Shivams-MacBook-Air session-14-kubernetes-troubleshooting % WEB_POD_IP=$(kubectl -n session14 get pods -l app=web -o jsonpath='{.items[0].status.podIP}')
+shivamjaiswal@Shivams-MacBook-Air session-14-kubernetes-troubleshooting % kubectl -n session14 exec dns-test -- wget -T 3 -qO- "http://$WEB_POD_IP:81"
+wget: can't connect to remote host (10.244.0.57): Connection refused
+command terminated with exit code 1
+shivamjaiswal@Shivams-MacBook-Air session-14-kubernetes-troubleshooting %

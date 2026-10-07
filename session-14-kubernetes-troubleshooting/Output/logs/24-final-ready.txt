@@ -1,0 +1,22 @@
+shivamjaiswal@Shivams-MacBook-Air session-14-kubernetes-troubleshooting % kubectl -n session14 get pods
+NAME                                   READY   STATUS    RESTARTS   AGE
+config-demo                            1/1     Running   0          5m5s
+crash-demo                             1/1     Running   0          2m19s
+creating-demo                          1/1     Running   0          5m5s
+dns-test                               1/1     Running   0          5m5s
+events-demo                            1/1     Running   0          5m5s
+exec-demo                              1/1     Running   0          5m5s
+get-demo                               1/1     Running   0          5m5s
+image-demo                             1/1     Running   0          5m5s
+logs-demo                              1/1     Running   0          5m5s
+pending-demo                           1/1     Running   0          2m4s
+project-broken-pod                     1/1     Running   0          5m5s
+troubleshooting-app-84b9cc65f4-lsw82   1/1     Running   0          5m5s
+troubleshooting-app-84b9cc65f4-sj9pm   1/1     Running   0          5m5s
+web-55588d64c9-jjpmw                   1/1     Running   0          5m5s
+web-55588d64c9-w95d7                   1/1     Running   0          5m5s
+shivamjaiswal@Shivams-MacBook-Air session-14-kubernetes-troubleshooting % kubectl -n session14 get deployments
+NAME                  READY   UP-TO-DATE   AVAILABLE   AGE
+troubleshooting-app   2/2     2            2           5m6s
+web                   2/2     2            2           5m6s
+shivamjaiswal@Shivams-MacBook-Air session-14-kubernetes-troubleshooting %

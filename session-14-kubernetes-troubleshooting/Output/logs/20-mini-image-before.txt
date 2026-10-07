@@ -1,0 +1,15 @@
+shivamjaiswal@Shivams-MacBook-Air session-14-kubernetes-troubleshooting % kubectl -n session14 get pod project-broken-pod
+NAME                 READY   STATUS             RESTARTS   AGE
+project-broken-pod   0/1     ImagePullBackOff   0          4m51s
+shivamjaiswal@Shivams-MacBook-Air session-14-kubernetes-troubleshooting % kubectl -n session14 describe pod project-broken-pod | tail -n 10
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type     Reason     Age                   From               Message
+  ----     ------     ----                  ----               -------
+  Normal   Scheduled  4m51s                 default-scheduler  Successfully assigned session14/project-broken-pod to devops-assignment
+  Normal   Pulling    92s (x5 over 4m49s)   kubelet            spec.containers{app}: Pulling image "nginx:this-tag-does-not-exist"
+  Warning  Failed     89s (x5 over 4m45s)   kubelet            spec.containers{app}: Failed to pull image "nginx:this-tag-does-not-exist": rpc error: code = NotFound desc = failed to pull and unpack image "docker.io/library/nginx:this-tag-does-not-exist": failed to resolve reference "docker.io/library/nginx:this-tag-does-not-exist": docker.io/library/nginx:this-tag-does-not-exist: not found
+  Warning  Failed     89s (x5 over 4m45s)   kubelet            spec.containers{app}: Error: ErrImagePull
+  Warning  Failed     36s (x15 over 4m45s)  kubelet            spec.containers{app}: Error: ImagePullBackOff
+  Normal   BackOff    10s (x17 over 4m45s)  kubelet            spec.containers{app}: Back-off pulling image "nginx:this-tag-does-not-exist"
+shivamjaiswal@Shivams-MacBook-Air session-14-kubernetes-troubleshooting %

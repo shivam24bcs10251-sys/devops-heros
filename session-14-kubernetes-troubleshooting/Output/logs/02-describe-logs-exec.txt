@@ -1,0 +1,22 @@
+shivamjaiswal@Shivams-MacBook-Air session-14-kubernetes-troubleshooting % kubectl -n session14 describe pod get-demo | head -n 12
+Name:             get-demo
+Namespace:        session14
+Priority:         0
+Service Account:  default
+Node:             devops-assignment/192.168.49.2
+Start Time:       Wed, 07 Oct 2026 13:38:16 +0530
+Labels:           app=get-demo
+Annotations:      <none>
+Status:           Running
+IP:               10.244.0.52
+IPs:
+  IP:  10.244.0.52
+shivamjaiswal@Shivams-MacBook-Air session-14-kubernetes-troubleshooting % kubectl -n session14 logs logs-demo --tail=5
+Application is healthy
+Application is healthy
+Application is healthy
+Application is healthy
+Application is healthy
+shivamjaiswal@Shivams-MacBook-Air session-14-kubernetes-troubleshooting % kubectl -n session14 exec exec-demo -- nginx -v
+nginx version: nginx/1.28.3
+shivamjaiswal@Shivams-MacBook-Air session-14-kubernetes-troubleshooting %

@@ -1,0 +1,15 @@
+shivamjaiswal@Shivams-MacBook-Air session-14-kubernetes-troubleshooting % kubectl -n session14 get pod image-demo
+NAME         READY   STATUS             RESTARTS   AGE
+image-demo   0/1     ImagePullBackOff   0          2m50s
+shivamjaiswal@Shivams-MacBook-Air session-14-kubernetes-troubleshooting % kubectl -n session14 describe pod image-demo | tail -n 10
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type     Reason     Age                  From               Message
+  ----     ------     ----                 ----               -------
+  Normal   Scheduled  2m51s                default-scheduler  Successfully assigned session14/image-demo to devops-assignment
+  Normal   Pulling    74s (x4 over 2m49s)  kubelet            spec.containers{app}: Pulling image "nginx:this-image-does-not-exist"
+  Warning  Failed     72s (x4 over 2m47s)  kubelet            spec.containers{app}: Failed to pull image "nginx:this-image-does-not-exist": rpc error: code = NotFound desc = failed to pull and unpack image "docker.io/library/nginx:this-image-does-not-exist": failed to resolve reference "docker.io/library/nginx:this-image-does-not-exist": docker.io/library/nginx:this-image-does-not-exist: not found
+  Warning  Failed     72s (x4 over 2m47s)  kubelet            spec.containers{app}: Error: ErrImagePull
+  Normal   BackOff    7s (x10 over 2m46s)  kubelet            spec.containers{app}: Back-off pulling image "nginx:this-image-does-not-exist"
+  Warning  Failed     7s (x10 over 2m46s)  kubelet            spec.containers{app}: Error: ImagePullBackOff
+shivamjaiswal@Shivams-MacBook-Air session-14-kubernetes-troubleshooting %

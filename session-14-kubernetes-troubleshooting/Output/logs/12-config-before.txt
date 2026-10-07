@@ -1,0 +1,13 @@
+shivamjaiswal@Shivams-MacBook-Air session-14-kubernetes-troubleshooting % kubectl -n session14 get pod config-demo
+NAME          READY   STATUS                       RESTARTS   AGE
+config-demo   0/1     CreateContainerConfigError   0          4m16s
+shivamjaiswal@Shivams-MacBook-Air session-14-kubernetes-troubleshooting % kubectl -n session14 describe pod config-demo | tail -n 8
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type     Reason     Age                  From               Message
+  ----     ------     ----                 ----               -------
+  Normal   Scheduled  4m16s                default-scheduler  Successfully assigned session14/config-demo to devops-assignment
+  Normal   Pulled     4s (x22 over 4m14s)  kubelet            spec.containers{app}: Container image "busybox:1.37" already present on machine and can be accessed by the pod
+  Warning  Failed     4s (x22 over 4m14s)  kubelet            spec.containers{app}: Error: configmap "required-config" not found
+shivamjaiswal@Shivams-MacBook-Air session-14-kubernetes-troubleshooting %

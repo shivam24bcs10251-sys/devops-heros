@@ -1,0 +1,8 @@
+shivamjaiswal@Shivams-MacBook-Air session-14-kubernetes-troubleshooting % kubectl -n session14 patch svc troubleshooting-service -p '{"spec":{"selector":{"app":"troubleshooting-app"}}}'
+service/troubleshooting-service patched
+shivamjaiswal@Shivams-MacBook-Air session-14-kubernetes-troubleshooting % kubectl -n session14 get endpointslices -l kubernetes.io/service-name=troubleshooting-service
+NAME                            ADDRESSTYPE   PORTS   ENDPOINTS                 AGE
+troubleshooting-service-5xb4q   IPv4          80      10.244.0.59,10.244.0.61   5m2s
+shivamjaiswal@Shivams-MacBook-Air session-14-kubernetes-troubleshooting % kubectl -n session14 exec dns-test -- wget -qO- http://troubleshooting-service | sed -n "/<h1>/p"
+<h1>Welcome to nginx!</h1>
+shivamjaiswal@Shivams-MacBook-Air session-14-kubernetes-troubleshooting %

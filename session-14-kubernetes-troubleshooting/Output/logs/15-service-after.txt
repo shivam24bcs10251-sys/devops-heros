@@ -1,0 +1,8 @@
+shivamjaiswal@Shivams-MacBook-Air session-14-kubernetes-troubleshooting % kubectl -n session14 patch svc broken-service -p '{"spec":{"selector":{"app":"web"}}}'
+service/broken-service patched
+shivamjaiswal@Shivams-MacBook-Air session-14-kubernetes-troubleshooting % kubectl -n session14 get endpointslices -l kubernetes.io/service-name=broken-service
+NAME                   ADDRESSTYPE   PORTS   ENDPOINTS                 AGE
+broken-service-rddhc   IPv4          80      10.244.0.57,10.244.0.56   4m35s
+shivamjaiswal@Shivams-MacBook-Air session-14-kubernetes-troubleshooting % kubectl -n session14 exec dns-test -- wget -qO- http://broken-service | sed -n "/<h1>/p"
+<h1>Welcome to nginx!</h1>
+shivamjaiswal@Shivams-MacBook-Air session-14-kubernetes-troubleshooting %

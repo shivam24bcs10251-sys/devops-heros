@@ -1,0 +1,25 @@
+shivamjaiswal@Shivams-MacBook-Air session-14-kubernetes-troubleshooting % kubectl -n session14 events --for pod/pending-demo
+LAST SEEN   TYPE      REASON             OBJECT             MESSAGE
+2m37s       Warning   FailedScheduling   Pod/pending-demo   0/1 nodes are available: 1 node(s) didn't match Pod's node affinity/selector. no new claims to deallocate, preemption: 0/1 nodes are available: 1 Preemption is not helpful for scheduling.
+shivamjaiswal@Shivams-MacBook-Air session-14-kubernetes-troubleshooting % kubectl explain pod.spec.containers | head -n 10
+KIND:       Pod
+VERSION:    v1
+
+FIELD: containers <[]Container>
+
+
+DESCRIPTION:
+    List of containers belonging to the pod. Containers cannot currently be
+    added or removed. There must be at least one container in a Pod. Cannot be
+    updated.
+shivamjaiswal@Shivams-MacBook-Air session-14-kubernetes-troubleshooting % kubectl -n session14 top pods | head -n 9
+NAME                                   CPU(cores)   MEMORY(bytes)
+dns-test                               0m           0Mi
+events-demo                            0m           6Mi
+exec-demo                              0m           6Mi
+get-demo                               0m           6Mi
+logs-demo                              1m           0Mi
+troubleshooting-app-84b9cc65f4-lsw82   0m           6Mi
+troubleshooting-app-84b9cc65f4-sj9pm   0m           6Mi
+web-55588d64c9-jjpmw                   0m           6Mi
+shivamjaiswal@Shivams-MacBook-Air session-14-kubernetes-troubleshooting %

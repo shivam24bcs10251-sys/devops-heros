@@ -1,0 +1,10 @@
+shivamjaiswal@Shivams-MacBook-Air session-14-kubernetes-troubleshooting % kubectl -n session14 patch svc troubleshooting-service -p '{"spec":{"selector":{"app":"wrong-app"}}}'
+service/troubleshooting-service patched
+shivamjaiswal@Shivams-MacBook-Air session-14-kubernetes-troubleshooting % kubectl -n session14 get endpointslices -l kubernetes.io/service-name=troubleshooting-service
+NAME                            ADDRESSTYPE   PORTS     ENDPOINTS   AGE
+troubleshooting-service-5xb4q   IPv4          <unset>   <unset>     4m58s
+shivamjaiswal@Shivams-MacBook-Air session-14-kubernetes-troubleshooting % kubectl -n session14 get pods -l app=troubleshooting-app --show-labels
+NAME                                   READY   STATUS    RESTARTS   AGE     LABELS
+troubleshooting-app-84b9cc65f4-lsw82   1/1     Running   0          4m59s   app=troubleshooting-app,pod-template-hash=84b9cc65f4
+troubleshooting-app-84b9cc65f4-sj9pm   1/1     Running   0          4m59s   app=troubleshooting-app,pod-template-hash=84b9cc65f4
+shivamjaiswal@Shivams-MacBook-Air session-14-kubernetes-troubleshooting %

@@ -1,0 +1,24 @@
+shivamjaiswal@Shivams-MacBook-Air session-14-kubernetes-troubleshooting % kubectl -n session14 get pods
+NAME                                   READY   STATUS                       RESTARTS      AGE
+config-demo                            0/1     CreateContainerConfigError   0             2m30s
+crash-demo                             0/1     CrashLoopBackOff             4 (66s ago)   2m30s
+creating-demo                          0/1     ContainerCreating            0             2m30s
+dns-test                               1/1     Running                      0             2m30s
+events-demo                            1/1     Running                      0             2m30s
+exec-demo                              1/1     Running                      0             2m30s
+get-demo                               1/1     Running                      0             2m30s
+image-demo                             0/1     ImagePullBackOff             0             2m30s
+logs-demo                              1/1     Running                      0             2m30s
+pending-demo                           0/1     Pending                      0             2m30s
+project-broken-pod                     0/1     ImagePullBackOff             0             2m30s
+troubleshooting-app-84b9cc65f4-lsw82   1/1     Running                      0             2m30s
+troubleshooting-app-84b9cc65f4-sj9pm   1/1     Running                      0             2m30s
+web-55588d64c9-jjpmw                   1/1     Running                      0             2m30s
+web-55588d64c9-w95d7                   1/1     Running                      0             2m30s
+shivamjaiswal@Shivams-MacBook-Air session-14-kubernetes-troubleshooting % kubectl -n session14 get pod get-demo -o wide
+NAME       READY   STATUS    RESTARTS   AGE     IP            NODE                NOMINATED NODE   READINESS GATES
+get-demo   1/1     Running   0          2m31s   10.244.0.52   devops-assignment   <none>           <none>
+shivamjaiswal@Shivams-MacBook-Air session-14-kubernetes-troubleshooting % kubectl -n session14 get svc web-service
+NAME          TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)   AGE
+web-service   ClusterIP   10.100.172.98   <none>        80/TCP    2m31s
+shivamjaiswal@Shivams-MacBook-Air session-14-kubernetes-troubleshooting %

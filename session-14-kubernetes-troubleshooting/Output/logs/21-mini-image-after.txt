@@ -1,0 +1,11 @@
+shivamjaiswal@Shivams-MacBook-Air session-14-kubernetes-troubleshooting % kubectl -n session14 set image pod/project-broken-pod app=nginx:1.28-alpine
+pod/project-broken-pod image updated
+shivamjaiswal@Shivams-MacBook-Air session-14-kubernetes-troubleshooting % kubectl -n session14 wait --for=condition=Ready pod/project-broken-pod --timeout=120s
+pod/project-broken-pod condition met
+shivamjaiswal@Shivams-MacBook-Air session-14-kubernetes-troubleshooting % kubectl -n session14 get pod project-broken-pod
+NAME                 READY   STATUS    RESTARTS   AGE
+project-broken-pod   1/1     Running   0          4m55s
+shivamjaiswal@Shivams-MacBook-Air session-14-kubernetes-troubleshooting % kubectl -n session14 get deploy troubleshooting-app
+NAME                  READY   UP-TO-DATE   AVAILABLE   AGE
+troubleshooting-app   2/2     2            2           4m55s
+shivamjaiswal@Shivams-MacBook-Air session-14-kubernetes-troubleshooting %

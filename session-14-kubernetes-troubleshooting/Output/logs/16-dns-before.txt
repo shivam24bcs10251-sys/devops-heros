@@ -1,0 +1,12 @@
+shivamjaiswal@Shivams-MacBook-Air session-14-kubernetes-troubleshooting % kubectl -n session14 exec dns-test -- cat /etc/resolv.conf
+search session14.svc.cluster.local svc.cluster.local cluster.local
+nameserver 10.96.0.10
+options ndots:5
+shivamjaiswal@Shivams-MacBook-Air session-14-kubernetes-troubleshooting % kubectl -n session14 exec dns-test -- nslookup -type=A web-service.wrong-namespace.svc.cluster.local.
+Server:		10.96.0.10
+Address:	10.96.0.10:53
+
+** server can't find web-service.wrong-namespace.svc.cluster.local.: NXDOMAIN
+
+command terminated with exit code 1
+shivamjaiswal@Shivams-MacBook-Air session-14-kubernetes-troubleshooting %

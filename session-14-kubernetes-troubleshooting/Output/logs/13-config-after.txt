@@ -1,0 +1,7 @@
+shivamjaiswal@Shivams-MacBook-Air session-14-kubernetes-troubleshooting % kubectl -n session14 create configmap required-config --from-literal=APP_MODE=learning
+configmap/required-config created
+shivamjaiswal@Shivams-MacBook-Air session-14-kubernetes-troubleshooting % kubectl -n session14 wait --for=condition=Ready pod/config-demo --timeout=180s
+pod/config-demo condition met
+shivamjaiswal@Shivams-MacBook-Air session-14-kubernetes-troubleshooting % kubectl -n session14 exec config-demo -- printenv APP_MODE
+learning
+shivamjaiswal@Shivams-MacBook-Air session-14-kubernetes-troubleshooting %
