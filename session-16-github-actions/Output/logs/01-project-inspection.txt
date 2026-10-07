@@ -1,0 +1,31 @@
+session-16-github-actions/10-final-cicd-pipeline/.gitignore
+session-16-github-actions/10-final-cicd-pipeline/app/__init__.py
+session-16-github-actions/10-final-cicd-pipeline/app/calculator.py
+session-16-github-actions/10-final-cicd-pipeline/app/server.py
+session-16-github-actions/10-final-cicd-pipeline/build.sh
+session-16-github-actions/10-final-cicd-pipeline/deploy.sh
+session-16-github-actions/10-final-cicd-pipeline/Dockerfile
+session-16-github-actions/10-final-cicd-pipeline/kubernetes.yaml
+session-16-github-actions/10-final-cicd-pipeline/README.md
+session-16-github-actions/10-final-cicd-pipeline/requirements.txt
+session-16-github-actions/10-final-cicd-pipeline/tests/test_calculator.py
+shivamjaiswal@Shivams-MacBook-Air session-16-github-actions % head -18 ../.github/workflows/session16-ci-cd.yml
+name: Session 16 CI/CD
+on:
+  push:
+    branches: [session16-github-actions]
+    paths:
+      - 'session-16-github-actions/session-16-github-actions/10-final-cicd-pipeline/**'
+      - '.github/workflows/session16-ci-cd.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  ci:
+    name: Test, build and upload
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: session-16-github-actions/session-16-github-actions/10-final-cicd-pipeline
+shivamjaiswal@Shivams-MacBook-Air session-16-github-actions %

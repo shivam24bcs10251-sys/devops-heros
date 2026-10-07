@@ -1,0 +1,64 @@
+name: Session 16 CI/CD
+on:
+  push:
+    branches: [session16-github-actions]
+    paths:
+      - 'session-16-github-actions/session-16-github-actions/10-final-cicd-pipeline/**'
+      - '.github/workflows/session16-ci-cd.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  ci:
+    name: Test, build and upload
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: session-16-github-actions/session-16-github-actions/10-final-cicd-pipeline
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+      - name: Install test dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Unit tests
+        run: python -m pytest -v --junitxml=build/test-results.xml
+      - name: Validate secret availability without printing it
+        env:
+          DEMO_TOKEN: ${{ secrets.SESSION16_DEMO_TOKEN }}
+        run: test -n "$DEMO_TOKEN" && echo 'Repository secret is available; value is hidden.'
+      - name: Build application and Docker image
+        run: |
+          bash build.sh
+          docker build -t session16-calculator:demo .
+          docker save session16-calculator:demo | gzip > build/calculator-image.tar.gz
+          python -m pytest --junitxml=build/test-results.xml
+      - uses: actions/upload-artifact@v7
+        with:
+          name: session16-calculator-build
+          path: session-16-github-actions/session-16-github-actions/10-final-cicd-pipeline/build/
+          retention-days: 7
+          if-no-files-found: error
+  cd:
+    name: Deploy and verify Kubernetes
+    needs: ci
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: session-16-github-actions/session-16-github-actions/10-final-cicd-pipeline
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/download-artifact@v8
+        with:
+          name: session16-calculator-build
+          path: session-16-github-actions/session-16-github-actions/10-final-cicd-pipeline/build
+      - name: Load delivered image and install Kind
+        run: |
+          gunzip -c build/calculator-image.tar.gz | docker load
+          curl -fsSL https://kind.sigs.k8s.io/dl/v0.33.0/kind-linux-amd64 -o /tmp/kind
+          sudo install /tmp/kind /usr/local/bin/kind
+      - name: Deploy and test HTTP response
+        run: bash deploy.sh

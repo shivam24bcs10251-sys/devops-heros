@@ -1,0 +1,3 @@
+shivamjaiswal@Shivams-MacBook-Air session-16-github-actions % /tmp/session16-venv/bin/python -m pytest -v session-16-github-actions/10-final-cicd-pipeline/tests
+/private/tmp/session16-venv/bin/python: No module named pytest
+shivamjaiswal@Shivams-MacBook-Air session-16-github-actions %
