@@ -26,10 +26,10 @@ Run each port-forward in its own terminal (bound to loopback):
 ```bash
 kubectl port-forward -n session20 svc/session20-mini 8084:80
 kubectl port-forward -n session20 svc/session20-prometheus 9090:9090
-kubectl port-forward -n session20 svc/session20-grafana 3000:3000
+kubectl port-forward -n session20 svc/session20-grafana 3004:3000
 ```
 
-Open Grafana at http://127.0.0.1:3000/d/session20 and Prometheus at http://127.0.0.1:9090. Grafana's classroom dashboard is anonymously readable and has no initial admin account; services remain ClusterIP. Monitoring history uses emptyDir and is lost on Pod replacement.
+Open Grafana at http://127.0.0.1:3004/d/session20 and Prometheus at http://127.0.0.1:9090. Grafana's classroom dashboard is anonymously readable and has no initial admin account; services remain ClusterIP. Monitoring history uses emptyDir and is lost on Pod replacement.
 
 ## Demonstrations
 
