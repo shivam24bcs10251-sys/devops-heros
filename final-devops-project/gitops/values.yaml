@@ -1,4 +1,4 @@
 backend:
-  tag: bootstrap
+  tag: 22e7cbd8787485dae798a10532d59c6d19f3882b
 frontend:
-  tag: bootstrap
+  tag: 22e7cbd8787485dae798a10532d59c6d19f3882b
