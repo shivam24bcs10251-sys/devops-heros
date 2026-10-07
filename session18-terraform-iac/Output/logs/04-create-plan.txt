@@ -1,0 +1,23 @@
+shivamjaiswal@Shivams-MacBook-Air session18-terraform-iac % cd terraform-s3-demo
+shivamjaiswal@Shivams-MacBook-Air terraform-s3-demo % terraform plan -input=false -no-color -out=create.tfplan > ../Output/create-plan.txt && tail -20 ../Output/create-plan.txt
+
+      + versioning_configuration {
+          + mfa_delete = (known after apply)
+          + status     = "Enabled"
+        }
+    }
+
+Plan: 4 to add, 0 to change, 0 to destroy.
+
+Changes to Outputs:
+  + bucket_arn    = (known after apply)
+  + bucket_name   = (known after apply)
+  + bucket_region = "ap-south-1"
+
+─────────────────────────────────────────────────────────────────────────────
+
+Saved the plan to: create.tfplan
+
+To perform exactly these actions, run the following command to apply:
+    terraform apply "create.tfplan"
+shivamjaiswal@Shivams-MacBook-Air terraform-s3-demo %

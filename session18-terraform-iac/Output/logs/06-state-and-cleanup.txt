@@ -1,0 +1,19 @@
+shivamjaiswal@Shivams-MacBook-Air session18-terraform-iac % cd terraform-s3-demo
+shivamjaiswal@Shivams-MacBook-Air terraform-s3-demo % terraform show -no-color
+
+
+Outputs:
+
+bucket_region = "ap-south-1"
+shivamjaiswal@Shivams-MacBook-Air terraform-s3-demo % terraform output -no-color
+bucket_region = "ap-south-1"
+shivamjaiswal@Shivams-MacBook-Air terraform-s3-demo % terraform state list
+shivamjaiswal@Shivams-MacBook-Air terraform-s3-demo % terraform destroy -input=false -auto-approve -no-color
+
+Changes to Outputs:
+  - bucket_region = "ap-south-1" -> null
+
+You can apply this plan to save these new output values to the Terraform state, without changing any real infrastructure.
+
+Destroy complete! Resources: 0 destroyed.
+shivamjaiswal@Shivams-MacBook-Air terraform-s3-demo %

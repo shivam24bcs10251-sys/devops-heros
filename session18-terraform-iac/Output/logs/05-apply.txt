@@ -1,0 +1,11 @@
+shivamjaiswal@Shivams-MacBook-Air session18-terraform-iac % cd terraform-s3-demo
+shivamjaiswal@Shivams-MacBook-Air terraform-s3-demo % terraform apply -input=false -no-color create.tfplan
+aws_s3_bucket.demo: Creating...
+
+Error: creating S3 Bucket (devops-session18-shivam-20261007-ffda50): operation error S3: CreateBucket, https response error StatusCode: 403, RequestID: 0WAE1P8V9H4X81Q4, HostID: W20hz5+f6zl6o3mpwbiwNZrZpuZ6hBft1Q9JWs+TIKB2Q/wdJ5VdS10rsuSkhofM4I8s2E66NxwHhwzkAKcM/YzpLD0R4faQ, api error AccessDenied: User: arn:aws:iam::765064162182:user/satyam is not authorized to perform: s3:CreateBucket on resource: "arn:aws:s3:::devops-session18-shivam-20261007-ffda50" because no identity-based policy allows the s3:CreateBucket action
+
+  with aws_s3_bucket.demo,
+  on main.tf line 1, in resource "aws_s3_bucket" "demo":
+   1: resource "aws_s3_bucket" "demo" {
+
+shivamjaiswal@Shivams-MacBook-Air terraform-s3-demo %

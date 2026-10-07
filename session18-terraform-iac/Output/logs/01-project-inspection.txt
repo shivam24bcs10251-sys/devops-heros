@@ -1,0 +1,21 @@
+shivamjaiswal@Shivams-MacBook-Air session18-terraform-iac % find terraform-s3-demo -maxdepth 1 -type f | sort
+terraform-s3-demo/.gitignore
+terraform-s3-demo/.terraform.lock.hcl
+terraform-s3-demo/main.tf
+terraform-s3-demo/outputs.tf
+terraform-s3-demo/provider.tf
+terraform-s3-demo/README.md
+terraform-s3-demo/terraform.tf
+terraform-s3-demo/terraform.tfvars
+terraform-s3-demo/variables.tf
+shivamjaiswal@Shivams-MacBook-Air session18-terraform-iac % find aws-services -name README.md | sort
+aws-services/01-iam/README.md
+aws-services/02-ec2/README.md
+aws-services/03-s3/README.md
+aws-services/04-vpc/README.md
+aws-services/05-dynamodb-rds/README.md
+shivamjaiswal@Shivams-MacBook-Air session18-terraform-iac % terraform version | head -3
+Terraform v1.16.4
+on darwin_arm64
+
+shivamjaiswal@Shivams-MacBook-Air session18-terraform-iac %
