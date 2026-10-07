@@ -1,0 +1,9 @@
+service:
+  type: ClusterIP
+providers:
+  kubernetesIngress:
+    enabled: true
+  kubernetesGateway:
+    enabled: false
+ingressClass:
+  name: traefik

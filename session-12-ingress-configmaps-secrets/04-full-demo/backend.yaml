@@ -5,7 +5,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: yatri-backend
-  namespace: default
+  namespace: session12
   labels:
     app: yatri-backend
 spec:
@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: python:3.11-alpine3.19
+          image: python:3.12-alpine
           command:
             - "sh"
             - "-c"
@@ -91,7 +91,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: yatri-backend-service
-  namespace: default
+  namespace: session12
   labels:
     app: yatri-backend
 spec:

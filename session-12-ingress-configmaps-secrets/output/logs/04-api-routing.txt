@@ -1,0 +1,11 @@
+shivamjaiswal@Shivams-MacBook-Air session-12-ingress-configmaps-secrets % curl -fsS -H "Host: yatri.local" http://127.0.0.1:8082/api/
+Yatri Backend API
+=================
+ENVIRONMENT     : learning
+LOG_LEVEL       : INFO
+DEFAULT_CURRENCY: INR
+POSTGRES_USER   : demo-user
+POSTGRES_DB     : demo-db
+shivamjaiswal@Shivams-MacBook-Air session-12-ingress-configmaps-secrets % curl -s -o /dev/null -w "Unknown host HTTP status: %{http_code}\n" -H "Host: unknown.local" http://127.0.0.1:8082/
+Unknown host HTTP status: 404
+shivamjaiswal@Shivams-MacBook-Air session-12-ingress-configmaps-secrets %

@@ -1,0 +1,9 @@
+shivamjaiswal@Shivams-MacBook-Air session-12-ingress-configmaps-secrets % kubectl get ingressclasses
+NAME                        CONTROLLER                      PARAMETERS   AGE
+session12-ingress-traefik   traefik.io/ingress-controller   <none>       3m54s
+shivamjaiswal@Shivams-MacBook-Air session-12-ingress-configmaps-secrets % kubectl -n session12 get ingress yatri-ingress
+NAME            CLASS     HOSTS         ADDRESS   PORTS   AGE
+yatri-ingress   traefik   yatri.local             80      3m14s
+shivamjaiswal@Shivams-MacBook-Air session-12-ingress-configmaps-secrets % curl -s -o /dev/null -w "Before class fix HTTP status: %{http_code}\n" -H "Host: yatri.local" http://127.0.0.1:8082/
+Before class fix HTTP status: 404
+shivamjaiswal@Shivams-MacBook-Air session-12-ingress-configmaps-secrets %

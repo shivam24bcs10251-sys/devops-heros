@@ -1,0 +1,16 @@
+shivamjaiswal@Shivams-MacBook-Air session-12-ingress-configmaps-secrets % printf 'demo-session12-only\n' > /tmp/session12-demo-password.txt
+shivamjaiswal@Shivams-MacBook-Air session-12-ingress-configmaps-secrets % kubectl -n session12 create secret generic yatri-db-secret --from-literal=POSTGRES_USER=demo-user --from-literal=POSTGRES_DB=demo-db --from-file=POSTGRES_PASSWORD=/tmp/session12-demo-password.txt --dry-run=client -o yaml | kubectl apply -f -
+secret/yatri-db-secret configured
+shivamjaiswal@Shivams-MacBook-Air session-12-ingress-configmaps-secrets % kubectl -n session12 rollout restart deployment/yatri-backend
+deployment.apps/yatri-backend restarted
+shivamjaiswal@Shivams-MacBook-Air session-12-ingress-configmaps-secrets % kubectl -n session12 rollout status deployment/yatri-backend --timeout=120s
+Waiting for deployment "yatri-backend" rollout to finish: 1 out of 2 new replicas have been updated...
+Waiting for deployment "yatri-backend" rollout to finish: 1 out of 2 new replicas have been updated...
+Waiting for deployment "yatri-backend" rollout to finish: 1 out of 2 new replicas have been updated...
+Waiting for deployment "yatri-backend" rollout to finish: 1 old replicas are pending termination...
+Waiting for deployment "yatri-backend" rollout to finish: 1 old replicas are pending termination...
+deployment "yatri-backend" successfully rolled out
+shivamjaiswal@Shivams-MacBook-Air session-12-ingress-configmaps-secrets % kubectl -n session12 exec deploy/yatri-backend -- python3 -c "import os; p=os.environ['POSTGRES_PASSWORD']; print(repr(p)); print('Exact match:', p=='demo-session12-only')"
+'demo-session12-only\n'
+Exact match: False
+shivamjaiswal@Shivams-MacBook-Air session-12-ingress-configmaps-secrets %

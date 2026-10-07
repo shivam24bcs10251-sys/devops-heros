@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: broken-backend
+  namespace: session12
+spec:
+  selector:
+    app: wrong-backend
+  ports:
+    - port: 80
+      targetPort: 5000

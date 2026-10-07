@@ -1,0 +1,25 @@
+shivamjaiswal@Shivams-MacBook-Air session-12-ingress-configmaps-secrets % kubectl apply -f troubleshooting/broken-service.yaml
+service/broken-backend configured
+shivamjaiswal@Shivams-MacBook-Air session-12-ingress-configmaps-secrets % kubectl -n session12 describe svc broken-backend | sed -n "1,10p"
+Name:                     broken-backend
+Namespace:                session12
+Labels:                   <none>
+Annotations:              <none>
+Selector:                 app=wrong-backend
+Type:                     ClusterIP
+IP Family Policy:         SingleStack
+IP Families:              IPv4
+IP:                       10.109.8.66
+IPs:                      10.109.8.66
+shivamjaiswal@Shivams-MacBook-Air session-12-ingress-configmaps-secrets % kubectl -n session12 get pods -l app=yatri-backend --show-labels
+NAME                             READY   STATUS        RESTARTS   AGE     LABELS
+yatri-backend-755dd9f9d7-wn46k   1/1     Running       0          7s      app=yatri-backend,pod-template-hash=755dd9f9d7
+yatri-backend-755dd9f9d7-zv7cp   1/1     Running       0          6s      app=yatri-backend,pod-template-hash=755dd9f9d7
+yatri-backend-777bf7b44c-49zcf   1/1     Terminating   0          14s     app=yatri-backend,pod-template-hash=777bf7b44c
+yatri-backend-777bf7b44c-wzx5j   1/1     Terminating   0          12s     app=yatri-backend,pod-template-hash=777bf7b44c
+yatri-backend-bd6fc666c-kk7kr    1/1     Terminating   0          2m19s   app=yatri-backend,pod-template-hash=bd6fc666c
+yatri-backend-bd6fc666c-ttwzq    1/1     Terminating   0          2m20s   app=yatri-backend,pod-template-hash=bd6fc666c
+shivamjaiswal@Shivams-MacBook-Air session-12-ingress-configmaps-secrets % kubectl -n session12 get endpointslices -l kubernetes.io/service-name=broken-backend
+NAME                   ADDRESSTYPE   PORTS     ENDPOINTS   AGE
+broken-backend-mltvp   IPv4          <unset>   <unset>     2m14s
+shivamjaiswal@Shivams-MacBook-Air session-12-ingress-configmaps-secrets %

@@ -1,0 +1,14 @@
+shivamjaiswal@Shivams-MacBook-Air session-12-ingress-configmaps-secrets % kubectl -n session12-controller get pods
+NAME                                         READY   STATUS    RESTARTS   AGE
+session12-ingress-traefik-6f9cd55dfc-qh5x5   1/1     Running   0          4m56s
+shivamjaiswal@Shivams-MacBook-Air session-12-ingress-configmaps-secrets % kubectl -n session12 get ingress yatri-ingress
+NAME            CLASS     HOSTS         ADDRESS     PORTS   AGE
+yatri-ingress   traefik   yatri.local   127.0.0.1   80      4m17s
+shivamjaiswal@Shivams-MacBook-Air session-12-ingress-configmaps-secrets % kubectl -n session12 get services
+NAME                     TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)   AGE
+broken-backend           ClusterIP   10.109.8.66      <none>        80/TCP    113s
+yatri-backend-service    ClusterIP   10.103.177.210   <none>        80/TCP    4m18s
+yatri-frontend-service   ClusterIP   10.109.152.189   <none>        80/TCP    4m18s
+shivamjaiswal@Shivams-MacBook-Air session-12-ingress-configmaps-secrets % curl -fsS -H "Host: yatri.local" http://127.0.0.1:8082/ | sed -n "/<h1>/p"
+<h1>Welcome to nginx!</h1>
+shivamjaiswal@Shivams-MacBook-Air session-12-ingress-configmaps-secrets %

@@ -1,0 +1,20 @@
+shivamjaiswal@Shivams-MacBook-Air session-12-ingress-configmaps-secrets % kubectl -n session12 patch svc broken-backend -p '{"spec":{"selector":{"app":"yatri-backend"}}}'
+service/broken-backend patched
+shivamjaiswal@Shivams-MacBook-Air session-12-ingress-configmaps-secrets % kubectl -n session12 get endpointslices -l kubernetes.io/service-name=broken-backend
+NAME                   ADDRESSTYPE   PORTS   ENDPOINTS                                         AGE
+broken-backend-mltvp   IPv4          5000    10.244.0.29,10.244.0.30,10.244.0.32 + 3 more...   2m18s
+shivamjaiswal@Shivams-MacBook-Air session-12-ingress-configmaps-secrets % kubectl -n session12 get pods
+NAME                             READY   STATUS        RESTARTS   AGE
+yatri-backend-755dd9f9d7-wn46k   1/1     Running       0          11s
+yatri-backend-755dd9f9d7-zv7cp   1/1     Running       0          10s
+yatri-backend-777bf7b44c-49zcf   1/1     Terminating   0          18s
+yatri-backend-777bf7b44c-wzx5j   1/1     Terminating   0          16s
+yatri-backend-bd6fc666c-kk7kr    1/1     Terminating   0          2m23s
+yatri-backend-bd6fc666c-ttwzq    1/1     Terminating   0          2m24s
+yatri-frontend-cf69dd679-65cc5   1/1     Running       0          4m43s
+yatri-frontend-cf69dd679-tjzqp   1/1     Running       0          4m43s
+shivamjaiswal@Shivams-MacBook-Air session-12-ingress-configmaps-secrets % curl -fsS -H "Host: yatri.local" http://127.0.0.1:8082/api/ | head -n 3
+Yatri Backend API
+=================
+ENVIRONMENT     : learning
+shivamjaiswal@Shivams-MacBook-Air session-12-ingress-configmaps-secrets %

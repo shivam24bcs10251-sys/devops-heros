@@ -1,0 +1,10 @@
+shivamjaiswal@Shivams-MacBook-Air session-12-ingress-configmaps-secrets % kubectl -n session12 get configmap yatri-app-config
+NAME               DATA   AGE
+yatri-app-config   5      4m10s
+shivamjaiswal@Shivams-MacBook-Air session-12-ingress-configmaps-secrets % kubectl -n session12 get configmap yatri-app-config -o jsonpath="{.data}"; printf "\n"
+{"APP_PORT":"5000","DEFAULT_CURRENCY":"INR","ENVIRONMENT":"learning","LOG_LEVEL":"INFO","MAX_BOOKING_DAYS":"30"}
+shivamjaiswal@Shivams-MacBook-Air session-12-ingress-configmaps-secrets % kubectl -n session12 exec deploy/yatri-backend -- printenv ENVIRONMENT LOG_LEVEL DEFAULT_CURRENCY
+learning
+INFO
+INR
+shivamjaiswal@Shivams-MacBook-Air session-12-ingress-configmaps-secrets %
