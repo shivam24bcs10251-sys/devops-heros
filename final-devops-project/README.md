@@ -251,7 +251,7 @@ Pushes to `main` and this session branch run the pipeline for relevant source pa
 | Trivy backend + frontend, AMD64 + ARM64 | Zero HIGH/CRITICAL findings in all four CI reports |
 | Kubernetes deployment checks | Passed on both native architectures |
 
-See [security details](security/README.md), [machine-readable scan summary](Output/reports/security-summary.json) and [CI reports](Output/reports/). Reports record the scanner/database snapshot; zero known findings are not a guarantee of future safety. Two legacy repository gitlinks lack entries in the provided `.gitmodules`, producing checkout post-cleanup warnings; all capstone quality, scan, publish and deployment steps still completed successfully. The existing reference files were preserved.
+See [security details](security/README.md), [machine-readable scan summary](Output/reports/security-summary.json) and [CI reports and normalization notes](Output/reports/README.md). Reports record the scanner/database snapshot; zero known findings are not a guarantee of future safety. Two legacy repository gitlinks lack entries in the provided `.gitmodules`, producing checkout post-cleanup warnings; all capstone quality, scan, publish and deployment steps still completed successfully. The existing reference files were preserved.
 
 The local secret scan archives committed source so ignored local credentials are excluded rather than suppressed through an allowlist.
 

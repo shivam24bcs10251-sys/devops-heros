@@ -1,0 +1,7 @@
+# Captured verification reports
+
+The `ci-37619323230-*` and `ci-37620612050-*` directories contain reports downloaded from successful GitHub Actions runs. Original artifacts remain on [first-release run 37619323230](https://github.com/shivam24bcs10251-sys/devops-heros/actions/runs/37619323230) and [feature-release run 37620612050](https://github.com/shivam24bcs10251-sys/devops-heros/actions/runs/37620612050).
+
+**Evidence normalization:** The public upstream Python image `GPG_KEY` fingerprint is replaced with `public-key` in the repository copies of Trivy's ImageConfig environment/history metadata. Gitleaks interpreted its six repeated appearances as generic API keys. This is a public signing-key identifier, not a password or private key. Image references/digests, package inventory, scanner results and vulnerability severities are unchanged. Original downloadable CI artifacts preserve the complete scanner output. No source-secret rule or vulnerability gate was bypassed.
+
+`security-summary.json` counts actual findings by severity from these Trivy reports. Test JUnit/coverage, SAST and dependency reports retain their original results. `initial-rollout-load.txt` preserves the pressure/rollout experiment with errors; `steady-load.txt` and `hpa-load.txt` record subsequent zero-error throttled runs. Reports are evidence snapshots, not guarantees about future vulnerability databases or production capacity.

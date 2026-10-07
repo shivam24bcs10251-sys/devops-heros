@@ -63,7 +63,7 @@
         },
         {
           "created": "2026-10-01T21:44:41Z",
-          "created_by": "ENV GPG_KEY=7169605F62C751356D054A26A821E680E5FA6305",
+          "created_by": "ENV GPG_KEY=public-key",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
@@ -166,7 +166,7 @@
         "Env": [
           "PATH=/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
           "LANG=C.UTF-8",
-          "GPG_KEY=7169605F62C751356D054A26A821E680E5FA6305",
+          "GPG_KEY=public-key",
           "PYTHON_VERSION=3.12.15",
           "PYTHON_SHA256=c2c4321961fab0fb999d66e0cecf521c2ab3994c7992873ea99e306c1094fd5a",
           "PYTHONDONTWRITEBYTECODE=1",
