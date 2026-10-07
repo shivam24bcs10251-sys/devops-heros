@@ -5,16 +5,25 @@ metadata:
 spec:
   replicas: 2
   selector:
-    matchLabels:
-      app: session17-python
+    matchLabels: {app: session17-python}
   template:
     metadata:
-      labels:
-        app: session17-python
+      labels: {app: session17-python}
     spec:
       containers:
-        - name: session17-python
-          image: nensiravaliya28/hey-cicd:__IMAGE_TAG__
-          imagePullPolicy: Always           # pull from Docker Hub
-          ports:
-            - containerPort: 5001
+        - name: dashboard
+          image: __IMAGE__
+          imagePullPolicy: Never
+          ports: [{containerPort: 5001}]
+          readinessProbe:
+            httpGet: {path: /health, port: 5001}
+          livenessProbe:
+            httpGet: {path: /health, port: 5001}
+          resources:
+            requests: {cpu: 50m, memory: 64Mi}
+            limits: {cpu: 250m, memory: 192Mi}
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 10001
+            allowPrivilegeEscalation: false
+            capabilities: {drop: [ALL]}

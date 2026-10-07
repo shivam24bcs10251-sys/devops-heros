@@ -3,14 +3,15 @@ import platform
 import datetime
 import sys
 import os
-import random
+import secrets
+_rng = secrets.SystemRandom()
 import math
 
 app = Flask(__name__)
 
 # --- In-memory storage for demo ---
 _request_count = 0
-_start_time = datetime.datetime.utcnow()
+_start_time = datetime.datetime.now(datetime.UTC)
 
 
 def _increment_requests():
@@ -35,18 +36,18 @@ def home():
 @app.route("/health")
 def health():
     _increment_requests()
-    uptime_seconds = (datetime.datetime.utcnow() - _start_time).total_seconds()
+    uptime_seconds = (datetime.datetime.now(datetime.UTC) - _start_time).total_seconds()
     return jsonify({
         "status": "healthy",
         "uptime_seconds": round(uptime_seconds, 2),
-        "timestamp": datetime.datetime.utcnow().isoformat() + "Z",
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat(),
     })
 
 
 @app.route("/api/status")
 def status():
     _increment_requests()
-    uptime = datetime.datetime.utcnow() - _start_time
+    uptime = datetime.datetime.now(datetime.UTC) - _start_time
     hours, remainder = divmod(int(uptime.total_seconds()), 3600)
     minutes, seconds = divmod(remainder, 60)
     return jsonify({
@@ -57,7 +58,7 @@ def status():
         "platform": platform.system(),
         "uptime": f"{hours:02d}h {minutes:02d}m {seconds:02d}s",
         "total_requests": _request_count,
-        "timestamp": datetime.datetime.utcnow().isoformat() + "Z",
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat(),
     })
 
 
@@ -76,9 +77,9 @@ def greet(name):
         f"Hi {name}! May your pipelines always pass! ✅",
     ]
     return jsonify({
-        "message": random.choice(greetings),
+        "message": _rng.choice(greetings),
         "name": name,
-        "timestamp": datetime.datetime.utcnow().isoformat() + "Z",
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat(),
     })
 
 
@@ -187,13 +188,13 @@ def run_pipeline():
         if failed:
             status = "skipped"
             duration = 0
-        elif random.random() < float(fail_chance):
+        elif _rng.random() < float(fail_chance):
             status = "failed"
-            duration = round(random.uniform(0.5, 5.0), 2)
+            duration = round(_rng.uniform(0.5, 5.0), 2)
             failed = True
         else:
             status = "passed"
-            duration = round(random.uniform(0.5, 15.0), 2)
+            duration = round(_rng.uniform(0.5, 15.0), 2)
 
         stages.append({
             "name": stage["name"],
@@ -204,7 +205,7 @@ def run_pipeline():
 
     overall = "failed" if failed else "passed"
     total_time = round(sum(s["duration_s"] for s in stages), 2)
-    run_id = f"run-{random.randint(1000, 9999)}"
+    run_id = f"run-{_rng.randint(1000, 9999)}"
 
     return jsonify({
         "run_id": run_id,
@@ -212,7 +213,7 @@ def run_pipeline():
         "overall_status": overall,
         "total_time_s": total_time,
         "stages": stages,
-        "triggered_at": datetime.datetime.utcnow().isoformat() + "Z",
+        "triggered_at": datetime.datetime.now(datetime.UTC).isoformat(),
     })
 
 
@@ -231,4 +232,4 @@ def server_error(e):
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5001, debug=True)
+    app.run(host="127.0.0.1", port=5001, debug=False)

@@ -1,3 +1,5 @@
+> Completed assignment: see [Session 17 submission](../README.md) for the active root workflow, enforced security policy and actual execution evidence. The teaching walkthrough below is retained as reference.
+
 # ⚡ hey-cicd — DevSecOps Dashboard
 
 ## 📁 Project Structure
