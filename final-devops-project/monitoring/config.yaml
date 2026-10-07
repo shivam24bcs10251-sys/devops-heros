@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: session21-prometheus
+  namespace: session21
+data:
+  prometheus.yaml: "global:\n  scrape_interval: 5s\n  evaluation_interval: 5s\nrule_files:\n\
+    - /etc/prometheus/alerts.yaml\nscrape_configs:\n- job_name: labledger-backend\n\
+    \  kubernetes_sd_configs:\n  - role: pod\n    namespaces:\n      names:\n    \
+    \  - session21\n  relabel_configs:\n  - source_labels:\n    - __meta_kubernetes_pod_label_app\n\
+    \    regex: labledger-backend\n    action: keep\n  - source_labels:\n    - __meta_kubernetes_pod_container_port_number\n\
+    \    regex: '8000'\n    action: keep\n  - source_labels:\n    - __meta_kubernetes_pod_name\n\
+    \    target_label: pod\n- job_name: prometheus\n  static_configs:\n  - targets:\n\
+    \    - localhost:9090\n"
+  alerts.yaml: "groups:\n- name: labledger\n  rules:\n  - alert: LabLedgerBackendScrapeDown\n\
+    \    expr: up{job=\"labledger-backend\"} == 0\n    for: 15s\n    labels:\n   \
+    \   severity: warning\n    annotations:\n      summary: 'LabLedger backend scrape\
+    \ unavailable: {{ $labels.pod }}'\n  - alert: LabLedgerHighErrorRate\n    expr:\
+    \ sum(rate(http_requests_total{job=\"labledger-backend\",status=~\"5..\"}[1m]))\n\
+    \      / clamp_min(sum(rate(http_requests_total{job=\"labledger-backend\"}[1m])),0.001)\n\
+    \      > 0.05\n    for: 20s\n    labels:\n      severity: warning\n    annotations:\n\
+    \      summary: LabLedger 5xx error rate exceeds 5%\n"

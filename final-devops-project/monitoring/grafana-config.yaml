@@ -1,0 +1,50 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: session21-grafana
+  namespace: session21
+data:
+  datasources.yaml: "apiVersion: 1\ndatasources:\n- access: proxy\n  isDefault: true\n\
+    \  name: LabLedger Prometheus\n  type: prometheus\n  uid: labledger-prometheus\n\
+    \  url: http://session21-prometheus:9090\n"
+  dashboards.yaml: "apiVersion: 1\nproviders:\n- name: labledger\n  options:\n   \
+    \ path: /var/lib/grafana/dashboards\n  type: file\n"
+  dashboard.json: '{"uid": "labledger", "title": "LabLedger \u00b7 Application health
+    and traffic", "schemaVersion": 40, "version": 1, "refresh": "5s", "time": {"from":
+    "now-15m", "to": "now"}, "panels": [{"id": 1, "title": "HTTP requests / second",
+    "type": "stat", "datasource": {"type": "prometheus", "uid": "labledger-prometheus"},
+    "gridPos": {"x": 0, "y": 0, "w": 6, "h": 5}, "targets": [{"refId": "A", "expr":
+    "sum(rate(http_requests_total{job=\"labledger-backend\"}[1m]))"}], "fieldConfig":
+    {"defaults": {"unit": "reqps", "color": {"mode": "fixed", "fixedColor": "green"}},
+    "overrides": []}, "options": {"reduceOptions": {"calcs": ["lastNotNull"]}, "colorMode":
+    "value", "graphMode": "area", "textMode": "auto"}}, {"id": 2, "title": "Backend
+    targets UP", "type": "stat", "datasource": {"type": "prometheus", "uid": "labledger-prometheus"},
+    "gridPos": {"x": 6, "y": 0, "w": 6, "h": 5}, "targets": [{"refId": "A", "expr":
+    "sum(up{job=\"labledger-backend\"})"}], "fieldConfig": {"defaults": {"unit": "short",
+    "color": {"mode": "fixed", "fixedColor": "green"}}, "overrides": []}, "options":
+    {"reduceOptions": {"calcs": ["lastNotNull"]}, "colorMode": "value", "graphMode":
+    "area", "textMode": "auto"}}, {"id": 3, "title": "API latency \u00b7 p95", "type":
+    "stat", "datasource": {"type": "prometheus", "uid": "labledger-prometheus"}, "gridPos":
+    {"x": 12, "y": 0, "w": 6, "h": 5}, "targets": [{"refId": "A", "expr": "histogram_quantile(0.95,sum
+    by (le)(rate(http_request_duration_seconds_bucket{job=\"labledger-backend\"}[1m])))"}],
+    "fieldConfig": {"defaults": {"unit": "s", "color": {"mode": "fixed", "fixedColor":
+    "green"}}, "overrides": []}, "options": {"reduceOptions": {"calcs": ["lastNotNull"]},
+    "colorMode": "value", "graphMode": "area", "textMode": "auto"}}, {"id": 4, "title":
+    "Backend resident memory", "type": "stat", "datasource": {"type": "prometheus",
+    "uid": "labledger-prometheus"}, "gridPos": {"x": 18, "y": 0, "w": 6, "h": 5},
+    "targets": [{"refId": "A", "expr": "sum(process_resident_memory_bytes{job=\"labledger-backend\"})"}],
+    "fieldConfig": {"defaults": {"unit": "bytes", "color": {"mode": "fixed", "fixedColor":
+    "green"}}, "overrides": []}, "options": {"reduceOptions": {"calcs": ["lastNotNull"]},
+    "colorMode": "value", "graphMode": "area", "textMode": "auto"}}, {"id": 5, "title":
+    "Request traffic", "type": "timeseries", "datasource": {"type": "prometheus",
+    "uid": "labledger-prometheus"}, "gridPos": {"x": 0, "y": 5, "w": 12, "h": 10},
+    "targets": [{"refId": "A", "expr": "sum by (handler)(rate(http_requests_total{job=\"labledger-backend\"}[1m]))"}],
+    "fieldConfig": {"defaults": {"unit": "reqps", "color": {"mode": "fixed", "fixedColor":
+    "green"}}, "overrides": []}, "options": {"reduceOptions": {"calcs": ["lastNotNull"]},
+    "colorMode": "value", "graphMode": "area", "textMode": "auto"}}, {"id": 6, "title":
+    "CPU utilization \u00b7 percent of one core", "type": "timeseries", "datasource":
+    {"type": "prometheus", "uid": "labledger-prometheus"}, "gridPos": {"x": 12, "y":
+    5, "w": 12, "h": 10}, "targets": [{"refId": "A", "expr": "100 * sum(rate(process_cpu_seconds_total{job=\"labledger-backend\"}[1m]))"}],
+    "fieldConfig": {"defaults": {"unit": "percent", "color": {"mode": "fixed", "fixedColor":
+    "green"}}, "overrides": []}, "options": {"reduceOptions": {"calcs": ["lastNotNull"]},
+    "colorMode": "value", "graphMode": "area", "textMode": "auto"}}]}'

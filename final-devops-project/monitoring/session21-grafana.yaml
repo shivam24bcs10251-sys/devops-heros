@@ -1,0 +1,82 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: session21-grafana
+  namespace: session21
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: session21-grafana
+  template:
+    metadata:
+      labels:
+        app: session21-grafana
+    spec:
+      containers:
+      - name: session21-grafana
+        image: grafana/grafana:12.1.1
+        ports:
+        - containerPort: 3000
+        args: []
+        resources:
+          requests:
+            cpu: 50m
+            memory: 64Mi
+          limits:
+            cpu: '1'
+            memory: 384Mi
+        volumeMounts:
+        - name: data
+          mountPath: /var/lib/grafana
+        - name: config
+          mountPath: /etc/grafana/provisioning/datasources/datasources.yaml
+          subPath: datasources.yaml
+          readOnly: true
+        - name: config
+          mountPath: /etc/grafana/provisioning/dashboards/dashboards.yaml
+          subPath: dashboards.yaml
+          readOnly: true
+        - name: config
+          mountPath: /var/lib/grafana/dashboards/dashboard.json
+          subPath: dashboard.json
+          readOnly: true
+        readinessProbe:
+          tcpSocket:
+            port: 3000
+          initialDelaySeconds: 5
+          periodSeconds: 5
+        env:
+        - name: GF_AUTH_ANONYMOUS_ENABLED
+          value: 'true'
+        - name: GF_AUTH_ANONYMOUS_ORG_ROLE
+          value: Viewer
+        - name: GF_SECURITY_DISABLE_INITIAL_ADMIN_CREATION
+          value: 'true'
+        - name: GF_AUTH_BASIC_ENABLED
+          value: 'false'
+        - name: GF_AUTH_DISABLE_LOGIN_FORM
+          value: 'true'
+        - name: GF_PLUGINS_PREINSTALL_DISABLED
+          value: 'true'
+        - name: GF_PLUGINS_PREINSTALL_AUTO_UPDATE
+          value: 'false'
+      volumes:
+      - name: config
+        configMap:
+          name: session21-grafana
+      - name: data
+        emptyDir: {}
+      automountServiceAccountToken: false
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: session21-grafana
+  namespace: session21
+spec:
+  selector:
+    app: session21-grafana
+  ports:
+  - port: 3000
+    targetPort: 3000

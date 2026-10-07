@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: session21-prometheus
+  namespace: session21
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: session21-discovery
+  namespace: session21
+rules:
+- apiGroups: [""]
+  resources: [pods]
+  verbs: [get, list, watch]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: session21-discovery
+  namespace: session21
+subjects:
+- kind: ServiceAccount
+  name: session21-prometheus
+  namespace: session21
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: session21-discovery
