@@ -1,0 +1,11 @@
+.git
+Output
+**/__pycache__
+**/*.pyc
+**/.venv
+**/node_modules
+**/dist
+**/.env*
+**/*.db
+terraform/.terraform
+terraform/*.tfstate*

@@ -1,0 +1,41 @@
+name: labledger-session21
+services:
+  postgres:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_DB: ledger
+      POSTGRES_USER: ledger
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Run scripts/local-env.py first}
+    volumes: [postgres-data:/var/lib/postgresql/data]
+    healthcheck:
+      test: [CMD-SHELL, 'pg_isready -U ledger -d ledger']
+      interval: 5s
+      timeout: 3s
+      retries: 20
+  migrate:
+    image: labledger-backend:local
+    build: {context: .., dockerfile: docker/backend.Dockerfile}
+    environment:
+      DATABASE_URL: postgresql+psycopg://ledger:${POSTGRES_PASSWORD}@postgres:5432/ledger
+    command: [alembic, upgrade, head]
+    depends_on: {postgres: {condition: service_healthy}}
+  backend:
+    image: labledger-backend:local
+    build: {context: .., dockerfile: docker/backend.Dockerfile}
+    environment:
+      DATABASE_URL: postgresql+psycopg://ledger:${POSTGRES_PASSWORD}@postgres:5432/ledger
+      APP_VERSION: local-1.0.0
+    depends_on: {migrate: {condition: service_completed_successfully}}
+    ports: ['127.0.0.1:8021:8000']
+    healthcheck:
+      test: [CMD, python, -c, 'import urllib.request; urllib.request.urlopen("http://localhost:8000/ready")']
+      interval: 5s
+      timeout: 3s
+      retries: 20
+  frontend:
+    image: labledger-frontend:local
+    build: {context: .., dockerfile: docker/frontend.Dockerfile}
+    depends_on: {backend: {condition: service_healthy}}
+    ports: ['127.0.0.1:3021:8080']
+volumes:
+  postgres-data:
