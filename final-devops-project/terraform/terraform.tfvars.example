@@ -1,0 +1,5 @@
+aws_region = "ap-south-1"
+aws_profile = "default"
+cluster_name = "labledger-session21"
+kubernetes_version = "1.35"
+admin_cidr = "203.0.113.10/32" # Replace with your current public IPv4/32
