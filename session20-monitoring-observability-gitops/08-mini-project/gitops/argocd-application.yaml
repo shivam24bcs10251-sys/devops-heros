@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: session20-mini
+  namespace: session20-argocd
+spec:
+  project: session20
+  source:
+    repoURL: https://github.com/shivam24bcs10251-sys/devops-heros.git
+    targetRevision: session20-monitoring-observability-gitops
+    path: session20-monitoring-observability-gitops/08-mini-project/app
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: session20
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true

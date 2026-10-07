@@ -1,394 +1,76 @@
-# 08 - Session 20 Mini Project
+# Session 20 mini-project
 
-You will combine:
+The supplied two-replica mini-project now serves JSON health responses, real Linux process CPU/RSS metrics and correlated JSON logs. Argo CD watches this repository's Session 20 branch and the `app/` directory. Its Application and restricted AppProject are in `gitops/`, outside the watched workload directory. Monitoring is bootstrapped separately from `monitoring/`.
 
-```text
-Kubernetes
-+
-Git
-+
-GitOps
-+
-Argo CD
-```
+## Reproduce
 
-The goal:
-
-```text
-Git
- |
- | desired state
- v
-Argo CD
- |
- | automatic sync
- v
-Kubernetes
- |
- v
-Application
-```
-
----
-
-# Requirements
-
-Build a small application with:
-
-```text
-Namespace
-Deployment
-Service
-Argo CD Application
-```
-
-The Deployment should have:
-
-```text
-replicas: 2
-```
-
----
-
-# Step 1 - Create Cluster
+Use the existing local Minikube profile `devops-assignment`, or create an equivalent local cluster and replace the context below. Push application manifests before creating the Argo CD Application.
 
 ```bash
-kind create cluster --name session20
+kubectl config use-context devops-assignment
+helm repo add argo https://argoproj.github.io/argo-helm
+helm repo update argo
+helm upgrade --install session20-argocd argo/argo-cd --version 10.9.7 \
+  --namespace session20-argocd --create-namespace -f gitops/values.yaml --wait --timeout 10m
+kubectl apply -f gitops/project.yaml
+kubectl apply -f gitops/argocd-application.yaml
+kubectl wait --for=jsonpath='{.status.sync.status}'=Synced application/session20-mini -n session20-argocd --timeout=300s
+kubectl rollout status deployment/session20-mini -n session20 --timeout=300s
+kubectl apply -f monitoring/
+kubectl rollout status deployment/session20-prometheus -n session20 --timeout=300s
+kubectl rollout status deployment/session20-grafana -n session20 --timeout=300s
 ```
 
-Check:
+Run each port-forward in its own terminal (bound to loopback):
 
 ```bash
-kubectl get nodes
+kubectl port-forward -n session20 svc/session20-mini 8084:80
+kubectl port-forward -n session20 svc/session20-prometheus 9090:9090
+kubectl port-forward -n session20 svc/session20-grafana 3000:3000
 ```
 
-Expected:
+Open Grafana at http://127.0.0.1:3000/d/session20 and Prometheus at http://127.0.0.1:9090. Grafana's classroom dashboard is anonymously readable and has no initial admin account; services remain ClusterIP. Monitoring history uses emptyDir and is lost on Pod replacement.
 
-```text
-NAME
-session20-control-plane
-```
-
----
-
-# Step 2 - Install Argo CD
+## Demonstrations
 
 ```bash
-kubectl create namespace argocd
+curl -fsS http://127.0.0.1:8084/health
+curl -fsS -H 'X-Trace-ID: session20-request-001' http://127.0.0.1:8084/work
+kubectl top pods -n session20
+kubectl logs -l app=session20-mini -n session20 --tail=5 --prefix=true
+python3 tools/query.py 'sum(process_resident_memory_bytes{job="session20-app"})'
 ```
 
-Then:
+The port-forward connects to one selected Pod, so the following failure applies to that Pod only. TCP probes deliberately keep the Pod available during a simulated dependency failure, allowing `/metrics` to remain scraped. This distinguishes HTTP application health from Pod Ready. Demo controls use GET for convenience in this isolated exercise; omit them in production.
 
 ```bash
-kubectl apply -n argocd \
-  -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+curl -fsS http://127.0.0.1:8084/demo/fail
+curl -s -o /dev/null -w 'HTTP health status: %{http_code}\n' http://127.0.0.1:8084/health
+# After the next scrape and 10 seconds in the failed state:
+python3 tools/alerts.py
+curl -fsS http://127.0.0.1:8084/demo/recover
+# After the next rule evaluation:
+python3 tools/alerts.py
 ```
 
-Wait:
+Prometheus evaluates and displays real firing alerts. An external Alertmanager notification receiver is outside this demo; no email or paging notification is claimed.
+
+## GitOps exercise
+
+1. Start with two replicas and `APP_VERSION=v1` in Git. Wait for Synced/Healthy.
+2. Change Git's replicas to three and version to v2; commit and push this branch. Argo CD detects the Git change and rolls out Kubernetes automatically.
+3. Manually scale the Deployment to one. Observe drift, then Argo CD's self-heal returning it to Git's three.
+4. Revert Git's replicas to two, commit/push, and observe reconciliation. Final desired state has two replicas and v2.
+
+No `kubectl apply -f app/` or direct apply of changed Deployment manifests is used for Git-managed releases. Root README screenshots/logs record the actual Git revisions and observed states.
+
+## Cleanup
 
 ```bash
-kubectl get pods -n argocd
+kubectl delete application session20-mini -n session20-argocd
+kubectl delete namespace session20
+helm uninstall session20-argocd -n session20-argocd
+kubectl delete namespace session20-argocd
 ```
 
----
-
-# Step 3 - Create a Git Repository
-
-Create a repository on GitHub/GitLab/Bitbucket.
-
-Copy these application manifests into the Git repository:
-
-```text
-namespace.yaml
-deployment.yaml
-service.yaml
-```
-
-Your Git repository should contain:
-
-```text
-app/
-|
-|-- namespace.yaml
-|-- deployment.yaml
-|-- service.yaml
-```
-
-Keep this teaching project's `argocd-application.yaml` outside the Git `app/` path. The Application object tells Argo CD which repository/path to watch; it should not be rendered as one of the workload manifests from that same path.
-
----
-
-# Step 4 - Change Repository URL
-
-Open:
-
-```text
-app/argocd-application.yaml
-```
-
-Replace:
-
-```text
-https://github.com/YOUR_USERNAME/YOUR_GITOPS_REPO.git
-```
-
-with your actual repository URL.
-
-Commit and push.
-
----
-
-# Step 5 - Create Application
-
-Apply the Argo CD Application:
-
-```bash
-kubectl apply -f app/argocd-application.yaml
-```
-
-Check:
-
-```bash
-kubectl get applications -n argocd
-```
-
-Expected shape:
-
-```text
-NAME             SYNC STATUS   HEALTH STATUS
-session20-mini   Synced        Healthy
-```
-
----
-
-# Step 6 - Check Kubernetes
-
-```bash
-kubectl get all -n session20
-```
-
-You should see:
-
-```text
-deployment.apps/session20-mini
-service/session20-mini
-pod/session20-mini-xxxxx
-pod/session20-mini-yyyyy
-```
-
----
-
-# Step 7 - Make a Git Change
-
-Change in the Git repository:
-
-```yaml
-replicas: 2
-```
-
-to:
-
-```yaml
-replicas: 3
-```
-
-Commit:
-
-```bash
-git add .
-git commit -m "Scale application to three replicas"
-git push
-```
-
-Watch:
-
-```bash
-kubectl get deployment -n session20 -w
-```
-
-Eventually:
-
-```text
-READY   3/3
-```
-
-The change travelled through:
-
-```text
-Git
- |
- v
-Argo CD
- |
- v
-Kubernetes
-```
-
-That is GitOps.
-
----
-
-# Step 8 - Demonstrate Self-Healing
-
-After Argo CD has synchronized:
-
-```bash
-kubectl scale deployment session20-mini \
-  -n session20 \
-  --replicas=1
-```
-
-Check:
-
-```bash
-kubectl get deployment -n session20
-```
-
-Because Git still says:
-
-```text
-replicas: 3
-```
-
-and self-healing is enabled, Argo CD can reconcile the cluster back toward:
-
-```text
-replicas: 3
-```
-
-This demonstrates:
-
-```text
-Git = desired state
-Kubernetes = actual state
-Argo CD = reconciler
-```
-
----
-
-# Step 9 - Observe the System
-
-Check application logs:
-
-```bash
-kubectl logs deployment/session20-mini -n session20
-```
-
-Check resources:
-
-```bash
-kubectl get pods -n session20
-```
-
-Check Argo CD:
-
-```bash
-kubectl get application session20-mini -n argocd
-```
-
----
-
-# Final Architecture
-
-```text
-              Developer
-                  |
-                  v
-               Git Repo
-                  |
-             desired state
-                  |
-                  v
-              Argo CD
-                  |
-             reconciliation
-                  |
-                  v
-            Kubernetes
-                  |
-          +-------+-------+
-          |               |
-      Deployment        Service
-          |
-        Pods
-```
-
----
-
-# Final Viva Questions
-
-Explain these in your own words:
-
-```text
-1. Monitoring vs Observability
-2. Metrics vs Logs vs Traces
-3. What is Prometheus?
-4. What is Grafana?
-5. What is GitOps?
-6. Why is Git called the source of truth?
-7. What does Argo CD do?
-8. What does "desired state" mean?
-9. What does "actual state" mean?
-10. What is reconciliation?
-11. What does self-healing mean in Argo CD?
-12. What happens when replicas change from 2 to 3 in Git?
-```
-
----
-
-# Cleanup
-
-Delete the application:
-
-```bash
-kubectl delete -f app/argocd-application.yaml
-```
-
-Delete the cluster:
-
-```bash
-kind delete cluster --name session20
-```
-
----
-
-# Final Mental Model
-
-Remember only this:
-
-```text
-METRICS -> numbers
-LOGS    -> events
-TRACES  -> request journey
-
-PROMETHEUS -> metrics
-GRAFANA    -> dashboards
-
-GIT        -> desired state
-ARGO CD    -> reconciliation
-KUBERNETES -> actual state
-```
-
-And the most important GitOps loop:
-
-```text
-        +------------------+
-        |       Git        |
-        | Desired State    |
-        +--------+---------+
-                 |
-                 v
-             Argo CD
-                 |
-                 v
-          Kubernetes
-          Actual State
-                 |
-                 |
-                 +-------> Compare
-                              |
-                              v
-                         Reconcile
-                              |
-                              +----> back to desired state
-```
+This affects the two lab namespaces only; do not delete the shared cluster. Argo CD CRDs installed by Helm may remain for reuse.

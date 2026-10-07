@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: session20
+  namespace: session20-argocd
+spec:
+  sourceRepos:
+  - https://github.com/shivam24bcs10251-sys/devops-heros.git
+  destinations:
+  - namespace: session20
+    server: https://kubernetes.default.svc
+  clusterResourceWhitelist:
+  - group: ''
+    kind: Namespace
+  namespaceResourceWhitelist:
+  - group: ''
+    kind: ConfigMap
+  - group: ''
+    kind: Service
+  - group: apps
+    kind: Deployment

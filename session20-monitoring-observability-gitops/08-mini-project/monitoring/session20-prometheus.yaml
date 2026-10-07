@@ -1,0 +1,61 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: session20-prometheus
+  namespace: session20
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: session20-prometheus
+  template:
+    metadata:
+      labels:
+        app: session20-prometheus
+    spec:
+      containers:
+      - name: session20-prometheus
+        image: prom/prometheus:v3.15.0
+        ports:
+        - containerPort: 9090
+        args:
+        - --config.file=/etc/prometheus/prometheus.yaml
+        - --storage.tsdb.path=/prometheus
+        - --storage.tsdb.retention.time=2h
+        resources:
+          requests:
+            cpu: 50m
+            memory: 64Mi
+          limits:
+            cpu: 500m
+            memory: 384Mi
+        volumeMounts:
+        - name: config
+          mountPath: /etc/prometheus
+          readOnly: true
+        - name: data
+          mountPath: /prometheus
+        readinessProbe:
+          tcpSocket:
+            port: 9090
+          initialDelaySeconds: 5
+          periodSeconds: 5
+      volumes:
+      - name: config
+        configMap:
+          name: session20-prometheus
+      - name: data
+        emptyDir: {}
+      serviceAccountName: session20-prometheus
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: session20-prometheus
+  namespace: session20
+spec:
+  selector:
+    app: session20-prometheus
+  ports:
+  - port: 9090
+    targetPort: 9090

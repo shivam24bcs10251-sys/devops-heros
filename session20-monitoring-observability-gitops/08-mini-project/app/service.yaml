@@ -7,5 +7,6 @@ spec:
   selector:
     app: session20-mini
   ports:
-    - port: 80
-      targetPort: 80
+  - name: http
+    port: 80
+    targetPort: 8080

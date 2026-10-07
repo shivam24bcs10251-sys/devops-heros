@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: session20-prometheus
+  namespace: session20
+data:
+  prometheus.yaml: "global:\n  scrape_interval: 5s\n  evaluation_interval: 5s\nrule_files:\n\
+    - /etc/prometheus/alerts.yaml\nscrape_configs:\n- job_name: session20-app\n  kubernetes_sd_configs:\n\
+    \  - role: pod\n    namespaces:\n      names:\n      - session20\n  relabel_configs:\n\
+    \  - source_labels:\n    - __meta_kubernetes_pod_label_app\n    regex: session20-mini\n\
+    \    action: keep\n  - source_labels:\n    - __meta_kubernetes_pod_name\n    target_label:\
+    \ pod\n- job_name: prometheus\n  static_configs:\n  - targets:\n    - localhost:9090\n"
+  alerts.yaml: "groups:\n- name: session20\n  rules:\n  - alert: DemoApplicationUnhealthy\n\
+    \    expr: demo_dependency_healthy{job=\"session20-app\"} == 0\n    for: 10s\n\
+    \    labels:\n      severity: warning\n    annotations:\n      summary: Session\
+    \ 20 demo health failed on {{ $labels.pod }}\n  - alert: DemoScrapeDown\n    expr:\
+    \ up{job=\"session20-app\"} == 0\n    for: 15s\n    labels:\n      severity: warning\n\
+    \    annotations:\n      summary: Application metrics target is unavailable\n"
