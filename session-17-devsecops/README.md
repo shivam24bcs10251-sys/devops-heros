@@ -47,6 +47,10 @@ The dashboard's `/api/pipeline/run` endpoint remains a UI simulation. Successful
 
 [Gitleaks CLI](https://github.com/gitleaks/gitleaks), [Trivy vulnerability filtering](https://trivy.dev/docs/latest/configuration/filtering/), [GitHub Container Registry authentication](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry), and [Kind image loading](https://kind.sigs.k8s.io/docs/user/quick-start/).
 
+## Container gate investigation
+
+The [first run](https://github.com/shivam24bcs10251-sys/devops-heros/actions/runs/37594603923) stopped at the image scan and skipped publishing/deployment. Its [Trivy report](Output/first-run/trivy.json) identified fixable vulnerabilities in `setuptools` and in `msgpack`/`urllib3` bundled with pip. These package installers are not needed by the running dashboard, so the Dockerfile removes pip/setuptools after installing the pinned application dependencies. The initial YAML also placed `ignore-unfixed` at the wrong level; the corrected `vulnerability.ignore-unfixed` setting enforces the stated fixable HIGH/CRITICAL policy. No CVE-specific exceptions were added.
+
 ## Run evidence
 
 Actual successful run, reports, registry digest and screenshots are added after execution.

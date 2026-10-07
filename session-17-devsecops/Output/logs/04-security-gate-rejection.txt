@@ -1,0 +1,6 @@
+shivamjaiswal@Shivams-MacBook-Air session-17-devsecops % /tmp/session17-venv/bin/python scripts/security-gate-demo.py
+Temporary copy: enable the Flask debugger to test the security gate.
+B201: A Flask app appears to be run with debug=True, which exposes the Werkzeug debugger and allows the execution of arbitrary code. Severity=HIGH line=235
+Gate rejected the unsafe debugger. Restore debug=False.
+SAST gate passed after the fix. Repository application was unchanged.
+shivamjaiswal@Shivams-MacBook-Air session-17-devsecops %
