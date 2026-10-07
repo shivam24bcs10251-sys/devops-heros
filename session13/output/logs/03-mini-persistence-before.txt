@@ -1,0 +1,12 @@
+shivamjaiswal@Shivams-MacBook-Air session13 % kubectl -n production-webapp get pvc
+NAME       STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   VOLUMEATTRIBUTESCLASS   AGE
+web-data   Bound    pvc-57dc7f5b-c35d-46fc-8798-2fafd0cd1ecf   500Mi      RWO            standard       <unset>                 68s
+shivamjaiswal@Shivams-MacBook-Air session13 % kubectl -n production-webapp get pods
+NAME                     READY   STATUS    RESTARTS   AGE
+web-app-9cfc766c-hfvvv   1/1     Running   0          57s
+web-app-9cfc766c-lcnhj   1/1     Running   0          57s
+shivamjaiswal@Shivams-MacBook-Air session13 % OLD_POD=$(kubectl -n production-webapp get pods -l app=web-app -o jsonpath='{.items[0].metadata.name}')
+shivamjaiswal@Shivams-MacBook-Air session13 % kubectl -n production-webapp exec "$OLD_POD" -- sh -c 'printf "Student: Shivam Jaiswal\n" > /data/student.txt'
+shivamjaiswal@Shivams-MacBook-Air session13 % kubectl -n production-webapp exec "$OLD_POD" -- cat /data/student.txt
+Student: Shivam Jaiswal
+shivamjaiswal@Shivams-MacBook-Air session13 %

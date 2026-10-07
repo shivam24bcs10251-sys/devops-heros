@@ -1,0 +1,14 @@
+shivamjaiswal@Shivams-MacBook-Air session13 % kubectl get storageclass
+NAME                 PROVISIONER                RECLAIMPOLICY   VOLUMEBINDINGMODE   ALLOWVOLUMEEXPANSION   AGE
+standard (default)   k8s.io/minikube-hostpath   Delete          Immediate           false                  26m
+shivamjaiswal@Shivams-MacBook-Air session13 % kubectl -n session13 get pvc
+NAME          STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   VOLUMEATTRIBUTESCLASS   AGE
+dynamic-pvc   Bound    pvc-2410a579-cb02-4658-94b6-f3a22818ebcb   500Mi      RWO            standard       <unset>                 64s
+student-pvc   Bound    session13-static-pv                        1Gi        RWO                           <unset>                 64s
+shivamjaiswal@Shivams-MacBook-Air session13 % kubectl get pv session13-static-pv
+NAME                  CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS   CLAIM                   STORAGECLASS   VOLUMEATTRIBUTESCLASS   REASON   AGE
+session13-static-pv   1Gi        RWO            Retain           Bound    session13/student-pvc                  <unset>                          64s
+shivamjaiswal@Shivams-MacBook-Air session13 % kubectl -n session13 exec hostpath-demo -- sh -c 'printf "node-local-data\n" > /data/hostpath.txt'
+shivamjaiswal@Shivams-MacBook-Air session13 % kubectl -n session13 exec hostpath-demo -- cat /data/hostpath.txt
+node-local-data
+shivamjaiswal@Shivams-MacBook-Air session13 %

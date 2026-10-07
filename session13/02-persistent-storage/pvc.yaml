@@ -3,6 +3,8 @@ kind: PersistentVolumeClaim
 metadata:
   name: student-pvc
 spec:
+  storageClassName: ""
+  volumeName: session13-static-pv
   accessModes:
     - ReadWriteOnce
   resources:

@@ -1,0 +1,31 @@
+NAME       REFERENCE             TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
+hpa-demo   Deployment/hpa-demo   cpu: 1%/50%   1         5         1          92s
+shivamjaiswal@Shivams-MacBook-Air session13 % kubectl -n session13 get pods -l app=hpa-demo
+NAME                        READY   STATUS    RESTARTS   AGE
+hpa-demo-869c8f7d5c-8x64c   1/1     Running   0          92s
+shivamjaiswal@Shivams-MacBook-Air session13 % kubectl -n session13 top pods
+NAME                        CPU(cores)   MEMORY(bytes)
+emptydir-demo               1m           0Mi
+hostpath-demo               1m           6Mi
+hpa-demo-869c8f7d5c-8x64c   1m           11Mi
+storage-demo                1m           6Mi
+shivamjaiswal@Shivams-MacBook-Air session13 % kubectl -n session13 describe hpa hpa-demo | sed -n "1,18p"
+Name:                                                  hpa-demo
+Namespace:                                             session13
+Labels:                                                <none>
+Annotations:                                           <none>
+CreationTimestamp:                                     Wed, 07 Oct 2026 13:26:28 +0530
+Reference:                                             Deployment/hpa-demo
+Metrics:                                               ( current / target )
+  resource cpu on pods  (as a percentage of request):  1% (1m) / 50%
+Min replicas:                                          1
+Max replicas:                                          5
+Behavior:
+  Scale Up:
+    Stabilization Window: 0 seconds
+    Select Policy: Max
+    Policies:
+      - Type: Pods     Value: 4    Period: 15 seconds
+      - Type: Percent  Value: 100  Period: 15 seconds
+  Scale Down:
+shivamjaiswal@Shivams-MacBook-Air session13 %

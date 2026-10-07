@@ -5,7 +5,7 @@ metadata:
 spec:
   containers:
     - name: app
-      image: nginx:1.27
+      image: nginx:1.28-alpine
       volumeMounts:
         - name: persistent-storage
           mountPath: /data

@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: load-generator
+spec:
+  containers:
+    - name: load
+      image: busybox:1.37
+      command:
+        - sh
+        - -c
+        - |
+          for worker in 1 2 3 4 5 6 7 8; do
+            (while true; do wget -q -O /dev/null http://hpa-demo-service; done) &
+          done
+          wait
+      resources:
+        requests:
+          cpu: 20m
+          memory: 16Mi
+        limits:
+          cpu: 200m
+          memory: 64Mi

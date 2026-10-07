@@ -1,0 +1,9 @@
+shivamjaiswal@Shivams-MacBook-Air session13 % kubectl -n production-webapp get svc web-service
+NAME          TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)   AGE
+web-service   ClusterIP   10.107.21.44   <none>        80/TCP    6m28s
+shivamjaiswal@Shivams-MacBook-Air session13 % kubectl -n production-webapp get endpointslices -l kubernetes.io/service-name=web-service
+NAME                ADDRESSTYPE   PORTS   ENDPOINTS                                         AGE
+web-service-9rv6f   IPv4          80      10.244.0.37,10.244.0.40,10.244.0.43 + 2 more...   6m29s
+shivamjaiswal@Shivams-MacBook-Air session13 % kubectl -n session13 exec emptydir-demo -c reader -- wget -qO- http://web-service.production-webapp.svc.cluster.local | sed -n "/<h1>/p"
+<h1>Welcome to nginx!</h1>
+shivamjaiswal@Shivams-MacBook-Air session13 %

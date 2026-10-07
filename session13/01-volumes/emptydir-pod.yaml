@@ -4,11 +4,18 @@ metadata:
   name: emptydir-demo
 spec:
   containers:
-    - name: app
-      image: nginx:1.27
+    - name: writer
+      image: busybox:1.37
+      command: [sh, -c, "sleep 86400"]
       volumeMounts:
-        - name: app-storage
+        - name: shared
+          mountPath: /data
+    - name: reader
+      image: busybox:1.37
+      command: [sh, -c, "sleep 86400"]
+      volumeMounts:
+        - name: shared
           mountPath: /data
   volumes:
-    - name: app-storage
+    - name: shared
       emptyDir: {}

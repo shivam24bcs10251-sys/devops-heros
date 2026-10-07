@@ -1,0 +1,14 @@
+shivamjaiswal@Shivams-MacBook-Air session13 % kubectl -n production-webapp get deploy web-app -o jsonpath='{.spec.template.spec.containers[0].startupProbe}'; printf "\n"
+{"failureThreshold":30,"httpGet":{"path":"/","port":80,"scheme":"HTTP"},"periodSeconds":2,"successThreshold":1,"timeoutSeconds":1}
+shivamjaiswal@Shivams-MacBook-Air session13 % kubectl -n production-webapp get deploy web-app -o jsonpath='{.spec.template.spec.containers[0].readinessProbe}'; printf "\n"
+{"failureThreshold":2,"httpGet":{"path":"/","port":80,"scheme":"HTTP"},"initialDelaySeconds":5,"periodSeconds":5,"successThreshold":1,"timeoutSeconds":2}
+shivamjaiswal@Shivams-MacBook-Air session13 % kubectl -n production-webapp get deploy web-app -o jsonpath='{.spec.template.spec.containers[0].livenessProbe}'; printf "\n"
+{"failureThreshold":3,"httpGet":{"path":"/","port":80,"scheme":"HTTP"},"initialDelaySeconds":5,"periodSeconds":5,"successThreshold":1,"timeoutSeconds":2}
+shivamjaiswal@Shivams-MacBook-Air session13 % kubectl -n production-webapp get pods
+NAME                     READY   STATUS    RESTARTS   AGE
+web-app-9cfc766c-lcnhj   1/1     Running   0          77s
+web-app-9cfc766c-vsbjn   1/1     Running   0          16s
+shivamjaiswal@Shivams-MacBook-Air session13 % kubectl -n production-webapp get hpa
+NAME          REFERENCE            TARGETS              MINPODS   MAXPODS   REPLICAS   AGE
+web-app-hpa   Deployment/web-app   cpu: <unknown>/50%   2         5         2          77s
+shivamjaiswal@Shivams-MacBook-Air session13 %

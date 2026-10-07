@@ -1,0 +1,18 @@
+shivamjaiswal@Shivams-MacBook-Air session13 % kubectl -n session13 get hpa
+NAME       REFERENCE             TARGETS         MINPODS   MAXPODS   REPLICAS   AGE
+hpa-demo   Deployment/hpa-demo   cpu: 170%/50%   1         5         5          6m21s
+shivamjaiswal@Shivams-MacBook-Air session13 % kubectl -n session13 get pods -l app=hpa-demo
+NAME                        READY   STATUS    RESTARTS   AGE
+hpa-demo-869c8f7d5c-66tvg   1/1     Running   0          3m52s
+hpa-demo-869c8f7d5c-7mb4v   1/1     Running   0          2m52s
+hpa-demo-869c8f7d5c-8x64c   1/1     Running   0          6m22s
+hpa-demo-869c8f7d5c-9ll9n   1/1     Running   0          112s
+hpa-demo-869c8f7d5c-hs5gt   1/1     Running   0          2m52s
+shivamjaiswal@Shivams-MacBook-Air session13 % kubectl -n session13 top pods -l app=hpa-demo
+NAME                        CPU(cores)   MEMORY(bytes)
+hpa-demo-869c8f7d5c-66tvg   165m         11Mi
+hpa-demo-869c8f7d5c-7mb4v   165m         11Mi
+hpa-demo-869c8f7d5c-8x64c   168m         11Mi
+hpa-demo-869c8f7d5c-9ll9n   169m         11Mi
+hpa-demo-869c8f7d5c-hs5gt   168m         11Mi
+shivamjaiswal@Shivams-MacBook-Air session13 %

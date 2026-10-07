@@ -13,12 +13,28 @@ spec:
         app: hpa-demo
     spec:
       containers:
-        - name: nginx
-          image: nginx:1.27
+        - name: app
+          image: python:3.12-alpine
+          command: [python3, -u, -c]
+          args:
+            - |
+              import math
+              from http.server import BaseHTTPRequestHandler, HTTPServer
+              class Handler(BaseHTTPRequestHandler):
+                  def do_GET(self):
+                      sum(math.sqrt(i) for i in range(200000))
+                      self.send_response(200)
+                      self.end_headers()
+                      self.wfile.write(b"HPA CPU workload\n")
+                  def log_message(self, *args):
+                      pass
+              HTTPServer(("0.0.0.0", 80), Handler).serve_forever()
+          ports:
+            - containerPort: 80
           resources:
             requests:
               cpu: 100m
+              memory: 32Mi
             limits:
               cpu: 200m
-          ports:
-            - containerPort: 80
+              memory: 96Mi
