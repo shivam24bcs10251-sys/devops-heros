@@ -24,7 +24,7 @@ spec:
             cpu: 50m
             memory: 64Mi
           limits:
-            cpu: 500m
+            cpu: '1'
             memory: 384Mi
         volumeMounts:
         - name: data
@@ -57,6 +57,10 @@ spec:
           value: 'false'
         - name: GF_AUTH_DISABLE_LOGIN_FORM
           value: 'true'
+        - name: GF_PLUGINS_PREINSTALL_DISABLED
+          value: 'true'
+        - name: GF_PLUGINS_PREINSTALL_AUTO_UPDATE
+          value: 'false'
       volumes:
       - name: config
         configMap:
