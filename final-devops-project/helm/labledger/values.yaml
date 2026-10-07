@@ -14,7 +14,7 @@ postgres:
 ingress:
   enabled: true
   className: traefik
-  host: labledger.local
+  host: labledger.localhost
 hpa:
   enabled: true
   minReplicas: 2

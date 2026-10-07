@@ -46,6 +46,7 @@ jobs:
       working-directory: final-devops-project/application/frontend
       run: |
         npm ci
+        npm test
         npm audit --audit-level=high
         npm run build
     - name: Secret scanning gate
@@ -130,7 +131,8 @@ jobs:
         retention-days: 7
     - name: Remove isolated CI cluster
       if: always()
-      run: /tmp/kind delete cluster --name labledger-ci
+      run: |
+        if [ -x /tmp/kind ]; then /tmp/kind delete cluster --name labledger-ci; fi
   registry:
     name: Multi-architecture registry release · GitOps promotion
     needs: delivery
