@@ -4,7 +4,6 @@ metadata:
   name: {{ .Release.Name }}-deploy
   labels:
     app: {{ .Release.Name }}
-    environment: {{ .Values.app.environment }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
@@ -14,12 +13,33 @@ spec:
     metadata:
       labels:
         app: {{ .Release.Name }}
+      annotations:
+        checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
     spec:
       containers:
         - name: notes
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           ports:
-            - containerPort: {{ .Values.service.port }}
+            - containerPort: 80
           envFrom:
             - configMapRef:
                 name: {{ .Release.Name }}-config
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+          resources:
+            requests:
+              cpu: 50m
+              memory: 32Mi
+            limits:
+              cpu: 100m
+              memory: 96Mi
+          volumeMounts:
+            - name: page
+              mountPath: /usr/share/nginx/html/index.html
+              subPath: index.html
+      volumes:
+        - name: page
+          configMap:
+            name: {{ .Release.Name }}-config

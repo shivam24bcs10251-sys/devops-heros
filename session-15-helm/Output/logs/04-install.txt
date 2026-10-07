@@ -1,0 +1,18 @@
+shivamjaiswal@Shivams-MacBook-Air session-15-helm % helm install notes-dev mini-project/notes-chart -n session15 --wait --timeout 120s
+NAME: notes-dev
+LAST DEPLOYED: Wed Oct  7 13:48:40 2026
+NAMESPACE: session15
+STATUS: deployed
+REVISION: 1
+DESCRIPTION: Install complete
+TEST SUITE: None
+shivamjaiswal@Shivams-MacBook-Air session-15-helm % helm list -n session15
+NAME     	NAMESPACE	REVISION	UPDATED                             	STATUS  	CHART            	APP VERSION
+notes-dev	session15	1       	2026-10-07 13:48:40.803954 +0530 IST	deployed	notes-chart-0.1.0	1.0
+shivamjaiswal@Shivams-MacBook-Air session-15-helm % kubectl -n session15 get pods -l app=notes-dev
+NAME                                READY   STATUS    RESTARTS   AGE
+notes-dev-deploy-76854b8799-sql9v   1/1     Running   0          3s
+shivamjaiswal@Shivams-MacBook-Air session-15-helm % kubectl -n session15 exec helm-client -- wget -qO- http://notes-dev-svc
+<h1>notes-app 1.0</h1>
+<p>Environment: development</p>
+shivamjaiswal@Shivams-MacBook-Air session-15-helm %

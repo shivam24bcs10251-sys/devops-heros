@@ -1,0 +1,21 @@
+shivamjaiswal@Shivams-MacBook-Air session-15-helm % helm upgrade notes-dev mini-project/notes-chart -n session15 -f mini-project/notes-chart/values-prod.yaml --wait --timeout 120s
+Release "notes-dev" has been upgraded. Happy Helming!
+NAME: notes-dev
+LAST DEPLOYED: Wed Oct  7 13:48:50 2026
+NAMESPACE: session15
+STATUS: deployed
+REVISION: 2
+DESCRIPTION: Upgrade complete
+TEST SUITE: None
+shivamjaiswal@Shivams-MacBook-Air session-15-helm % kubectl -n session15 get pods -l app=notes-dev
+NAME                                READY   STATUS        RESTARTS   AGE
+notes-dev-deploy-699cbb8795-vf6kw   1/1     Running       0          4s
+notes-dev-deploy-699cbb8795-xkgcm   1/1     Running       0          3s
+notes-dev-deploy-699cbb8795-znzt5   1/1     Running       0          2s
+notes-dev-deploy-76854b8799-5kjcb   1/1     Terminating   0          4s
+shivamjaiswal@Shivams-MacBook-Air session-15-helm % kubectl -n session15 exec helm-client -- wget -qO- http://notes-dev-svc
+<h1>notes-app 2.0</h1>
+<p>Environment: production</p>
+shivamjaiswal@Shivams-MacBook-Air session-15-helm % kubectl -n session15 exec deploy/notes-dev-deploy -- printenv ENVIRONMENT
+production
+shivamjaiswal@Shivams-MacBook-Air session-15-helm %

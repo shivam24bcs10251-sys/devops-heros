@@ -1,0 +1,31 @@
+notes-dev-svc   NodePort   10.96.111.138   <none>        80:30090/TCP   6s
+
+==> v1/Deployment
+NAME               READY   UP-TO-DATE   AVAILABLE   AGE
+notes-dev-deploy   1/1     1            1           6s
+
+==> v1/Pod(related)
+NAME                                READY   STATUS    RESTARTS   AGE
+notes-dev-deploy-76854b8799-sql9v   1/1     Running   0          6s
+
+==> v1/ConfigMap
+NAME               DATA   AGE
+notes-dev-config   3      6s
+
+
+TEST SUITE: None
+shivamjaiswal@Shivams-MacBook-Air session-15-helm % helm get values notes-dev -n session15
+USER-SUPPLIED VALUES:
+null
+shivamjaiswal@Shivams-MacBook-Air session-15-helm % helm get manifest notes-dev -n session15 | head -n 10
+---
+# Source: notes-chart/templates/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: notes-dev-config
+  labels:
+    app: notes-dev
+data:
+  APP_NAME: "notes-app"
+shivamjaiswal@Shivams-MacBook-Air session-15-helm %

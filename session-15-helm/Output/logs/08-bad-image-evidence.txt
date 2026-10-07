@@ -1,0 +1,17 @@
+shivamjaiswal@Shivams-MacBook-Air session-15-helm % kubectl -n session15 get pods -l app=notes-dev
+NAME                                READY   STATUS             RESTARTS   AGE
+notes-dev-deploy-6698b8f488-csgkq   0/1     ImagePullBackOff   0          22s
+notes-dev-deploy-699cbb8795-vf6kw   1/1     Running            0          30s
+notes-dev-deploy-699cbb8795-xkgcm   1/1     Running            0          29s
+notes-dev-deploy-699cbb8795-znzt5   1/1     Running            0          28s
+shivamjaiswal@Shivams-MacBook-Air session-15-helm % BAD_POD=$(kubectl -n session15 get pods -l app=notes-dev -o jsonpath='{.items[?(@.spec.containers[0].image=="nginx:broken-tag-does-not-exist")].metadata.name}')
+shivamjaiswal@Shivams-MacBook-Air session-15-helm % kubectl -n session15 describe pod "$BAD_POD" | tail -n 8
+  Type     Reason     Age               From               Message
+  ----     ------     ----              ----               -------
+  Normal   Scheduled  23s               default-scheduler  Successfully assigned session15/notes-dev-deploy-6698b8f488-csgkq to devops-assignment
+  Normal   BackOff    17s               kubelet            spec.containers{notes}: Back-off pulling image "nginx:broken-tag-does-not-exist"
+  Warning  Failed     17s               kubelet            spec.containers{notes}: Error: ImagePullBackOff
+  Normal   Pulling    5s (x2 over 23s)  kubelet            spec.containers{notes}: Pulling image "nginx:broken-tag-does-not-exist"
+  Warning  Failed     2s (x2 over 18s)  kubelet            spec.containers{notes}: Failed to pull image "nginx:broken-tag-does-not-exist": rpc error: code = NotFound desc = failed to pull and unpack image "docker.io/library/nginx:broken-tag-does-not-exist": failed to resolve reference "docker.io/library/nginx:broken-tag-does-not-exist": docker.io/library/nginx:broken-tag-does-not-exist: not found
+  Warning  Failed     2s (x2 over 18s)  kubelet            spec.containers{notes}: Error: ErrImagePull
+shivamjaiswal@Shivams-MacBook-Air session-15-helm %

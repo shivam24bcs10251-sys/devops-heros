@@ -1,0 +1,79 @@
+---
+# Source: notes-chart/templates/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: notes-dev-config
+  labels:
+    app: notes-dev
+data:
+  APP_NAME: "notes-app"
+  ENVIRONMENT: "development"
+  index.html: |
+    <h1>notes-app 1.0</h1>
+    <p>Environment: development</p>
+
+---
+# Source: notes-chart/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: notes-dev-svc
+  labels:
+    app: notes-dev
+spec:
+  type: NodePort
+  selector:
+    app: notes-dev
+  ports:
+    - port: 80
+      targetPort: 80
+      nodePort: 30090
+
+---
+# Source: notes-chart/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: notes-dev-deploy
+  labels:
+    app: notes-dev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: notes-dev
+  template:
+    metadata:
+      labels:
+        app: notes-dev
+      annotations:
+        checksum/config: a15f3e66108e2077ca6d807470fd516be4b32d817820c6770fdceea1a937d65a
+    spec:
+      containers:
+        - name: notes
+          image: "nginx:1.28-alpine"
+          ports:
+            - containerPort: 80
+          envFrom:
+            - configMapRef:
+                name: notes-dev-config
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+          resources:
+            requests:
+              cpu: 50m
+              memory: 32Mi
+            limits:
+              cpu: 100m
+              memory: 96Mi
+          volumeMounts:
+            - name: page
+              mountPath: /usr/share/nginx/html/index.html
+              subPath: index.html
+      volumes:
+        - name: page
+          configMap:
+            name: notes-dev-config

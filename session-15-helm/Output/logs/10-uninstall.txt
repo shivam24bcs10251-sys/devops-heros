@@ -1,0 +1,7 @@
+shivamjaiswal@Shivams-MacBook-Air session-15-helm % helm uninstall notes-dev -n session15 --wait --timeout 120s
+release "notes-dev" uninstalled
+shivamjaiswal@Shivams-MacBook-Air session-15-helm % helm list -n session15
+NAME	NAMESPACE	REVISION	UPDATED	STATUS	CHART	APP VERSION
+shivamjaiswal@Shivams-MacBook-Air session-15-helm % kubectl -n session15 get deployment,service,configmap -l app=notes-dev
+No resources found in session15 namespace.
+shivamjaiswal@Shivams-MacBook-Air session-15-helm %

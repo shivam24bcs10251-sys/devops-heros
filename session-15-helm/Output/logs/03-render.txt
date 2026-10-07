@@ -1,0 +1,17 @@
+shivamjaiswal@Shivams-MacBook-Air session-15-helm % helm template notes-dev mini-project/notes-chart -n session15 > Output/rendered-development.yaml
+shivamjaiswal@Shivams-MacBook-Air session-15-helm % head -n 12 Output/rendered-development.yaml
+---
+# Source: notes-chart/templates/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: notes-dev-config
+  labels:
+    app: notes-dev
+data:
+  APP_NAME: "notes-app"
+  ENVIRONMENT: "development"
+  index.html: |
+shivamjaiswal@Shivams-MacBook-Air session-15-helm % helm package mini-project/notes-chart --destination Output
+Successfully packaged chart and saved it to: Output/notes-chart-0.1.0.tgz
+shivamjaiswal@Shivams-MacBook-Air session-15-helm %

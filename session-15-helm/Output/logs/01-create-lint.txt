@@ -1,0 +1,15 @@
+shivamjaiswal@Shivams-MacBook-Air session-15-helm % helm version --short
+v4.3.0+gbec5b06
+shivamjaiswal@Shivams-MacBook-Air session-15-helm % helm create practice-chart
+Creating practice-chart
+shivamjaiswal@Shivams-MacBook-Air session-15-helm % helm lint practice-chart
+==> Linting practice-chart
+[INFO] Chart.yaml: icon is recommended
+
+1 chart(s) linted, 0 chart(s) failed
+shivamjaiswal@Shivams-MacBook-Air session-15-helm % helm lint mini-project/notes-chart
+==> Linting mini-project/notes-chart
+[INFO] Chart.yaml: icon is recommended
+
+1 chart(s) linted, 0 chart(s) failed
+shivamjaiswal@Shivams-MacBook-Air session-15-helm %

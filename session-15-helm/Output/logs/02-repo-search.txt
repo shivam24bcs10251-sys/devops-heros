@@ -1,0 +1,17 @@
+shivamjaiswal@Shivams-MacBook-Air session-15-helm % export HELM_REPOSITORY_CONFIG=/tmp/session15-repositories.yaml
+shivamjaiswal@Shivams-MacBook-Air session-15-helm % export HELM_REPOSITORY_CACHE=/tmp/session15-repo-cache
+shivamjaiswal@Shivams-MacBook-Air session-15-helm % helm repo add session15-examples https://traefik.github.io/charts
+"session15-examples" has been added to your repositories
+shivamjaiswal@Shivams-MacBook-Air session-15-helm % helm repo update session15-examples
+Hang tight while we grab the latest from your chart repositories...
+...Successfully got an update from the "session15-examples" chart repository
+Update Complete. ⎈Happy Helming!⎈
+shivamjaiswal@Shivams-MacBook-Air session-15-helm % helm repo list
+NAME              	URL
+session15-examples	https://traefik.github.io/charts
+shivamjaiswal@Shivams-MacBook-Air session-15-helm % helm search repo session15-examples/traefik --versions | head -n 4
+NAME                           	CHART VERSION	APP VERSION	DESCRIPTION
+session15-examples/traefik     	41.6.1       	v3.7.13    	A Traefik based Kubernetes ingress controller
+session15-examples/traefik     	41.6.0       	v3.7.13    	A Traefik based Kubernetes ingress controller
+session15-examples/traefik     	41.5.0       	v3.7.13    	A Traefik based Kubernetes ingress controller
+shivamjaiswal@Shivams-MacBook-Air session-15-helm %

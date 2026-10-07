@@ -1,13 +1,11 @@
 replicaCount: 3
-
 image:
   repository: nginx
-  tag: "1.25"
-
+  tag: "1.28-alpine"
 service:
   port: 80
   nodePort: 30090
-
 app:
   name: notes-app
   environment: production
+  version: "2.0"
