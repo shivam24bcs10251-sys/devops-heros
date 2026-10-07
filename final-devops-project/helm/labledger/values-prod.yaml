@@ -1,0 +1,10 @@
+# Production example: supply your TLS certificate, DNS and external Secrets separately.
+ingress:
+  host: labledger.example.com
+postgres:
+  storage: 10Gi
+hpa:
+  maxReplicas: 6
+backendResources:
+  requests: {cpu: 250m, memory: 256Mi}
+  limits: {cpu: '1', memory: 512Mi}

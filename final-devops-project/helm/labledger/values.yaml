@@ -1,0 +1,29 @@
+replicaCount: 2
+backend:
+  image: ghcr.io/shivam24bcs10251-sys/labledger-backend
+  tag: bootstrap
+frontend:
+  image: ghcr.io/shivam24bcs10251-sys/labledger-frontend
+  tag: bootstrap
+imagePullPolicy: IfNotPresent
+postgres:
+  image: postgres:17-alpine
+  secretName: labledger-db
+  storage: 2Gi
+  storageClass: ""
+ingress:
+  enabled: true
+  className: traefik
+  host: labledger.local
+hpa:
+  enabled: true
+  minReplicas: 2
+  maxReplicas: 4
+  targetCPU: 60
+  scaleDownSeconds: 30
+backendResources:
+  requests: {cpu: 100m, memory: 96Mi}
+  limits: {cpu: 500m, memory: 256Mi}
+frontendResources:
+  requests: {cpu: 25m, memory: 32Mi}
+  limits: {cpu: 200m, memory: 96Mi}

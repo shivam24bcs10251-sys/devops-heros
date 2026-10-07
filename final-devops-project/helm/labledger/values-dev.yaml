@@ -1,0 +1,5 @@
+# Local Minikube / classroom deployment; same two-replica topology.
+ingress:
+  host: labledger.local
+hpa:
+  maxReplicas: 4

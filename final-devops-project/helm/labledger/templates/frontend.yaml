@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend
+  annotations: {argocd.argoproj.io/sync-wave: "2"}
+spec:
+  selector: {app: labledger-frontend}
+  ports: [{port: 80, targetPort: 8080}]
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: labledger-frontend
+  annotations: {argocd.argoproj.io/sync-wave: "2"}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector: {matchLabels: {app: labledger-frontend}}
+  template:
+    metadata: {labels: {app: labledger-frontend}}
+    spec:
+      automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 101
+        runAsGroup: 101
+        seccompProfile: {type: RuntimeDefault}
+      containers:
+      - name: frontend
+        image: "{{ .Values.frontend.image }}:{{ .Values.frontend.tag }}"
+        imagePullPolicy: {{ .Values.imagePullPolicy }}
+        ports: [{containerPort: 8080}]
+        startupProbe: {httpGet: {path: /live, port: 8080}, periodSeconds: 3, failureThreshold: 30}
+        readinessProbe: {httpGet: {path: /live, port: 8080}, periodSeconds: 5}
+        livenessProbe: {httpGet: {path: /live, port: 8080}, periodSeconds: 10}
+        securityContext: {allowPrivilegeEscalation: false, capabilities: {drop: [ALL]}}
+        resources:
+{{ toYaml .Values.frontendResources | indent 10 }}
