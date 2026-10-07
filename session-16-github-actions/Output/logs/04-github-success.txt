@@ -1,0 +1,17 @@
+shivamjaiswal@Shivams-MacBook-Air session-16-github-actions % gh run view 37593715574 --repo shivam24bcs10251-sys/devops-heros --json status,conclusion,url,jobs --jq '{status,conclusion,url,jobs:[.jobs[]|{name,conclusion}]}'
+{
+  "conclusion": "success",
+  "jobs": [
+    {
+      "conclusion": "success",
+      "name": "Test, build and upload"
+    },
+    {
+      "conclusion": "success",
+      "name": "Deploy and verify Kubernetes"
+    }
+  ],
+  "status": "completed",
+  "url": "https://github.com/shivam24bcs10251-sys/devops-heros/actions/runs/37593715574"
+}
+shivamjaiswal@Shivams-MacBook-Air session-16-github-actions %

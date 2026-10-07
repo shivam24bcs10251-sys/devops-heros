@@ -1,0 +1,19 @@
+shivamjaiswal@Shivams-MacBook-Air session-16-github-actions % /tmp/session16-venv/bin/python scripts/test-gate-demo.py
+Temporary copy: introduce add() defect; source checkout remains intact.
+F....                                                                                                                                                            [100%]
+=============================================================================== FAILURES ===============================================================================
+_______________________________________________________________________________ test_add _______________________________________________________________________________
+
+    def test_add():
+>       assert add(10, 5) == 15
+E       assert 16 == 15
+E        +  where 16 = add(10, 5)
+
+tests/test_calculator.py:10: AssertionError
+======================================================================= short test summary info ========================================================================
+FAILED tests/test_calculator.py::test_add - assert 16 == 15
+1 failed, 4 passed in 0.02s
+Test gate rejected the defective build. Restore add().
+.....                                                                                                                                                            [100%]
+5 passed in 0.00s
+shivamjaiswal@Shivams-MacBook-Air session-16-github-actions %

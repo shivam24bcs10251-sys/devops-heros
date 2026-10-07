@@ -1,0 +1,42 @@
+##[group]Run bash deploy.sh
+^[[36;1mbash deploy.sh^[[0m
+shell: /usr/bin/bash -e {0}
+##[endgroup]
+Creating cluster "session16" ...
+ • Ensuring node image (kindest/node:v1.37.0) 🖼️  ...
+ ✓ Ensuring node image (kindest/node:v1.37.0) 🖼️
+ • Preparing nodes 📦   ...
+ ✓ Preparing nodes 📦
+ • Writing configuration 📜  ...
+ ✓ Writing configuration 📜
+ • Starting control-plane 🕹️  ...
+ ✓ Starting control-plane 🕹️
+ • Installing CNI 🔌  ...
+ ✓ Installing CNI 🔌
+ • Installing StorageClass 💾  ...
+ ✓ Installing StorageClass 💾
+ • Waiting ≤ 2m0s for control-plane = Ready ⏳  ...
+ ✓ Waiting ≤ 2m0s for control-plane = Ready ⏳
+ • Ready after 18s 💚
+Set kubectl context to "kind-session16"
+You can now use your cluster with:
+
+kubectl cluster-info --context kind-session16
+
+Have a question, bug, or feature request? Let us know! https://kind.sigs.k8s.io/#community 🙂
+Image: "session16-calculator:demo" with ID "sha256:e52b25805941c1107f8d0773837d2af663313953a38bd0243a02009227928d5d" not yet present on node "session16-control-plane", loading...
+deployment.apps/calculator created
+service/calculator created
+Waiting for deployment "calculator" rollout to finish: 0 of 2 updated replicas are available...
+Waiting for deployment "calculator" rollout to finish: 1 of 2 updated replicas are available...
+deployment "calculator" successfully rolled out
+NAME                              READY   STATUS    RESTARTS   AGE
+pod/calculator-775fb9566c-p2q4g   1/1     Running   0          12s
+pod/calculator-775fb9566c-rwc62   1/1     Running   0          12s
+
+NAME                 TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)   AGE
+service/calculator   ClusterIP   10.96.199.52   <none>        80/TCP    12s
+service/kubernetes   ClusterIP   10.96.0.1      <none>        443/TCP   39s
+{"status": "ok"}Deployment verified: {'result': 15.0}
+Deleting cluster "session16" ...
+Deleted nodes: ["session16-control-plane"]

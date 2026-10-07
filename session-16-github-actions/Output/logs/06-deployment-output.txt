@@ -1,0 +1,18 @@
+shivamjaiswal@Shivams-MacBook-Air session-16-github-actions % cat Output/deployment-step.txt | tail -16
+Image: "session16-calculator:demo" with ID "sha256:e52b25805941c1107f8d0773837d2af663313953a38bd0243a02009227928d5d" not yet present on node "session16-control-plane", loading...
+deployment.apps/calculator created
+service/calculator created
+Waiting for deployment "calculator" rollout to finish: 0 of 2 updated replicas are available...
+Waiting for deployment "calculator" rollout to finish: 1 of 2 updated replicas are available...
+deployment "calculator" successfully rolled out
+NAME                              READY   STATUS    RESTARTS   AGE
+pod/calculator-775fb9566c-p2q4g   1/1     Running   0          12s
+pod/calculator-775fb9566c-rwc62   1/1     Running   0          12s
+
+NAME                 TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)   AGE
+service/calculator   ClusterIP   10.96.199.52   <none>        80/TCP    12s
+service/kubernetes   ClusterIP   10.96.0.1      <none>        443/TCP   39s
+{"status": "ok"}Deployment verified: {'result': 15.0}
+Deleting cluster "session16" ...
+Deleted nodes: ["session16-control-plane"]
+shivamjaiswal@Shivams-MacBook-Air session-16-github-actions %

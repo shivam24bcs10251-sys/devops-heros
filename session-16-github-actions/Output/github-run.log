@@ -1,0 +1,582 @@
+Test, build and upload	Set up job	﻿2026-10-07T08:26:03.3113341Z Current runner version: '2.337.0'
+Test, build and upload	Set up job	2026-10-07T08:26:03.3138431Z ##[group]Runner Image Provisioner
+Test, build and upload	Set up job	2026-10-07T08:26:03.3139479Z Hosted Compute Agent
+Test, build and upload	Set up job	2026-10-07T08:26:03.3140076Z Version: 20260901.588
+Test, build and upload	Set up job	2026-10-07T08:26:03.3140775Z Commit: f88ec8081b781fac6c440065ac7ff9e710ce3d0b
+Test, build and upload	Set up job	2026-10-07T08:26:03.3141539Z Build Date: 2026-09-01T19:56:44Z
+Test, build and upload	Set up job	2026-10-07T08:26:03.3142237Z Worker ID: {d7bb293f-21f2-4d63-bf38-436100bc62c5}
+Test, build and upload	Set up job	2026-10-07T08:26:03.3143041Z Azure Region: westus3
+Test, build and upload	Set up job	2026-10-07T08:26:03.3143635Z ##[endgroup]
+Test, build and upload	Set up job	2026-10-07T08:26:03.3145355Z ##[group]Operating System
+Test, build and upload	Set up job	2026-10-07T08:26:03.3146105Z Ubuntu
+Test, build and upload	Set up job	2026-10-07T08:26:03.3146665Z 24.04.5
+Test, build and upload	Set up job	2026-10-07T08:26:03.3147252Z LTS
+Test, build and upload	Set up job	2026-10-07T08:26:03.3148053Z ##[endgroup]
+Test, build and upload	Set up job	2026-10-07T08:26:03.3148963Z ##[group]Runner Image
+Test, build and upload	Set up job	2026-10-07T08:26:03.3149715Z Image: ubuntu-24.04
+Test, build and upload	Set up job	2026-10-07T08:26:03.3150315Z Version: 20260927.320.1
+Test, build and upload	Set up job	2026-10-07T08:26:03.3151452Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260927.320/images/ubuntu/Ubuntu2404-Readme.md
+Test, build and upload	Set up job	2026-10-07T08:26:03.3153315Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260927.320
+Test, build and upload	Set up job	2026-10-07T08:26:03.3154308Z ##[endgroup]
+Test, build and upload	Set up job	2026-10-07T08:26:03.3155473Z ##[group]GITHUB_TOKEN Permissions
+Test, build and upload	Set up job	2026-10-07T08:26:03.3157813Z Contents: read
+Test, build and upload	Set up job	2026-10-07T08:26:03.3158454Z Metadata: read
+Test, build and upload	Set up job	2026-10-07T08:26:03.3159191Z ##[endgroup]
+Test, build and upload	Set up job	2026-10-07T08:26:03.3161263Z Secret source: Actions
+Test, build and upload	Set up job	2026-10-07T08:26:03.3162285Z Cache mode: write
+Test, build and upload	Set up job	2026-10-07T08:26:03.3163008Z Prepare workflow directory
+Test, build and upload	Set up job	2026-10-07T08:26:03.3581080Z Prepare all required actions
+Test, build and upload	Set up job	2026-10-07T08:26:03.3629119Z Getting action download info
+Test, build and upload	Set up job	2026-10-07T08:26:03.7587894Z Download action repository 'actions/checkout@v7' (SHA:3d3c42e5aac5ba805825da76410c181273ba90b1)
+Test, build and upload	Set up job	2026-10-07T08:26:03.8754397Z Download action repository 'actions/setup-python@v7' (SHA:5fda3b95a4ea91299a34e894583c3862153e4b97)
+Test, build and upload	Set up job	2026-10-07T08:26:03.9536928Z Download action repository 'actions/upload-artifact@v7' (SHA:043fb46d1a93c77aae656e7c1c64a875d1fc6a0a)
+Test, build and upload	Set up job	2026-10-07T08:26:04.1291569Z Complete job name: Test, build and upload
+Test, build and upload	Run actions/checkout@v7	﻿2026-10-07T08:26:04.2066920Z ##[group]Run actions/checkout@v7
+Test, build and upload	Run actions/checkout@v7	2026-10-07T08:26:04.2068202Z with:
+Test, build and upload	Run actions/checkout@v7	2026-10-07T08:26:04.2068772Z   repository: shivam24bcs10251-sys/devops-heros
+Test, build and upload	Run actions/checkout@v7	2026-10-07T08:26:04.2072701Z   token: ***
+Test, build and upload	Run actions/checkout@v7	2026-10-07T08:26:04.2073136Z   ssh-strict: true
+Test, build and upload	Run actions/checkout@v7	2026-10-07T08:26:04.2073580Z   ssh-user: git
+Test, build and upload	Run actions/checkout@v7	2026-10-07T08:26:04.2074048Z   persist-credentials: true
+Test, build and upload	Run actions/checkout@v7	2026-10-07T08:26:04.2074560Z   clean: true
+Test, build and upload	Run actions/checkout@v7	2026-10-07T08:26:04.2075009Z   sparse-checkout-cone-mode: true
+Test, build and upload	Run actions/checkout@v7	2026-10-07T08:26:04.2075540Z   fetch-depth: 1
+Test, build and upload	Run actions/checkout@v7	2026-10-07T08:26:04.2075974Z   fetch-tags: false
+Test, build and upload	Run actions/checkout@v7	2026-10-07T08:26:04.2076415Z   show-progress: true
+Test, build and upload	Run actions/checkout@v7	2026-10-07T08:26:04.2076853Z   lfs: false
+Test, build and upload	Run actions/checkout@v7	2026-10-07T08:26:04.2077277Z   submodules: false
+Test, build and upload	Run actions/checkout@v7	2026-10-07T08:26:04.2077900Z   set-safe-directory: true
+Test, build and upload	Run actions/checkout@v7	2026-10-07T08:26:04.2078425Z   allow-unsafe-pr-checkout: false
+Test, build and upload	Run actions/checkout@v7	2026-10-07T08:26:04.2079209Z ##[endgroup]
+Test, build and upload	Run actions/checkout@v7	2026-10-07T08:26:04.3174254Z Syncing repository: shivam24bcs10251-sys/devops-heros
+Test, build and upload	Run actions/checkout@v7	2026-10-07T08:26:04.3176942Z ##[group]Getting Git version info
+Test, build and upload	Run actions/checkout@v7	2026-10-07T08:26:04.3178067Z Working directory is '/home/runner/work/devops-heros/devops-heros'
+Test, build and upload	Run actions/checkout@v7	2026-10-07T08:26:04.3179350Z [command]/usr/bin/git version
+Test, build and upload	Run actions/checkout@v7	2026-10-07T08:26:04.3277662Z git version 2.55.0
+Test, build and upload	Run actions/checkout@v7	2026-10-07T08:26:04.3308230Z ##[endgroup]
+Test, build and upload	Run actions/checkout@v7	2026-10-07T08:26:04.3316260Z Temporarily overriding HOME='/home/runner/work/_temp/010918f9-19ec-4d1f-bb47-98cda50af705' before making global git config changes
+Test, build and upload	Run actions/checkout@v7	2026-10-07T08:26:04.3318908Z Adding repository directory to the temporary git global config as a safe directory
+Test, build and upload	Run actions/checkout@v7	2026-10-07T08:26:04.3322604Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/devops-heros/devops-heros
+Test, build and upload	Run actions/checkout@v7	2026-10-07T08:26:04.3375815Z Deleting the contents of '/home/runner/work/devops-heros/devops-heros'
+Test, build and upload	Run actions/checkout@v7	2026-10-07T08:26:04.3380065Z ##[group]Determining repository object format
+Test, build and upload	Run actions/checkout@v7	2026-10-07T08:26:04.3381989Z ##[endgroup]
+Test, build and upload	Run actions/checkout@v7	2026-10-07T08:26:04.3383319Z ##[group]Initializing the repository
+Test, build and upload	Run actions/checkout@v7	2026-10-07T08:26:04.3387065Z [command]/usr/bin/git init /home/runner/work/devops-heros/devops-heros
+Test, build and upload	Run actions/checkout@v7	2026-10-07T08:26:04.3538898Z hint: Using 'master' as the name for the initial branch. This default branch name
+Test, build and upload	Run actions/checkout@v7	2026-10-07T08:26:04.3541360Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+Test, build and upload	Run actions/checkout@v7	2026-10-07T08:26:04.3543925Z hint: to use in all of your new repositories, which will suppress this warning,
+Test, build and upload	Run actions/checkout@v7	2026-10-07T08:26:04.3545700Z hint: call:
+Test, build and upload	Run actions/checkout@v7	2026-10-07T08:26:04.3546833Z hint:
+Test, build and upload	Run actions/checkout@v7	2026-10-07T08:26:04.3548376Z hint: 	git config --global init.defaultBranch <name>
+Test, build and upload	Run actions/checkout@v7	2026-10-07T08:26:04.3549833Z hint:
+Test, build and upload	Run actions/checkout@v7	2026-10-07T08:26:04.3551075Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+Test, build and upload	Run actions/checkout@v7	2026-10-07T08:26:04.3552921Z hint: 'development'. The just-created branch can be renamed via this command:
+Test, build and upload	Run actions/checkout@v7	2026-10-07T08:26:04.3554659Z hint:
+Test, build and upload	Run actions/checkout@v7	2026-10-07T08:26:04.3555866Z hint: 	git branch -m <name>
+Test, build and upload	Run actions/checkout@v7	2026-10-07T08:26:04.3557065Z hint:
+Test, build and upload	Run actions/checkout@v7	2026-10-07T08:26:04.3558781Z hint: Disable this message with "git config set advice.defaultBranchName false"
+Test, build and upload	Run actions/checkout@v7	2026-10-07T08:26:04.3561009Z Initialized empty Git repository in /home/runner/work/devops-heros/devops-heros/.git/
+Test, build and upload	Run actions/checkout@v7	2026-10-07T08:26:04.3565066Z [command]/usr/bin/git remote add origin https://github.com/shivam24bcs10251-sys/devops-heros
+Test, build and upload	Run actions/checkout@v7	2026-10-07T08:26:04.3624375Z ##[endgroup]
+Test, build and upload	Run actions/checkout@v7	2026-10-07T08:26:04.3625710Z ##[group]Disabling automatic garbage collection
+Test, build and upload	Run actions/checkout@v7	2026-10-07T08:26:04.3628157Z [command]/usr/bin/git config --local gc.auto 0
+Test, build and upload	Run actions/checkout@v7	2026-10-07T08:26:04.3672195Z ##[endgroup]
+Test, build and upload	Run actions/checkout@v7	2026-10-07T08:26:04.3673617Z ##[group]Setting up auth
+Test, build and upload	Run actions/checkout@v7	2026-10-07T08:26:04.3674714Z Removing SSH command configuration
+Test, build and upload	Run actions/checkout@v7	2026-10-07T08:26:04.3681060Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+Test, build and upload	Run actions/checkout@v7	2026-10-07T08:26:04.3732777Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Test, build and upload	Run actions/checkout@v7	2026-10-07T08:26:04.4156129Z Removing HTTP extra header
+Test, build and upload	Run actions/checkout@v7	2026-10-07T08:26:04.4162697Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+Test, build and upload	Run actions/checkout@v7	2026-10-07T08:26:04.4202045Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Test, build and upload	Run actions/checkout@v7	2026-10-07T08:26:04.4454352Z Removing includeIf entries pointing to credentials config files
+Test, build and upload	Run actions/checkout@v7	2026-10-07T08:26:04.4459979Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+Test, build and upload	Run actions/checkout@v7	2026-10-07T08:26:04.4495211Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+Test, build and upload	Run actions/checkout@v7	2026-10-07T08:26:04.4731527Z [command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-3cb1145e-0634-4987-9e7a-cf3efd026445.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+Test, build and upload	Run actions/checkout@v7	2026-10-07T08:26:04.4773152Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/devops-heros/devops-heros/.git.path /home/runner/work/_temp/git-credentials-3cb1145e-0634-4987-9e7a-cf3efd026445.config
+Test, build and upload	Run actions/checkout@v7	2026-10-07T08:26:04.4809448Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/devops-heros/devops-heros/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-3cb1145e-0634-4987-9e7a-cf3efd026445.config
+Test, build and upload	Run actions/checkout@v7	2026-10-07T08:26:04.4849936Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-3cb1145e-0634-4987-9e7a-cf3efd026445.config
+Test, build and upload	Run actions/checkout@v7	2026-10-07T08:26:04.4886912Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-3cb1145e-0634-4987-9e7a-cf3efd026445.config
+Test, build and upload	Run actions/checkout@v7	2026-10-07T08:26:04.4923028Z ##[endgroup]
+Test, build and upload	Run actions/checkout@v7	2026-10-07T08:26:04.4924396Z ##[group]Fetching the repository
+Test, build and upload	Run actions/checkout@v7	2026-10-07T08:26:04.4931355Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +62182a2d15a0dff12671068bd5db3acf345a113e:refs/remotes/origin/session16-github-actions
+Test, build and upload	Run actions/checkout@v7	2026-10-07T08:26:05.9529809Z From https://github.com/shivam24bcs10251-sys/devops-heros
+Test, build and upload	Run actions/checkout@v7	2026-10-07T08:26:05.9531739Z  * [new ref]         62182a2d15a0dff12671068bd5db3acf345a113e -> origin/session16-github-actions
+Test, build and upload	Run actions/checkout@v7	2026-10-07T08:26:05.9536883Z [command]/usr/bin/git branch --list --remote origin/session16-github-actions
+Test, build and upload	Run actions/checkout@v7	2026-10-07T08:26:05.9566797Z   origin/session16-github-actions
+Test, build and upload	Run actions/checkout@v7	2026-10-07T08:26:05.9575359Z [command]/usr/bin/git rev-parse refs/remotes/origin/session16-github-actions
+Test, build and upload	Run actions/checkout@v7	2026-10-07T08:26:05.9601267Z 62182a2d15a0dff12671068bd5db3acf345a113e
+Test, build and upload	Run actions/checkout@v7	2026-10-07T08:26:05.9606168Z ##[endgroup]
+Test, build and upload	Run actions/checkout@v7	2026-10-07T08:26:05.9607795Z ##[group]Determining the checkout info
+Test, build and upload	Run actions/checkout@v7	2026-10-07T08:26:05.9610059Z ##[endgroup]
+Test, build and upload	Run actions/checkout@v7	2026-10-07T08:26:05.9611596Z [command]/usr/bin/git sparse-checkout disable
+Test, build and upload	Run actions/checkout@v7	2026-10-07T08:26:05.9663386Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+Test, build and upload	Run actions/checkout@v7	2026-10-07T08:26:05.9698739Z ##[group]Checking out the ref
+Test, build and upload	Run actions/checkout@v7	2026-10-07T08:26:05.9701775Z [command]/usr/bin/git checkout --progress --force -B session16-github-actions refs/remotes/origin/session16-github-actions
+Test, build and upload	Run actions/checkout@v7	2026-10-07T08:26:06.0243081Z Switched to a new branch 'session16-github-actions'
+Test, build and upload	Run actions/checkout@v7	2026-10-07T08:26:06.0247243Z branch 'session16-github-actions' set up to track 'origin/session16-github-actions'.
+Test, build and upload	Run actions/checkout@v7	2026-10-07T08:26:06.0263779Z ##[endgroup]
+Test, build and upload	Run actions/checkout@v7	2026-10-07T08:26:06.0315894Z [command]/usr/bin/git log -1 --format=%H
+Test, build and upload	Run actions/checkout@v7	2026-10-07T08:26:06.0345062Z 62182a2d15a0dff12671068bd5db3acf345a113e
+Test, build and upload	Run actions/setup-python@v7	﻿2026-10-07T08:26:06.0798422Z ##[group]Run actions/setup-python@v7
+Test, build and upload	Run actions/setup-python@v7	2026-10-07T08:26:06.0799784Z with:
+Test, build and upload	Run actions/setup-python@v7	2026-10-07T08:26:06.0800701Z   python-version: 3.12
+Test, build and upload	Run actions/setup-python@v7	2026-10-07T08:26:06.0801737Z   check-latest: false
+Test, build and upload	Run actions/setup-python@v7	2026-10-07T08:26:06.0812361Z   token: ***
+Test, build and upload	Run actions/setup-python@v7	2026-10-07T08:26:06.0813357Z   update-environment: true
+Test, build and upload	Run actions/setup-python@v7	2026-10-07T08:26:06.0814477Z   allow-prereleases: false
+Test, build and upload	Run actions/setup-python@v7	2026-10-07T08:26:06.0815583Z   freethreaded: false
+Test, build and upload	Run actions/setup-python@v7	2026-10-07T08:26:06.0816570Z ##[endgroup]
+Test, build and upload	Run actions/setup-python@v7	2026-10-07T08:26:06.2032038Z ##[group]Installed versions
+Test, build and upload	Run actions/setup-python@v7	2026-10-07T08:26:06.2108661Z Successfully set up CPython (3.12.14)
+Test, build and upload	Run actions/setup-python@v7	2026-10-07T08:26:06.2111647Z ##[endgroup]
+Test, build and upload	Install test dependencies	﻿2026-10-07T08:26:06.2296792Z ##[group]Run python -m pip install -r requirements.txt
+Test, build and upload	Install test dependencies	2026-10-07T08:26:06.2298769Z ^[[36;1mpython -m pip install -r requirements.txt^[[0m
+Test, build and upload	Install test dependencies	2026-10-07T08:26:06.2589354Z shell: /usr/bin/bash -e {0}
+Test, build and upload	Install test dependencies	2026-10-07T08:26:06.2590625Z env:
+Test, build and upload	Install test dependencies	2026-10-07T08:26:06.2591793Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.14/x64
+Test, build and upload	Install test dependencies	2026-10-07T08:26:06.2593730Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.14/x64/lib/pkgconfig
+Test, build and upload	Install test dependencies	2026-10-07T08:26:06.2595628Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.14/x64
+Test, build and upload	Install test dependencies	2026-10-07T08:26:06.2597353Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.14/x64
+Test, build and upload	Install test dependencies	2026-10-07T08:26:06.2599285Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.14/x64
+Test, build and upload	Install test dependencies	2026-10-07T08:26:06.2601046Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.14/x64/lib
+Test, build and upload	Install test dependencies	2026-10-07T08:26:06.2602551Z ##[endgroup]
+Test, build and upload	Install test dependencies	2026-10-07T08:26:07.1448151Z Collecting pytest==8.4.2 (from -r requirements.txt (line 1))
+Test, build and upload	Install test dependencies	2026-10-07T08:26:07.1930641Z   Downloading pytest-8.4.2-py3-none-any.whl.metadata (7.7 kB)
+Test, build and upload	Install test dependencies	2026-10-07T08:26:07.2129988Z Collecting iniconfig>=1 (from pytest==8.4.2->-r requirements.txt (line 1))
+Test, build and upload	Install test dependencies	2026-10-07T08:26:07.2164004Z   Downloading iniconfig-2.3.1-py3-none-any.whl.metadata (2.8 kB)
+Test, build and upload	Install test dependencies	2026-10-07T08:26:07.2408428Z Collecting packaging>=20 (from pytest==8.4.2->-r requirements.txt (line 1))
+Test, build and upload	Install test dependencies	2026-10-07T08:26:07.2439901Z   Downloading packaging-26.3-py3-none-any.whl.metadata (3.5 kB)
+Test, build and upload	Install test dependencies	2026-10-07T08:26:07.2659067Z Collecting pluggy<2,>=1.5 (from pytest==8.4.2->-r requirements.txt (line 1))
+Test, build and upload	Install test dependencies	2026-10-07T08:26:07.2695439Z   Downloading pluggy-1.6.0-py3-none-any.whl.metadata (4.8 kB)
+Test, build and upload	Install test dependencies	2026-10-07T08:26:07.3035620Z Collecting pygments>=2.7.2 (from pytest==8.4.2->-r requirements.txt (line 1))
+Test, build and upload	Install test dependencies	2026-10-07T08:26:07.3072149Z   Downloading pygments-2.21.0-py3-none-any.whl.metadata (2.5 kB)
+Test, build and upload	Install test dependencies	2026-10-07T08:26:07.3155748Z Downloading pytest-8.4.2-py3-none-any.whl (365 kB)
+Test, build and upload	Install test dependencies	2026-10-07T08:26:07.3392139Z Downloading pluggy-1.6.0-py3-none-any.whl (20 kB)
+Test, build and upload	Install test dependencies	2026-10-07T08:26:07.3442147Z Downloading iniconfig-2.3.1-py3-none-any.whl (7.6 kB)
+Test, build and upload	Install test dependencies	2026-10-07T08:26:07.3494175Z Downloading packaging-26.3-py3-none-any.whl (129 kB)
+Test, build and upload	Install test dependencies	2026-10-07T08:26:07.3546991Z Downloading pygments-2.21.0-py3-none-any.whl (1.3 MB)
+Test, build and upload	Install test dependencies	2026-10-07T08:26:07.3660823Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.3/1.3 MB 138.3 MB/s  0:00:00
+Test, build and upload	Install test dependencies	2026-10-07T08:26:07.4204011Z Installing collected packages: pygments, pluggy, packaging, iniconfig, pytest
+Test, build and upload	Install test dependencies	2026-10-07T08:26:08.5356383Z
+Test, build and upload	Install test dependencies	2026-10-07T08:26:08.5368908Z Successfully installed iniconfig-2.3.1 packaging-26.3 pluggy-1.6.0 pygments-2.21.0 pytest-8.4.2
+Test, build and upload	Unit tests	﻿2026-10-07T08:26:08.5889697Z ##[group]Run python -m pytest -v --junitxml=build/test-results.xml
+Test, build and upload	Unit tests	2026-10-07T08:26:08.5890247Z ^[[36;1mpython -m pytest -v --junitxml=build/test-results.xml^[[0m
+Test, build and upload	Unit tests	2026-10-07T08:26:08.5956523Z shell: /usr/bin/bash -e {0}
+Test, build and upload	Unit tests	2026-10-07T08:26:08.5956792Z env:
+Test, build and upload	Unit tests	2026-10-07T08:26:08.5957084Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.14/x64
+Test, build and upload	Unit tests	2026-10-07T08:26:08.5957809Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.14/x64/lib/pkgconfig
+Test, build and upload	Unit tests	2026-10-07T08:26:08.5958289Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.14/x64
+Test, build and upload	Unit tests	2026-10-07T08:26:08.5958675Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.14/x64
+Test, build and upload	Unit tests	2026-10-07T08:26:08.5959072Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.14/x64
+Test, build and upload	Unit tests	2026-10-07T08:26:08.5959459Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.14/x64/lib
+Test, build and upload	Unit tests	2026-10-07T08:26:08.5959835Z ##[endgroup]
+Test, build and upload	Unit tests	2026-10-07T08:26:08.9070568Z ============================= test session starts ==============================
+Test, build and upload	Unit tests	2026-10-07T08:26:08.9072226Z platform linux -- Python 3.12.14, pytest-8.4.2, pluggy-1.6.0 -- /opt/hostedtoolcache/Python/3.12.14/x64/bin/python
+Test, build and upload	Unit tests	2026-10-07T08:26:08.9073011Z cachedir: .pytest_cache
+Test, build and upload	Unit tests	2026-10-07T08:26:08.9073742Z rootdir: /home/runner/work/devops-heros/devops-heros/session-16-github-actions/session-16-github-actions/10-final-cicd-pipeline
+Test, build and upload	Unit tests	2026-10-07T08:26:08.9168013Z collecting ... collected 5 items
+Test, build and upload	Unit tests	2026-10-07T08:26:08.9168378Z
+Test, build and upload	Unit tests	2026-10-07T08:26:08.9230219Z tests/test_calculator.py::test_add PASSED                                [ 20%]
+Test, build and upload	Unit tests	2026-10-07T08:26:08.9238121Z tests/test_calculator.py::test_subtract PASSED                           [ 40%]
+Test, build and upload	Unit tests	2026-10-07T08:26:08.9245576Z tests/test_calculator.py::test_multiply PASSED                           [ 60%]
+Test, build and upload	Unit tests	2026-10-07T08:26:08.9253461Z tests/test_calculator.py::test_divide PASSED                             [ 80%]
+Test, build and upload	Unit tests	2026-10-07T08:26:08.9468834Z tests/test_calculator.py::test_divide_by_zero PASSED                     [100%]
+Test, build and upload	Unit tests	2026-10-07T08:26:08.9469643Z
+Test, build and upload	Unit tests	2026-10-07T08:26:08.9470899Z - generated xml file: /home/runner/work/devops-heros/devops-heros/session-16-github-actions/session-16-github-actions/10-final-cicd-pipeline/build/test-results.xml -
+Test, build and upload	Unit tests	2026-10-07T08:26:08.9472718Z ============================== 5 passed in 0.02s ===============================
+Test, build and upload	Validate secret availability without printing it	﻿2026-10-07T08:26:08.9776567Z ##[group]Run test -n "$DEMO_TOKEN" && echo 'Repository secret is available; value is hidden.'
+Test, build and upload	Validate secret availability without printing it	2026-10-07T08:26:08.9777234Z ^[[36;1mtest -n "$DEMO_TOKEN" && echo 'Repository secret is available; value is hidden.'^[[0m
+Test, build and upload	Validate secret availability without printing it	2026-10-07T08:26:08.9841068Z shell: /usr/bin/bash -e {0}
+Test, build and upload	Validate secret availability without printing it	2026-10-07T08:26:08.9841337Z env:
+Test, build and upload	Validate secret availability without printing it	2026-10-07T08:26:08.9841620Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.14/x64
+Test, build and upload	Validate secret availability without printing it	2026-10-07T08:26:08.9842074Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.14/x64/lib/pkgconfig
+Test, build and upload	Validate secret availability without printing it	2026-10-07T08:26:08.9842507Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.14/x64
+Test, build and upload	Validate secret availability without printing it	2026-10-07T08:26:08.9842898Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.14/x64
+Test, build and upload	Validate secret availability without printing it	2026-10-07T08:26:08.9843305Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.14/x64
+Test, build and upload	Validate secret availability without printing it	2026-10-07T08:26:08.9843712Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.14/x64/lib
+Test, build and upload	Validate secret availability without printing it	2026-10-07T08:26:08.9844358Z   DEMO_TOKEN: ***
+Test, build and upload	Validate secret availability without printing it	2026-10-07T08:26:08.9844570Z ##[endgroup]
+Test, build and upload	Validate secret availability without printing it	2026-10-07T08:26:08.9928616Z Repository secret is available; value is hidden.
+Test, build and upload	Build application and Docker image	﻿2026-10-07T08:26:08.9959442Z ##[group]Run bash build.sh
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:08.9959738Z ^[[36;1mbash build.sh^[[0m
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:08.9960198Z ^[[36;1mdocker build -t session16-calculator:demo .^[[0m
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:08.9960675Z ^[[36;1mdocker save session16-calculator:demo | gzip > build/calculator-image.tar.gz^[[0m
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:08.9961181Z ^[[36;1mpython -m pytest --junitxml=build/test-results.xml^[[0m
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:09.0019932Z shell: /usr/bin/bash -e {0}
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:09.0020193Z env:
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:09.0020464Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.14/x64
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:09.0020911Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.14/x64/lib/pkgconfig
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:09.0021371Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.14/x64
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:09.0021769Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.14/x64
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:09.0022165Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.14/x64
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:09.0022557Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.14/x64/lib
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:09.0022928Z ##[endgroup]
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:09.0118325Z =================================
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:09.0119140Z Starting Application Build
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:09.0119590Z =================================
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:09.0182355Z
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:09.0182696Z Build files:
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:09.0195360Z total 16
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:09.0195791Z drwxr-xr-x 2 runner runner 4096 Oct  7 08:26 .
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:09.0196383Z drwxr-xr-x 7 runner runner 4096 Oct  7 08:26 ..
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:09.0196776Z -rw-r--r-- 1 runner runner   98 Oct  7 08:26 build-info.txt
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:09.0197198Z -rw-r--r-- 1 runner runner 1488 Oct  7 08:26 calculator.py
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:09.0200155Z
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:09.0200555Z Build completed successfully.
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:09.5441190Z #0 building with "default" instance using docker driver
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:09.5441823Z
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:09.5442051Z #1 [internal] load build definition from Dockerfile
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:09.5442480Z #1 transferring dockerfile: 159B done
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:09.5442874Z #1 DONE 0.0s
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:09.5443050Z
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:09.5443321Z #2 [internal] load metadata for docker.io/library/python:3.12-slim
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:09.7340157Z #2 ...
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:09.7340632Z
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:09.7341090Z #3 [auth] library/python:pull token for registry-1.docker.io
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:09.7341800Z #3 DONE 0.0s
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:09.8838421Z
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:09.8838939Z #2 [internal] load metadata for docker.io/library/python:3.12-slim
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:10.2133586Z #2 DONE 0.8s
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:10.3424726Z
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:10.3425531Z #4 [internal] load .dockerignore
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:10.3426140Z #4 transferring context: 91B done
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:10.3426585Z #4 DONE 0.0s
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:10.3426787Z
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:10.3426954Z #5 [internal] load build context
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:10.3427709Z #5 transferring context: 5.60kB done
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:10.3428195Z #5 DONE 0.0s
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:10.3428397Z
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:10.3429078Z #6 [1/3] FROM docker.io/library/python:3.12-slim@sha256:05cda9777409a9c3ffddd94a4c476b79f0769a0b4857f0c7ed9226b6800b0d6f
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:10.3430675Z #6 resolve docker.io/library/python:3.12-slim@sha256:05cda9777409a9c3ffddd94a4c476b79f0769a0b4857f0c7ed9226b6800b0d6f done
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:10.3432072Z #6 sha256:05cda9777409a9c3ffddd94a4c476b79f0769a0b4857f0c7ed9226b6800b0d6f 10.37kB / 10.37kB done
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:10.3433354Z #6 sha256:2b4f19dae3a777dfc3b76730bda1e82e1f66ab2a2686fa93ca78edbfb4f04ffe 1.75kB / 1.75kB done
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:10.3434571Z #6 sha256:df18428df8a0f9189c84e7424d214b4c50092af1f9dca5842a00c41c39bda316 5.66kB / 5.66kB done
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:10.3435772Z #6 sha256:ecc510c1e359bdc007b39802570bb7e4dec7d6ebccf357c3201a74299113e05e 0B / 29.84MB 0.1s
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:10.3436945Z #6 sha256:75b6a36c64a1cf3520fc4b4aae4739d5caa8a6a05c27835a920a61784c9c32f8 0B / 1.29MB 0.1s
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:10.3438460Z #6 sha256:6912e23eb44595b44dc6d9882b34f305ad6f6e9667cec70b13e5dbc4f8cd97f4 10.49MB / 12.12MB 0.1s
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:10.5358072Z #6 sha256:ecc510c1e359bdc007b39802570bb7e4dec7d6ebccf357c3201a74299113e05e 28.31MB / 29.84MB 0.3s
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:10.5360128Z #6 sha256:75b6a36c64a1cf3520fc4b4aae4739d5caa8a6a05c27835a920a61784c9c32f8 1.29MB / 1.29MB 0.2s done
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:10.5364307Z #6 sha256:6912e23eb44595b44dc6d9882b34f305ad6f6e9667cec70b13e5dbc4f8cd97f4 12.12MB / 12.12MB 0.1s done
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:10.5365485Z #6 sha256:bbc5a12237474ec0b23b5051260d56d6436a24d70d9cad961adebe7a037ed813 249B / 249B 0.2s done
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:10.6875150Z #6 sha256:ecc510c1e359bdc007b39802570bb7e4dec7d6ebccf357c3201a74299113e05e 29.84MB / 29.84MB 0.3s done
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:10.6877197Z #6 extracting sha256:ecc510c1e359bdc007b39802570bb7e4dec7d6ebccf357c3201a74299113e05e 0.1s
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:11.5337003Z #6 extracting sha256:ecc510c1e359bdc007b39802570bb7e4dec7d6ebccf357c3201a74299113e05e 0.9s done
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:11.5340483Z #6 extracting sha256:75b6a36c64a1cf3520fc4b4aae4739d5caa8a6a05c27835a920a61784c9c32f8
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:11.7857878Z #6 extracting sha256:75b6a36c64a1cf3520fc4b4aae4739d5caa8a6a05c27835a920a61784c9c32f8 0.1s done
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:14.3649247Z #6 extracting sha256:6912e23eb44595b44dc6d9882b34f305ad6f6e9667cec70b13e5dbc4f8cd97f4
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:14.9977374Z #6 extracting sha256:6912e23eb44595b44dc6d9882b34f305ad6f6e9667cec70b13e5dbc4f8cd97f4 0.5s done
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:14.9978953Z #6 extracting sha256:bbc5a12237474ec0b23b5051260d56d6436a24d70d9cad961adebe7a037ed813 done
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:14.9979747Z #6 DONE 4.8s
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:14.9979961Z
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:14.9980141Z #7 [2/3] WORKDIR /application
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:14.9980561Z #7 DONE 0.0s
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:14.9980756Z
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:14.9981760Z #8 [3/3] COPY app ./app
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:14.9982172Z #8 DONE 0.0s
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:15.1495165Z
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:15.1495835Z #9 exporting to image
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:15.1496336Z #9 exporting layers
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:16.0065046Z #9 exporting layers 1.0s done
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:16.0223017Z #9 writing image sha256:e52b25805941c1107f8d0773837d2af663313953a38bd0243a02009227928d5d done
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:16.0223844Z #9 naming to docker.io/library/session16-calculator:demo done
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:16.0224414Z #9 DONE 1.0s
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:21.8864215Z ============================= test session starts ==============================
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:21.8865144Z platform linux -- Python 3.12.14, pytest-8.4.2, pluggy-1.6.0
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:21.8866441Z rootdir: /home/runner/work/devops-heros/devops-heros/session-16-github-actions/session-16-github-actions/10-final-cicd-pipeline
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:21.8867942Z collected 5 items
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:21.8868208Z
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:21.9165228Z tests/test_calculator.py .....                                           [100%]
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:21.9165810Z
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:21.9166760Z - generated xml file: /home/runner/work/devops-heros/devops-heros/session-16-github-actions/session-16-github-actions/10-final-cicd-pipeline/build/test-results.xml -
+Test, build and upload	Build application and Docker image	2026-10-07T08:26:21.9168402Z ============================== 5 passed in 0.02s ===============================
+Test, build and upload	Run actions/upload-artifact@v7	﻿2026-10-07T08:26:21.9439095Z ##[group]Run actions/upload-artifact@v7
+Test, build and upload	Run actions/upload-artifact@v7	2026-10-07T08:26:21.9439414Z with:
+Test, build and upload	Run actions/upload-artifact@v7	2026-10-07T08:26:21.9439663Z   name: session16-calculator-build
+Test, build and upload	Run actions/upload-artifact@v7	2026-10-07T08:26:21.9440114Z   path: session-16-github-actions/session-16-github-actions/10-final-cicd-pipeline/build/
+Test, build and upload	Run actions/upload-artifact@v7	2026-10-07T08:26:21.9440576Z   retention-days: 7
+Test, build and upload	Run actions/upload-artifact@v7	2026-10-07T08:26:21.9440800Z   if-no-files-found: error
+Test, build and upload	Run actions/upload-artifact@v7	2026-10-07T08:26:21.9441040Z   compression-level: 6
+Test, build and upload	Run actions/upload-artifact@v7	2026-10-07T08:26:21.9441260Z   overwrite: false
+Test, build and upload	Run actions/upload-artifact@v7	2026-10-07T08:26:21.9441478Z   include-hidden-files: false
+Test, build and upload	Run actions/upload-artifact@v7	2026-10-07T08:26:21.9441719Z   archive: true
+Test, build and upload	Run actions/upload-artifact@v7	2026-10-07T08:26:21.9441923Z env:
+Test, build and upload	Run actions/upload-artifact@v7	2026-10-07T08:26:21.9442182Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.14/x64
+Test, build and upload	Run actions/upload-artifact@v7	2026-10-07T08:26:21.9442615Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.14/x64/lib/pkgconfig
+Test, build and upload	Run actions/upload-artifact@v7	2026-10-07T08:26:21.9443051Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.14/x64
+Test, build and upload	Run actions/upload-artifact@v7	2026-10-07T08:26:21.9443433Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.14/x64
+Test, build and upload	Run actions/upload-artifact@v7	2026-10-07T08:26:21.9443818Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.14/x64
+Test, build and upload	Run actions/upload-artifact@v7	2026-10-07T08:26:21.9444247Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.14/x64/lib
+Test, build and upload	Run actions/upload-artifact@v7	2026-10-07T08:26:21.9444760Z ##[endgroup]
+Test, build and upload	Run actions/upload-artifact@v7	2026-10-07T08:26:22.0900155Z With the provided path, there will be 4 files uploaded
+Test, build and upload	Run actions/upload-artifact@v7	2026-10-07T08:26:22.0906206Z Artifact name is valid!
+Test, build and upload	Run actions/upload-artifact@v7	2026-10-07T08:26:22.0906796Z Root directory input is valid!
+Test, build and upload	Run actions/upload-artifact@v7	2026-10-07T08:26:22.4262848Z Uploading artifact: session16-calculator-build.zip
+Test, build and upload	Run actions/upload-artifact@v7	2026-10-07T08:26:22.4308196Z Beginning upload of artifact content to blob storage
+Test, build and upload	Run actions/upload-artifact@v7	2026-10-07T08:26:23.4339455Z Uploaded bytes 8388608
+Test, build and upload	Run actions/upload-artifact@v7	2026-10-07T08:26:23.7527094Z Uploaded bytes 16777216
+Test, build and upload	Run actions/upload-artifact@v7	2026-10-07T08:26:23.8456153Z Uploaded bytes 25165824
+Test, build and upload	Run actions/upload-artifact@v7	2026-10-07T08:26:23.9664831Z Uploaded bytes 33554432
+Test, build and upload	Run actions/upload-artifact@v7	2026-10-07T08:26:24.0685459Z Uploaded bytes 41943040
+Test, build and upload	Run actions/upload-artifact@v7	2026-10-07T08:26:24.1707397Z Uploaded bytes 42949814
+Test, build and upload	Run actions/upload-artifact@v7	2026-10-07T08:26:24.2272683Z Finished uploading artifact content to blob storage!
+Test, build and upload	Run actions/upload-artifact@v7	2026-10-07T08:26:24.2276671Z SHA256 digest of uploaded artifact is bb4bfd813eae66801f7bf8e261c61c0722934b8cab4fa52779c362f6c7ba29b7
+Test, build and upload	Run actions/upload-artifact@v7	2026-10-07T08:26:24.2279070Z Finalizing artifact upload
+Test, build and upload	Run actions/upload-artifact@v7	2026-10-07T08:26:24.6080175Z Artifact session16-calculator-build successfully finalized. Artifact ID 11470345237
+Test, build and upload	Run actions/upload-artifact@v7	2026-10-07T08:26:24.6081672Z Artifact session16-calculator-build has been successfully uploaded! Final size is 42949814 bytes. Artifact ID is 11470345237
+Test, build and upload	Run actions/upload-artifact@v7	2026-10-07T08:26:24.6086924Z Artifact download URL: https://github.com/shivam24bcs10251-sys/devops-heros/actions/runs/37593715574/artifacts/11470345237
+Test, build and upload	Post Run actions/setup-python@v7	﻿2026-10-07T08:26:24.6276787Z Post job cleanup.
+Test, build and upload	Post Run actions/checkout@v7	﻿2026-10-07T08:26:24.7567707Z Post job cleanup.
+Test, build and upload	Post Run actions/checkout@v7	2026-10-07T08:26:24.8488300Z [command]/usr/bin/git version
+Test, build and upload	Post Run actions/checkout@v7	2026-10-07T08:26:24.8533942Z git version 2.55.0
+Test, build and upload	Post Run actions/checkout@v7	2026-10-07T08:26:24.8582188Z Temporarily overriding HOME='/home/runner/work/_temp/c40fc999-239d-4d04-9970-f74aa0d1d183' before making global git config changes
+Test, build and upload	Post Run actions/checkout@v7	2026-10-07T08:26:24.8583651Z Adding repository directory to the temporary git global config as a safe directory
+Test, build and upload	Post Run actions/checkout@v7	2026-10-07T08:26:24.8587334Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/devops-heros/devops-heros
+Test, build and upload	Post Run actions/checkout@v7	2026-10-07T08:26:24.8624123Z Removing SSH command configuration
+Test, build and upload	Post Run actions/checkout@v7	2026-10-07T08:26:24.8631425Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+Test, build and upload	Post Run actions/checkout@v7	2026-10-07T08:26:24.8670360Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Test, build and upload	Post Run actions/checkout@v7	2026-10-07T08:26:24.8921692Z Removing HTTP extra header
+Test, build and upload	Post Run actions/checkout@v7	2026-10-07T08:26:24.8928616Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+Test, build and upload	Post Run actions/checkout@v7	2026-10-07T08:26:24.8966779Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Test, build and upload	Post Run actions/checkout@v7	2026-10-07T08:26:24.9238694Z Removing includeIf entries pointing to credentials config files
+Test, build and upload	Post Run actions/checkout@v7	2026-10-07T08:26:24.9248163Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+Test, build and upload	Post Run actions/checkout@v7	2026-10-07T08:26:24.9285279Z includeif.gitdir:/home/runner/work/devops-heros/devops-heros/.git.path
+Test, build and upload	Post Run actions/checkout@v7	2026-10-07T08:26:24.9288048Z includeif.gitdir:/home/runner/work/devops-heros/devops-heros/.git/worktrees/*.path
+Test, build and upload	Post Run actions/checkout@v7	2026-10-07T08:26:24.9289333Z includeif.gitdir:/github/workspace/.git.path
+Test, build and upload	Post Run actions/checkout@v7	2026-10-07T08:26:24.9290345Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+Test, build and upload	Post Run actions/checkout@v7	2026-10-07T08:26:24.9299469Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/devops-heros/devops-heros/.git.path
+Test, build and upload	Post Run actions/checkout@v7	2026-10-07T08:26:24.9330018Z /home/runner/work/_temp/git-credentials-3cb1145e-0634-4987-9e7a-cf3efd026445.config
+Test, build and upload	Post Run actions/checkout@v7	2026-10-07T08:26:24.9343625Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/devops-heros/devops-heros/.git.path \/home\/runner\/work\/_temp\/git\-credentials\-3cb1145e\-0634\-4987\-9e7a\-cf3efd026445\.config
+Test, build and upload	Post Run actions/checkout@v7	2026-10-07T08:26:24.9391649Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/devops-heros/devops-heros/.git/worktrees/*.path
+Test, build and upload	Post Run actions/checkout@v7	2026-10-07T08:26:24.9421921Z /home/runner/work/_temp/git-credentials-3cb1145e-0634-4987-9e7a-cf3efd026445.config
+Test, build and upload	Post Run actions/checkout@v7	2026-10-07T08:26:24.9435590Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/devops-heros/devops-heros/.git/worktrees/*.path \/home\/runner\/work\/_temp\/git\-credentials\-3cb1145e\-0634\-4987\-9e7a\-cf3efd026445\.config
+Test, build and upload	Post Run actions/checkout@v7	2026-10-07T08:26:24.9508586Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+Test, build and upload	Post Run actions/checkout@v7	2026-10-07T08:26:24.9536511Z /github/runner_temp/git-credentials-3cb1145e-0634-4987-9e7a-cf3efd026445.config
+Test, build and upload	Post Run actions/checkout@v7	2026-10-07T08:26:24.9545728Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path \/github\/runner_temp\/git\-credentials\-3cb1145e\-0634\-4987\-9e7a\-cf3efd026445\.config
+Test, build and upload	Post Run actions/checkout@v7	2026-10-07T08:26:24.9585673Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+Test, build and upload	Post Run actions/checkout@v7	2026-10-07T08:26:24.9617102Z /github/runner_temp/git-credentials-3cb1145e-0634-4987-9e7a-cf3efd026445.config
+Test, build and upload	Post Run actions/checkout@v7	2026-10-07T08:26:24.9626718Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path \/github\/runner_temp\/git\-credentials\-3cb1145e\-0634\-4987\-9e7a\-cf3efd026445\.config
+Test, build and upload	Post Run actions/checkout@v7	2026-10-07T08:26:24.9671907Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+Test, build and upload	Post Run actions/checkout@v7	2026-10-07T08:26:24.9925814Z Removing credentials config '/home/runner/work/_temp/git-credentials-3cb1145e-0634-4987-9e7a-cf3efd026445.config'
+Test, build and upload	Complete job	﻿2026-10-07T08:26:25.0082966Z Cleaning up orphan processes
+Deploy and verify Kubernetes	Set up job	﻿2026-10-07T08:26:30.0299847Z Current runner version: '2.337.0'
+Deploy and verify Kubernetes	Set up job	2026-10-07T08:26:30.0327226Z ##[group]Runner Image Provisioner
+Deploy and verify Kubernetes	Set up job	2026-10-07T08:26:30.0328565Z Hosted Compute Agent
+Deploy and verify Kubernetes	Set up job	2026-10-07T08:26:30.0329241Z Version: 20261002.596
+Deploy and verify Kubernetes	Set up job	2026-10-07T08:26:30.0329869Z Commit: c3d12f3313a95f25162a1503be624f3b0617f8c0
+Deploy and verify Kubernetes	Set up job	2026-10-07T08:26:30.0330680Z Build Date: 2026-10-02T22:28:27Z
+Deploy and verify Kubernetes	Set up job	2026-10-07T08:26:30.0331349Z Worker ID: {96699f70-fd87-4d52-8639-d4448c929e4b}
+Deploy and verify Kubernetes	Set up job	2026-10-07T08:26:30.0332042Z Region: eastus2
+Deploy and verify Kubernetes	Set up job	2026-10-07T08:26:30.0332646Z Cloud: Azure
+Deploy and verify Kubernetes	Set up job	2026-10-07T08:26:30.0333183Z ##[endgroup]
+Deploy and verify Kubernetes	Set up job	2026-10-07T08:26:30.0334764Z ##[group]Operating System
+Deploy and verify Kubernetes	Set up job	2026-10-07T08:26:30.0335511Z Ubuntu
+Deploy and verify Kubernetes	Set up job	2026-10-07T08:26:30.0336023Z 24.04.5
+Deploy and verify Kubernetes	Set up job	2026-10-07T08:26:30.0336599Z LTS
+Deploy and verify Kubernetes	Set up job	2026-10-07T08:26:30.0337117Z ##[endgroup]
+Deploy and verify Kubernetes	Set up job	2026-10-07T08:26:30.0337711Z ##[group]Runner Image
+Deploy and verify Kubernetes	Set up job	2026-10-07T08:26:30.0338756Z Image: ubuntu-24.04
+Deploy and verify Kubernetes	Set up job	2026-10-07T08:26:30.0339331Z Version: 20261004.327.1
+Deploy and verify Kubernetes	Set up job	2026-10-07T08:26:30.0340461Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261004.327/images/ubuntu/Ubuntu2404-Readme.md
+Deploy and verify Kubernetes	Set up job	2026-10-07T08:26:30.0342260Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261004.327
+Deploy and verify Kubernetes	Set up job	2026-10-07T08:26:30.0343248Z ##[endgroup]
+Deploy and verify Kubernetes	Set up job	2026-10-07T08:26:30.0344765Z ##[group]GITHUB_TOKEN Permissions
+Deploy and verify Kubernetes	Set up job	2026-10-07T08:26:30.0347274Z Contents: read
+Deploy and verify Kubernetes	Set up job	2026-10-07T08:26:30.0348126Z Metadata: read
+Deploy and verify Kubernetes	Set up job	2026-10-07T08:26:30.0348822Z ##[endgroup]
+Deploy and verify Kubernetes	Set up job	2026-10-07T08:26:30.0350893Z Secret source: Actions
+Deploy and verify Kubernetes	Set up job	2026-10-07T08:26:30.0351957Z Cache mode: write
+Deploy and verify Kubernetes	Set up job	2026-10-07T08:26:30.0352946Z Prepare workflow directory
+Deploy and verify Kubernetes	Set up job	2026-10-07T08:26:30.0770322Z Prepare all required actions
+Deploy and verify Kubernetes	Set up job	2026-10-07T08:26:30.0819769Z Getting action download info
+Deploy and verify Kubernetes	Set up job	2026-10-07T08:26:30.3345960Z Download action repository 'actions/checkout@v7' (SHA:3d3c42e5aac5ba805825da76410c181273ba90b1)
+Deploy and verify Kubernetes	Set up job	2026-10-07T08:26:30.4384896Z Download action repository 'actions/download-artifact@v8' (SHA:3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c)
+Deploy and verify Kubernetes	Set up job	2026-10-07T08:26:30.7682264Z Complete job name: Deploy and verify Kubernetes
+Deploy and verify Kubernetes	Run actions/checkout@v7	﻿2026-10-07T08:26:30.8431709Z ##[group]Run actions/checkout@v7
+Deploy and verify Kubernetes	Run actions/checkout@v7	2026-10-07T08:26:30.8432626Z with:
+Deploy and verify Kubernetes	Run actions/checkout@v7	2026-10-07T08:26:30.8433137Z   repository: shivam24bcs10251-sys/devops-heros
+Deploy and verify Kubernetes	Run actions/checkout@v7	2026-10-07T08:26:30.8437223Z   token: ***
+Deploy and verify Kubernetes	Run actions/checkout@v7	2026-10-07T08:26:30.8437652Z   ssh-strict: true
+Deploy and verify Kubernetes	Run actions/checkout@v7	2026-10-07T08:26:30.8438326Z   ssh-user: git
+Deploy and verify Kubernetes	Run actions/checkout@v7	2026-10-07T08:26:30.8438781Z   persist-credentials: true
+Deploy and verify Kubernetes	Run actions/checkout@v7	2026-10-07T08:26:30.8439262Z   clean: true
+Deploy and verify Kubernetes	Run actions/checkout@v7	2026-10-07T08:26:30.8439708Z   sparse-checkout-cone-mode: true
+Deploy and verify Kubernetes	Run actions/checkout@v7	2026-10-07T08:26:30.8440226Z   fetch-depth: 1
+Deploy and verify Kubernetes	Run actions/checkout@v7	2026-10-07T08:26:30.8440658Z   fetch-tags: false
+Deploy and verify Kubernetes	Run actions/checkout@v7	2026-10-07T08:26:30.8441114Z   show-progress: true
+Deploy and verify Kubernetes	Run actions/checkout@v7	2026-10-07T08:26:30.8441562Z   lfs: false
+Deploy and verify Kubernetes	Run actions/checkout@v7	2026-10-07T08:26:30.8441976Z   submodules: false
+Deploy and verify Kubernetes	Run actions/checkout@v7	2026-10-07T08:26:30.8442430Z   set-safe-directory: true
+Deploy and verify Kubernetes	Run actions/checkout@v7	2026-10-07T08:26:30.8442931Z   allow-unsafe-pr-checkout: false
+Deploy and verify Kubernetes	Run actions/checkout@v7	2026-10-07T08:26:30.8443700Z ##[endgroup]
+Deploy and verify Kubernetes	Run actions/checkout@v7	2026-10-07T08:26:30.9464885Z Syncing repository: shivam24bcs10251-sys/devops-heros
+Deploy and verify Kubernetes	Run actions/checkout@v7	2026-10-07T08:26:30.9468231Z ##[group]Getting Git version info
+Deploy and verify Kubernetes	Run actions/checkout@v7	2026-10-07T08:26:30.9469494Z Working directory is '/home/runner/work/devops-heros/devops-heros'
+Deploy and verify Kubernetes	Run actions/checkout@v7	2026-10-07T08:26:30.9471635Z [command]/usr/bin/git version
+Deploy and verify Kubernetes	Run actions/checkout@v7	2026-10-07T08:26:30.9557108Z git version 2.55.0
+Deploy and verify Kubernetes	Run actions/checkout@v7	2026-10-07T08:26:30.9588492Z ##[endgroup]
+Deploy and verify Kubernetes	Run actions/checkout@v7	2026-10-07T08:26:30.9607024Z Temporarily overriding HOME='/home/runner/work/_temp/a73e58e5-f40d-4fa6-a3ef-3cccff9c9500' before making global git config changes
+Deploy and verify Kubernetes	Run actions/checkout@v7	2026-10-07T08:26:30.9609178Z Adding repository directory to the temporary git global config as a safe directory
+Deploy and verify Kubernetes	Run actions/checkout@v7	2026-10-07T08:26:30.9615457Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/devops-heros/devops-heros
+Deploy and verify Kubernetes	Run actions/checkout@v7	2026-10-07T08:26:30.9674292Z Deleting the contents of '/home/runner/work/devops-heros/devops-heros'
+Deploy and verify Kubernetes	Run actions/checkout@v7	2026-10-07T08:26:30.9677663Z ##[group]Determining repository object format
+Deploy and verify Kubernetes	Run actions/checkout@v7	2026-10-07T08:26:30.9679962Z ##[endgroup]
+Deploy and verify Kubernetes	Run actions/checkout@v7	2026-10-07T08:26:30.9680841Z ##[group]Initializing the repository
+Deploy and verify Kubernetes	Run actions/checkout@v7	2026-10-07T08:26:30.9684845Z [command]/usr/bin/git init /home/runner/work/devops-heros/devops-heros
+Deploy and verify Kubernetes	Run actions/checkout@v7	2026-10-07T08:26:30.9823188Z hint: Using 'master' as the name for the initial branch. This default branch name
+Deploy and verify Kubernetes	Run actions/checkout@v7	2026-10-07T08:26:30.9826542Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+Deploy and verify Kubernetes	Run actions/checkout@v7	2026-10-07T08:26:30.9829236Z hint: to use in all of your new repositories, which will suppress this warning,
+Deploy and verify Kubernetes	Run actions/checkout@v7	2026-10-07T08:26:30.9830019Z hint: call:
+Deploy and verify Kubernetes	Run actions/checkout@v7	2026-10-07T08:26:30.9830467Z hint:
+Deploy and verify Kubernetes	Run actions/checkout@v7	2026-10-07T08:26:30.9831194Z hint: 	git config --global init.defaultBranch <name>
+Deploy and verify Kubernetes	Run actions/checkout@v7	2026-10-07T08:26:30.9832324Z hint:
+Deploy and verify Kubernetes	Run actions/checkout@v7	2026-10-07T08:26:30.9833381Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+Deploy and verify Kubernetes	Run actions/checkout@v7	2026-10-07T08:26:30.9835059Z hint: 'development'. The just-created branch can be renamed via this command:
+Deploy and verify Kubernetes	Run actions/checkout@v7	2026-10-07T08:26:30.9836400Z hint:
+Deploy and verify Kubernetes	Run actions/checkout@v7	2026-10-07T08:26:30.9837171Z hint: 	git branch -m <name>
+Deploy and verify Kubernetes	Run actions/checkout@v7	2026-10-07T08:26:30.9838273Z hint:
+Deploy and verify Kubernetes	Run actions/checkout@v7	2026-10-07T08:26:30.9839355Z hint: Disable this message with "git config set advice.defaultBranchName false"
+Deploy and verify Kubernetes	Run actions/checkout@v7	2026-10-07T08:26:30.9841132Z Initialized empty Git repository in /home/runner/work/devops-heros/devops-heros/.git/
+Deploy and verify Kubernetes	Run actions/checkout@v7	2026-10-07T08:26:30.9844745Z [command]/usr/bin/git remote add origin https://github.com/shivam24bcs10251-sys/devops-heros
+Deploy and verify Kubernetes	Run actions/checkout@v7	2026-10-07T08:26:30.9910788Z ##[endgroup]
+Deploy and verify Kubernetes	Run actions/checkout@v7	2026-10-07T08:26:30.9912509Z ##[group]Disabling automatic garbage collection
+Deploy and verify Kubernetes	Run actions/checkout@v7	2026-10-07T08:26:30.9914228Z [command]/usr/bin/git config --local gc.auto 0
+Deploy and verify Kubernetes	Run actions/checkout@v7	2026-10-07T08:26:30.9969245Z ##[endgroup]
+Deploy and verify Kubernetes	Run actions/checkout@v7	2026-10-07T08:26:30.9981275Z ##[group]Setting up auth
+Deploy and verify Kubernetes	Run actions/checkout@v7	2026-10-07T08:26:31.0000534Z Removing SSH command configuration
+Deploy and verify Kubernetes	Run actions/checkout@v7	2026-10-07T08:26:31.0002527Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+Deploy and verify Kubernetes	Run actions/checkout@v7	2026-10-07T08:26:31.0033546Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Deploy and verify Kubernetes	Run actions/checkout@v7	2026-10-07T08:26:31.0538066Z Removing HTTP extra header
+Deploy and verify Kubernetes	Run actions/checkout@v7	2026-10-07T08:26:31.0544931Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+Deploy and verify Kubernetes	Run actions/checkout@v7	2026-10-07T08:26:31.0585353Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Deploy and verify Kubernetes	Run actions/checkout@v7	2026-10-07T08:26:31.0850896Z Removing includeIf entries pointing to credentials config files
+Deploy and verify Kubernetes	Run actions/checkout@v7	2026-10-07T08:26:31.0856109Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+Deploy and verify Kubernetes	Run actions/checkout@v7	2026-10-07T08:26:31.0899990Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+Deploy and verify Kubernetes	Run actions/checkout@v7	2026-10-07T08:26:31.1165382Z [command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-bef3fc3e-c455-487c-9a7a-a3fe1618ea39.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+Deploy and verify Kubernetes	Run actions/checkout@v7	2026-10-07T08:26:31.1214790Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/devops-heros/devops-heros/.git.path /home/runner/work/_temp/git-credentials-bef3fc3e-c455-487c-9a7a-a3fe1618ea39.config
+Deploy and verify Kubernetes	Run actions/checkout@v7	2026-10-07T08:26:31.1257115Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/devops-heros/devops-heros/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-bef3fc3e-c455-487c-9a7a-a3fe1618ea39.config
+Deploy and verify Kubernetes	Run actions/checkout@v7	2026-10-07T08:26:31.1300911Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-bef3fc3e-c455-487c-9a7a-a3fe1618ea39.config
+Deploy and verify Kubernetes	Run actions/checkout@v7	2026-10-07T08:26:31.1341266Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-bef3fc3e-c455-487c-9a7a-a3fe1618ea39.config
+Deploy and verify Kubernetes	Run actions/checkout@v7	2026-10-07T08:26:31.1374426Z ##[endgroup]
+Deploy and verify Kubernetes	Run actions/checkout@v7	2026-10-07T08:26:31.1375645Z ##[group]Fetching the repository
+Deploy and verify Kubernetes	Run actions/checkout@v7	2026-10-07T08:26:31.1381599Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +62182a2d15a0dff12671068bd5db3acf345a113e:refs/remotes/origin/session16-github-actions
+Deploy and verify Kubernetes	Run actions/checkout@v7	2026-10-07T08:26:31.5810147Z From https://github.com/shivam24bcs10251-sys/devops-heros
+Deploy and verify Kubernetes	Run actions/checkout@v7	2026-10-07T08:26:31.5813006Z  * [new ref]         62182a2d15a0dff12671068bd5db3acf345a113e -> origin/session16-github-actions
+Deploy and verify Kubernetes	Run actions/checkout@v7	2026-10-07T08:26:31.5821646Z [command]/usr/bin/git branch --list --remote origin/session16-github-actions
+Deploy and verify Kubernetes	Run actions/checkout@v7	2026-10-07T08:26:31.5854576Z   origin/session16-github-actions
+Deploy and verify Kubernetes	Run actions/checkout@v7	2026-10-07T08:26:31.5865839Z [command]/usr/bin/git rev-parse refs/remotes/origin/session16-github-actions
+Deploy and verify Kubernetes	Run actions/checkout@v7	2026-10-07T08:26:31.5894091Z 62182a2d15a0dff12671068bd5db3acf345a113e
+Deploy and verify Kubernetes	Run actions/checkout@v7	2026-10-07T08:26:31.5902462Z ##[endgroup]
+Deploy and verify Kubernetes	Run actions/checkout@v7	2026-10-07T08:26:31.5903854Z ##[group]Determining the checkout info
+Deploy and verify Kubernetes	Run actions/checkout@v7	2026-10-07T08:26:31.5905335Z ##[endgroup]
+Deploy and verify Kubernetes	Run actions/checkout@v7	2026-10-07T08:26:31.5906205Z [command]/usr/bin/git sparse-checkout disable
+Deploy and verify Kubernetes	Run actions/checkout@v7	2026-10-07T08:26:31.5968840Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+Deploy and verify Kubernetes	Run actions/checkout@v7	2026-10-07T08:26:31.6006001Z ##[group]Checking out the ref
+Deploy and verify Kubernetes	Run actions/checkout@v7	2026-10-07T08:26:31.6010354Z [command]/usr/bin/git checkout --progress --force -B session16-github-actions refs/remotes/origin/session16-github-actions
+Deploy and verify Kubernetes	Run actions/checkout@v7	2026-10-07T08:26:31.6579336Z Switched to a new branch 'session16-github-actions'
+Deploy and verify Kubernetes	Run actions/checkout@v7	2026-10-07T08:26:31.6595244Z branch 'session16-github-actions' set up to track 'origin/session16-github-actions'.
+Deploy and verify Kubernetes	Run actions/checkout@v7	2026-10-07T08:26:31.6608744Z ##[endgroup]
+Deploy and verify Kubernetes	Run actions/checkout@v7	2026-10-07T08:26:31.6661305Z [command]/usr/bin/git log -1 --format=%H
+Deploy and verify Kubernetes	Run actions/checkout@v7	2026-10-07T08:26:31.6693979Z 62182a2d15a0dff12671068bd5db3acf345a113e
+Deploy and verify Kubernetes	Run actions/download-artifact@v8	﻿2026-10-07T08:26:31.6992894Z ##[group]Run actions/download-artifact@v8
+Deploy and verify Kubernetes	Run actions/download-artifact@v8	2026-10-07T08:26:31.6993816Z with:
+Deploy and verify Kubernetes	Run actions/download-artifact@v8	2026-10-07T08:26:31.6994337Z   name: session16-calculator-build
+Deploy and verify Kubernetes	Run actions/download-artifact@v8	2026-10-07T08:26:31.6995830Z   path: session-16-github-actions/session-16-github-actions/10-final-cicd-pipeline/build
+Deploy and verify Kubernetes	Run actions/download-artifact@v8	2026-10-07T08:26:31.6997340Z   merge-multiple: false
+Deploy and verify Kubernetes	Run actions/download-artifact@v8	2026-10-07T08:26:31.6998255Z   repository: shivam24bcs10251-sys/devops-heros
+Deploy and verify Kubernetes	Run actions/download-artifact@v8	2026-10-07T08:26:31.6999142Z   run-id: 37593715574
+Deploy and verify Kubernetes	Run actions/download-artifact@v8	2026-10-07T08:26:31.6999722Z   skip-decompress: false
+Deploy and verify Kubernetes	Run actions/download-artifact@v8	2026-10-07T08:26:31.7000369Z   digest-mismatch: error
+Deploy and verify Kubernetes	Run actions/download-artifact@v8	2026-10-07T08:26:31.7000970Z ##[endgroup]
+Deploy and verify Kubernetes	Run actions/download-artifact@v8	2026-10-07T08:26:31.8383457Z Downloading single artifact
+Deploy and verify Kubernetes	Run actions/download-artifact@v8	2026-10-07T08:26:31.9364976Z Preparing to download the following artifacts:
+Deploy and verify Kubernetes	Run actions/download-artifact@v8	2026-10-07T08:26:31.9368154Z - session16-calculator-build (ID: 11470345237, Size: 42949814, Expected Digest: sha256:bb4bfd813eae66801f7bf8e261c61c0722934b8cab4fa52779c362f6c7ba29b7)
+Deploy and verify Kubernetes	Run actions/download-artifact@v8	2026-10-07T08:26:32.1405361Z Redirecting to blob download url: https://productionresultssa6.blob.core.windows.net/actions-results/89494b3c-9061-80d4-b33b-d6e88c971550/workflow-job-run-031c81ab-2893-59a1-a150-f0f3dec52294/artifacts/acc1c82b9409a02ab8ff5cddcbdbd57dbbc0794b2db1aa8c33527ea61e92164f.zip
+Deploy and verify Kubernetes	Run actions/download-artifact@v8	2026-10-07T08:26:32.1413980Z Starting download of artifact to: /home/runner/work/devops-heros/devops-heros/session-16-github-actions/session-16-github-actions/10-final-cicd-pipeline/build
+Deploy and verify Kubernetes	Run actions/download-artifact@v8	2026-10-07T08:26:32.2349256Z (node:2283) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+Deploy and verify Kubernetes	Run actions/download-artifact@v8	2026-10-07T08:26:32.2354038Z (Use `node --trace-deprecation ...` to show where the warning was created)
+Deploy and verify Kubernetes	Run actions/download-artifact@v8	2026-10-07T08:26:32.8879625Z SHA256 digest of downloaded artifact is bb4bfd813eae66801f7bf8e261c61c0722934b8cab4fa52779c362f6c7ba29b7
+Deploy and verify Kubernetes	Run actions/download-artifact@v8	2026-10-07T08:26:32.8882635Z Artifact download completed successfully.
+Deploy and verify Kubernetes	Run actions/download-artifact@v8	2026-10-07T08:26:32.8883193Z Total of 1 artifact(s) downloaded
+Deploy and verify Kubernetes	Run actions/download-artifact@v8	2026-10-07T08:26:32.8887643Z Download artifact has finished successfully
+Deploy and verify Kubernetes	Load delivered image and install Kind	﻿2026-10-07T08:26:32.9092144Z ##[group]Run gunzip -c build/calculator-image.tar.gz | docker load
+Deploy and verify Kubernetes	Load delivered image and install Kind	2026-10-07T08:26:32.9092794Z ^[[36;1mgunzip -c build/calculator-image.tar.gz | docker load^[[0m
+Deploy and verify Kubernetes	Load delivered image and install Kind	2026-10-07T08:26:32.9093466Z ^[[36;1mcurl -fsSL https://kind.sigs.k8s.io/dl/v0.33.0/kind-linux-amd64 -o /tmp/kind^[[0m
+Deploy and verify Kubernetes	Load delivered image and install Kind	2026-10-07T08:26:32.9093951Z ^[[36;1msudo install /tmp/kind /usr/local/bin/kind^[[0m
+Deploy and verify Kubernetes	Load delivered image and install Kind	2026-10-07T08:26:32.9382545Z shell: /usr/bin/bash -e {0}
+Deploy and verify Kubernetes	Load delivered image and install Kind	2026-10-07T08:26:32.9382944Z ##[endgroup]
+Deploy and verify Kubernetes	Load delivered image and install Kind	2026-10-07T08:26:38.4450214Z Loaded image: session16-calculator:demo
+Deploy and verify Kubernetes	Deploy and test HTTP response	﻿2026-10-07T08:26:38.7584855Z ##[group]Run bash deploy.sh
+Deploy and verify Kubernetes	Deploy and test HTTP response	2026-10-07T08:26:38.7585468Z ^[[36;1mbash deploy.sh^[[0m
+Deploy and verify Kubernetes	Deploy and test HTTP response	2026-10-07T08:26:38.7651676Z shell: /usr/bin/bash -e {0}
+Deploy and verify Kubernetes	Deploy and test HTTP response	2026-10-07T08:26:38.7652028Z ##[endgroup]
+Deploy and verify Kubernetes	Deploy and test HTTP response	2026-10-07T08:26:40.9724855Z Creating cluster "session16" ...
+Deploy and verify Kubernetes	Deploy and test HTTP response	2026-10-07T08:26:49.2536394Z  • Ensuring node image (kindest/node:v1.37.0) 🖼️  ...
+Deploy and verify Kubernetes	Deploy and test HTTP response	2026-10-07T08:26:49.2536954Z  ✓ Ensuring node image (kindest/node:v1.37.0) 🖼️
+Deploy and verify Kubernetes	Deploy and test HTTP response	2026-10-07T08:26:49.2537357Z  • Preparing nodes 📦   ...
+Deploy and verify Kubernetes	Deploy and test HTTP response	2026-10-07T08:26:51.4139837Z  ✓ Preparing nodes 📦
+Deploy and verify Kubernetes	Deploy and test HTTP response	2026-10-07T08:26:51.4403262Z  • Writing configuration 📜  ...
+Deploy and verify Kubernetes	Deploy and test HTTP response	2026-10-07T08:26:51.6281797Z  ✓ Writing configuration 📜
+Deploy and verify Kubernetes	Deploy and test HTTP response	2026-10-07T08:26:51.6282771Z  • Starting control-plane 🕹️  ...
+Deploy and verify Kubernetes	Deploy and test HTTP response	2026-10-07T08:26:59.9280272Z  ✓ Starting control-plane 🕹️
+Deploy and verify Kubernetes	Deploy and test HTTP response	2026-10-07T08:26:59.9289975Z  • Installing CNI 🔌  ...
+Deploy and verify Kubernetes	Deploy and test HTTP response	2026-10-07T08:27:00.2388175Z  ✓ Installing CNI 🔌
+Deploy and verify Kubernetes	Deploy and test HTTP response	2026-10-07T08:27:00.2389046Z  • Installing StorageClass 💾  ...
+Deploy and verify Kubernetes	Deploy and test HTTP response	2026-10-07T08:27:00.5898723Z  ✓ Installing StorageClass 💾
+Deploy and verify Kubernetes	Deploy and test HTTP response	2026-10-07T08:27:00.6180843Z  • Waiting ≤ 2m0s for control-plane = Ready ⏳  ...
+Deploy and verify Kubernetes	Deploy and test HTTP response	2026-10-07T08:27:18.2014381Z  ✓ Waiting ≤ 2m0s for control-plane = Ready ⏳
+Deploy and verify Kubernetes	Deploy and test HTTP response	2026-10-07T08:27:18.2015781Z  • Ready after 18s 💚
+Deploy and verify Kubernetes	Deploy and test HTTP response	2026-10-07T08:27:18.3476621Z Set kubectl context to "kind-session16"
+Deploy and verify Kubernetes	Deploy and test HTTP response	2026-10-07T08:27:18.3477239Z You can now use your cluster with:
+Deploy and verify Kubernetes	Deploy and test HTTP response	2026-10-07T08:27:18.3477547Z
+Deploy and verify Kubernetes	Deploy and test HTTP response	2026-10-07T08:27:18.3478022Z kubectl cluster-info --context kind-session16
+Deploy and verify Kubernetes	Deploy and test HTTP response	2026-10-07T08:27:18.3478417Z
+Deploy and verify Kubernetes	Deploy and test HTTP response	2026-10-07T08:27:18.3479346Z Have a question, bug, or feature request? Let us know! https://kind.sigs.k8s.io/#community 🙂
+Deploy and verify Kubernetes	Deploy and test HTTP response	2026-10-07T08:27:18.5323210Z Image: "session16-calculator:demo" with ID "sha256:e52b25805941c1107f8d0773837d2af663313953a38bd0243a02009227928d5d" not yet present on node "session16-control-plane", loading...
+Deploy and verify Kubernetes	Deploy and test HTTP response	2026-10-07T08:27:24.6497161Z deployment.apps/calculator created
+Deploy and verify Kubernetes	Deploy and test HTTP response	2026-10-07T08:27:24.6585943Z service/calculator created
+Deploy and verify Kubernetes	Deploy and test HTTP response	2026-10-07T08:27:24.7612251Z Waiting for deployment "calculator" rollout to finish: 0 of 2 updated replicas are available...
+Deploy and verify Kubernetes	Deploy and test HTTP response	2026-10-07T08:27:36.1983775Z Waiting for deployment "calculator" rollout to finish: 1 of 2 updated replicas are available...
+Deploy and verify Kubernetes	Deploy and test HTTP response	2026-10-07T08:27:36.2075062Z deployment "calculator" successfully rolled out
+Deploy and verify Kubernetes	Deploy and test HTTP response	2026-10-07T08:27:36.2781841Z NAME                              READY   STATUS    RESTARTS   AGE
+Deploy and verify Kubernetes	Deploy and test HTTP response	2026-10-07T08:27:36.2785053Z pod/calculator-775fb9566c-p2q4g   1/1     Running   0          12s
+Deploy and verify Kubernetes	Deploy and test HTTP response	2026-10-07T08:27:36.2786271Z pod/calculator-775fb9566c-rwc62   1/1     Running   0          12s
+Deploy and verify Kubernetes	Deploy and test HTTP response	2026-10-07T08:27:36.2787073Z
+Deploy and verify Kubernetes	Deploy and test HTTP response	2026-10-07T08:27:36.2787603Z NAME                 TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)   AGE
+Deploy and verify Kubernetes	Deploy and test HTTP response	2026-10-07T08:27:36.2788980Z service/calculator   ClusterIP   10.96.199.52   <none>        80/TCP    12s
+Deploy and verify Kubernetes	Deploy and test HTTP response	2026-10-07T08:27:36.2790142Z service/kubernetes   ClusterIP   10.96.0.1      <none>        443/TCP   39s
+Deploy and verify Kubernetes	Deploy and test HTTP response	2026-10-07T08:27:38.3429825Z {"status": "ok"}Deployment verified: {'result': 15.0}
+Deploy and verify Kubernetes	Deploy and test HTTP response	2026-10-07T08:27:38.3604067Z Deleting cluster "session16" ...
+Deploy and verify Kubernetes	Deploy and test HTTP response	2026-10-07T08:27:39.6536696Z Deleted nodes: ["session16-control-plane"]
+Deploy and verify Kubernetes	Post Run actions/checkout@v7	﻿2026-10-07T08:27:39.6678241Z Post job cleanup.
+Deploy and verify Kubernetes	Post Run actions/checkout@v7	2026-10-07T08:27:39.7566487Z [command]/usr/bin/git version
+Deploy and verify Kubernetes	Post Run actions/checkout@v7	2026-10-07T08:27:39.7616143Z git version 2.55.0
+Deploy and verify Kubernetes	Post Run actions/checkout@v7	2026-10-07T08:27:39.7668604Z Temporarily overriding HOME='/home/runner/work/_temp/a36a999c-416f-4081-966d-5a496fc15cd2' before making global git config changes
+Deploy and verify Kubernetes	Post Run actions/checkout@v7	2026-10-07T08:27:39.7670122Z Adding repository directory to the temporary git global config as a safe directory
+Deploy and verify Kubernetes	Post Run actions/checkout@v7	2026-10-07T08:27:39.7675519Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/devops-heros/devops-heros
+Deploy and verify Kubernetes	Post Run actions/checkout@v7	2026-10-07T08:27:39.7712908Z Removing SSH command configuration
+Deploy and verify Kubernetes	Post Run actions/checkout@v7	2026-10-07T08:27:39.7720601Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+Deploy and verify Kubernetes	Post Run actions/checkout@v7	2026-10-07T08:27:39.7759786Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Deploy and verify Kubernetes	Post Run actions/checkout@v7	2026-10-07T08:27:39.8020104Z Removing HTTP extra header
+Deploy and verify Kubernetes	Post Run actions/checkout@v7	2026-10-07T08:27:39.8027479Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+Deploy and verify Kubernetes	Post Run actions/checkout@v7	2026-10-07T08:27:39.8072167Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Deploy and verify Kubernetes	Post Run actions/checkout@v7	2026-10-07T08:27:39.8333504Z Removing includeIf entries pointing to credentials config files
+Deploy and verify Kubernetes	Post Run actions/checkout@v7	2026-10-07T08:27:39.8343617Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+Deploy and verify Kubernetes	Post Run actions/checkout@v7	2026-10-07T08:27:39.8376562Z includeif.gitdir:/home/runner/work/devops-heros/devops-heros/.git.path
+Deploy and verify Kubernetes	Post Run actions/checkout@v7	2026-10-07T08:27:39.8377503Z includeif.gitdir:/home/runner/work/devops-heros/devops-heros/.git/worktrees/*.path
+Deploy and verify Kubernetes	Post Run actions/checkout@v7	2026-10-07T08:27:39.8378531Z includeif.gitdir:/github/workspace/.git.path
+Deploy and verify Kubernetes	Post Run actions/checkout@v7	2026-10-07T08:27:39.8379185Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+Deploy and verify Kubernetes	Post Run actions/checkout@v7	2026-10-07T08:27:39.8387038Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/devops-heros/devops-heros/.git.path
+Deploy and verify Kubernetes	Post Run actions/checkout@v7	2026-10-07T08:27:39.8414875Z /home/runner/work/_temp/git-credentials-bef3fc3e-c455-487c-9a7a-a3fe1618ea39.config
+Deploy and verify Kubernetes	Post Run actions/checkout@v7	2026-10-07T08:27:39.8426833Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/devops-heros/devops-heros/.git.path \/home\/runner\/work\/_temp\/git\-credentials\-bef3fc3e\-c455\-487c\-9a7a\-a3fe1618ea39\.config
+Deploy and verify Kubernetes	Post Run actions/checkout@v7	2026-10-07T08:27:39.8480220Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/devops-heros/devops-heros/.git/worktrees/*.path
+Deploy and verify Kubernetes	Post Run actions/checkout@v7	2026-10-07T08:27:39.8517507Z /home/runner/work/_temp/git-credentials-bef3fc3e-c455-487c-9a7a-a3fe1618ea39.config
+Deploy and verify Kubernetes	Post Run actions/checkout@v7	2026-10-07T08:27:39.8527241Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/devops-heros/devops-heros/.git/worktrees/*.path \/home\/runner\/work\/_temp\/git\-credentials\-bef3fc3e\-c455\-487c\-9a7a\-a3fe1618ea39\.config
+Deploy and verify Kubernetes	Post Run actions/checkout@v7	2026-10-07T08:27:39.8595341Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+Deploy and verify Kubernetes	Post Run actions/checkout@v7	2026-10-07T08:27:39.8635260Z /github/runner_temp/git-credentials-bef3fc3e-c455-487c-9a7a-a3fe1618ea39.config
+Deploy and verify Kubernetes	Post Run actions/checkout@v7	2026-10-07T08:27:39.8662925Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path \/github\/runner_temp\/git\-credentials\-bef3fc3e\-c455\-487c\-9a7a\-a3fe1618ea39\.config
+Deploy and verify Kubernetes	Post Run actions/checkout@v7	2026-10-07T08:27:39.8693600Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+Deploy and verify Kubernetes	Post Run actions/checkout@v7	2026-10-07T08:27:39.8723204Z /github/runner_temp/git-credentials-bef3fc3e-c455-487c-9a7a-a3fe1618ea39.config
+Deploy and verify Kubernetes	Post Run actions/checkout@v7	2026-10-07T08:27:39.8736708Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path \/github\/runner_temp\/git\-credentials\-bef3fc3e\-c455\-487c\-9a7a\-a3fe1618ea39\.config
+Deploy and verify Kubernetes	Post Run actions/checkout@v7	2026-10-07T08:27:39.8776330Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+Deploy and verify Kubernetes	Post Run actions/checkout@v7	2026-10-07T08:27:39.9030670Z Removing credentials config '/home/runner/work/_temp/git-credentials-bef3fc3e-c455-487c-9a7a-a3fe1618ea39.config'
+Deploy and verify Kubernetes	Complete job	﻿2026-10-07T08:27:39.9220619Z Cleaning up orphan processes

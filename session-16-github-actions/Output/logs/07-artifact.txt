@@ -1,0 +1,17 @@
+shivamjaiswal@Shivams-MacBook-Air session-16-github-actions % gh api repos/shivam24bcs10251-sys/devops-heros/actions/runs/37593715574/artifacts --jq ' .artifacts[] | {name,size_in_bytes,expired}'
+{
+  "expired": false,
+  "name": "session16-calculator-build",
+  "size_in_bytes": 42949814
+}
+shivamjaiswal@Shivams-MacBook-Air session-16-github-actions % ls -lh /tmp/session16-artifact
+total 84456
+-rw-r--r--@ 1 shivamjaiswal  wheel    98B  7 Oct 13:59 build-info.txt
+-rw-r--r--@ 1 shivamjaiswal  wheel    41M  7 Oct 13:59 calculator-image.tar.gz
+-rw-r--r--@ 1 shivamjaiswal  wheel   1.5K  7 Oct 13:59 calculator.py
+-rw-r--r--@ 1 shivamjaiswal  wheel   648B  7 Oct 13:59 test-results.xml
+shivamjaiswal@Shivams-MacBook-Air session-16-github-actions % cat Output/build-info.txt
+Application: Session 16 Calculator
+Build Status: SUCCESS
+Build Date: Wed Oct  7 08:26:09 UTC 2026
+shivamjaiswal@Shivams-MacBook-Air session-16-github-actions %
