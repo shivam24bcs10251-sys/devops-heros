@@ -1,0 +1,14 @@
+shivamjaiswal@Shivams-MacBook-Air session-17-devsecops % gh run view 37594603923 --repo shivam24bcs10251-sys/devops-heros --json conclusion,jobs --jq '.conclusion, (.jobs[].steps[]|select(.conclusion=="failure" or .conclusion=="skipped")| .name + ": " + .conclusion)'
+failure
+Container security gate - Trivy: failure
+Publish gated image to GHCR: skipped
+Install Kind: skipped
+Kubernetes deploy and verify: skipped
+Post Run actions/setup-python@v7: skipped
+shivamjaiswal@Shivams-MacBook-Air session-17-devsecops % python3 scripts/report-summary.py Output/first-run
+Trivy report: 48 findings; 4 fixable HIGH/CRITICAL findings.
+  msgpack: GHSA-6v7p-g79w-8964 1.1.2 -> 1.2.1
+  setuptools: CVE-2025-47273 70.3.0 -> 78.1.1
+  urllib3: CVE-2026-97687 2.7.0 -> 2.8.0
+  urllib3: CVE-2026-97689 2.7.0 -> 2.8.0
+shivamjaiswal@Shivams-MacBook-Air session-17-devsecops %

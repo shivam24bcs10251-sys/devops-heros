@@ -51,6 +51,8 @@ The dashboard's `/api/pipeline/run` endpoint remains a UI simulation. Successful
 
 The [first run](https://github.com/shivam24bcs10251-sys/devops-heros/actions/runs/37594603923) stopped at the image scan and skipped publishing/deployment. Its [Trivy report](Output/first-run/trivy.json) identified fixable vulnerabilities in `setuptools` and in `msgpack`/`urllib3` bundled with pip. These package installers are not needed by the running dashboard, so the Dockerfile removes pip/setuptools after installing the pinned application dependencies. The initial YAML also placed `ignore-unfixed` at the wrong level; the corrected `vulnerability.ignore-unfixed` setting enforces the stated fixable HIGH/CRITICAL policy. No CVE-specific exceptions were added.
 
+The [second run](https://github.com/shivam24bcs10251-sys/devops-heros/actions/runs/37594892602) passed all security gates, published the image, and verified two Ready replicas plus the healthy/addition APIs. The HTML preview used `curl | head`, which closed the pipe early and produced a curl write error under `pipefail`. The deployment script now downloads the page to a file before printing its first 250 bytes. [Second-run deployment evidence](Output/second-run/deployment.txt) records the completed API checks before that preview failure.
+
 ## Run evidence
 
 Actual successful run, reports, registry digest and screenshots are added after execution.

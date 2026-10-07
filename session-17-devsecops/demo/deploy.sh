@@ -18,5 +18,6 @@ done
 python -c 'import json; data=json.load(open("/tmp/session17-health.json")); assert data["status"] == "healthy"; print("Health verified:", data["status"])'
 curl --fail --silent -H 'Content-Type: application/json' -d '{"number1":10,"number2":20}' http://localhost:5001/api/add > /tmp/session17-add.json
 python -c 'import json; data=json.load(open("/tmp/session17-add.json")); assert data["result"] == 30; print("API verified:", data)'
-curl --fail --silent http://localhost:5001/ | head -c 250
+curl --fail --silent http://localhost:5001/ -o /tmp/session17-page.html
+head -c 250 /tmp/session17-page.html
 printf '\nDeployment verified successfully.\n'

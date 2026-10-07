@@ -1,0 +1,21 @@
+The push refers to repository [ghcr.io/shivam24bcs10251-sys/devops-heros-session17]
+52c9bae3a929: Preparing
+d86b27468d35: Preparing
+ab7151aa19f9: Preparing
+32da63aa03af: Preparing
+dca2a125b490: Preparing
+b361fa3b9794: Preparing
+e1fa2746ad6d: Preparing
+15f1c8eb1ab1: Preparing
+b361fa3b9794: Waiting
+e1fa2746ad6d: Waiting
+15f1c8eb1ab1: Waiting
+dca2a125b490: Pushed
+32da63aa03af: Pushed
+ab7151aa19f9: Pushed
+52c9bae3a929: Pushed
+d86b27468d35: Pushed
+e1fa2746ad6d: Pushed
+b361fa3b9794: Pushed
+15f1c8eb1ab1: Pushed
+9fede85baafd88d64033423ed413e4fe6a7a6e56: digest: sha256:318733dda8dd4c2b31c20c9fc689702421bbab7531addfdabb33b1651fc6269c size: 1993
