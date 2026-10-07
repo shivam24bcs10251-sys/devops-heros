@@ -1,0 +1,7 @@
+severity:
+  - HIGH
+  - CRITICAL
+exit-code: 1
+scanners:
+  - vuln
+# All HIGH/CRITICAL findings block delivery, including findings without a fix.

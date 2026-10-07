@@ -1,0 +1,163 @@
+name: Session 21 · LabLedger capstone
+on:
+  push:
+    branches: [main, session21-final-devops-project]
+    paths:
+      - final-devops-project/application/**
+      - final-devops-project/docker/**
+      - final-devops-project/helm/**
+      - final-devops-project/scripts/**
+      - final-devops-project/security/**
+      - .github/workflows/session21-capstone.yml
+  pull_request:
+    branches: [main]
+    paths: [final-devops-project/**, .github/workflows/session21-capstone.yml]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: session21-${{ github.ref }}
+  cancel-in-progress: false
+env:
+  PROJECT: final-devops-project
+  REGISTRY: ghcr.io
+jobs:
+  quality:
+    name: Tests · builds · SAST · SCA · secrets
+    runs-on: ubuntu-24.04
+    steps:
+    - uses: actions/checkout@v7
+    - uses: actions/setup-python@v7
+      with: {python-version: '3.12'}
+    - uses: actions/setup-node@v6
+      with: {node-version: '24'}
+    - name: Install locked Python dependencies
+      run: pip install -r "$PROJECT/application/backend/requirements-dev.txt"
+    - name: API tests and coverage gate
+      working-directory: final-devops-project/application/backend
+      run: pytest -v --cov=app --cov-report=term-missing --cov-report=xml:../../Output/reports/coverage.xml --junitxml=../../Output/reports/tests.xml --cov-fail-under=85
+    - name: SAST gate
+      run: bandit -r "$PROJECT/application/backend/app" -f json -o "$PROJECT/Output/reports/bandit.json"
+    - name: Python dependency gate
+      run: pip-audit --disable-pip --no-deps -r "$PROJECT/application/backend/requirements.txt" -f json -o "$PROJECT/Output/reports/pip-audit.json"
+    - name: Frontend build and dependency gate
+      working-directory: final-devops-project/application/frontend
+      run: |
+        npm ci
+        npm audit --audit-level=high
+        npm run build
+    - name: Secret scanning gate
+      run: |
+        curl -fsSL https://github.com/gitleaks/gitleaks/releases/download/v8.30.1/gitleaks_8.30.1_linux_x64.tar.gz -o /tmp/gitleaks.tar.gz
+        tar -xzf /tmp/gitleaks.tar.gz -C /tmp gitleaks
+        /tmp/gitleaks dir "$PROJECT" --redact --report-format json --report-path "$PROJECT/Output/reports/gitleaks.json"
+    - uses: actions/upload-artifact@v7
+      if: always()
+      with:
+        name: session21-quality-reports
+        path: final-devops-project/Output/reports/
+        retention-days: 14
+  delivery:
+    name: Images · Trivy gate · GHCR · Kubernetes
+    needs: quality
+    if: github.event_name != 'pull_request'
+    runs-on: ${{ matrix.runner }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+        - {arch: amd64, runner: ubuntu-24.04, trivy_arch: 64bit}
+        - {arch: arm64, runner: ubuntu-24.04-arm, trivy_arch: ARM64}
+    permissions:
+      packages: write
+    steps:
+    - uses: actions/checkout@v7
+    - name: Build both runtime images
+      run: |
+        docker build -f "$PROJECT/docker/backend.Dockerfile" -t "ghcr.io/${{ github.repository_owner }}/labledger-backend:${{ github.sha }}-${{ matrix.arch }}" "$PROJECT"
+        docker build -f "$PROJECT/docker/frontend.Dockerfile" -t "ghcr.io/${{ github.repository_owner }}/labledger-frontend:${{ github.sha }}-${{ matrix.arch }}" "$PROJECT"
+    - name: Install Trivy
+      run: |
+        curl -fsSL https://github.com/aquasecurity/trivy/releases/download/v0.75.0/trivy_0.75.0_Linux-${{ matrix.trivy_arch }}.tar.gz -o /tmp/trivy.tar.gz
+        tar -xzf /tmp/trivy.tar.gz -C /tmp trivy
+    - name: Backend HIGH/CRITICAL gate
+      run: /tmp/trivy image --config "$PROJECT/security/trivy.yaml" --format json --output "$PROJECT/Output/reports/trivy-backend.json" "ghcr.io/${{ github.repository_owner }}/labledger-backend:${{ github.sha }}-${{ matrix.arch }}"
+    - name: Frontend HIGH/CRITICAL gate
+      run: /tmp/trivy image --config "$PROJECT/security/trivy.yaml" --format json --output "$PROJECT/Output/reports/trivy-frontend.json" "ghcr.io/${{ github.repository_owner }}/labledger-frontend:${{ github.sha }}-${{ matrix.arch }}"
+    - name: Publish immutable SHA tags
+      env: {GH_TOKEN: '${{ secrets.GITHUB_TOKEN }}'}
+      run: |
+        printf '%s' "$GH_TOKEN" | docker login ghcr.io -u "${{ github.actor }}" --password-stdin
+        docker push "ghcr.io/${{ github.repository_owner }}/labledger-backend:${{ github.sha }}-${{ matrix.arch }}"
+        docker push "ghcr.io/${{ github.repository_owner }}/labledger-frontend:${{ github.sha }}-${{ matrix.arch }}"
+    - name: Create isolated Kubernetes cluster
+      run: |
+        curl -fsSL https://kind.sigs.k8s.io/dl/v0.33.0/kind-linux-${{ matrix.arch }} -o /tmp/kind
+        chmod +x /tmp/kind
+        /tmp/kind create cluster --name labledger-ci --wait 180s
+        /tmp/kind load docker-image "ghcr.io/${{ github.repository_owner }}/labledger-backend:${{ github.sha }}-${{ matrix.arch }}" "ghcr.io/${{ github.repository_owner }}/labledger-frontend:${{ github.sha }}-${{ matrix.arch }}" --name labledger-ci
+    - name: Deploy Helm chart and verify live PostgreSQL business rules
+      run: |
+        python "$PROJECT/scripts/bootstrap.py" --namespace capstone-ci
+        helm upgrade --install labledger "$PROJECT/helm/labledger" -n capstone-ci \
+          --set backend.tag=${{ github.sha }}-${{ matrix.arch }} --set frontend.tag=${{ github.sha }}-${{ matrix.arch }} \
+          --set hpa.enabled=false --set ingress.enabled=false --wait --timeout 300s
+        kubectl get pods,svc,pvc -n capstone-ci
+        kubectl port-forward -n capstone-ci svc/frontend 3021:80 > /tmp/frontend-forward.log 2>&1 &
+        for i in $(seq 1 30); do curl -fsS http://127.0.0.1:3021/ready && break; sleep 2; done
+        python "$PROJECT/scripts/verify.py" --version ${{ github.sha }}-${{ matrix.arch }}
+    - name: Preserve pipeline reports
+      if: always()
+      uses: actions/upload-artifact@v7
+      with:
+        name: session21-delivery-reports-${{ matrix.arch }}
+        path: final-devops-project/Output/reports/
+        retention-days: 14
+    - name: Preserve verified ARM64 images for the local demo
+      if: matrix.arch == 'arm64' && success()
+      run: |
+        docker tag "ghcr.io/${{ github.repository_owner }}/labledger-backend:${{ github.sha }}-arm64" "ghcr.io/${{ github.repository_owner }}/labledger-backend:${{ github.sha }}"
+        docker tag "ghcr.io/${{ github.repository_owner }}/labledger-frontend:${{ github.sha }}-arm64" "ghcr.io/${{ github.repository_owner }}/labledger-frontend:${{ github.sha }}"
+        docker save -o /tmp/labledger-images.tar "ghcr.io/${{ github.repository_owner }}/labledger-backend:${{ github.sha }}" "ghcr.io/${{ github.repository_owner }}/labledger-frontend:${{ github.sha }}"
+    - uses: actions/upload-artifact@v7
+      if: matrix.arch == 'arm64' && success()
+      with:
+        name: session21-verified-arm64-images
+        path: /tmp/labledger-images.tar
+        retention-days: 7
+    - name: Remove isolated CI cluster
+      if: always()
+      run: /tmp/kind delete cluster --name labledger-ci
+  registry:
+    name: Multi-architecture registry release · GitOps promotion
+    needs: delivery
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+      packages: write
+    steps:
+    - uses: actions/checkout@v7
+    - name: Publish multi-architecture SHA manifests
+      env: {GH_TOKEN: '${{ secrets.GITHUB_TOKEN }}'}
+      run: |
+        printf '%s' "$GH_TOKEN" | docker login ghcr.io -u "${{ github.actor }}" --password-stdin
+        for component in backend frontend; do
+          image="ghcr.io/${{ github.repository_owner }}/labledger-$component"
+          docker manifest create "$image:${{ github.sha }}" "$image:${{ github.sha }}-amd64" "$image:${{ github.sha }}-arm64"
+          docker manifest push "$image:${{ github.sha }}"
+        done
+    - name: Promote only verified image tags to GitOps
+      if: github.ref == 'refs/heads/session21-final-devops-project'
+      run: |
+        python - <<'PYCODE'
+        import pathlib
+        sha='${{ github.sha }}'
+        p=pathlib.Path('final-devops-project/gitops/values.yaml')
+        p.write_text('backend:\n  tag: '+sha+'\nfrontend:\n  tag: '+sha+'\n')
+        PYCODE
+        git config user.name 'github-actions[bot]'
+        git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+        git add final-devops-project/gitops/values.yaml
+        git commit -m 'Session 21: promote verified LabLedger images [skip ci]'
+        git pull --rebase origin session21-final-devops-project
+        git push origin HEAD:session21-final-devops-project
