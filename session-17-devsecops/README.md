@@ -59,9 +59,31 @@ The [second run](https://github.com/shivam24bcs10251-sys/devops-heros/actions/ru
 
 GitHub artifacts expire after seven days; these downloaded reports and screenshots remain in this branch. The published image remains in GHCR. The Kubernetes demonstration cluster is deleted after verification, so it is not a permanently hosted website.
 
+## GitHub Actions interface screenshots
+
+Screenshots of the [successful Session 17 run](https://github.com/shivam24bcs10251-sys/devops-heros/actions/runs/37595230720), captured from the actual GitHub Actions browser interface.
+
+### Successful DevSecOps pipeline
+
+The run summary shows **Success**, the branch and tested commit, and the completed delivery job.
+
+![GitHub Actions successful DevSecOps run summary](Output/11-github-actions-summary.png)
+
+### Build, tests and security gates
+
+The job detail view shows successful application build, unit tests, SAST, SCA, secret scanning and container scanning.
+
+![GitHub Actions successful build and security steps](Output/12-github-actions-job-steps.png)
+
+### Complete job including registry push and Kubernetes deployment
+
+The complete step list shows the security gates, GHCR publication, Kubernetes verification and report upload all completed successfully.
+
+![GitHub Actions complete successful DevSecOps job](Output/13-github-actions-complete-job.png)
+
 ## Commands, output and screenshots
 
-All screenshots show live Terminal commands and results. Screen capture runs in a separate window. Text transcripts preserve the visible output.
+The Terminal screenshots below show live commands and results; text transcripts preserve their visible output. The browser screenshots above show the actual GitHub Actions interface.
 
 ### Inspect the supplied project
 
