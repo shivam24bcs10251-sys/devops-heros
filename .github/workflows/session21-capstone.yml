@@ -32,7 +32,9 @@ jobs:
     - uses: actions/setup-node@v6
       with: {node-version: '24'}
     - name: Install locked Python dependencies
-      run: pip install -r "$PROJECT/application/backend/requirements-dev.txt"
+      run: |
+        mkdir -p "$PROJECT/Output/reports"
+        pip install -r "$PROJECT/application/backend/requirements-dev.txt"
     - name: API tests and coverage gate
       working-directory: final-devops-project/application/backend
       run: pytest -v --cov=app --cov-report=term-missing --cov-report=xml:../../Output/reports/coverage.xml --junitxml=../../Output/reports/tests.xml --cov-fail-under=85
@@ -74,6 +76,7 @@ jobs:
     - uses: actions/checkout@v7
     - name: Build both runtime images
       run: |
+        mkdir -p "$PROJECT/Output/reports"
         docker build -f "$PROJECT/docker/backend.Dockerfile" -t "ghcr.io/${{ github.repository_owner }}/labledger-backend:${{ github.sha }}-${{ matrix.arch }}" "$PROJECT"
         docker build -f "$PROJECT/docker/frontend.Dockerfile" -t "ghcr.io/${{ github.repository_owner }}/labledger-frontend:${{ github.sha }}-${{ matrix.arch }}" "$PROJECT"
     - name: Install Trivy
