@@ -43,9 +43,27 @@ Local deployment requires Docker, Kind and kubectl. GitHub CI installs Kind itse
 
 The failure/fix demonstration is local; this published GitHub run uses the corrected code.
 
+## GitHub Actions interface screenshots
+
+Screenshots of the [successful Session 16 run](https://github.com/shivam24bcs10251-sys/devops-heros/actions/runs/37593715574), captured from the actual GitHub Actions browser interface.
+
+### Successful CI/CD pipeline
+
+Both CI and CD jobs show green checks, and the run status is **Success**.
+
+![GitHub Actions successful CI/CD summary](Output/08-github-actions-summary.png)
+
+### CI job: tests, build and artifact upload
+
+![GitHub Actions successful CI job steps](Output/09-github-actions-ci-job.png)
+
+### CD job: artifact delivery and Kubernetes verification
+
+![GitHub Actions successful CD job steps](Output/10-github-actions-cd-job.png)
+
 ## Commands, output and screenshots
 
-All screenshots show live Terminal commands and results. Screen capture runs in a separate window. Text transcripts preserve the visible output.
+The Terminal screenshots below show live commands and results; text transcripts preserve their visible output. The browser screenshots above show the actual GitHub Actions interface.
 
 ### Inspect the supplied project
 
