@@ -1,0 +1,21 @@
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % kubectl get hpa -n session21
+NAME                REFERENCE                      TARGETS         MINPODS   MAXPODS   REPLICAS   AGE
+labledger-backend   Deployment/labledger-backend   cpu: 107%/60%   2         4         4          23m
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % kubectl top pods -n session21 -l app=labledger-backend
+NAME                                CPU(cores)   MEMORY(bytes)   
+labledger-backend-fd4fb4c87-646cz   125m         65Mi            
+labledger-backend-fd4fb4c87-8ql5m   126m         69Mi            
+labledger-backend-fd4fb4c87-8x8lc   108m         67Mi            
+labledger-backend-fd4fb4c87-d2qsh   107m         68Mi            
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % kubectl get pods -n session21 -l app=labledger-backend
+NAME                                READY   STATUS    RESTARTS   AGE
+labledger-backend-fd4fb4c87-646cz   1/1     Running   0          78s
+labledger-backend-fd4fb4c87-8ql5m   1/1     Running   0          78s
+labledger-backend-fd4fb4c87-8x8lc   1/1     Running   0          5m33s
+labledger-backend-fd4fb4c87-d2qsh   1/1     Running   0          7m10s
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % kubectl get events -n session21 --field-selector reason=SuccessfulRescale --sort-by=.lastTimestamp | tail -5
+LAST SEEN   TYPE     REASON              OBJECT                                      MESSAGE
+23m         Normal   SuccessfulRescale   horizontalpodautoscaler/labledger-backend   New size: 2; reason: Current number of replicas below Spec.MinReplicas
+3m19s       Normal   SuccessfulRescale   horizontalpodautoscaler/labledger-backend   New size: 2; reason: All metrics below target
+79s         Normal   SuccessfulRescale   horizontalpodautoscaler/labledger-backend   New size: 4; reason: cpu resource utilization (percentage of request) above target
+shivamjaiswal@Shivams-MacBook-Air final-devops-project %

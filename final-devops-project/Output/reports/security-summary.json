@@ -1,0 +1,56 @@
+[
+  {
+    "report": "ci-37620612050-amd64/trivy-backend.json",
+    "image": "ghcr.io/shivam24bcs10251-sys/labledger-backend:9faeab4771c5eaddc22d8b201415fc20b33476cf-amd64",
+    "CRITICAL": 0,
+    "HIGH": 0,
+    "MEDIUM": 0,
+    "LOW": 0,
+    "UNKNOWN": 0
+  },
+  {
+    "report": "ci-37620612050-amd64/trivy-frontend.json",
+    "image": "ghcr.io/shivam24bcs10251-sys/labledger-frontend:9faeab4771c5eaddc22d8b201415fc20b33476cf-amd64",
+    "CRITICAL": 0,
+    "HIGH": 0,
+    "MEDIUM": 0,
+    "LOW": 0,
+    "UNKNOWN": 0
+  },
+  {
+    "report": "ci-37620612050-arm64/trivy-backend.json",
+    "image": "ghcr.io/shivam24bcs10251-sys/labledger-backend:9faeab4771c5eaddc22d8b201415fc20b33476cf-arm64",
+    "CRITICAL": 0,
+    "HIGH": 0,
+    "MEDIUM": 0,
+    "LOW": 0,
+    "UNKNOWN": 0
+  },
+  {
+    "report": "ci-37620612050-arm64/trivy-frontend.json",
+    "image": "ghcr.io/shivam24bcs10251-sys/labledger-frontend:9faeab4771c5eaddc22d8b201415fc20b33476cf-arm64",
+    "CRITICAL": 0,
+    "HIGH": 0,
+    "MEDIUM": 0,
+    "LOW": 0,
+    "UNKNOWN": 0
+  },
+  {
+    "report": "trivy-backend-local.json",
+    "image": "labledger-backend:local",
+    "CRITICAL": 0,
+    "HIGH": 0,
+    "MEDIUM": 0,
+    "LOW": 0,
+    "UNKNOWN": 0
+  },
+  {
+    "report": "trivy-frontend-local.json",
+    "image": "labledger-frontend:local",
+    "CRITICAL": 0,
+    "HIGH": 0,
+    "MEDIUM": 0,
+    "LOW": 0,
+    "UNKNOWN": 0
+  }
+]

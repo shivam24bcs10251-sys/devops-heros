@@ -1,0 +1,19 @@
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % git log main..HEAD --oneline
+03fbb01 (HEAD -> session21-final-devops-project, origin/session21-final-devops-project) Session 21: promote verified LabLedger images [skip ci]
+9faeab4 feat(session21): filter available equipment and search lending history with regression tests
+571f9ef Session 21: promote verified LabLedger images [skip ci]
+22e7cbd Session 21: initialize isolated report directories on fresh CI runners
+5719f2a Session 21: define controlled multi-fault troubleshooting exercises
+c8daa70 Session 21: reconcile verified SHA releases from Git and scan committed source
+d222afc Session 21: provision live API metrics, alert rules and Grafana dashboard
+3f153a7 Session 21: define restricted EKS infrastructure and Pod Identity storage permissions
+7872846 Session 21: gate multi-architecture delivery on tests and security scans
+784cd07 Session 21: package persistent PostgreSQL, probes, ingress and HPA with Helm
+7dad19f Session 21: containerize the stack and bootstrap external database credentials
+1042869 Session 21: build responsive LabLedger equipment and lending interface
+d44e334 Session 21: implement equipment inventory, loans and transactional stock rules
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % git branch --show-current
+session21-final-devops-project
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % git remote get-url origin
+https://github.com/shivam24bcs10251-sys/devops-heros.git
+shivamjaiswal@Shivams-MacBook-Air final-devops-project %

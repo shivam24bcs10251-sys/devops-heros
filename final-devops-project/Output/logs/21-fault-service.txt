@@ -1,0 +1,15 @@
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % kubectl patch svc backend -n session21 --type=merge -p '{"spec":{"selector":{"app":"labledger-wrong"}}}'
+service/backend patched
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % sleep 3
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % kubectl get svc backend -n session21 -o jsonpath='{.spec.selector}{"\n"}'
+{"app":"labledger-wrong"}
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % kubectl get endpointslices -n session21 -l kubernetes.io/service-name=backend
+NAME            ADDRESSTYPE   PORTS     ENDPOINTS   AGE
+backend-xhrfq   IPv4          <unset>   <unset>     12m
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % kubectl get pods -n session21 -l app=labledger-backend --show-labels
+NAME                                 READY   STATUS    RESTARTS   AGE     LABELS
+labledger-backend-6674c475c9-7jvwq   1/1     Running   0          3m14s   app=labledger-backend,pod-template-hash=6674c475c9
+labledger-backend-6674c475c9-qh74f   1/1     Running   0          3m8s    app=labledger-backend,pod-template-hash=6674c475c9
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % curl -s -o /dev/null -w "API status: %{http_code}\n" http://labledger.localhost:8086/api/assets
+API status: 503
+shivamjaiswal@Shivams-MacBook-Air final-devops-project %

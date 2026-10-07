@@ -1,0 +1,25 @@
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % curl -fsS http://127.0.0.1:8121/api/stats; echo
+{"assets":7,"total":30,"available":26,"on_loan":4,"active_loans":3}
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % kubectl scale statefulset labledger-postgres -n session21 --replicas=0
+statefulset.apps/labledger-postgres scaled
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % kubectl wait --for=delete pod/labledger-postgres-0 -n session21 --timeout=60s
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % curl -s -w "\nHealth status: %{http_code}\n" http://127.0.0.1:8121/health
+{"status":"UP","version":"22e7cbd8787485dae798a10532d59c6d19f3882b"}
+Health status: 200
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % curl -s -w "\nReady status: %{http_code}\n" http://127.0.0.1:8121/ready
+{"detail":"Database or schema unavailable"}
+Ready status: 503
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % kubectl get pods,pvc -n session21 | tail -12
+NAME                                       READY   STATUS      RESTARTS   AGE
+pod/labledger-backend-6674c475c9-7jvwq     1/1     Running     0          3m45s
+pod/labledger-backend-6674c475c9-qh74f     1/1     Running     0          3m39s
+pod/labledger-frontend-d5cbb4d88-jkpst     1/1     Running     0          3m39s
+pod/labledger-frontend-d5cbb4d88-zmfp8     1/1     Running     0          3m45s
+pod/labledger-migrate-22e7cbd87874-6ldsw   0/1     Completed   0          4m9s
+pod/labledger-migrate-local-8r48n          0/1     Completed   1          13m
+pod/session21-grafana-76cc65654b-psgpk     1/1     Running     0          13m
+pod/session21-prometheus-5c55b8f5c-n525x   1/1     Running     0          13m
+
+NAME                                              STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   VOLUMEATTRIBUTESCLASS   AGE
+persistentvolumeclaim/data-labledger-postgres-0   Bound    pvc-b109cba2-34cb-47f5-8eb3-dd93e002c687   2Gi        RWO            standard       <unset>                 13m
+shivamjaiswal@Shivams-MacBook-Air final-devops-project %

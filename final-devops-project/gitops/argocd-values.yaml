@@ -1,0 +1,17 @@
+# Standalone lab installation; the recorded demo reuses the Session 20 controller.
+configs:
+  params:
+    server.insecure: true
+  cm:
+    timeout.reconciliation: 30s
+    timeout.reconciliation.jitter: 0s
+server:
+  replicas: 1
+controller:
+  replicas: 1
+repoServer:
+  replicas: 1
+applicationSet:
+  enabled: false
+notifications:
+  enabled: false

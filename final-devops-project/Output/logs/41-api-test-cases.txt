@@ -1,0 +1,26 @@
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % cd application/backend
+shivamjaiswal@Shivams-MacBook-Air backend % /tmp/session21-runtime/bin/pytest -v --no-header --disable-warnings | sed -n '/test_api.py/,$p'
+tests/test_api.py::test_health PASSED                                    [  5%]
+tests/test_api.py::test_service_identity PASSED                          [ 10%]
+tests/test_api.py::test_ready_checks_schema PASSED                       [ 15%]
+tests/test_api.py::test_metrics PASSED                                   [ 20%]
+tests/test_api.py::test_asset_create_and_read PASSED                     [ 25%]
+tests/test_api.py::test_duplicate_tag PASSED                             [ 30%]
+tests/test_api.py::test_invalid_asset[change0] PASSED                    [ 35%]
+tests/test_api.py::test_invalid_asset[change1] PASSED                    [ 40%]
+tests/test_api.py::test_invalid_asset[change2] PASSED                    [ 45%]
+tests/test_api.py::test_borrow_reduces_stock PASSED                      [ 50%]
+tests/test_api.py::test_over_borrow_is_rejected PASSED                   [ 55%]
+tests/test_api.py::test_return_restores_stock_once PASSED                [ 60%]
+tests/test_api.py::test_stock_edit_preserves_outstanding_loans PASSED    [ 65%]
+tests/test_api.py::test_explicit_null_rejected PASSED                    [ 70%]
+tests/test_api.py::test_delete_unused_asset PASSED                       [ 75%]
+tests/test_api.py::test_lending_history_cannot_be_deleted PASSED         [ 80%]
+tests/test_api.py::test_missing_records[get-/api/assets/999] PASSED      [ 85%]
+tests/test_api.py::test_missing_records[put-/api/loans/999/return] PASSED [ 90%]
+tests/test_api.py::test_missing_records[delete-/api/assets/999] PASSED   [ 95%]
+tests/test_api.py::test_request_correlation PASSED                       [100%]
+
+======================== 20 passed, 1 warning in 0.12s =========================
+shivamjaiswal@Shivams-MacBook-Air backend % cd ../..
+shivamjaiswal@Shivams-MacBook-Air final-devops-project %

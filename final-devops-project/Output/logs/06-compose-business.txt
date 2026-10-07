@@ -1,0 +1,15 @@
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % python3 scripts/verify.py
+PASS health, expected release and PostgreSQL readiness
+PASS create, read and edit inventory
+PASS checkout decrements stock; insufficient stock and unsafe edits return 409
+PASS return restores stock once; lending history is retained
+PASS concurrent PostgreSQL checkouts cannot oversubscribe a single unit
+PASS delete unused inventory and missing-record behavior
+ALL LIVE BUSINESS CHECKS PASSED
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % docker compose --env-file .env -f docker/compose.yaml exec -T postgres sh -c 'psql -U "$POSTGRES_USER" -d "$POSTGRES_DB" -c "SELECT version_num FROM alembic_version;"'
+  version_num   
+----------------
+ 0001_inventory
+(1 row)
+
+shivamjaiswal@Shivams-MacBook-Air final-devops-project %

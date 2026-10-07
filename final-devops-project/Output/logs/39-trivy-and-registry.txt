@@ -1,0 +1,14 @@
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % python3 -c "import json; rows=json.load(open('Output/reports/security-summary.json')); [print(r['report'],'HIGH='+str(r['HIGH']),'CRITICAL='+str(r['CRITICAL'])) for r in rows]"
+ci-37620612050-amd64/trivy-backend.json HIGH=0 CRITICAL=0
+ci-37620612050-amd64/trivy-frontend.json HIGH=0 CRITICAL=0
+ci-37620612050-arm64/trivy-backend.json HIGH=0 CRITICAL=0
+ci-37620612050-arm64/trivy-frontend.json HIGH=0 CRITICAL=0
+trivy-backend-local.json HIGH=0 CRITICAL=0
+trivy-frontend-local.json HIGH=0 CRITICAL=0
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % docker manifest inspect ghcr.io/shivam24bcs10251-sys/labledger-backend:9faeab4771c5eaddc22d8b201415fc20b33476cf | python3 -c "import json,sys; r=json.load(sys.stdin); [print(m['platform']) for m in r['manifests']]"
+{'architecture': 'amd64', 'os': 'linux'}
+{'architecture': 'arm64', 'os': 'linux'}
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % docker manifest inspect ghcr.io/shivam24bcs10251-sys/labledger-frontend:9faeab4771c5eaddc22d8b201415fc20b33476cf | python3 -c "import json,sys; r=json.load(sys.stdin); [print(m['platform']) for m in r['manifests']]"
+{'architecture': 'amd64', 'os': 'linux'}
+{'architecture': 'arm64', 'os': 'linux'}
+shivamjaiswal@Shivams-MacBook-Air final-devops-project %

@@ -1,0 +1,31 @@
+labledger	session21	2       	2026-10-07 17:44:39.943386 +0530 IST	deployed	labledger-1.0.0	1.0.0      
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % kubectl get deploy,statefulset,pods -n session21
+NAME                                   READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/labledger-backend      2/2     2            2           2m9s
+deployment.apps/labledger-frontend     2/2     2            2           2m9s
+deployment.apps/session21-grafana      1/1     1            1           116s
+deployment.apps/session21-prometheus   1/1     1            1           116s
+
+NAME                                  READY   AGE
+statefulset.apps/labledger-postgres   1/1     2m9s
+
+NAME                                       READY   STATUS      RESTARTS   AGE
+pod/labledger-backend-685979684-7r28h      1/1     Running     0          2m9s
+pod/labledger-backend-685979684-jf9dz      1/1     Running     0          114s
+pod/labledger-frontend-77fbc4f48-hk79g     1/1     Running     0          2m9s
+pod/labledger-frontend-77fbc4f48-rdlmq     1/1     Running     0          2m9s
+pod/labledger-migrate-local-8r48n          0/1     Completed   1          2m8s
+pod/labledger-postgres-0                   1/1     Running     0          2m8s
+pod/session21-grafana-76cc65654b-psgpk     1/1     Running     0          116s
+pod/session21-prometheus-5c55b8f5c-n525x   1/1     Running     0          116s
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % kubectl get svc,ingress -n session21
+NAME                           TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)    AGE
+service/backend                ClusterIP   10.97.224.126    <none>        8000/TCP   2m9s
+service/frontend               ClusterIP   10.100.104.212   <none>        80/TCP     2m9s
+service/postgres               ClusterIP   10.101.236.17    <none>        5432/TCP   2m9s
+service/session21-grafana      ClusterIP   10.98.97.88      <none>        3000/TCP   116s
+service/session21-prometheus   ClusterIP   10.106.241.139   <none>        9090/TCP   116s
+
+NAME                                  CLASS     HOSTS                 ADDRESS     PORTS   AGE
+ingress.networking.k8s.io/labledger   traefik   labledger.localhost   127.0.0.1   80      2m8s
+shivamjaiswal@Shivams-MacBook-Air final-devops-project %

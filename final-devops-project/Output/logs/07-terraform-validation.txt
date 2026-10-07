@@ -1,0 +1,14 @@
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % export TF_DATA_DIR=/tmp/session21-tfdata
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % terraform -chdir=terraform fmt -check -recursive
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % terraform -chdir=terraform validate
+Success! The configuration is valid.
+
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % terraform -chdir=terraform test
+tests/architecture.tftest.hcl... in progress
+  run "restricted_two_subnet_cluster"... pass
+  run "reject_world_open_api"... pass
+tests/architecture.tftest.hcl... tearing down
+tests/architecture.tftest.hcl... pass
+
+Success! 2 passed, 0 failed.
+shivamjaiswal@Shivams-MacBook-Air final-devops-project %

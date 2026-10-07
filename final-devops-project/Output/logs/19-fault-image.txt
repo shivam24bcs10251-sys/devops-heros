@@ -1,0 +1,13 @@
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % kubectl set image deploy/labledger-backend -n session21 backend=ghcr.io/shivam24bcs10251-sys/labledger-backend:missing-lab-tag
+deployment.apps/labledger-backend image updated
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % sleep 15
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % kubectl get pods -n session21 -l app=labledger-backend
+NAME                                 READY   STATUS            RESTARTS   AGE
+labledger-backend-6674c475c9-7jvwq   1/1     Running           0          2m32s
+labledger-backend-6674c475c9-qh74f   1/1     Running           0          2m26s
+labledger-backend-667f4d997b-hctd4   0/1     PodInitializing   0          16s
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % kubectl get events -n session21 --field-selector reason=Failed --sort-by=.lastTimestamp | tail -5
+LAST SEEN   TYPE      REASON   OBJECT                                   MESSAGE
+14s         Warning   Failed   pod/labledger-backend-667f4d997b-hctd4   Failed to pull image "ghcr.io/shivam24bcs10251-sys/labledger-backend:missing-lab-tag": rpc error: code = NotFound desc = failed to pull and unpack image "ghcr.io/shivam24bcs10251-sys/labledger-backend:missing-lab-tag": failed to resolve reference "ghcr.io/shivam24bcs10251-sys/labledger-backend:missing-lab-tag": ghcr.io/shivam24bcs10251-sys/labledger-backend:missing-lab-tag: not found
+14s         Warning   Failed   pod/labledger-backend-667f4d997b-hctd4   Error: ErrImagePull
+shivamjaiswal@Shivams-MacBook-Air final-devops-project %

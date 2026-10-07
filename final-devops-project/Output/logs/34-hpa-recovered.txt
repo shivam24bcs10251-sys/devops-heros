@@ -1,0 +1,20 @@
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % cat Output/reports/initial-rollout-load.txt
+Read-only inventory traffic: 32 workers for 120s
+{"ok": 11710, "errors": 299, "seconds": 120, "workers": 32}
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % cat Output/reports/steady-load.txt
+Read-only inventory traffic: 8 workers for 90s
+{"ok": 7687, "errors": 0, "seconds": 90, "workers": 8}
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % cat Output/reports/hpa-load.txt
+Read-only inventory traffic: 12 workers for 75s
+{"ok": 14326, "errors": 0, "seconds": 75, "workers": 12}
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % kubectl get hpa -n session21
+NAME                REFERENCE                      TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
+labledger-backend   Deployment/labledger-backend   cpu: 5%/60%   2         4         2          26m
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % kubectl top pods -n session21 -l app=labledger-backend
+NAME                                CPU(cores)   MEMORY(bytes)   
+labledger-backend-fd4fb4c87-8x8lc   5m           68Mi            
+labledger-backend-fd4fb4c87-d2qsh   5m           67Mi            
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % kubectl get application labledger -n session20-argocd
+NAME        SYNC STATUS   HEALTH STATUS
+labledger   Synced        Healthy
+shivamjaiswal@Shivams-MacBook-Air final-devops-project %

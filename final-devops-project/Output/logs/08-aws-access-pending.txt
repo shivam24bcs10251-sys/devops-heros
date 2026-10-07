@@ -1,0 +1,6 @@
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % aws sts get-caller-identity --query Arn --output text
+arn:aws:iam::765064162182:user/satyam
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % aws ec2 describe-vpcs --region ap-south-1 --query "Vpcs[].VpcId" --output text
+
+aws: [ERROR]: An error occurred (UnauthorizedOperation) when calling the DescribeVpcs operation: You are not authorized to perform this operation. User: arn:aws:iam::765064162182:user/satyam is not authorized to perform: ec2:DescribeVpcs because no identity-based policy allows the ec2:DescribeVpcs action
+shivamjaiswal@Shivams-MacBook-Air final-devops-project %

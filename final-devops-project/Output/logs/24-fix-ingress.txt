@@ -1,0 +1,10 @@
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % kubectl patch ingress labledger -n session21 --type=json -p '[{"op":"replace","path":"/spec/rules/0/http/paths/0/backend/service/port/number","value":8000}]' 
+ingress.networking.k8s.io/labledger patched
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % kubectl patch svc backend -n session21 --type=merge -p '{"spec":{"ports":[{"name":"http","port":8000,"targetPort":8000}]}}' 
+service/backend patched
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % sleep 4
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % kubectl get ingress labledger -n session21 -o jsonpath='{.spec.rules[0].http.paths[0].backend}{"\n"}' 
+{"service":{"name":"backend","port":{"number":8000}}}
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % curl -s -o /dev/null -w "API status: %{http_code}\n" http://labledger.localhost:8086/api/assets
+API status: 200
+shivamjaiswal@Shivams-MacBook-Air final-devops-project %

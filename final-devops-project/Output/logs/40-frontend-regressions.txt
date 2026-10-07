@@ -1,0 +1,31 @@
+duration_ms: 0.627667
+  ...
+# Subtest: history searches borrowers and equipment, retaining completed returns
+ok 6 - history searches borrowers and equipment, retaining completed returns
+  ---
+  duration_ms: 0.0605
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 6
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 55.877875
+shivamjaiswal@Shivams-MacBook-Air frontend % npm run build
+
+> labledger-frontend@1.0.0 build
+> vite build
+
+vite v8.3.3 building client environment for production...
+✓ 16 modules transformed.
+computing gzip size...
+dist/index.html                   0.42 kB │ gzip:  0.30 kB
+dist/assets/index-DPqc7u31.css    9.15 kB │ gzip:  2.83 kB
+dist/assets/index-C89ayaBs.js   232.05 kB │ gzip: 72.20 kB
+
+✓ built in 90ms
+shivamjaiswal@Shivams-MacBook-Air frontend % cd ../..
+shivamjaiswal@Shivams-MacBook-Air final-devops-project %

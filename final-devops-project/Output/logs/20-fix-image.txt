@@ -1,0 +1,11 @@
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % kubectl set image deploy/labledger-backend -n session21 backend=ghcr.io/shivam24bcs10251-sys/labledger-backend:22e7cbd8787485dae798a10532d59c6d19f3882b
+deployment.apps/labledger-backend image updated
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % kubectl rollout status deploy/labledger-backend -n session21 --timeout=120s
+deployment "labledger-backend" successfully rolled out
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % kubectl get pods -n session21 -l app=labledger-backend
+NAME                                 READY   STATUS    RESTARTS   AGE
+labledger-backend-6674c475c9-7jvwq   1/1     Running   0          2m37s
+labledger-backend-6674c475c9-qh74f   1/1     Running   0          2m31s
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % curl -fsS http://labledger.localhost:8086/health; echo
+{"status":"UP","version":"22e7cbd8787485dae798a10532d59c6d19f3882b"}
+shivamjaiswal@Shivams-MacBook-Air final-devops-project %

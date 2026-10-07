@@ -1,0 +1,22 @@
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % kubectl get hpa -n session21
+NAME                REFERENCE                      TARGETS         MINPODS   MAXPODS   REPLICAS   AGE
+labledger-backend   Deployment/labledger-backend   cpu: 314%/60%   2         4         2          17m
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % kubectl top pods -n session21 -l app=labledger-backend
+Error from server (ServiceUnavailable): the server is currently unable to handle the request (get pods.metrics.k8s.io)
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % kubectl get pods -n session21 -l app=labledger-backend
+NAME                                 READY   STATUS     RESTARTS   AGE
+labledger-backend-6674c475c9-7jvwq   1/1     Running    0          7m32s
+labledger-backend-6674c475c9-qh74f   1/1     Running    0          7m26s
+labledger-backend-6674c475c9-x5vtc   0/1     Init:0/1   0          43s
+labledger-backend-fd4fb4c87-d2qsh    0/1     Init:0/1   0          43s
+labledger-backend-fd4fb4c87-hbb8p    0/1     Running    0          66s
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % kubectl describe hpa labledger-backend -n session21 | tail -8
+  Normal   SuccessfulRescale             17m                   horizontal-pod-autoscaler  New size: 2; reason: Current number of replicas below Spec.MinReplicas
+  Warning  FailedGetResourceMetric       7m2s (x2 over 7m17s)  horizontal-pod-autoscaler  failed to get cpu utilization: unable to get metrics for resource cpu: no metrics returned from resource metrics API
+  Warning  FailedComputeMetricsReplicas  7m2s (x2 over 7m17s)  horizontal-pod-autoscaler  invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: unable to get metrics for resource cpu: no metrics returned from resource metrics API
+  Warning  FailedGetResourceMetric       6m2s (x8 over 16m)    horizontal-pod-autoscaler  failed to get cpu utilization: did not receive metrics for targeted pods (pods might be unready)
+  Warning  FailedComputeMetricsReplicas  6m2s (x8 over 16m)    horizontal-pod-autoscaler  invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: did not receive metrics for targeted pods (pods might be unready)
+  Normal   SuccessfulRescale             45s                   horizontal-pod-autoscaler  New size: 4; reason: cpu resource utilization (percentage of request) above target
+  Warning  FailedGetResourceMetric       1s (x2 over 8s)       horizontal-pod-autoscaler  failed to get cpu utilization: unable to get metrics for resource cpu: unable to fetch metrics from resource metrics API: the server is currently unable to handle the request (get pods.metrics.k8s.io)
+  Warning  FailedComputeMetricsReplicas  1s (x2 over 2s)       horizontal-pod-autoscaler  invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: unable to get metrics for resource cpu: unable to fetch metrics from resource metrics API: the server is currently unable to handle the request (get pods.metrics.k8s.io)
+shivamjaiswal@Shivams-MacBook-Air final-devops-project %

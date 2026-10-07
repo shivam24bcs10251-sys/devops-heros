@@ -1,0 +1,14 @@
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % kubectl get application labledger -n session20-argocd
+NAME        SYNC STATUS   HEALTH STATUS
+labledger   Synced        Healthy
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % kubectl get deploy -n session21 -o 'custom-columns=NAME:.metadata.name,IMAGE:.spec.template.spec.containers[0].image'
+NAME                   IMAGE
+labledger-backend      ghcr.io/shivam24bcs10251-sys/labledger-backend:22e7cbd8787485dae798a10532d59c6d19f3882b
+labledger-frontend     ghcr.io/shivam24bcs10251-sys/labledger-frontend:22e7cbd8787485dae798a10532d59c6d19f3882b
+session21-grafana      grafana/grafana:12.1.1
+session21-prometheus   prom/prometheus:v3.15.0
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % curl -fsS http://labledger.localhost:8086/health; echo
+{"status":"UP","version":"22e7cbd8787485dae798a10532d59c6d19f3882b"}
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % kubectl patch application labledger -n session20-argocd --type=merge -p '{"spec":{"syncPolicy":{"automated":null}}}'
+application.argoproj.io/labledger patched (no change)
+shivamjaiswal@Shivams-MacBook-Air final-devops-project %

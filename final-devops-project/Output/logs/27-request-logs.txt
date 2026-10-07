@@ -1,0 +1,19 @@
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % curl -fsS -H "X-Request-ID: session21-evidence" http://127.0.0.1:8121/api/stats; echo
+{"assets":7,"total":30,"available":26,"on_loan":4,"active_loans":3}
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % kubectl logs -n session21 -l app=labledger-backend --all-pods=true --tail=7 --prefix=true | tail -12
+[pod/labledger-backend-6674c475c9-7jvwq/backend] INFO:     {"event": "http_request", "method": "GET", "path": "/ready", "status": 200, "duration_ms": 1.29, "request_id": "6f1c636c6dba48bbbf18aa3dca958f89", "version": "22e7cbd8787485dae798a10532d59c6d19f3882b"}
+[pod/labledger-backend-6674c475c9-7jvwq/backend] INFO:     {"event": "http_request", "method": "GET", "path": "/metrics", "status": 200, "duration_ms": 3.51, "request_id": "7f2478e2b1f74cd78f93bbea4ad43381", "version": "22e7cbd8787485dae798a10532d59c6d19f3882b"}
+[pod/labledger-backend-6674c475c9-7jvwq/backend] INFO:     10.244.0.99:41480 - "GET /metrics HTTP/1.1" 200 OK
+[pod/labledger-backend-6674c475c9-7jvwq/backend] INFO:     {"event": "http_request", "method": "GET", "path": "/api/stats", "status": 200, "duration_ms": 7.73, "request_id": "session21-evidence", "version": "22e7cbd8787485dae798a10532d59c6d19f3882b"}
+[pod/labledger-backend-6674c475c9-7jvwq/backend] INFO:     127.0.0.1:42024 - "GET /api/stats HTTP/1.1" 200 OK
+[pod/labledger-backend-6674c475c9-qh74f/backend] INFO:     10.244.0.1:35926 - "GET /health HTTP/1.1" 200 OK
+[pod/labledger-backend-6674c475c9-qh74f/backend] INFO:     {"event": "http_request", "method": "GET", "path": "/ready", "status": 200, "duration_ms": 29.32, "request_id": "75d8a63c0745461095f52fbd7678e8c5", "version": "22e7cbd8787485dae798a10532d59c6d19f3882b"}
+[pod/labledger-backend-6674c475c9-qh74f/backend] INFO:     10.244.0.1:35932 - "GET /ready HTTP/1.1" 200 OK
+[pod/labledger-backend-6674c475c9-qh74f/backend] INFO:     {"event": "http_request", "method": "GET", "path": "/metrics", "status": 200, "duration_ms": 1.01, "request_id": "ef047cf86c6f4a02b3e6ed9ff363b085", "version": "22e7cbd8787485dae798a10532d59c6d19f3882b"}
+[pod/labledger-backend-6674c475c9-qh74f/backend] INFO:     10.244.0.99:50810 - "GET /metrics HTTP/1.1" 200 OK
+[pod/labledger-backend-6674c475c9-qh74f/backend] INFO:     {"event": "http_request", "method": "GET", "path": "/ready", "status": 200, "duration_ms": 2.4, "request_id": "f2f0fbdb472845daa1b7108b61e78711", "version": "22e7cbd8787485dae798a10532d59c6d19f3882b"}
+[pod/labledger-backend-6674c475c9-qh74f/backend] INFO:     10.244.0.1:55528 - "GET /ready HTTP/1.1" 200 OK
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % kubectl get hpa -n session21
+NAME                REFERENCE                      TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
+labledger-backend   Deployment/labledger-backend   cpu: 6%/60%   2         4         2          13m
+shivamjaiswal@Shivams-MacBook-Air final-devops-project %

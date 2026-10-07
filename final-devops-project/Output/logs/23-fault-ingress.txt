@@ -1,0 +1,16 @@
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % kubectl patch svc backend -n session21 --type=merge -p '{"spec":{"ports":[{"name":"http","port":8000,"targetPort":8000},{"name":"fault","port":8080,"targetPort":8080}]}}' 
+service/backend patched
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % kubectl patch ingress labledger -n session21 --type=json -p '[{"op":"replace","path":"/spec/rules/0/http/paths/0/backend/service/port/number","value":8080}]' 
+ingress.networking.k8s.io/labledger patched
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % sleep 4
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % kubectl get ingress labledger -n session21 -o jsonpath='{.spec.rules[0].http.paths[0].backend}{"\n"}' 
+{"service":{"name":"backend","port":{"number":8080}}}
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % kubectl get svc backend -n session21
+NAME      TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)             AGE
+backend   ClusterIP   10.97.224.126   <none>        8000/TCP,8080/TCP   14m
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % kubectl get endpointslices -n session21 -l kubernetes.io/service-name=backend -o 'custom-columns=NAME:.metadata.name,PORTS:.ports[*].port' 
+NAME            PORTS
+backend-xhrfq   8080,8000
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % curl -s -o /dev/null -w "API status: %{http_code}\n" http://labledger.localhost:8086/api/assets
+API status: 502
+shivamjaiswal@Shivams-MacBook-Air final-devops-project %

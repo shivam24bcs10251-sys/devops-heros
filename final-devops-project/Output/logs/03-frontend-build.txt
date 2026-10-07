@@ -1,0 +1,18 @@
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % cd application/frontend
+shivamjaiswal@Shivams-MacBook-Air frontend % npm run build
+
+> labledger-frontend@1.0.0 build
+> vite build
+
+vite v8.3.3 building client environment for production...
+✓ 15 modules transformed.
+computing gzip size...
+dist/index.html                   0.42 kB │ gzip:  0.30 kB
+dist/assets/index-f5EL3SsK.css    8.96 kB │ gzip:  2.78 kB
+dist/assets/index-B-NYs3fr.js   231.34 kB │ gzip: 72.01 kB
+
+✓ built in 139ms
+shivamjaiswal@Shivams-MacBook-Air frontend % npm audit --audit-level=high
+found 0 vulnerabilities
+shivamjaiswal@Shivams-MacBook-Air frontend % cd ../..
+shivamjaiswal@Shivams-MacBook-Air final-devops-project %

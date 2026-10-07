@@ -1,0 +1,9 @@
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % kubectl patch svc backend -n session21 --type=merge -p '{"spec":{"selector":{"app":"labledger-backend"}}}'
+service/backend patched
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % sleep 3
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % kubectl get endpointslices -n session21 -l kubernetes.io/service-name=backend
+NAME            ADDRESSTYPE   PORTS   ENDPOINTS                   AGE
+backend-xhrfq   IPv4          8000    10.244.0.104,10.244.0.103   13m
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % curl -s -o /dev/null -w "API status: %{http_code}\n" http://labledger.localhost:8086/api/assets
+API status: 200
+shivamjaiswal@Shivams-MacBook-Air final-devops-project %

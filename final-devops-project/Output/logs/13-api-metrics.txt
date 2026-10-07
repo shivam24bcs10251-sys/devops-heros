@@ -1,0 +1,28 @@
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % curl -fsS http://127.0.0.1:8121/metrics | tail -18
+http_request_duration_seconds_sum{handler="/api/assets",method="POST"} 0.028195791999678477
+http_request_duration_seconds_bucket{handler="/api/assets",le="0.1",method="GET"} 2.0
+http_request_duration_seconds_bucket{handler="/api/assets",le="0.5",method="GET"} 2.0
+http_request_duration_seconds_bucket{handler="/api/assets",le="1.0",method="GET"} 2.0
+http_request_duration_seconds_bucket{handler="/api/assets",le="+Inf",method="GET"} 2.0
+http_request_duration_seconds_count{handler="/api/assets",method="GET"} 2.0
+http_request_duration_seconds_sum{handler="/api/assets",method="GET"} 0.029708415999266435
+http_request_duration_seconds_bucket{handler="/api/stats",le="0.1",method="GET"} 1.0
+http_request_duration_seconds_bucket{handler="/api/stats",le="0.5",method="GET"} 1.0
+http_request_duration_seconds_bucket{handler="/api/stats",le="1.0",method="GET"} 1.0
+http_request_duration_seconds_bucket{handler="/api/stats",le="+Inf",method="GET"} 1.0
+http_request_duration_seconds_count{handler="/api/stats",method="GET"} 1.0
+http_request_duration_seconds_sum{handler="/api/stats",method="GET"} 0.02277091699943412
+# HELP http_request_duration_seconds_created Latency with only few buckets by handler. Made to be only used if aggregation by handler is important. 
+# TYPE http_request_duration_seconds_created gauge
+http_request_duration_seconds_created{handler="/api/assets",method="POST"} 1.7913752446102402e+09
+http_request_duration_seconds_created{handler="/api/assets",method="GET"} 1.7913752446452417e+09
+http_request_duration_seconds_created{handler="/api/stats",method="GET"} 1.7913753015749505e+09
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % kubectl exec -n session21 deploy/session21-prometheus -- promtool check config /etc/prometheus/prometheus.yaml
+Checking /etc/prometheus/prometheus.yaml
+  SUCCESS: 1 rule files found
+ SUCCESS: /etc/prometheus/prometheus.yaml is valid prometheus config file syntax
+
+Checking /etc/prometheus/alerts.yaml
+  SUCCESS: 2 rules found
+
+shivamjaiswal@Shivams-MacBook-Air final-devops-project %

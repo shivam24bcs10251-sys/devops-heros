@@ -1,0 +1,17 @@
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % kubectl scale statefulset labledger-postgres -n session21 --replicas=1
+statefulset.apps/labledger-postgres scaled
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % kubectl rollout status statefulset/labledger-postgres -n session21 --timeout=120s
+Waiting for 1 pods to be ready...
+partitioned roll out complete: 1 new pods have been updated...
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % kubectl wait --for=condition=Ready pod -l app=labledger-backend -n session21 --timeout=120s
+pod/labledger-backend-6674c475c9-7jvwq condition met
+pod/labledger-backend-6674c475c9-qh74f condition met
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % curl -s -w "\nReady status: %{http_code}\n" http://127.0.0.1:8121/ready
+{"status":"READY"}
+Ready status: 200
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % curl -fsS http://127.0.0.1:8121/api/stats; echo
+{"assets":7,"total":30,"available":26,"on_loan":4,"active_loans":3}
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % kubectl get pvc -n session21
+NAME                        STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   VOLUMEATTRIBUTESCLASS   AGE
+data-labledger-postgres-0   Bound    pvc-b109cba2-34cb-47f5-8eb3-dd93e002c687   2Gi        RWO            standard       <unset>                 13m
+shivamjaiswal@Shivams-MacBook-Air final-devops-project %

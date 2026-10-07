@@ -1,0 +1,26 @@
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % kubectl get application labledger -n session20-argocd
+NAME        SYNC STATUS   HEALTH STATUS
+labledger   Synced        Healthy
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % kubectl get deploy -n session21 -o 'custom-columns=NAME:.metadata.name,IMAGE:.spec.template.spec.containers[0].image'
+NAME                   IMAGE
+labledger-backend      ghcr.io/shivam24bcs10251-sys/labledger-backend:9faeab4771c5eaddc22d8b201415fc20b33476cf
+labledger-frontend     ghcr.io/shivam24bcs10251-sys/labledger-frontend:9faeab4771c5eaddc22d8b201415fc20b33476cf
+session21-grafana      grafana/grafana:12.1.1
+session21-prometheus   prom/prometheus:v3.15.0
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % curl -fsS http://labledger.localhost:8086/health; echo
+{"status":"UP","version":"9faeab4771c5eaddc22d8b201415fc20b33476cf"}
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % python3 scripts/verify.py --base http://labledger.localhost:8086 --version 9faeab4771c5eaddc22d8b201415fc20b33476cf
+PASS health, expected release and PostgreSQL readiness
+PASS create, read and edit inventory
+PASS checkout decrements stock; insufficient stock and unsafe edits return 409
+PASS return restores stock once; lending history is retained
+PASS concurrent PostgreSQL checkouts cannot oversubscribe a single unit
+PASS delete unused inventory and missing-record behavior
+ALL LIVE BUSINESS CHECKS PASSED
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % kubectl get pvc,hpa -n session21
+NAME                                              STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   VOLUMEATTRIBUTESCLASS   AGE
+persistentvolumeclaim/data-labledger-postgres-0   Bound    pvc-b109cba2-34cb-47f5-8eb3-dd93e002c687   2Gi        RWO            standard       <unset>                 24m
+
+NAME                                                    REFERENCE                      TARGETS        MINPODS   MAXPODS   REPLICAS   AGE
+horizontalpodautoscaler.autoscaling/labledger-backend   Deployment/labledger-backend   cpu: 50%/60%   2         4         4          24m
+shivamjaiswal@Shivams-MacBook-Air final-devops-project %

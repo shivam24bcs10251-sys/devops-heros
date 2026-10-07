@@ -1,0 +1,20 @@
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % pwd
+/Users/shivamjaiswal/Library/Mobile Documents/com~apple~CloudDocs/iCloud-Keep/Scaler/Semester_5_Term_1/Devops_SWE/devops-heros/final-devops-project
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % ls -1
+application
+docker
+gitops
+helm
+kubernetes
+monitoring
+Output
+README.md
+scripts
+security
+terraform
+troubleshooting
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % git branch --show-current
+session21-final-devops-project
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % kubectl config current-context
+devops-assignment
+shivamjaiswal@Shivams-MacBook-Air final-devops-project %

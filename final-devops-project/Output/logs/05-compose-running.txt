@@ -1,0 +1,12 @@
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % docker compose --env-file .env -f docker/compose.yaml ps -a
+NAME                             IMAGE                      COMMAND                  SERVICE    CREATED         STATUS                     PORTS
+labledger-session21-backend-1    labledger-backend:local    "uvicorn app.main:ap…"   backend    2 minutes ago   Up 2 minutes (healthy)     127.0.0.1:8021->8000/tcp
+labledger-session21-frontend-1   labledger-frontend:local   "/docker-entrypoint.…"   frontend   2 minutes ago   Up 2 minutes               127.0.0.1:3021->8080/tcp
+labledger-session21-migrate-1    labledger-backend:local    "alembic upgrade head"   migrate    2 minutes ago   Exited (0) 2 minutes ago   
+labledger-session21-postgres-1   postgres:17-alpine         "docker-entrypoint.s…"   postgres   2 minutes ago   Up 2 minutes (healthy)     5432/tcp
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % docker image inspect labledger-backend:local labledger-frontend:local --format '{{.RepoTags}} user={{.Config.User}}'
+[labledger-backend:local] user=10001:10001
+[labledger-frontend:local] user=101:101
+shivamjaiswal@Shivams-MacBook-Air final-devops-project % curl -fsS http://127.0.0.1:8021/ready; echo
+{"status":"READY"}
+shivamjaiswal@Shivams-MacBook-Air final-devops-project %
