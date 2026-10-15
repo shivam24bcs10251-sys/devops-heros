@@ -638,9 +638,9 @@ These screenshots complete the earlier M7 gap and show the original LabLedger ap
 
 ![AWS Console: LabLedger EKS cluster](Output/46-aws-eks-console.png)
 
-#### 47 · Ready worker and active storage/identity/metrics add-ons
+#### 47 · Active storage, identity and metrics add-ons
 
-![Ready worker and active storage/identity/metrics add-ons](Output/47-aws-node-addons.png)
+![Active storage, identity and metrics add-ons](Output/47-aws-node-addons.png)
 
 [Commands and actual output](Output/logs/47-aws-node-addons.txt).
 
@@ -726,3 +726,5 @@ Deleting namespace `session21` deletes its database PVC. Preserve/export any req
 The single-worker cluster’s final CoreDNS eviction was blocked by its default PodDisruptionBudget: a replacement Pod could not schedule on the cordoned worker. Once the application, EBS data volume and load balancer were gone, the CoreDNS PDB was removed in this disposable cluster so worker termination could finish. [Actual diagnosis and fix](Output/logs/aws-coredns-drain.txt).
 
 Text transcripts use LF line endings with terminal color/control codes removed for readability. Commands and result values are preserved; screenshots remain the original native window captures.
+
+[Visual screenshot verification and file hashes](Output/SCREENSHOT-VERIFICATION.md).

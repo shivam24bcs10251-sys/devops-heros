@@ -1,0 +1,210 @@
+{
+  "verified_at_utc": "2026-10-15T12:09:58.749669+00:00",
+  "scope": "New AWS screenshots recorded on 15 October 2026; original earlier screenshots are outside this visual review",
+  "count": 15,
+  "method": [
+    "Opened and visually inspected every listed PNG",
+    "Decoded PNG file and inspected native Screenshot EXIF comment",
+    "Reviewed original macOS screencapture helper implementation",
+    "Cross-checked visible resource identifiers and recorded command transcripts",
+    "Matched original retained images to their committed session-branch blobs"
+  ],
+  "pixel_edits_performed": false,
+  "images": [
+    {
+      "file": "42-aws-identity-validation.png",
+      "sha256": "3f0dbd79723e00877263902341afd2c7887d488d8252e5eaeec4150ea4c64ec6",
+      "format": "PNG",
+      "pixel_dimensions": [
+        1181,
+        788
+      ],
+      "native_exif_comment": "Screenshot",
+      "visually_reviewed": true,
+      "content": "Terminal: actual commands and results",
+      "result": "pass"
+    },
+    {
+      "file": "43-aws-live-plan.png",
+      "sha256": "c94a8c6e0c48917897e91c09c546e18caec8d2ad90c19d960082a2372eb503fe",
+      "format": "PNG",
+      "pixel_dimensions": [
+        1181,
+        788
+      ],
+      "native_exif_comment": "Screenshot",
+      "visually_reviewed": true,
+      "content": "Terminal: actual saved Terraform creation plan",
+      "result": "pass"
+    },
+    {
+      "file": "44-aws-apply-resources.png",
+      "sha256": "dd463ee061617274b9eb4e1b34c862f09544bf00cab087c1835f7692081ff5b9",
+      "format": "PNG",
+      "pixel_dimensions": [
+        1181,
+        788
+      ],
+      "native_exif_comment": "Screenshot",
+      "visually_reviewed": true,
+      "content": "Terminal: original apply result plus AWS cluster/node-group queries",
+      "result": "pass"
+    },
+    {
+      "file": "45-aws-vpc-console.png",
+      "sha256": "59513c7152be5e412de2cf763797bfe6c9297ff413f00c19d93e5bd41d5b2e00",
+      "format": "PNG",
+      "pixel_dimensions": [
+        2880,
+        1654
+      ],
+      "native_exif_comment": "Screenshot",
+      "visually_reviewed": true,
+      "content": "Chrome: loaded real service/resource page with browser chrome",
+      "result": "pass"
+    },
+    {
+      "file": "46-aws-eks-console.png",
+      "sha256": "634da5f464ab44949d98d6f00ace0c1d78e28a4fa21f3aaa87b09f8e5872f497",
+      "format": "PNG",
+      "pixel_dimensions": [
+        2880,
+        1846
+      ],
+      "native_exif_comment": "Screenshot",
+      "visually_reviewed": true,
+      "content": "Chrome: loaded real service/resource page with browser chrome",
+      "result": "pass"
+    },
+    {
+      "file": "47-aws-node-addons.png",
+      "sha256": "81078953006a65b31ec9b2b6ec24a2023ec79cf2a1975880e57853974ee38ce3",
+      "format": "PNG",
+      "pixel_dimensions": [
+        1181,
+        788
+      ],
+      "native_exif_comment": "Screenshot",
+      "visually_reviewed": true,
+      "content": "Terminal: three EKS add-ons with ACTIVE status; node readiness is in the adjacent transcript",
+      "result": "pass"
+    },
+    {
+      "file": "48-aws-helm-workloads.png",
+      "sha256": "0fef4510fc17116667c1c2199950147b7343f453d390b4fc4420a1599896e661",
+      "format": "PNG",
+      "pixel_dimensions": [
+        1181,
+        788
+      ],
+      "native_exif_comment": "Screenshot",
+      "visually_reviewed": true,
+      "content": "Terminal: actual commands and results",
+      "result": "pass"
+    },
+    {
+      "file": "49-aws-application-browser.png",
+      "sha256": "6dfcea48a7ee11631a154596ff2fc0315ce156187cc682f13d47ee52e6d362d8",
+      "format": "PNG",
+      "pixel_dimensions": [
+        2880,
+        1654
+      ],
+      "native_exif_comment": "Screenshot",
+      "visually_reviewed": true,
+      "content": "Chrome: loaded real service/resource page with browser chrome",
+      "result": "pass"
+    },
+    {
+      "file": "50-aws-business-verification.png",
+      "sha256": "2717e7252d8cae2d4175395d3825cc2cd1eed1d9e4aa709a67bf5ac541c13153",
+      "format": "PNG",
+      "pixel_dimensions": [
+        1181,
+        788
+      ],
+      "native_exif_comment": "Screenshot",
+      "visually_reviewed": true,
+      "content": "Terminal: actual commands and results",
+      "result": "pass"
+    },
+    {
+      "file": "51-aws-storage-metrics.png",
+      "sha256": "e40922a6636abf0c1083bb741140454107db5e9fd9dd2beab132741d471a9ab5",
+      "format": "PNG",
+      "pixel_dimensions": [
+        1181,
+        788
+      ],
+      "native_exif_comment": "Screenshot",
+      "visually_reviewed": true,
+      "content": "Terminal: actual commands and results",
+      "result": "pass"
+    },
+    {
+      "file": "52-aws-prometheus-targets.png",
+      "sha256": "0615d76c83709894fb81349c71665d1e662da92f173d5b670355340e78c16fd8",
+      "format": "PNG",
+      "pixel_dimensions": [
+        2880,
+        1654
+      ],
+      "native_exif_comment": "Screenshot",
+      "visually_reviewed": true,
+      "content": "Chrome: loaded real service/resource page with browser chrome",
+      "result": "pass"
+    },
+    {
+      "file": "53-aws-grafana-dashboard.png",
+      "sha256": "63d684c4c05182ccaae92314ca567a68e260ebb1d49934b48225527bfa8f86f0",
+      "format": "PNG",
+      "pixel_dimensions": [
+        2880,
+        1846
+      ],
+      "native_exif_comment": "Screenshot",
+      "visually_reviewed": true,
+      "content": "Chrome: loaded real service/resource page with browser chrome",
+      "result": "pass"
+    },
+    {
+      "file": "54-aws-no-drift.png",
+      "sha256": "97be971cf31df0cc133e0bd215565efc09aee96fc955f05aed06c73caae31446",
+      "format": "PNG",
+      "pixel_dimensions": [
+        1181,
+        788
+      ],
+      "native_exif_comment": "Screenshot",
+      "visually_reviewed": true,
+      "content": "Terminal: actual commands and results",
+      "result": "pass"
+    },
+    {
+      "file": "55-aws-destroy-complete.png",
+      "sha256": "daa8caaf544ea7eb04881bab76113538ef8e57901bd1f59a94acd94c46a29b27",
+      "format": "PNG",
+      "pixel_dimensions": [
+        1181,
+        788
+      ],
+      "native_exif_comment": "Screenshot",
+      "visually_reviewed": true,
+      "content": "Terminal: actual teardown log plus empty Terraform state",
+      "result": "pass"
+    },
+    {
+      "file": "56-aws-cleanup-verified.png",
+      "sha256": "e6319f6dc69e488e7497f279a77455b04cd949d4b180e86fdf66cea6a03117e5",
+      "format": "PNG",
+      "pixel_dimensions": [
+        1181,
+        788
+      ],
+      "native_exif_comment": "Screenshot",
+      "visually_reviewed": true,
+      "content": "Terminal: actual commands and results",
+      "result": "pass"
+    }
+  ]
+}
