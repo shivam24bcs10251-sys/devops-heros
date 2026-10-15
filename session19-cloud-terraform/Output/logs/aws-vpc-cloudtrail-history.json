@@ -1,0 +1,24 @@
+[
+    {
+        "Event": "DeleteVpc",
+        "Time": "2026-10-15T16:59:03+05:30",
+        "EventID": "7881cd54-c1b8-4458-abfc-d4ee60755f76",
+        "Resources": [
+            {
+                "ResourceType": "AWS::EC2::VPC",
+                "ResourceName": "vpc-028b9710ea8609a72"
+            }
+        ]
+    },
+    {
+        "Event": "CreateVpc",
+        "Time": "2026-10-15T16:41:50+05:30",
+        "EventID": "b676b3f7-d0b8-473e-8bfa-904f33c7c44e",
+        "Resources": [
+            {
+                "ResourceType": "AWS::EC2::VPC",
+                "ResourceName": "vpc-028b9710ea8609a72"
+            }
+        ]
+    }
+]

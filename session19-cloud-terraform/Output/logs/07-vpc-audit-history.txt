@@ -1,0 +1,13 @@
++ date -u '+%Y-%m-%d %H:%M:%S UTC'
+2026-10-15 12:08:25 UTC
++ aws sts get-caller-identity --query Account --output text
+499567237930
++ aws cloudtrail lookup-events --region ap-southeast-2 --lookup-attributes 'AttributeKey=ResourceName,AttributeValue=vpc-028b9710ea8609a72' --max-results 50 --query 'Events[?EventName=='\''CreateVpc'\'' || EventName=='\''DeleteVpc'\''].{Event:EventName,Time:EventTime,EventID:EventId}' --output table
+------------------------------------------------------------------------------------
+|                                   LookupEvents                                   |
++-----------+----------------------------------------+-----------------------------+
+|   Event   |                EventID                 |            Time             |
++-----------+----------------------------------------+-----------------------------+
+|  DeleteVpc|  7881cd54-c1b8-4458-abfc-d4ee60755f76  |  2026-10-15T16:59:03+05:30  |
+|  CreateVpc|  b676b3f7-d0b8-473e-8bfa-904f33c7c44e  |  2026-10-15T16:41:50+05:30  |
++-----------+----------------------------------------+-----------------------------+

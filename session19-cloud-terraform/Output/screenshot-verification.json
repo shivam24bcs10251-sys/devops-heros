@@ -1,0 +1,152 @@
+{
+  "verified_at_utc": "2026-10-15T12:09:58.749669+00:00",
+  "scope": "New AWS screenshots recorded on 15 October 2026; original earlier screenshots are outside this visual review",
+  "count": 10,
+  "method": [
+    "Opened and visually inspected every listed PNG",
+    "Decoded PNG file and inspected native Screenshot EXIF comment",
+    "Reviewed original macOS screencapture helper implementation",
+    "Cross-checked visible resource identifiers and recorded command transcripts",
+    "Matched original retained images to their committed session-branch blobs"
+  ],
+  "pixel_edits_performed": false,
+  "images": [
+    {
+      "file": "01-identity-and-validation.png",
+      "sha256": "62fa9b2ef49e001638ac8c3320effb940c23149095d497b35c626e0122793e32",
+      "format": "PNG",
+      "pixel_dimensions": [
+        1181,
+        788
+      ],
+      "native_exif_comment": "Screenshot",
+      "visually_reviewed": true,
+      "content": "Terminal: actual commands and results",
+      "result": "pass"
+    },
+    {
+      "file": "02-live-plan.png",
+      "sha256": "85691981d99f43a12310edb21b213721342eb4c026b9fbf6f8eca97f1f6d385e",
+      "format": "PNG",
+      "pixel_dimensions": [
+        1181,
+        788
+      ],
+      "native_exif_comment": "Screenshot",
+      "visually_reviewed": true,
+      "content": "Terminal: actual saved Terraform creation plan",
+      "result": "pass"
+    },
+    {
+      "file": "03-apply-state-outputs.png",
+      "sha256": "8cc89c09dee3466e51345bac7ecc27bcff4566d8d335931096a7cf801fecb7d3",
+      "format": "PNG",
+      "pixel_dimensions": [
+        1181,
+        788
+      ],
+      "native_exif_comment": "Screenshot",
+      "visually_reviewed": true,
+      "content": "Terminal: replacement-instance apply log plus actual resource state",
+      "result": "pass"
+    },
+    {
+      "file": "04-vpc-ec2-verification.png",
+      "sha256": "8a90167b451a23e5d0ce9f3e78055da7699ff7b08a88f7ba0d6afaf138a363fb",
+      "format": "PNG",
+      "pixel_dimensions": [
+        1181,
+        788
+      ],
+      "native_exif_comment": "Screenshot",
+      "visually_reviewed": true,
+      "content": "Terminal: actual commands and results",
+      "result": "pass"
+    },
+    {
+      "file": "05-s3-and-http.png",
+      "sha256": "4dc89210b81d58a5828e79d3ffc1f19f273b8d521e662316d0d6cd2a45fcc22b",
+      "format": "PNG",
+      "pixel_dimensions": [
+        1181,
+        788
+      ],
+      "native_exif_comment": "Screenshot",
+      "visually_reviewed": true,
+      "content": "Terminal: actual commands and results",
+      "result": "pass"
+    },
+    {
+      "file": "06-web-browser.png",
+      "sha256": "b318060d819bad3de0a78971dbf79ee7a73b70ad92da8d08754a873150c992d0",
+      "format": "PNG",
+      "pixel_dimensions": [
+        2880,
+        1846
+      ],
+      "native_exif_comment": "Screenshot",
+      "visually_reviewed": true,
+      "content": "Chrome: loaded real service/resource page with browser chrome",
+      "result": "pass"
+    },
+    {
+      "file": "07-vpc-audit-history.png",
+      "sha256": "8bc353c3246e0bbc2c35caae0d28e1fd7f300cd9bf09b9c02b73ae2db4869ce0",
+      "format": "PNG",
+      "pixel_dimensions": [
+        1440,
+        940
+      ],
+      "native_exif_comment": "Screenshot",
+      "visually_reviewed": true,
+      "content": "Terminal: fresh read-only AWS CloudTrail lookup for the original VPC CreateVpc/DeleteVpc events",
+      "result": "pass"
+    },
+    {
+      "file": "08-ec2-console.png",
+      "sha256": "8d2f854fc5d35f8b0013a0035848fb2e5ceb5610e202c355a3c32b02e741f9c1",
+      "format": "PNG",
+      "pixel_dimensions": [
+        2880,
+        1654
+      ],
+      "native_exif_comment": "Screenshot",
+      "visually_reviewed": true,
+      "content": "Chrome: loaded real service/resource page with browser chrome",
+      "result": "pass"
+    },
+    {
+      "file": "09-no-drift.png",
+      "sha256": "5c1848816624d977d2de37be4a40f480e94ddb88edd58c0eab355ccd6fdb5c21",
+      "format": "PNG",
+      "pixel_dimensions": [
+        1181,
+        788
+      ],
+      "native_exif_comment": "Screenshot",
+      "visually_reviewed": true,
+      "content": "Terminal: actual commands and results",
+      "result": "pass"
+    },
+    {
+      "file": "10-destroy-verified.png",
+      "sha256": "6af900cec03f755773042dfb6a8b5b8a89e5f10cb76d7d95e7a2c35d052b2fd9",
+      "format": "PNG",
+      "pixel_dimensions": [
+        1181,
+        788
+      ],
+      "native_exif_comment": "Screenshot",
+      "visually_reviewed": true,
+      "content": "Terminal: actual commands and results",
+      "result": "pass"
+    }
+  ],
+  "rejected_capture": {
+    "file": "07-vpc-console.png",
+    "reason": "Genuine screenshot, but only a loading screen; rejected as evidence of VPC details",
+    "replacement": "07-vpc-audit-history.png",
+    "replacement_source": "Fresh AWS CloudTrail API response for the original VPC in account 499567237930, ap-southeast-2",
+    "aws_resources_recreated": false
+  }
+}

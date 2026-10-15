@@ -118,9 +118,13 @@ Real native Terminal and Chrome window screenshots follow the earlier session st
 
 ![Real Nginx page in Chrome](Output/06-web-browser.png)
 
-### 07 · AWS Console: the provisioned VPC
+### 07 · AWS audit history: the original VPC was created and deleted
 
-![AWS Console: the provisioned VPC](Output/07-vpc-console.png)
+![AWS CloudTrail creation and deletion records for the original Session 19 VPC](Output/07-vpc-audit-history.png)
+
+[Actual command output](Output/logs/07-vpc-audit-history.txt) · [AWS event records](Output/logs/aws-vpc-cloudtrail-history.json).
+
+The original VPC Console capture was rejected during visual review because it showed a loading screen. This replacement is a native Terminal screenshot of a fresh, read-only AWS CloudTrail lookup for `vpc-028b9710ea8609a72`. It shows the original CreateVpc and DeleteVpc events after the lab was torn down. The completed EC2 Console view below also shows the same VPC ID; no resources were recreated for this verification.
 
 ### 08 · AWS Console: the EC2 instance
 
@@ -153,3 +157,5 @@ A valid HCL configuration and passing mock tests cannot guarantee that AWS will 
 [Mini-project source and setup](08-mini-project/README.md) · [Terraform test mocking](https://developer.hashicorp.com/terraform/language/tests/mocking) · [AL2023 on EC2](https://docs.aws.amazon.com/linux/al2023/ug/ec2.html) · [EC2 resource](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance) · [VPC concepts](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html).
 
 Text transcripts use LF line endings with terminal color/control codes removed for readability. Commands and result values are preserved; screenshots remain the original native window captures.
+
+[Visual screenshot verification and file hashes](Output/SCREENSHOT-VERIFICATION.md).
