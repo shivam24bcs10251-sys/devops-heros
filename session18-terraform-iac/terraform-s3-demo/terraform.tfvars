@@ -1,3 +1,3 @@
-aws_region  = "ap-south-1"
-aws_profile = "default"
-bucket_name = "devops-session18-shivam-20261007-ffda50"
+aws_region  = "ap-southeast-2"
+aws_profile = "scaler-sst"
+bucket_name = "devops-session18-499567237930-20261015"

@@ -1,0 +1,124 @@
+aws_s3_bucket.demo: Refreshing state... [id=devops-session18-499567237930-20261015]
+aws_s3_bucket_versioning.demo: Refreshing state... [id=devops-session18-499567237930-20261015]
+aws_s3_bucket_public_access_block.demo: Refreshing state... [id=devops-session18-499567237930-20261015]
+aws_s3_bucket_server_side_encryption_configuration.demo: Refreshing state... [id=devops-session18-499567237930-20261015]
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  - destroy
+
+Terraform will perform the following actions:
+
+  # aws_s3_bucket.demo will be destroyed
+  - resource "aws_s3_bucket" "demo" {
+      - arn                         = "arn:aws:s3:::devops-session18-499567237930-20261015" -> null
+      - bucket                      = "devops-session18-499567237930-20261015" -> null
+      - bucket_domain_name          = "devops-session18-499567237930-20261015.s3.amazonaws.com" -> null
+      - bucket_namespace            = "global" -> null
+      - bucket_region               = "ap-southeast-2" -> null
+      - bucket_regional_domain_name = "devops-session18-499567237930-20261015.s3.ap-southeast-2.amazonaws.com" -> null
+      - force_destroy               = false -> null
+      - hosted_zone_id              = "Z1WCIGYICN2BYD" -> null
+      - id                          = "devops-session18-499567237930-20261015" -> null
+      - object_lock_enabled         = false -> null
+      - region                      = "ap-southeast-2" -> null
+      - request_payer               = "BucketOwner" -> null
+      - tags                        = {
+          - "Environment" = "learning"
+          - "Name"        = "devops-session18-499567237930-20261015"
+        } -> null
+      - tags_all                    = {
+          - "Environment" = "learning"
+          - "ManagedBy"   = "Terraform"
+          - "Name"        = "devops-session18-499567237930-20261015"
+          - "Owner"       = "ShivamJaiswal"
+          - "Project"     = "Session18"
+        } -> null
+        # (3 unchanged attributes hidden)
+
+      - grant {
+          - id          = "32bc6f0e0fd9be243c4e49101e1f0d5a0a3d3779dcb785bc3740a6c5a0138751" -> null
+          - permissions = [
+              - "FULL_CONTROL",
+            ] -> null
+          - type        = "CanonicalUser" -> null
+            # (1 unchanged attribute hidden)
+        }
+
+      - server_side_encryption_configuration {
+          - rule {
+              - bucket_key_enabled = false -> null
+
+              - apply_server_side_encryption_by_default {
+                  - sse_algorithm     = "AES256" -> null
+                    # (1 unchanged attribute hidden)
+                }
+            }
+        }
+
+      - versioning {
+          - enabled    = true -> null
+          - mfa_delete = false -> null
+        }
+    }
+
+  # aws_s3_bucket_public_access_block.demo will be destroyed
+  - resource "aws_s3_bucket_public_access_block" "demo" {
+      - block_public_acls       = true -> null
+      - block_public_policy     = true -> null
+      - bucket                  = "devops-session18-499567237930-20261015" -> null
+      - id                      = "devops-session18-499567237930-20261015" -> null
+      - ignore_public_acls      = true -> null
+      - region                  = "ap-southeast-2" -> null
+      - restrict_public_buckets = true -> null
+    }
+
+  # aws_s3_bucket_server_side_encryption_configuration.demo will be destroyed
+  - resource "aws_s3_bucket_server_side_encryption_configuration" "demo" {
+      - bucket                = "devops-session18-499567237930-20261015" -> null
+      - id                    = "devops-session18-499567237930-20261015" -> null
+      - region                = "ap-southeast-2" -> null
+        # (1 unchanged attribute hidden)
+
+      - rule {
+          - blocked_encryption_types = [
+              - "SSE-C",
+            ] -> null
+          - bucket_key_enabled       = false -> null
+
+          - apply_server_side_encryption_by_default {
+              - sse_algorithm     = "AES256" -> null
+                # (1 unchanged attribute hidden)
+            }
+        }
+    }
+
+  # aws_s3_bucket_versioning.demo will be destroyed
+  - resource "aws_s3_bucket_versioning" "demo" {
+      - bucket                = "devops-session18-499567237930-20261015" -> null
+      - id                    = "devops-session18-499567237930-20261015" -> null
+      - region                = "ap-southeast-2" -> null
+        # (1 unchanged attribute hidden)
+
+      - versioning_configuration {
+          - mfa_delete = "Disabled" -> null
+          - status     = "Enabled" -> null
+        }
+    }
+
+Plan: 0 to add, 0 to change, 4 to destroy.
+
+Changes to Outputs:
+  - bucket_arn    = "arn:aws:s3:::devops-session18-499567237930-20261015" -> null
+  - bucket_name   = "devops-session18-499567237930-20261015" -> null
+  - bucket_region = "ap-southeast-2" -> null
+aws_s3_bucket_versioning.demo: Destroying... [id=devops-session18-499567237930-20261015]
+aws_s3_bucket_public_access_block.demo: Destroying... [id=devops-session18-499567237930-20261015]
+aws_s3_bucket_server_side_encryption_configuration.demo: Destroying... [id=devops-session18-499567237930-20261015]
+aws_s3_bucket_public_access_block.demo: Destruction complete after 2s
+aws_s3_bucket_versioning.demo: Destruction complete after 2s
+aws_s3_bucket_server_side_encryption_configuration.demo: Destruction complete after 3s
+aws_s3_bucket.demo: Destroying... [id=devops-session18-499567237930-20261015]
+aws_s3_bucket.demo: Destruction complete after 1s
+
+Destroy complete! Resources: 4 destroyed.

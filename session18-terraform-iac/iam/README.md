@@ -1,9 +1,9 @@
-# Permissions needed to execute Session 18
+# IAM access notes
 
-The default local profile currently authenticates as IAM user `satyam`, but the real Terraform apply was denied at `s3:CreateBucket`. Login success is not proof of resource permissions.
+The live Session 18 lab was completed on **15 October 2026**, through profile `scaler-sst` in AWS account `499567237930`, Sydney. The provider enforces that account with `allowed_account_ids`. Its temporary credentials come from the AWS CLI login cache and never appear in Terraform variables or screenshots.
 
-[Policy for administrator review](terraform-s3-lab-policy.json) grants bucket lifecycle/configuration actions only on the `devops-session18-` prefix. It deliberately grants no global bucket listing, object access, IAM mutation or EC2 permission. This lab creates an empty bucket, so object deletion permissions are unnecessary.
+The earlier 7 October default-profile attempt failed at `s3:CreateBucket`. That historical failure is retained in the session evidence. It was resolved by selecting the authorized Scaler account, without changing or reusing the other account's resources.
 
-An AWS account administrator can attach this policy to the intended lab identity, or provide an already authorized local profile/role. Existing permission boundaries, session policies, resource policies or organization controls can still restrict the effective permission. This policy has not been attached automatically.
+The [prefix-scoped example policy](terraform-s3-lab-policy.json) is retained for reference. It was not attached automatically. Authentication via STS proves identity; successful AWS lifecycle calls establish the permissions needed by the actual lab. Organization controls and permission boundaries can still restrict a role.
 
-After access changes, rerun `terraform plan -out=create.tfplan` and apply the newly saved plan. Successful creation must be followed by AWS verification, screenshots and `terraform destroy`. The current denied apply is evidence of the access limitation, not a completed cloud demo.
+If the temporary session expires, run `aws login --profile scaler-sst-login --region ap-southeast-2`, then verify `aws sts get-caller-identity --profile scaler-sst` returns the expected account. Never copy AWS access keys into this repository.

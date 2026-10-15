@@ -1,12 +1,12 @@
 variable "aws_region" {
   description = "Region for this isolated S3 lab."
   type        = string
-  default     = "ap-south-1"
+  default     = "ap-southeast-2"
 }
 variable "aws_profile" {
   description = "Existing local AWS CLI profile; credentials remain outside Git."
   type        = string
-  default     = "default"
+  default     = "scaler-sst"
 }
 variable "bucket_name" {
   description = "Globally unique, lowercase S3 bucket name for this lab only."
@@ -14,5 +14,15 @@ variable "bucket_name" {
   validation {
     condition     = can(regex("^devops-session18-[a-z0-9-]+$", var.bucket_name)) && length(var.bucket_name) <= 63
     error_message = "Use a globally unique devops-session18- prefix, lowercase letters, numbers and hyphens, at most 63 characters."
+  }
+}
+
+variable "expected_account_id" {
+  description = "Only this AWS account may be used for the submission labs."
+  type        = string
+  default     = "499567237930"
+  validation {
+    condition     = can(regex("^[0-9]{12}$", var.expected_account_id))
+    error_message = "Provide a 12-digit AWS account ID."
   }
 }

@@ -1,0 +1,20 @@
++ date -u '+%Y-%m-%d %H:%M:%S UTC'
+2026-10-15 11:16:07 UTC
++ cd terraform-s3-demo
++ terraform destroy '-input=false' -auto-approve -no-color
++ tail -12 ../Output/logs/aws-destroy-full.txt
+  - bucket_name   = "devops-session18-499567237930-20261015" -> null
+  - bucket_region = "ap-southeast-2" -> null
+aws_s3_bucket_versioning.demo: Destroying... [id=devops-session18-499567237930-20261015]
+aws_s3_bucket_public_access_block.demo: Destroying... [id=devops-session18-499567237930-20261015]
+aws_s3_bucket_server_side_encryption_configuration.demo: Destroying... [id=devops-session18-499567237930-20261015]
+aws_s3_bucket_public_access_block.demo: Destruction complete after 2s
+aws_s3_bucket_versioning.demo: Destruction complete after 2s
+aws_s3_bucket_server_side_encryption_configuration.demo: Destruction complete after 3s
+aws_s3_bucket.demo: Destroying... [id=devops-session18-499567237930-20261015]
+aws_s3_bucket.demo: Destruction complete after 1s
+
+Destroy complete! Resources: 4 destroyed.
++ terraform state list
++ aws s3api list-buckets --query 'Buckets[?Name=='\''devops-session18-499567237930-20261015'\''].Name'
+[]

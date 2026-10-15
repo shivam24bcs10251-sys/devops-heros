@@ -1,114 +1,107 @@
-# Session 18 — Terraform and Infrastructure as Code
+# Session 18 · Terraform and Infrastructure as Code
 
-## Task 1: Terraform S3 demo
+**Shivam Jaiswal · Completed live AWS lab · 15 October 2026**
 
-[Terraform project](terraform-s3-demo/README.md) contains `main.tf`, `variables.tf`, `outputs.tf`, `provider.tf`, `terraform.tfvars`, provider requirements and a dependency lock file. It creates one isolated S3 bucket with public access blocked, AES256 encryption and versioning, then destroys the lab resources after verification.
+Terraform created a private, encrypted, versioned S3 bucket in **Asia Pacific (Sydney), `ap-southeast-2`**, using the Scaler AWS account **`499567237930`**. AWS API checks and the Console confirmed its configuration. The empty bucket and all four Terraform resources were then destroyed; the final state and AWS bucket lookup are empty.
 
-The existing files were inspected first. The invalid output `type` properties were removed, the generic bucket name was replaced, credentials are discovered through a local profile, and state/plans are excluded from Git. Plaintext AWS keys are never part of the project or screenshots.
+## Assignment coverage
 
-## Task 2: AWS service research
+| Requirement | Submission and result |
+|---|---|
+| Inspect and correct the supplied Terraform example | [Source and setup](terraform-s3-demo/README.md); invalid output `type` arguments removed |
+| Provider, variables, resources and outputs | AWS 6.67.0 lock; profile/region/account/name variables; four resources; bucket name/ARN/region outputs |
+| Initialize, format, validate, plan and apply | Successful; live plan contained **4 additions** |
+| Inspect state and verify AWS | Four resource addresses; Block Public Access, AES256 and versioning confirmed |
+| Destroy and verify cleanup | **4 destroyed**; empty Terraform state; bucket absent from account listing |
+| Research five AWS service areas | IAM, EC2, S3, VPC, DynamoDB/RDS READMEs below |
 
-- [IAM](aws-services/01-iam/README.md)
-- [EC2](aws-services/02-ec2/README.md)
-- [S3](aws-services/03-s3/README.md)
-- [VPC](aws-services/04-vpc/README.md)
-- [DynamoDB and RDS](aws-services/05-dynamodb-rds/README.md)
+## Architecture and account isolation
 
-Each README covers the concepts and use cases listed in the assignment and links to official AWS documentation. These are research deliverables; no database instances or NAT gateways are needed for this session.
-
-## Execution status
-
-**Prepared and locally verified; AWS provisioning is blocked by IAM permissions.** Terraform init, fmt, validate and plan succeeded. The plan proposes four resources. The actual apply was denied for `s3:CreateBucket`; no resources were added to state, and the cleanup command reports zero resources destroyed. This is not yet a completed live S3 demonstration.
-
-All five AWS research READMEs are complete. [Permissions and resume instructions](iam/README.md) and a [bucket-prefix-scoped policy](iam/terraform-s3-lab-policy.json) are available for administrator review. Credentials, local Terraform state and binary plans are excluded from Git.
-
-Once AWS access is corrected, regenerate the plan, apply it, verify the real bucket/security configuration and outputs, record successful screenshots, and destroy the lab. Those cloud steps are still outstanding.
-
-## Commands, output and screenshots
-
-All screenshots show live Terminal commands and results. Screen capture runs in a separate window. Text transcripts preserve the visible output.
-
-### Inspect files and research deliverables
-
-The supplied Terraform example and the assignment folders were inspected before implementation.
-
-```bash
-find terraform-s3-demo -maxdepth 1 -type f | sort
-find aws-services -name README.md | sort
-terraform version | head -3
+```mermaid
+flowchart LR
+  TF[Terraform / scaler-sst profile] --> Guard[Account guard: 499567237930]
+  Guard --> S3[S3 bucket in ap-southeast-2]
+  S3 --> Public[All four public access blocks enabled]
+  S3 --> Encrypt[AES256 encryption]
+  S3 --> Versions[Versioning enabled]
 ```
 
-![Inspect files and research deliverables](Output/01-project-inspection.png)
+Recorded bucket: `devops-session18-499567237930-20261015`. It contained no objects. `force_destroy=false` prevents silently deleting unexpected content. The provider's `allowed_account_ids` prevents deployment through another account. Credentials remain in the AWS CLI login cache; no access keys are committed. Existing buckets, containers and profiles from other accounts were not used.
 
-[Actual output](Output/logs/01-project-inspection.txt).
+## Reproduce the lab
 
-### Authenticate and initialize
-
-The current default AWS profile authenticates, and the signed AWS provider initializes. Authentication alone does not authorize creating resources.
+Use the existing `scaler-sst` profile backed by the authorized AWS login. If its temporary session expires, renew it with `aws login --profile scaler-sst-login --region ap-southeast-2`. Verify the account before proceeding:
 
 ```bash
-export TF_DATA_DIR=/tmp/devops-session18-tfdata AWS_REGION=ap-south-1 AWS_DEFAULT_REGION=ap-south-1 AWS_PAGER=""
-aws sts get-caller-identity --query Arn --output text
-cd terraform-s3-demo
-terraform init -input=false -no-color
-```
-
-![Authenticate and initialize](Output/02-identity-init.png)
-
-[Actual output](Output/logs/02-identity-init.txt).
-
-### Format and validate
-
-Terraform reports a valid configuration.
-
-```bash
-cd terraform-s3-demo
-terraform fmt
-terraform validate -no-color
-```
-
-![Format and validate](Output/03-format-validate.png)
-
-[Actual output](Output/logs/03-format-validate.txt).
-
-### Plan the S3 lab
-
-The actual plan proposes four resources: the bucket and its public-access, encryption and versioning configurations. [Full plan](Output/create-plan.txt).
-
-```bash
-cd terraform-s3-demo
-terraform plan -input=false -no-color -out=create.tfplan > ../Output/create-plan.txt && tail -20 ../Output/create-plan.txt
-```
-
-![Plan the S3 lab](Output/04-create-plan.png)
-
-[Actual output](Output/logs/04-create-plan.txt).
-
-### Apply attempt denied by AWS
-
-The real apply failed with HTTP 403 AccessDenied for s3:CreateBucket. This screenshot is an access-failure record, not a successful deployment.
-
-```bash
-cd terraform-s3-demo
-terraform apply -input=false -no-color create.tfplan
-```
-
-![Apply attempt denied by AWS](Output/05-apply.png)
-
-[Actual output](Output/logs/05-apply.txt).
-
-### Inspect empty state and clean up
-
-Because creation was denied, state contains no managed resources, no resource outputs exist, and destroy removes zero resources. Successful AWS create/show/output/destroy evidence remains pending access.
-
-```bash
-cd terraform-s3-demo
-terraform show -no-color
-terraform output -no-color
+export AWS_PROFILE=scaler-sst AWS_REGION=ap-southeast-2 AWS_PAGER=""
+aws sts get-caller-identity --query Account --output text
+cd session18-terraform-iac/terraform-s3-demo
+# Change bucket_name in terraform.tfvars to a fresh globally unique lab name.
+terraform init
+terraform fmt -check
+terraform validate
+terraform plan -out=create.tfplan
+terraform apply create.tfplan
 terraform state list
-terraform destroy -input=false -auto-approve -no-color
+terraform output
+aws s3api get-public-access-block --bucket "$(terraform output -raw bucket_name)"
+aws s3api get-bucket-encryption --bucket "$(terraform output -raw bucket_name)"
+aws s3api get-bucket-versioning --bucket "$(terraform output -raw bucket_name)"
+terraform plan -detailed-exitcode
+terraform destroy -auto-approve
+terraform state list
 ```
 
-![Inspect empty state and clean up](Output/06-state-and-cleanup.png)
+The drift check returned **no changes**. Detailed plan exit codes are 0 for no changes, 2 for proposed changes and 1 for errors. State and saved plans remain local and ignored. A previously applied saved plan must be regenerated before another apply.
 
-[Actual output](Output/logs/06-state-and-cleanup.txt).
+## Screenshots and execution records
+
+These are real Terminal and Chrome window captures, following the earlier session format: readable commands/results, browser address bar, no surrounding desktop. Full plan/apply/destroy output is retained beside the screenshots. The apply screenshot reads the recorded creation transcript and then queries the actual state and outputs.
+
+### 07 · Authorized identity, initialization and validation
+
+![Authorized AWS account and Terraform initialization](Output/07-authorized-init.png)
+
+[Transcript](Output/logs/07-authorized-init.txt).
+
+### 08 · Four-resource creation plan
+
+![Saved S3 creation plan](Output/08-s3-plan.png)
+
+[Transcript](Output/logs/08-s3-plan.txt) · [Full live plan](Output/logs/aws-plan.txt).
+
+### 09 · Successful apply, resource state and outputs
+
+![S3 apply result and real state](Output/09-apply-and-state.png)
+
+[Transcript](Output/logs/09-apply-and-state.txt) · [Original apply output](Output/logs/aws-apply.txt).
+
+### 10 · AWS security checks and unchanged infrastructure
+
+![S3 public access, encryption, versioning and drift verification](Output/10-s3-security.png)
+
+[Transcript](Output/logs/10-s3-security.txt).
+
+### 11 · AWS Console: Sydney bucket and enabled versioning
+
+![Real S3 bucket in the Scaler AWS account](Output/11-s3-console.png)
+
+### 12 · Successful destruction and absence check
+
+![Four resources destroyed and bucket absent](Output/12-destroy-verified.png)
+
+[Transcript](Output/logs/12-destroy-verified.txt) · [Full destroy output](Output/logs/aws-destroy-full.txt).
+
+## AWS service research
+
+| Topic | Completed research |
+|---|---|
+| IAM | [Identities, roles, policies and least privilege](aws-services/01-iam/README.md) |
+| EC2 | [Instances, lifecycle, AMIs, storage and network security](aws-services/02-ec2/README.md) |
+| S3 | [Objects, buckets, encryption, versioning and policies](aws-services/03-s3/README.md) |
+| VPC | [Subnets, routes, gateways and security groups](aws-services/04-vpc/README.md) |
+| DynamoDB and RDS | [Database models, use cases and managed-service tradeoffs](aws-services/05-dynamodb-rds/README.md) |
+
+## Earlier blocker and lesson learned
+
+The 7 October attempt used a different identity and was denied `s3:CreateBucket`. Its original screenshots `01`–`06` and [failed-apply transcript](Output/logs/05-apply.txt) remain as historical troubleshooting evidence. They do not describe this completed run. The blocker was resolved by using the authorized Scaler account; no permission changes were made to the old identity. [IAM notes](iam/README.md) explain the distinction between authenticating and being authorized to provision resources.

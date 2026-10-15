@@ -1,0 +1,29 @@
++ date -u '+%Y-%m-%d %H:%M:%S UTC'
+2026-10-15 11:14:15 UTC
++ aws s3api get-public-access-block --bucket devops-session18-499567237930-20261015
+{
+    "PublicAccessBlockConfiguration": {
+        "BlockPublicAcls": true,
+        "IgnorePublicAcls": true,
+        "BlockPublicPolicy": true,
+        "RestrictPublicBuckets": true
+    }
+}
++ aws s3api get-bucket-encryption --bucket devops-session18-499567237930-20261015 --query 'ServerSideEncryptionConfiguration.Rules[].ApplyServerSideEncryptionByDefault'
+[
+    {
+        "SSEAlgorithm": "AES256"
+    }
+]
++ aws s3api get-bucket-versioning --bucket devops-session18-499567237930-20261015
+{
+    "Status": "Enabled"
+}
++ cd terraform-s3-demo
++ terraform plan '-input=false' -no-color -detailed-exitcode
++ tail -4
+cd '/Users/shivamjaiswal/Library/Mobile Documents/com~apple~CloudDocs/iCloud-Keep/Scaler/Semester_5_Term_1/Devops_SWE/devops-heros/aws-scaler-labs/.local/worktrees/session18/session18-terraform-iac'; clear; /usr/bin/script -q '/Users/shivamjaiswal/Library/Mobile Documents/com~apple~CloudDocs/iCloud-Keep/Scaler/Semester_5_Term_1/Devops_SWE/devops-heros/aws-scaler-labs/.local/worktrees/session18/session18-terraform-iac/Output/logs/12-destroy-verified.txt' /bin/zsh '/Users/shivamjaiswal/Library/Mobile Documents/com~apple~CloudDocs/iCloud-Keep/Scaler/Semester_5_Term_1/Devops_SWE/devops-heros/aws-scaler-labs/.local/capture-jobs/12-destroy-verified.sh'; /usr/bin/printf "%s" "$?" > '/Users/shivamjaiswal/Library/Mobile Documents/com~apple~CloudDocs/iCloud-Keep/Scaler/Semester_5_Term_1/Devops_SWE/devops-heros/aws-scaler-labs/.local/capture-jobs/12-destroy-verified.done'
+No changes. Your infrastructure matches the configuration.
+
+Terraform has compared your real infrastructure against your configuration
+and found no differences, so no changes are needed.

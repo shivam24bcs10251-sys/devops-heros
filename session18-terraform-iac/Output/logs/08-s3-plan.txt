@@ -1,0 +1,29 @@
++ date -u '+%Y-%m-%d %H:%M:%S UTC'
+2026-10-15 11:13:01 UTC
++ cd terraform-s3-demo
++ terraform show -no-color create.tfplan
++ tail -24
+              + kms_master_key_id = (known after apply)
+              + sse_algorithm     = "AES256"
+            }
+        }
+    }
+
+  # aws_s3_bucket_versioning.demo will be created
+  + resource "aws_s3_bucket_versioning" "demo" {
+      + bucket = (known after apply)
+      + id     = (known after apply)
+      + region = "ap-southeast-2"
+
+      + versioning_configuration {
+          + mfa_delete = (known after apply)
+          + status     = "Enabled"
+        }
+    }
+
+Plan: 4 to add, 0 to change, 0 to destroy.
+
+Changes to Outputs:
+  + bucket_arn    = (known after apply)
+  + bucket_name   = (known after apply)
+  + bucket_region = "ap-southeast-2"

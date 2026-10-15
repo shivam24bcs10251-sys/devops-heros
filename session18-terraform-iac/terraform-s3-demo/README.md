@@ -1,6 +1,6 @@
 # Terraform S3 demo
 
-The supplied example has been corrected: Terraform outputs do not accept a `type` argument, and a globally unique bucket name replaces the invalid generic `demo` default. The AWS provider is pinned to 6.67.0 and its dependency lock file is committed. `provider.tf` uses the existing local AWS profile; keys are never stored in Terraform variables.
+The supplied example has been corrected: Terraform outputs do not accept a `type` argument, and a globally unique bucket name replaces the invalid generic `demo` default. The AWS provider is pinned to 6.67.0 and its dependency lock file is committed. `provider.tf` uses the `scaler-sst` local AWS profile in Sydney and enforces account `499567237930`; keys are never stored in Terraform variables.
 
 The bucket has explicit public-access blocking, AES256 server-side encryption and versioning. `force_destroy=false` protects unexpected objects: an empty lab bucket can be destroyed normally. Resources refer to the bucket ID, so Terraform creates the bucket first and deletes dependent configurations before the bucket.
 
@@ -19,3 +19,5 @@ terraform state list
 ```
 
 The final destroy is required by this assignment. State and saved plans stay local and ignored by Git. The committed `terraform.tfvars` contains only region, profile name and a disposable bucket name; use a new globally unique name for another run. See the [session submission](../README.md) for actual execution evidence and the AWS research deliverables.
+
+Live execution on 15 October 2026 created and verified all four resources, then destroyed them. See the parent README for current screenshots and full transcripts.
