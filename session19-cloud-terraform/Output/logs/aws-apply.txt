@@ -24,4 +24,3 @@ Error: creating Security Group (session19-web-a5aa626e0f72b4f72a5a233486): opera
   with aws_security_group.web,
   on main.tf line 50, in resource "aws_security_group" "web":
   50: resource "aws_security_group" "web" {
-
