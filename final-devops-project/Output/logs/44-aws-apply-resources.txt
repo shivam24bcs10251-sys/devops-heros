@@ -1,0 +1,29 @@
++ date -u '+%Y-%m-%d %H:%M:%S UTC'
+2026-10-15 11:36:33 UTC
++ grep 'Apply complete!' Output/logs/aws-apply.txt
+Apply complete! Resources: 21 added, 0 changed, 0 destroyed.
++ terraform '-chdir=terraform' state list
++ grep -v '^data\.'
++ wc -l
+      21
++ aws eks describe-cluster --name labledger-session21 --query 'cluster.{Status:status,Version:version,VPC:resourcesVpcConfig.vpcId,Subnets:resourcesVpcConfig.subnetIds}' --output table
+------------------------------------------------
+|                DescribeCluster               |
++--------+-------------------------+-----------+
+| Status |           VPC           |  Version  |
++--------+-------------------------+-----------+
+|  ACTIVE|  vpc-0aa6e982ce3b9bc74  |  1.35     |
++--------+-------------------------+-----------+
+||                   Subnets                  ||
+|+--------------------------------------------+|
+||  subnet-0b0d5cee50b0a2ac5                  ||
+||  subnet-020717b1a70980817                  ||
+|+--------------------------------------------+|
++ aws eks describe-nodegroup --cluster-name labledger-session21 --nodegroup-name classroom --query 'nodegroup.{Status:status,Type:instanceTypes[0],Workers:scalingConfig.desiredSize}' --output table
+-----------------------------------------
+|           DescribeNodegroup           |
++--------+------------------+-----------+
+| Status |      Type        |  Workers  |
++--------+------------------+-----------+
+|  ACTIVE|  c7i-flex.large  |  1        |
++--------+------------------+-----------+

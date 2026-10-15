@@ -1,0 +1,2 @@
+Read-only inventory traffic: 3 workers for 180s
+{"ok": 644, "errors": 0, "seconds": 180, "workers": 3}

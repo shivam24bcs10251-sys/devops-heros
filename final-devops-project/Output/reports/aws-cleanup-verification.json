@@ -1,0 +1,34 @@
+{
+  "verified_at_utc": "2026-10-15T11:54:35.937048+00:00",
+  "account": "499567237930",
+  "region": "ap-southeast-2",
+  "target_cluster": "labledger-session21",
+  "target_vpc": "vpc-0aa6e982ce3b9bc74",
+  "recorded_worker_states": {
+    "i-0642252a91acb2475": "terminated"
+  },
+  "recorded_volume_ids": [
+    "vol-0161ab3c9dd4831d9",
+    "vol-09bad0d8c4a79ce6f"
+  ],
+  "target_load_balancer": "a8ea0bdf04a1744448c3028e6dfef7f0",
+  "checks": {
+    "cluster_absent": true,
+    "vpc_absent": true,
+    "subnets_absent": true,
+    "security_groups_absent": true,
+    "network_interfaces_absent": true,
+    "recorded_volumes_absent": true,
+    "load_balancer_absent": true,
+    "worker_terminated": true,
+    "project_iam_roles_absent": true,
+    "terraform_state_empty": true,
+    "session18_bucket_absent": true,
+    "session19_bucket_absent": true,
+    "session19_vpc_absent": true,
+    "session19_instances_terminated": true,
+    "earlier_taskboard_cluster_preserved": true
+  },
+  "all_checks_passed": true,
+  "earlier_taskboard_status": "ACTIVE"
+}

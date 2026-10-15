@@ -1,0 +1,17 @@
++ date -u '+%Y-%m-%d %H:%M:%S UTC'
+2026-10-15 11:23:14 UTC
++ cd terraform
++ terraform show -no-color create.tfplan
++ sed -n '/^Plan:/,$p'
+Plan: 21 to add, 0 to change, 0 to destroy.
+
+Changes to Outputs:
+  + cluster_endpoint  = (known after apply)
+  + cluster_name      = "labledger-session21"
+  + kubectl_command   = "aws eks update-kubeconfig --name labledger-session21 --region ap-southeast-2 --profile scaler-sst --kubeconfig ../.local/kubeconfig"
+  + node_group        = "classroom"
+  + public_subnet_ids = [
+      + (known after apply),
+      + (known after apply),
+    ]
+  + vpc_id            = (known after apply)

@@ -6,11 +6,11 @@
 
 LabLedger gives a campus equipment desk a live inventory, checkout records and a reliable return process. This is an original application domain and implementation: a React dashboard, a FastAPI API, PostgreSQL migrations, stock consistency rules and a delivery pipeline that verifies real deployments on two CPU architectures.
 
-> **Execution status:** Application, Docker, CI/security, local Kubernetes/Helm, monitoring, GitOps and the troubleshooting lab have been executed. **The live AWS portion of M7 is pending account permissions.** Terraform validation and two mock plan tests pass, but they are not a live AWS plan, EKS deployment or successful destroy. No AWS resources were created by this project.
+> **Completed evidence:** Application, tests, Docker, CI/security, local Kubernetes, GitOps and troubleshooting were recorded on 7 October 2026. The missing live AWS work was completed on **15 October 2026** in Scaler account **`499567237930`**, Sydney: **21 Terraform resources**, EKS, LabLedger, encrypted storage, monitoring, business-rule verification and teardown. The temporary cloud deployment was removed after evidence collection; its URL below is a historical endpoint.
 
-![LabLedger running through Kubernetes Ingress](Output/10-ingress-app-browser.png)
+![LabLedger running through AWS EKS and its load balancer](Output/49-aws-application-browser.png)
 
-*Real browser view of the seeded Kubernetes application. Demo borrowers are synthetic; verification runs later add clearly tagged VERIFY records.*
+*Actual AWS-hosted LabLedger dashboard before teardown. Demo borrowers are synthetic; live checks add explicitly labeled VERIFY records. Earlier local and CI screenshots are retained below with their dates.*
 
 ## Contents
 
@@ -20,13 +20,14 @@ LabLedger gives a campus equipment desk a live inventory, checkout records and a
 4. [Docker quick start](#docker-quick-start)
 5. [Kubernetes and Helm](#kubernetes-and-helm)
 6. [Terraform infrastructure](#terraform-infrastructure)
-7. [CI/CD and DevSecOps](#cicd-and-devsecops)
-8. [Monitoring and logs](#monitoring-and-logs)
-9. [GitOps and demonstrated release](#gitops-and-demonstrated-release)
-10. [Troubleshooting and recovery](#troubleshooting-and-recovery)
-11. [Screenshot evidence](#screenshot-evidence)
-12. [Lessons learned and operating limits](#lessons-learned-and-operating-limits)
-13. [Cleanup](#cleanup)
+7. [AWS execution · 15 October 2026](#aws-execution--15-october-2026)
+8. [CI/CD and DevSecOps](#cicd-and-devsecops)
+9. [Monitoring and logs](#monitoring-and-logs)
+10. [GitOps and demonstrated release](#gitops-and-demonstrated-release)
+11. [Troubleshooting and recovery](#troubleshooting-and-recovery)
+12. [Screenshot evidence](#screenshot-evidence)
+13. [Lessons learned and operating limits](#lessons-learned-and-operating-limits)
+14. [Cleanup](#cleanup)
 
 ## Requirement map
 
@@ -38,12 +39,12 @@ LabLedger gives a campus equipment desk a live inventory, checkout records and a
 | M4 · Docker | Three healthy Compose services, migration job, multistage frontend, nonroot app images | Executed |
 | M5 · CI/CD | GitHub tests/scans → native AMD64/ARM64 builds → GHCR → real Kind/Helm verification → GitOps promotion | Two successful releases |
 | M6 · DevSecOps | Bandit, Python/npm SCA, Gitleaks, both-image Trivy HIGH/CRITICAL gates | Passed |
-| M7 · Terraform/AWS | VPC/EKS code, provider lock, fmt/validate, two mocked architecture tests | **Live provision/console/destroy pending** |
-| M8 · Kubernetes/Helm | Two frontend/backend replicas, Services, ConfigMap, external Secret, Ingress, probes, PVC, HPA | Executed locally |
-| M9 · Observability | Two live backend scrape targets, populated six-panel Grafana dashboard, structured request logs | Executed |
+| M7 · Terraform/AWS | Live 21-resource VPC/EKS plan/apply, two public subnets, managed worker, AWS Console, successful destroy and API absence checks | **Executed and cleaned up** |
+| M8 · Kubernetes/Helm | Two frontend/backend replicas, Services, ConfigMap, external Secret, Ingress, probes, PVC, HPA | Executed locally and on EKS |
+| M9 · Observability | Two live backend scrape targets, populated six-panel Grafana dashboard, structured request logs | Recorded locally and on EKS |
 | M10 · Documentation | Setup, architecture, linked source/reports/screenshots, four fault investigations and recovery | Documented |
 
-The [assignment](https://docs.google.com/document/d/1cjXFYf2Thm8cBEN-0C48B-v02cj3jGLd47lcO18prHE/edit) and [provided grading rubric](../session21-python/GRADING.md) are the checklist. Cloud execution evidence must be added after an authorized AWS profile is configured; local Kubernetes evidence does not substitute for M7.
+The [assignment](https://docs.google.com/document/d/1cjXFYf2Thm8cBEN-0C48B-v02cj3jGLd47lcO18prHE/edit) and [provided grading rubric](../session21-python/GRADING.md) are the checklist. The later AWS evidence records provisioning, a real cloud deployment and teardown separately from the earlier local Kubernetes work.
 
 ## Architecture and technologies
 
@@ -79,7 +80,7 @@ flowchart LR
   Helm --> Cluster[Kubernetes rolling deployment]
 ```
 
-The delivered cloud design is VPC → two public subnets/IGW → EKS 1.35 → one managed worker, EBS CSI via Pod Identity and Metrics Server. **That cloud diagram describes Terraform intent; execution remains pending.** The recorded deployment uses the existing `devops-assignment` Minikube cluster, Session 12 Traefik and Session 20 Argo CD. App and monitoring resources are isolated in namespace `session21`.
+The executed AWS design is VPC → two public subnets/IGW → EKS 1.35 → one `c7i-flex.large` worker, with EBS CSI through Pod Identity and Metrics Server. LabLedger and monitoring run in namespace `session21`; a dedicated Traefik controller owns the public load balancer. The earlier local evidence used `devops-assignment` Minikube, Session 12 Traefik and Session 20 Argo CD. Today’s AWS run used a separate kubeconfig, cluster, VPC, ingress and database; none of those earlier resources was reused or changed.
 
 | Layer | Technologies |
 |---|---|
@@ -162,7 +163,7 @@ Requires Docker Desktop/Engine with Compose. Run from `final-devops-project/`:
 python3 scripts/local-env.py
 docker compose --env-file .env -f docker/compose.yaml up --build -d
 docker compose --env-file .env -f docker/compose.yaml ps -a
-python3 scripts/seed.py --base http://127.0.0.1:3021
+python3 scripts/seed.py http://127.0.0.1:3021
 python3 scripts/verify.py --base http://127.0.0.1:3021
 ```
 
@@ -177,9 +178,11 @@ The final chart defines ClusterIP Services `frontend:80`, `backend:8000`, `postg
 For a fresh local cluster, run from `final-devops-project/`:
 
 ```bash
-minikube start -p devops-assignment --driver=docker --cpus=2 --memory=3072
-minikube -p devops-assignment addons enable metrics-server
-kubectl config use-context devops-assignment
+mkdir -p .local
+export KUBECONFIG="$PWD/.local/local-kubeconfig"
+minikube start -p labledger-local --driver=docker --cpus=2 --memory=3072
+minikube -p labledger-local addons enable metrics-server
+kubectl config use-context labledger-local
 python3 scripts/bootstrap.py
 helm lint helm/labledger
 helm upgrade --install labledger helm/labledger -n session21   -f gitops/values.yaml --wait --timeout 300s
@@ -192,7 +195,7 @@ Install an ingress controller if one is absent:
 
 ```bash
 helm repo add traefik https://traefik.github.io/charts
-helm upgrade --install session21-ingress traefik/traefik   -n session21-ingress --create-namespace --version 41.6.1
+helm upgrade --install session21-ingress traefik/traefik   -n session21-ingress --create-namespace --version 41.6.1 --set ingressClass.name=traefik
 kubectl port-forward -n session21-ingress svc/session21-ingress-traefik 8086:80
 ```
 
@@ -216,16 +219,68 @@ terraform -chdir=terraform init
 terraform -chdir=terraform fmt -check -recursive
 terraform -chdir=terraform validate
 terraform -chdir=terraform test
-# After an authorized profile is configured:
+# Verify the authorized scaler-sst profile in account 499567237930:
 cp terraform/terraform.tfvars.example terraform/terraform.tfvars
 # Edit the profile and current public administrator IPv4/32.
 terraform -chdir=terraform plan -out=lab.tfplan
 terraform -chdir=terraform apply lab.tfplan
 ```
 
-**Actual result:** fmt/validate and two mocked plan tests passed. The AWS identity check succeeded, but `aws ec2 describe-vpcs --region ap-south-1` returned `UnauthorizedOperation`. The existing IAM-only account cannot provision this infrastructure. There is consequently no cloud plan/apply/console/destroy screenshot to present as completed.
+**Actual result:** initialization, format/validation and two mocked architecture tests passed. The separate live AWS plan proposed **21 additions**; apply created all 21 resources. An unchanged plan confirmed no infrastructure drift. AWS Console screenshots show the VPC and EKS cluster in Sydney. After the application and monitoring checks, Kubernetes-created storage/load-balancer resources were removed first, followed by a successful 21-resource Terraform teardown and AWS absence checks.
 
-After AWS access is granted, apply the infrastructure, configure kubectl, apply [the EKS-only gp3 StorageClass](kubernetes/storageclass-eks.yaml), pass `--set postgres.storageClass=labledger-gp3`, configure actual ingress DNS and record AWS resources and destruction. Do not apply that EBS StorageClass to Minikube. Cloud costs depend on resource lifetime; no cost cap or free-tier eligibility is claimed.
+The old IAM-only identity in screenshot 08 was a historical access blocker. The live run uses `scaler-sst`, defaults to Sydney and enforces account `499567237930` with `allowed_account_ids`. `c7i-flex.large` was selected after checking this account’s instance eligibility. EKS and related services still incur charges while running; free-plan instance eligibility is not a zero-cost guarantee.
+
+## AWS execution · 15 October 2026
+
+### Recorded environment
+
+| Item | Actual value |
+|---|---|
+| AWS project/account | New Frontiers / `499567237930` |
+| Region and CLI profile | Sydney `ap-southeast-2` / `scaler-sst` |
+| VPC | `vpc-0aa6e982ce3b9bc74` · `10.21.0.0/16` |
+| Public subnets | `subnet-020717b1a70980817`, `subnet-0b0d5cee50b0a2ac5` |
+| EKS / managed node group | `labledger-session21` / `classroom` |
+| Worker | `i-0642252a91acb2475` · `c7i-flex.large` · Kubernetes 1.35 |
+| Database storage | `vol-0161ab3c9dd4831d9` · encrypted gp3 · 2 GiB |
+| Verified image SHA | `9faeab4771c5eaddc22d8b201415fc20b33476cf` |
+| Helm / namespace | `labledger` / `session21` |
+| Long-running application replicas | 2 frontend, 2 backend, 1 PostgreSQL |
+| Monitoring | Dedicated Prometheus/Grafana; both backend targets UP |
+| Final disposition | Temporary AWS deployment removed after the demonstration |
+
+Historical demonstration URL: `http://a8ea0bdf04a1744448c3028e6dfef7f0-1528119114.ap-southeast-2.elb.amazonaws.com`. It is not a permanent hosted service after teardown. [AWS resource snapshot](Output/reports/aws-live-resources.json) records the actual cluster, nodes, subnets, EBS and load balancer; [cleanup report](Output/reports/aws-cleanup-verification.json) records their later absence.
+
+### Reproduce the cloud deployment
+
+After applying `terraform/`, from `final-devops-project/`:
+
+```bash
+export AWS_PROFILE=scaler-sst AWS_REGION=ap-southeast-2
+bash scripts/deploy-aws.sh
+export KUBECONFIG="$PWD/.local/kubeconfig"
+helm list -n session21
+kubectl get deploy,statefulset,pods,svc,ingress,pvc,hpa -n session21
+cat .local/aws-url.txt
+```
+
+[The deployment script](scripts/deploy-aws.sh) validates the AWS account, writes a dedicated kubeconfig, uses an isolated Helm cache, installs pinned Traefik with the explicit `traefik` IngressClass, creates the random external database Secret through stdin and applies the cloud-only encrypted gp3 StorageClass. It deploys the already verified GHCR SHA, waits for migrations and readiness, installs monitoring, seeds synthetic equipment and runs the live PostgreSQL checks. No local Docker daemon or existing containers are involved.
+
+The first fresh-cluster check found that Traefik’s chart generated a release-specific class while the app requested `traefik`, causing HTTP 404 despite healthy Pods. Configuring the controller’s class explicitly repaired routing. That fix is included in the script and [recorded Helm output](Output/logs/aws-ingress-class-fix.txt).
+
+The successful run verified CRUD, stock decrement, insufficient-stock rejection, safe inventory edits, single returns, history retention and concurrent borrowing of the last unit. Exactly one competing request succeeds and the other returns HTTP 409. [Complete deployment log](Output/logs/aws-labledger-deploy.txt) · [Business checks](Output/logs/50-aws-business-verification.txt).
+
+### View private monitoring
+
+Keep the dedicated AWS kubeconfig selected. Run each forward in a separate terminal:
+
+```bash
+kubectl port-forward -n session21 svc/session21-prometheus 19091:9090
+kubectl port-forward -n session21 svc/session21-grafana 13005:3000
+kubectl port-forward -n session21 svc/backend 18021:8000
+```
+
+Open `http://127.0.0.1:19091/targets` and `http://127.0.0.1:13005/d/labledger`. `curl http://127.0.0.1:18021/metrics` shows the real backend exposition. These are loopback forwards to EKS, not the historical local deployment. Grafana/Prometheus remain ClusterIP services; no public monitoring endpoint or database port is exposed. Bounded read-only traffic populated the dashboard; [traffic results](Output/logs/aws-read-only-traffic.txt) are preserved.
 
 ## CI/CD and DevSecOps
 
@@ -314,7 +369,7 @@ A nonexistent Ingress Service port initially produced a controller `service port
 
 ## Screenshot evidence
 
-Every image below is a real OS screenshot of the actual Terminal/browser window, with no surrounding desktop. Capture commands run in a separate helper window and do not appear in the Terminal evidence. Commands and full output are preserved in the adjacent text transcripts. Browser screenshots show real running pages; there are no simulated pipeline results, cloud screenshots or fabricated monitoring values.
+The screenshots below are real OS captures of the actual Terminal/browser windows, with no surrounding desktop. Images 01–41 record the earlier local/CI work on 7 October 2026; images 42 onward record the fresh AWS lab on 15 October 2026. Capture commands run in a separate helper window and do not appear in the Terminal evidence. Commands and full output are preserved in the adjacent text transcripts. Browser screenshots show real running pages; there are no simulated pipeline results, cloud screenshots or fabricated monitoring values.
 
 
 ### Application, tests, Docker and infrastructure
@@ -361,9 +416,9 @@ Every image below is a real OS screenshot of the actual Terminal/browser window,
 
 [Commands and actual output](Output/logs/07-terraform-validation.txt).
 
-#### 08 · Aws access pending
+#### 08 · Earlier AWS access denial · historical
 
-![Aws access pending](Output/08-aws-access-pending.png)
+![Historical AWS access denial before the Scaler account was configured](Output/08-aws-access-pending.png)
 
 [Commands and actual output](Output/logs/08-aws-access-pending.txt).
 
@@ -553,6 +608,91 @@ Every image below is a real OS screenshot of the actual Terminal/browser window,
 [Commands and actual output](Output/logs/41-api-test-cases.txt).
 
 
+### Live AWS completion · 15 October 2026
+
+These screenshots complete the earlier M7 gap and show the original LabLedger application on its own AWS infrastructure. The apply screenshot reads the genuine creation log, then queries current AWS state. The teardown screenshot reads the actual destruction log and confirms empty state. Cleanup images were taken only after the real resources were removed.
+
+#### 42 · Scaler account, Terraform init and validation
+
+![Scaler account, Terraform init and validation](Output/42-aws-identity-validation.png)
+
+[Commands and actual output](Output/logs/42-aws-identity-validation.txt).
+
+#### 43 · Real AWS creation plan: 21 additions
+
+![Real AWS creation plan: 21 additions](Output/43-aws-live-plan.png)
+
+[Commands and actual output](Output/logs/43-aws-live-plan.txt).
+
+#### 44 · Successful apply and active AWS resources
+
+![Successful apply and active AWS resources](Output/44-aws-apply-resources.png)
+
+[Commands and actual output](Output/logs/44-aws-apply-resources.txt).
+
+#### 45 · AWS Console: dedicated Sydney VPC
+
+![AWS Console: dedicated Sydney VPC](Output/45-aws-vpc-console.png)
+
+#### 46 · AWS Console: LabLedger EKS cluster
+
+![AWS Console: LabLedger EKS cluster](Output/46-aws-eks-console.png)
+
+#### 47 · Ready worker and active storage/identity/metrics add-ons
+
+![Ready worker and active storage/identity/metrics add-ons](Output/47-aws-node-addons.png)
+
+[Commands and actual output](Output/logs/47-aws-node-addons.txt).
+
+#### 48 · Helm deployment, running workloads and Services
+
+![Helm deployment, running workloads and Services](Output/48-aws-helm-workloads.png)
+
+[Commands and actual output](Output/logs/48-aws-helm-workloads.txt).
+
+#### 49 · LabLedger through its real AWS load balancer
+
+![LabLedger through its real AWS load balancer](Output/49-aws-application-browser.png)
+
+#### 50 · PostgreSQL business rules and concurrent checkout checks
+
+![PostgreSQL business rules and concurrent checkout checks](Output/50-aws-business-verification.png)
+
+[Commands and actual output](Output/logs/50-aws-business-verification.txt).
+
+#### 51 · Bound encrypted gp3 storage, HPA and real metrics
+
+![Bound encrypted gp3 storage, HPA and real metrics](Output/51-aws-storage-metrics.png)
+
+[Commands and actual output](Output/logs/51-aws-storage-metrics.txt).
+
+#### 52 · EKS Prometheus: both backend targets UP
+
+![EKS Prometheus: both backend targets UP](Output/52-aws-prometheus-targets.png)
+
+#### 53 · EKS Grafana: populated application dashboard
+
+![EKS Grafana: populated application dashboard](Output/53-aws-grafana-dashboard.png)
+
+#### 54 · No Terraform drift and healthy Ingress/HPA
+
+![No Terraform drift and healthy Ingress/HPA](Output/54-aws-no-drift.png)
+
+[Commands and actual output](Output/logs/54-aws-no-drift.txt).
+
+#### 55 · Kubernetes cloud resource cleanup and Terraform destroy
+
+![Kubernetes cloud resource cleanup and Terraform destroy](Output/55-aws-destroy-complete.png)
+
+[Commands and actual output](Output/logs/55-aws-destroy-complete.txt).
+
+#### 56 · AWS absence checks after teardown
+
+![AWS absence checks after teardown](Output/56-aws-cleanup-verified.png)
+
+[Commands and actual output](Output/logs/56-aws-cleanup-verified.txt).
+
+
 ## Lessons learned and operating limits
 
 - PostgreSQL row locks and database constraints protect shared inventory; isolated unit tests are complemented by real concurrency checks in both CI deployments.
@@ -563,11 +703,11 @@ Every image below is a real OS screenshot of the actual Terminal/browser window,
 - HPA can scale successfully while a shared local node experiences pressure. The initial load/rollout errors are retained; later throttled runs completed with zero errors.
 - An AWS identity check does not establish provisioning permission. Terraform mocks validate configuration logic but cannot prove cloud resources exist.
 
-This is a classroom lab using synthetic data and local HTTP. Authentication/authorization, TLS, managed database backups, image signing/digest promotion, durable monitoring retention and external alert notifications remain production improvements. A TestClient dependency deprecation warning is recorded in the test transcript; it does not fail the 20-test suite. Existing reference-repository gitlinks also produce GitHub checkout cleanup warnings, documented above.
+This is a classroom lab using synthetic data and HTTP in the recorded local/cloud demonstrations. Authentication/authorization, TLS, managed database backups, image signing/digest promotion, durable monitoring retention and external alert notifications remain production improvements. A TestClient dependency deprecation warning is recorded in the test transcript; it does not fail the 20-test suite. Existing reference-repository gitlinks also produce GitHub checkout cleanup warnings, documented above.
 
 ## Cleanup
 
-The running local application is retained for review. To stop Compose while preserving database records:
+The fresh AWS lab was destroyed after review evidence was captured. Earlier local screenshots are historical records; this run did not start, stop or alter those local containers. To stop Compose while preserving database records:
 
 ```bash
 docker compose --env-file .env -f docker/compose.yaml down
@@ -581,4 +721,8 @@ kubectl delete appproject session21 -n session20-argocd
 kubectl delete namespace session21
 ```
 
-Deleting namespace `session21` deletes its database PVC. Preserve/export any required records first. Do not delete the shared Minikube cluster, Session 12 ingress controller or Session 20 Argo CD installation to clean up this project. Future AWS destruction must follow the [Terraform teardown procedure](terraform/README.md) and record successful resource removal; no cloud cleanup is claimed for resources that were never created.
+Deleting namespace `session21` deletes its database PVC. Preserve/export any required records first. Do not delete the shared Minikube cluster, Session 12 ingress controller or Session 20 Argo CD installation to clean up this project. For the AWS run, namespace `session21` and its EBS volume were removed while CSI still ran; the dedicated ingress namespace and load balancer were removed next. Terraform then destroyed all 21 managed resources. AWS API checks confirmed the recorded cluster, VPC, worker storage and load balancer were gone, and the worker was terminated. [Teardown procedure](terraform/README.md#teardown-in-dependency-order) · [Cloud cleanup report](Output/reports/aws-cleanup-verification.json) · [Exact commands executed for this run](Output/logs/aws-cleanup-commands.sh). The earlier TaskBoard AWS deployment and every unrelated account/resource were preserved.
+
+The single-worker cluster’s final CoreDNS eviction was blocked by its default PodDisruptionBudget: a replacement Pod could not schedule on the cordoned worker. Once the application, EBS data volume and load balancer were gone, the CoreDNS PDB was removed in this disposable cluster so worker termination could finish. [Actual diagnosis and fix](Output/logs/aws-coredns-drain.txt).
+
+Text transcripts use LF line endings with terminal color/control codes removed for readability. Commands and result values are preserved; screenshots remain the original native window captures.

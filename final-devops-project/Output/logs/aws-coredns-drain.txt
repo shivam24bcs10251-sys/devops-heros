@@ -1,0 +1,11 @@
++zsh:6> date -u
+Thu Oct 15 11:46:58 UTC 2026
++zsh:7> kubectl get pdb coredns -n kube-system
+NAME      MIN AVAILABLE   MAX UNAVAILABLE   ALLOWED DISRUPTIONS   AGE
+coredns   N/A             1                 0                     27m
++zsh:8> kubectl get pods -n kube-system -l 'k8s-app=kube-dns'
+NAME                       READY   STATUS    RESTARTS   AGE
+coredns-5f67fd64f7-d59bq   0/1     Pending   0          4m
+coredns-5f67fd64f7-qkt2n   1/1     Running   0          27m
++zsh:9> kubectl delete pdb coredns -n kube-system
+poddisruptionbudget.policy "coredns" deleted from kube-system namespace

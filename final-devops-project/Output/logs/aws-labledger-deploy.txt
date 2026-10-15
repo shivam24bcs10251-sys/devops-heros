@@ -1,0 +1,84 @@
+Updated context arn:aws:eks:ap-southeast-2:499567237930:cluster/labledger-session21 in /Users/shivamjaiswal/Library/Mobile Documents/com~apple~CloudDocs/iCloud-Keep/Scaler/Semester_5_Term_1/Devops_SWE/devops-heros/aws-scaler-labs/.local/worktrees/session21/final-devops-project/.local/kubeconfig
+NAME                                            STATUS   ROLES    AGE     VERSION
+ip-10-21-1-26.ap-southeast-2.compute.internal   Ready    <none>   8m29s   v1.35.8-eks-b9510e3
+Release "labledger-ingress" has been upgraded. Happy Helming!
+NAME: labledger-ingress
+LAST DEPLOYED: Thu Oct 15 17:00:46 2026
+NAMESPACE: labledger-ingress
+STATUS: deployed
+REVISION: 3
+DESCRIPTION: Upgrade complete
+TEST SUITE: None
+NOTES:
+labledger-ingress with docker.io/traefik:v3.7.13 has been deployed successfully on labledger-ingress namespace!
+namespace/session21 unchanged
+Namespace and external database Secret ready; credentials omitted
+storageclass.storage.k8s.io/labledger-gp3 unchanged
+==> Linting helm/labledger
+[INFO] Chart.yaml: icon is recommended
+
+1 chart(s) linted, 0 chart(s) failed
+Release "labledger" has been upgraded. Happy Helming!
+NAME: labledger
+LAST DEPLOYED: Thu Oct 15 17:01:24 2026
+NAMESPACE: session21
+STATUS: deployed
+REVISION: 2
+DESCRIPTION: Upgrade complete
+TEST SUITE: None
+configmap/session21-prometheus unchanged
+configmap/session21-grafana unchanged
+serviceaccount/session21-prometheus unchanged
+role.rbac.authorization.k8s.io/session21-discovery unchanged
+rolebinding.rbac.authorization.k8s.io/session21-discovery unchanged
+deployment.apps/session21-grafana configured
+service/session21-grafana unchanged
+deployment.apps/session21-prometheus unchanged
+service/session21-prometheus unchanged
+deployment "session21-prometheus" successfully rolled out
+deployment "session21-grafana" successfully rolled out
+Five presentation assets and three synthetic checkouts ready
+PASS health, expected release and PostgreSQL readiness
+PASS create, read and edit inventory
+PASS checkout decrements stock; insufficient stock and unsafe edits return 409
+PASS return restores stock once; lending history is retained
+PASS concurrent PostgreSQL checkouts cannot oversubscribe a single unit
+PASS delete unused inventory and missing-record behavior
+ALL LIVE BUSINESS CHECKS PASSED
+NAME                                   READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/labledger-backend      2/2     2            2           6m36s
+deployment.apps/labledger-frontend     2/2     2            2           6m36s
+deployment.apps/session21-grafana      1/1     1            1           5m44s
+deployment.apps/session21-prometheus   1/1     1            1           5m42s
+
+NAME                                  READY   AGE
+statefulset.apps/labledger-postgres   1/1     6m37s
+
+NAME                                       READY   STATUS      RESTARTS   AGE
+pod/labledger-backend-fd4fb4c87-gphqz      1/1     Running     0          6m22s
+pod/labledger-backend-fd4fb4c87-ztzll      1/1     Running     0          6m37s
+pod/labledger-frontend-6c79c8f78d-6cqdz    1/1     Running     0          6m37s
+pod/labledger-frontend-6c79c8f78d-pc6mr    1/1     Running     0          6m37s
+pod/labledger-migrate-9faeab4771c5-pp9tr   0/1     Completed   2          6m36s
+pod/labledger-postgres-0                   1/1     Running     0          6m37s
+pod/session21-grafana-76cc65654b-4svpd     1/1     Running     0          5m45s
+pod/session21-prometheus-5c55b8f5c-m85gs   1/1     Running     0          5m43s
+
+NAME                           TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)    AGE
+service/backend                ClusterIP   172.20.180.81    <none>        8000/TCP   6m39s
+service/frontend               ClusterIP   172.20.215.15    <none>        80/TCP     6m39s
+service/postgres               ClusterIP   172.20.163.8     <none>        5432/TCP   6m39s
+service/session21-grafana      ClusterIP   172.20.31.164    <none>        3000/TCP   5m45s
+service/session21-prometheus   ClusterIP   172.20.223.147   <none>        9090/TCP   5m43s
+
+NAME                                  CLASS     HOSTS                                                                          ADDRESS                                                                        PORTS   AGE
+ingress.networking.k8s.io/labledger   traefik   a8ea0bdf04a1744448c3028e6dfef7f0-1528119114.ap-southeast-2.elb.amazonaws.com   a8ea0bdf04a1744448c3028e6dfef7f0-1528119114.ap-southeast-2.elb.amazonaws.com   80      6m37s
+
+NAME                                              STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS    VOLUMEATTRIBUTESCLASS   AGE
+persistentvolumeclaim/data-labledger-postgres-0   Bound    pvc-4a38ed98-c05d-47d9-994b-20314425fa43   2Gi        RWO            labledger-gp3   <unset>                 6m39s
+
+NAME                                                    REFERENCE                      TARGETS        MINPODS   MAXPODS   REPLICAS   AGE
+horizontalpodautoscaler.autoscaling/labledger-backend   Deployment/labledger-backend   cpu: 11%/60%   2         4         2          6m39s
+
+LabLedger AWS deployment verified: http://a8ea0bdf04a1744448c3028e6dfef7f0-1528119114.ap-southeast-2.elb.amazonaws.com
+Monitoring remains private; use loopback kubectl port-forward commands from the README.

@@ -1,0 +1,18 @@
++ date -u '+%Y-%m-%d %H:%M:%S UTC'
+2026-10-15 11:32:47 UTC
++ cd terraform
++ terraform plan '-input=false' -no-color -detailed-exitcode
++ tail -5 ../Output/logs/aws-drift.txt
+
+No changes. Your infrastructure matches the configuration.
+
+Terraform has compared your real infrastructure against your configuration
+and found no differences, so no changes are needed.
++ cd ..
++ export KUBECONFIG='/Users/shivamjaiswal/Library/Mobile Documents/com~apple~CloudDocs/iCloud-Keep/Scaler/Semester_5_Term_1/Devops_SWE/devops-heros/aws-scaler-labs/.local/worktrees/session21/final-devops-project/.local/kubeconfig'
++ kubectl get ingress,hpa -n session21
+NAME                                  CLASS     HOSTS                                                                          ADDRESS                                                                        PORTS   AGE
+ingress.networking.k8s.io/labledger   traefik   a8ea0bdf04a1744448c3028e6dfef7f0-1528119114.ap-southeast-2.elb.amazonaws.com   a8ea0bdf04a1744448c3028e6dfef7f0-1528119114.ap-southeast-2.elb.amazonaws.com   80      7m20s
+
+NAME                                                    REFERENCE                      TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
+horizontalpodautoscaler.autoscaling/labledger-backend   Deployment/labledger-backend   cpu: 9%/60%   2         4         2          7m21s

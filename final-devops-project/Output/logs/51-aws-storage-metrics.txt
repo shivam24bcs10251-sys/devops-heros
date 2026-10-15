@@ -1,0 +1,28 @@
++ date -u '+%Y-%m-%d %H:%M:%S UTC'
+2026-10-15 11:31:50 UTC
++ export KUBECONFIG='/Users/shivamjaiswal/Library/Mobile Documents/com~apple~CloudDocs/iCloud-Keep/Scaler/Semester_5_Term_1/Devops_SWE/devops-heros/aws-scaler-labs/.local/worktrees/session21/final-devops-project/.local/kubeconfig'
++ kubectl get pvc,hpa -n session21
+^[[C^[[CNAME                                              STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS    VOLUMEATTRIBUTESCLASS   AGE
+persistentvolumeclaim/data-labledger-postgres-0   Bound    pvc-4a38ed98-c05d-47d9-994b-20314425fa43   2Gi        RWO            labledger-gp3   <unset>                 6m12s
+
+NAME                                                    REFERENCE                      TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
+horizontalpodautoscaler.autoscaling/labledger-backend   Deployment/labledger-backend   cpu: 3%/60%   2         4         2          6m13s
++ kubectl get pv -o 'jsonpath={.items[0].spec.csi.volumeHandle}'
++ aws ec2 describe-volumes --volume-ids vol-0161ab3c9dd4831d9 --query 'Volumes[].{ID:VolumeId,Type:VolumeType,SizeGiB:Size,Encrypted:Encrypted,State:State}' --output table
+---------------------------------------------------------------------
+|                          DescribeVolumes                          |
++-----------+-------------------------+----------+---------+--------+
+| Encrypted |           ID            | SizeGiB  |  State  | Type   |
++-----------+-------------------------+----------+---------+--------+
+|  True     |  vol-0161ab3c9dd4831d9  |  2       |  in-use |  gp3   |
++-----------+-------------------------+----------+---------+--------+
++ curl --fail --silent http://127.0.0.1:18021/metrics
++ sed -n 1,8p
+# HELP python_gc_objects_collected_total Objects collected during gc
+# TYPE python_gc_objects_collected_total counter
+python_gc_objects_collected_total{generation="0"} 10830.0
+python_gc_objects_collected_total{generation="1"} 554.0
+python_gc_objects_collected_total{generation="2"} 0.0
+# HELP python_gc_objects_uncollectable_total Uncollectable objects found during GC
+# TYPE python_gc_objects_uncollectable_total counter
+python_gc_objects_uncollectable_total{generation="0"} 0.0

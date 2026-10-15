@@ -1,0 +1,752 @@
+Thu Oct 15 11:38:50 UTC 2026
+NAME                        STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS    VOLUMEATTRIBUTESCLASS   AGE
+data-labledger-postgres-0   Bound    pvc-4a38ed98-c05d-47d9-994b-20314425fa43   2Gi        RWO            labledger-gp3   <unset>                 13m
+namespace "session21" deleted
+persistentvolume/pvc-4a38ed98-c05d-47d9-994b-20314425fa43 condition met
+Database namespace, PV and encrypted EBS volume removed.
+namespace "labledger-ingress" deleted
+
+aws: [ERROR]: An error occurred (ParamValidation): argument subcommand: Found invalid choice 'load-balancers-deleted'
+
+
+usage: aws [options] <command> <subcommand> [<subcommand> ...] [parameters]
+To see help text, you can run:
+
+  aws help
+  aws <command> help
+  aws <command> <subcommand> help
+Thu Oct 15 11:41:06 UTC 2026
+No resources found in session21 namespace.
+Database namespace, PV and encrypted EBS volume removed.
+Dedicated ingress namespace and Classic Load Balancer removed.
+data.aws_availability_zones.available: Reading...
+data.aws_iam_policy_document.pod_trust: Reading...
+data.aws_iam_policy_document.node_trust: Reading...
+data.aws_iam_policy_document.cluster_trust: Reading...
+aws_vpc.lab: Refreshing state... [id=vpc-0aa6e982ce3b9bc74]
+data.aws_iam_policy_document.node_trust: Read complete after 0s [id=2851119427]
+data.aws_iam_policy_document.pod_trust: Read complete after 0s [id=819195744]
+data.aws_iam_policy_document.cluster_trust: Read complete after 0s [id=3552664922]
+aws_iam_role.node: Refreshing state... [id=labledger-session21-worker]
+aws_iam_role.ebs: Refreshing state... [id=labledger-session21-ebs-csi]
+aws_iam_role.cluster: Refreshing state... [id=labledger-session21-control-plane]
+data.aws_availability_zones.available: Read complete after 2s [id=ap-southeast-2]
+aws_iam_role_policy_attachment.ebs: Refreshing state... [id=labledger-session21-ebs-csi/arn:aws:iam::aws:policy/AmazonEBSCSIDriverPolicyV2]
+aws_iam_role_policy_attachment.cluster: Refreshing state... [id=labledger-session21-control-plane/arn:aws:iam::aws:policy/AmazonEKSClusterPolicy]
+aws_iam_role_policy_attachment.node["AmazonEKS_CNI_Policy"]: Refreshing state... [id=labledger-session21-worker/arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy]
+aws_iam_role_policy_attachment.node["AmazonEKSWorkerNodePolicy"]: Refreshing state... [id=labledger-session21-worker/arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy]
+aws_iam_role_policy_attachment.node["AmazonEC2ContainerRegistryReadOnly"]: Refreshing state... [id=labledger-session21-worker/arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly]
+aws_internet_gateway.lab: Refreshing state... [id=igw-072ab9d5158c1089d]
+aws_subnet.public[1]: Refreshing state... [id=subnet-0b0d5cee50b0a2ac5]
+aws_subnet.public[0]: Refreshing state... [id=subnet-020717b1a70980817]
+aws_route_table.public: Refreshing state... [id=rtb-0d060314fd48467b9]
+aws_eks_cluster.lab: Refreshing state... [id=labledger-session21]
+aws_route_table_association.public[1]: Refreshing state... [id=rtbassoc-03358f3885420d864]
+aws_route_table_association.public[0]: Refreshing state... [id=rtbassoc-0d029f0a319493e28]
+aws_eks_node_group.lab: Refreshing state... [id=labledger-session21:classroom]
+aws_eks_addon.metrics: Refreshing state... [id=labledger-session21:metrics-server]
+aws_eks_addon.pod_identity: Refreshing state... [id=labledger-session21:eks-pod-identity-agent]
+aws_eks_pod_identity_association.ebs: Refreshing state... [id=a-mba21xoxemofvssjd]
+aws_eks_addon.storage: Refreshing state... [id=labledger-session21:aws-ebs-csi-driver]
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  - destroy
+
+Terraform will perform the following actions:
+
+  # aws_eks_addon.metrics will be destroyed
+  - resource "aws_eks_addon" "metrics" {
+      - addon_name               = "metrics-server" -> null
+      - addon_version            = "v0.9.0-eksbuild.12" -> null
+      - arn                      = "arn:aws:eks:ap-southeast-2:499567237930:addon/labledger-session21/metrics-server/b8d09fa6-4dec-1e15-0689-cb5fd1ee385e" -> null
+      - cluster_name             = "labledger-session21" -> null
+      - created_at               = "2026-10-15T11:22:27Z" -> null
+      - id                       = "labledger-session21:metrics-server" -> null
+      - modified_at              = "2026-10-15T11:23:03Z" -> null
+      - region                   = "ap-southeast-2" -> null
+      - tags                     = {} -> null
+      - tags_all                 = {
+          - "Environment" = "classroom"
+          - "ManagedBy"   = "Terraform"
+          - "Project"     = "labledger-session21"
+        } -> null
+        # (2 unchanged attributes hidden)
+
+      - namespace_config {
+          - namespace = "kube-system" -> null
+        }
+    }
+
+  # aws_eks_addon.pod_identity will be destroyed
+  - resource "aws_eks_addon" "pod_identity" {
+      - addon_name               = "eks-pod-identity-agent" -> null
+      - addon_version            = "v1.3.10-eksbuild.3" -> null
+      - arn                      = "arn:aws:eks:ap-southeast-2:499567237930:addon/labledger-session21/eks-pod-identity-agent/c6d09fa6-4de1-2847-41a0-5c603876670e" -> null
+      - cluster_name             = "labledger-session21" -> null
+      - created_at               = "2026-10-15T11:22:27Z" -> null
+      - id                       = "labledger-session21:eks-pod-identity-agent" -> null
+      - modified_at              = "2026-10-15T11:22:53Z" -> null
+      - region                   = "ap-southeast-2" -> null
+      - tags                     = {} -> null
+      - tags_all                 = {
+          - "Environment" = "classroom"
+          - "ManagedBy"   = "Terraform"
+          - "Project"     = "labledger-session21"
+        } -> null
+        # (2 unchanged attributes hidden)
+
+      - namespace_config {
+          - namespace = "kube-system" -> null
+        }
+    }
+
+  # aws_eks_addon.storage will be destroyed
+  - resource "aws_eks_addon" "storage" {
+      - addon_name               = "aws-ebs-csi-driver" -> null
+      - addon_version            = "v1.67.0-eksbuild.1" -> null
+      - arn                      = "arn:aws:eks:ap-southeast-2:499567237930:addon/labledger-session21/aws-ebs-csi-driver/6cd09fa6-8952-bbe6-d6e0-7603dd33c5d4" -> null
+      - cluster_name             = "labledger-session21" -> null
+      - created_at               = "2026-10-15T11:22:58Z" -> null
+      - id                       = "labledger-session21:aws-ebs-csi-driver" -> null
+      - modified_at              = "2026-10-15T11:23:38Z" -> null
+      - region                   = "ap-southeast-2" -> null
+      - tags                     = {} -> null
+      - tags_all                 = {
+          - "Environment" = "classroom"
+          - "ManagedBy"   = "Terraform"
+          - "Project"     = "labledger-session21"
+        } -> null
+        # (2 unchanged attributes hidden)
+
+      - namespace_config {
+          - namespace = "kube-system" -> null
+        }
+    }
+
+  # aws_eks_cluster.lab will be destroyed
+  - resource "aws_eks_cluster" "lab" {
+      - arn                           = "arn:aws:eks:ap-southeast-2:499567237930:cluster/labledger-session21" -> null
+      - bootstrap_self_managed_addons = true -> null
+      - certificate_authority         = [
+          - {
+              - data = "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURNVENDQWhtZ0F3SUJBZ0lRZmlRamovTC9WQjNCc3pOU0dnMFI3REFOQmdrcWhraUc5dzBCQVFzRkFEQW4KTVJBd0RnWURWUVFLRXdkQlYxTWdSVXRUTVJNd0VRWURWUVFERXdwcmRXSmxjbTVsZEdWek1CNFhEVEkyTVRBeApOVEV4TVRJek1Wb1hEVE14TVRBeE5ERXhNVEl6TVZvd0p6RVFNQTRHQTFVRUNoTUhRVmRUSUVWTFV6RVRNQkVHCkExVUVBeE1LYTNWaVpYSnVaWFJsY3pDQ0FTSXdEUVlKS29aSWh2Y05BUUVCQlFBRGdnRVBBRENDQVFvQ2dnRUIKQU5GaGRxOHZHVDhKeGtWeVhOY1d0dDU5bTl3TkNSQ1FwWDIvU2pXNS91YlNORmJyZk41Q2kwck41bGpjZU44NQpKYUZKdXRkanllWlJsck9TNkcyRmh3OXdoVFVKUlBONmxyRnZ6Ui9ZNUR6amVNNXZaS3FmdHZ5alpKNWpxaTZVCk1ZckJaYnhLMU5LMHloemhVM1FFVDZKR3BMYkNiRkU1TTdlU2VBck4rRkNySWpnZS9UM0x0OS9ieWFHaFlzbUkKbUM4U3NKcTB6dm1IVVp4WWQ4aGl1Zk52TldpUk9lYkU0dnk1M2g3ODZ5Q3Z5TmlSQkUwYkE5TURUNzZKS3RkdQpwaHlnWFVqZGo4Nkt4N2hxcW9MWWZacS9jL0NqMzc3NWs1WTY5UnlMZGJwLzNTZHMremxwbFFLakUrQUxmS3U5Cm4yWE03WWorK2w4emJ5cVlzR2ZjQVlNQ0F3RUFBYU5aTUZjd0RnWURWUjBQQVFIL0JBUURBZ0trTUE4R0ExVWQKRXdFQi93UUZNQU1CQWY4d0hRWURWUjBPQkJZRUZCbnhrUy9kaVpweTgxSGc4UGU0SkZKNlJuYnBNQlVHQTFVZApFUVFPTUF5Q0NtdDFZbVZ5Ym1WMFpYTXdEUVlKS29aSWh2Y05BUUVMQlFBRGdnRUJBTGdQekg5UXQ3b3c4OVEyCnloNWt0RnNvUmFNM1JRZXBnYVRJYU5scWUyZE5QdVdpR2ZnM1liOStiZVJvcWNRZmxyTVRJc05nS2F3SHBEK0EKWnA4YmQ4MUtXbGZYVFRJblZhQlNwdVdzQkZUd2h2TERyakJjODlKVGFHSS9hY013b2htaHN5ZDhDZVFaeVdPQwpDc0I0czlVOGVMeVkzZmlMQzViWFFISGlicnZLTTZvR0ZpUnZzWWZzNDRhOU9GMDdsVnJSQlhBWEg1bDZIdGF2CkxJM2UyM2h0ZGF3VG92SzVqWkdsaUVwNThPZTM2L3doQWtpYmlxUDFJVS9Nb1JQd0lFcHJXNlNrMUtJeVlWSC8KTW51cG9GclNZeFA2MTZsdzlJOFZ6Tm9DVUpFZ1RkWnoybExxdlU0U1VJUEdKcU54STkxcmgzZDR5UkZPbCtLYwpMajQ5K2dNPQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg=="
+            },
+        ] -> null
+      - created_at                    = "2026-10-15T11:12:12Z" -> null
+      - deletion_protection           = false -> null
+      - enabled_cluster_log_types     = [] -> null
+      - endpoint                      = "https://5468BBF11D82F848AF49F1DFF271D867.gr7.ap-southeast-2.eks.amazonaws.com" -> null
+      - id                            = "labledger-session21" -> null
+      - identity                      = [
+          - {
+              - oidc = [
+                  - {
+                      - issuer = "https://oidc.eks.ap-southeast-2.amazonaws.com/id/5468BBF11D82F848AF49F1DFF271D867"
+                    },
+                ]
+            },
+        ] -> null
+      - name                          = "labledger-session21" -> null
+      - platform_version              = "eks.24" -> null
+      - region                        = "ap-southeast-2" -> null
+      - role_arn                      = "arn:aws:iam::499567237930:role/labledger-session21-control-plane" -> null
+      - status                        = "ACTIVE" -> null
+      - tags                          = {} -> null
+      - tags_all                      = {
+          - "Environment" = "classroom"
+          - "ManagedBy"   = "Terraform"
+          - "Project"     = "labledger-session21"
+        } -> null
+      - version                       = "1.35" -> null
+
+      - access_config {
+          - authentication_mode                         = "API_AND_CONFIG_MAP" -> null
+          - bootstrap_cluster_creator_admin_permissions = true -> null
+        }
+
+      - compute_config {
+          - enabled       = false -> null
+          - node_pools    = [] -> null
+            # (1 unchanged attribute hidden)
+        }
+
+      - control_plane_scaling_config {
+          - tier = "standard" -> null
+        }
+
+      - kube_api_server_config {
+          - event_ttl = "60m" -> null
+
+          - service_node_port_range {
+              - max_port = 32767 -> null
+              - min_port = 30000 -> null
+            }
+        }
+
+      - kube_controller_manager_config {
+          - horizontal_pod_autoscaler_controller_config {
+              - horizontal_pod_autoscaler_sync_period = "15s" -> null
+            }
+          - pod_gc_controller_config {
+              - terminated_pod_gc_threshold = 12500 -> null
+            }
+        }
+
+      - kube_scheduler_config {
+          - node_resources_fit {
+              - scoring_strategy {
+                  - type = "LeastAllocated" -> null
+
+                  - resource {
+                      - name   = "cpu" -> null
+                      - weight = 1 -> null
+                    }
+                  - resource {
+                      - name   = "memory" -> null
+                      - weight = 1 -> null
+                    }
+                }
+            }
+        }
+
+      - kubernetes_network_config {
+          - ip_family         = "ipv4" -> null
+          - service_ipv4_cidr = "172.20.0.0/16" -> null
+            # (1 unchanged attribute hidden)
+
+          - elastic_load_balancing {
+              - enabled = false -> null
+            }
+        }
+
+      - storage_config {
+          - block_storage {
+              - enabled = false -> null
+            }
+        }
+
+      - upgrade_policy {
+          - support_type = "EXTENDED" -> null
+        }
+
+      - vpc_config {
+          - cluster_security_group_id = "sg-054bc1f2d50fbfc48" -> null
+          - control_plane_egress_mode = "AWS_MANAGED" -> null
+          - endpoint_private_access   = true -> null
+          - endpoint_public_access    = true -> null
+          - public_access_cidrs       = [
+              - "106.216.236.253/32",
+            ] -> null
+          - security_group_ids        = [] -> null
+          - subnet_ids                = [
+              - "subnet-020717b1a70980817",
+              - "subnet-0b0d5cee50b0a2ac5",
+            ] -> null
+          - vpc_id                    = "vpc-0aa6e982ce3b9bc74" -> null
+        }
+    }
+
+  # aws_eks_node_group.lab will be destroyed
+  - resource "aws_eks_node_group" "lab" {
+      - ami_type               = "AL2023_x86_64_STANDARD" -> null
+      - arn                    = "arn:aws:eks:ap-southeast-2:499567237930:nodegroup/labledger-session21/classroom/80d09fa5-ad5f-405d-4241-58afd2c1c76b" -> null
+      - capacity_type          = "ON_DEMAND" -> null
+      - cluster_name           = "labledger-session21" -> null
+      - disk_size              = 20 -> null
+      - id                     = "labledger-session21:classroom" -> null
+      - instance_types         = [
+          - "c7i-flex.large",
+        ] -> null
+      - labels                 = {} -> null
+      - node_group_name        = "classroom" -> null
+      - node_role_arn          = "arn:aws:iam::499567237930:role/labledger-session21-worker" -> null
+      - region                 = "ap-southeast-2" -> null
+      - release_version        = "1.35.8-20261012" -> null
+      - resources              = [
+          - {
+              - autoscaling_groups              = [
+                  - {
+                      - name = "eks-classroom-80d09fa5-ad5f-405d-4241-58afd2c1c76b"
+                    },
+                ]
+                # (1 unchanged attribute hidden)
+            },
+        ] -> null
+      - status                 = "ACTIVE" -> null
+      - subnet_ids             = [
+          - "subnet-020717b1a70980817",
+          - "subnet-0b0d5cee50b0a2ac5",
+        ] -> null
+      - tags                   = {} -> null
+      - tags_all               = {
+          - "Environment" = "classroom"
+          - "ManagedBy"   = "Terraform"
+          - "Project"     = "labledger-session21"
+        } -> null
+      - version                = "1.35" -> null
+        # (1 unchanged attribute hidden)
+
+      - scaling_config {
+          - desired_size = 1 -> null
+          - max_size     = 2 -> null
+          - min_size     = 1 -> null
+        }
+
+      - update_config {
+          - max_unavailable            = 1 -> null
+          - max_unavailable_percentage = 0 -> null
+            # (1 unchanged attribute hidden)
+        }
+    }
+
+  # aws_eks_pod_identity_association.ebs will be destroyed
+  - resource "aws_eks_pod_identity_association" "ebs" {
+      - association_arn      = "arn:aws:eks:ap-southeast-2:499567237930:podidentityassociation/labledger-session21/a-mba21xoxemofvssjd" -> null
+      - association_id       = "a-mba21xoxemofvssjd" -> null
+      - cluster_name         = "labledger-session21" -> null
+      - disable_session_tags = false -> null
+      - id                   = "a-mba21xoxemofvssjd" -> null
+      - namespace            = "kube-system" -> null
+      - region               = "ap-southeast-2" -> null
+      - role_arn             = "arn:aws:iam::499567237930:role/labledger-session21-ebs-csi" -> null
+      - service_account      = "ebs-csi-controller-sa" -> null
+      - tags_all             = {
+          - "Environment" = "classroom"
+          - "ManagedBy"   = "Terraform"
+          - "Project"     = "labledger-session21"
+        } -> null
+    }
+
+  # aws_iam_role.cluster will be destroyed
+  - resource "aws_iam_role" "cluster" {
+      - arn                   = "arn:aws:iam::499567237930:role/labledger-session21-control-plane" -> null
+      - assume_role_policy    = jsonencode(
+            {
+              - Statement = [
+                  - {
+                      - Action    = "sts:AssumeRole"
+                      - Effect    = "Allow"
+                      - Principal = {
+                          - Service = "eks.amazonaws.com"
+                        }
+                    },
+                ]
+              - Version   = "2012-10-17"
+            }
+        ) -> null
+      - create_date           = "2026-10-15T11:11:51Z" -> null
+      - force_detach_policies = false -> null
+      - id                    = "labledger-session21-control-plane" -> null
+      - managed_policy_arns   = [
+          - "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy",
+        ] -> null
+      - max_session_duration  = 3600 -> null
+      - name                  = "labledger-session21-control-plane" -> null
+      - path                  = "/" -> null
+      - tags                  = {} -> null
+      - tags_all              = {
+          - "Environment" = "classroom"
+          - "ManagedBy"   = "Terraform"
+          - "Project"     = "labledger-session21"
+        } -> null
+      - unique_id             = "AROAXIUEHDMVDLJILM2AM" -> null
+        # (3 unchanged attributes hidden)
+    }
+
+  # aws_iam_role.ebs will be destroyed
+  - resource "aws_iam_role" "ebs" {
+      - arn                   = "arn:aws:iam::499567237930:role/labledger-session21-ebs-csi" -> null
+      - assume_role_policy    = jsonencode(
+            {
+              - Statement = [
+                  - {
+                      - Action    = [
+                          - "sts:TagSession",
+                          - "sts:AssumeRole",
+                        ]
+                      - Effect    = "Allow"
+                      - Principal = {
+                          - Service = "pods.eks.amazonaws.com"
+                        }
+                    },
+                ]
+              - Version   = "2012-10-17"
+            }
+        ) -> null
+      - create_date           = "2026-10-15T11:11:51Z" -> null
+      - force_detach_policies = false -> null
+      - id                    = "labledger-session21-ebs-csi" -> null
+      - managed_policy_arns   = [
+          - "arn:aws:iam::aws:policy/AmazonEBSCSIDriverPolicyV2",
+        ] -> null
+      - max_session_duration  = 3600 -> null
+      - name                  = "labledger-session21-ebs-csi" -> null
+      - path                  = "/" -> null
+      - tags                  = {} -> null
+      - tags_all              = {
+          - "Environment" = "classroom"
+          - "ManagedBy"   = "Terraform"
+          - "Project"     = "labledger-session21"
+        } -> null
+      - unique_id             = "AROAXIUEHDMVJQN46SLWU" -> null
+        # (3 unchanged attributes hidden)
+    }
+
+  # aws_iam_role.node will be destroyed
+  - resource "aws_iam_role" "node" {
+      - arn                   = "arn:aws:iam::499567237930:role/labledger-session21-worker" -> null
+      - assume_role_policy    = jsonencode(
+            {
+              - Statement = [
+                  - {
+                      - Action    = "sts:AssumeRole"
+                      - Effect    = "Allow"
+                      - Principal = {
+                          - Service = "ec2.amazonaws.com"
+                        }
+                    },
+                ]
+              - Version   = "2012-10-17"
+            }
+        ) -> null
+      - create_date           = "2026-10-15T11:11:51Z" -> null
+      - force_detach_policies = false -> null
+      - id                    = "labledger-session21-worker" -> null
+      - managed_policy_arns   = [
+          - "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly",
+          - "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy",
+          - "arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy",
+        ] -> null
+      - max_session_duration  = 3600 -> null
+      - name                  = "labledger-session21-worker" -> null
+      - path                  = "/" -> null
+      - tags                  = {} -> null
+      - tags_all              = {
+          - "Environment" = "classroom"
+          - "ManagedBy"   = "Terraform"
+          - "Project"     = "labledger-session21"
+        } -> null
+      - unique_id             = "AROAXIUEHDMVG7DN4BV2Z" -> null
+        # (3 unchanged attributes hidden)
+    }
+
+  # aws_iam_role_policy_attachment.cluster will be destroyed
+  - resource "aws_iam_role_policy_attachment" "cluster" {
+      - id         = "labledger-session21-control-plane/arn:aws:iam::aws:policy/AmazonEKSClusterPolicy" -> null
+      - policy_arn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy" -> null
+      - role       = "labledger-session21-control-plane" -> null
+    }
+
+  # aws_iam_role_policy_attachment.ebs will be destroyed
+  - resource "aws_iam_role_policy_attachment" "ebs" {
+      - id         = "labledger-session21-ebs-csi/arn:aws:iam::aws:policy/AmazonEBSCSIDriverPolicyV2" -> null
+      - policy_arn = "arn:aws:iam::aws:policy/AmazonEBSCSIDriverPolicyV2" -> null
+      - role       = "labledger-session21-ebs-csi" -> null
+    }
+
+  # aws_iam_role_policy_attachment.node["AmazonEC2ContainerRegistryReadOnly"] will be destroyed
+  - resource "aws_iam_role_policy_attachment" "node" {
+      - id         = "labledger-session21-worker/arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly" -> null
+      - policy_arn = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly" -> null
+      - role       = "labledger-session21-worker" -> null
+    }
+
+  # aws_iam_role_policy_attachment.node["AmazonEKSWorkerNodePolicy"] will be destroyed
+  - resource "aws_iam_role_policy_attachment" "node" {
+      - id         = "labledger-session21-worker/arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy" -> null
+      - policy_arn = "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy" -> null
+      - role       = "labledger-session21-worker" -> null
+    }
+
+  # aws_iam_role_policy_attachment.node["AmazonEKS_CNI_Policy"] will be destroyed
+  - resource "aws_iam_role_policy_attachment" "node" {
+      - id         = "labledger-session21-worker/arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy" -> null
+      - policy_arn = "arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy" -> null
+      - role       = "labledger-session21-worker" -> null
+    }
+
+  # aws_internet_gateway.lab will be destroyed
+  - resource "aws_internet_gateway" "lab" {
+      - arn      = "arn:aws:ec2:ap-southeast-2:499567237930:internet-gateway/igw-072ab9d5158c1089d" -> null
+      - id       = "igw-072ab9d5158c1089d" -> null
+      - owner_id = "499567237930" -> null
+      - region   = "ap-southeast-2" -> null
+      - tags     = {} -> null
+      - tags_all = {
+          - "Environment" = "classroom"
+          - "ManagedBy"   = "Terraform"
+          - "Project"     = "labledger-session21"
+        } -> null
+      - vpc_id   = "vpc-0aa6e982ce3b9bc74" -> null
+    }
+
+  # aws_route_table.public will be destroyed
+  - resource "aws_route_table" "public" {
+      - arn              = "arn:aws:ec2:ap-southeast-2:499567237930:route-table/rtb-0d060314fd48467b9" -> null
+      - id               = "rtb-0d060314fd48467b9" -> null
+      - owner_id         = "499567237930" -> null
+      - propagating_vgws = [] -> null
+      - region           = "ap-southeast-2" -> null
+      - route            = [
+          - {
+              - cidr_block                 = "0.0.0.0/0"
+              - gateway_id                 = "igw-072ab9d5158c1089d"
+                # (12 unchanged attributes hidden)
+            },
+        ] -> null
+      - tags             = {} -> null
+      - tags_all         = {
+          - "Environment" = "classroom"
+          - "ManagedBy"   = "Terraform"
+          - "Project"     = "labledger-session21"
+        } -> null
+      - vpc_id           = "vpc-0aa6e982ce3b9bc74" -> null
+    }
+
+  # aws_route_table_association.public[0] will be destroyed
+  - resource "aws_route_table_association" "public" {
+      - id             = "rtbassoc-0d029f0a319493e28" -> null
+      - region         = "ap-southeast-2" -> null
+      - route_table_id = "rtb-0d060314fd48467b9" -> null
+      - subnet_id      = "subnet-020717b1a70980817" -> null
+        # (1 unchanged attribute hidden)
+    }
+
+  # aws_route_table_association.public[1] will be destroyed
+  - resource "aws_route_table_association" "public" {
+      - id             = "rtbassoc-03358f3885420d864" -> null
+      - region         = "ap-southeast-2" -> null
+      - route_table_id = "rtb-0d060314fd48467b9" -> null
+      - subnet_id      = "subnet-0b0d5cee50b0a2ac5" -> null
+        # (1 unchanged attribute hidden)
+    }
+
+  # aws_subnet.public[0] will be destroyed
+  - resource "aws_subnet" "public" {
+      - arn                                            = "arn:aws:ec2:ap-southeast-2:499567237930:subnet/subnet-020717b1a70980817" -> null
+      - assign_ipv6_address_on_creation                = false -> null
+      - availability_zone                              = "ap-southeast-2a" -> null
+      - availability_zone_id                           = "apse2-az1" -> null
+      - cidr_block                                     = "10.21.0.0/24" -> null
+      - enable_dns64                                   = false -> null
+      - enable_lni_at_device_index                     = 0 -> null
+      - enable_resource_name_dns_a_record_on_launch    = false -> null
+      - enable_resource_name_dns_aaaa_record_on_launch = false -> null
+      - id                                             = "subnet-020717b1a70980817" -> null
+      - ipv6_native                                    = false -> null
+      - map_customer_owned_ip_on_launch                = false -> null
+      - map_public_ip_on_launch                        = true -> null
+      - owner_id                                       = "499567237930" -> null
+      - private_dns_hostname_type_on_launch            = "ip-name" -> null
+      - region                                         = "ap-southeast-2" -> null
+      - tags                                           = {
+          - "Name"                   = "labledger-session21-public-0"
+          - "kubernetes.io/role/elb" = "1"
+        } -> null
+      - tags_all                                       = {
+          - "Environment"            = "classroom"
+          - "ManagedBy"              = "Terraform"
+          - "Name"                   = "labledger-session21-public-0"
+          - "Project"                = "labledger-session21"
+          - "kubernetes.io/role/elb" = "1"
+        } -> null
+      - vpc_id                                         = "vpc-0aa6e982ce3b9bc74" -> null
+        # (4 unchanged attributes hidden)
+    }
+
+  # aws_subnet.public[1] will be destroyed
+  - resource "aws_subnet" "public" {
+      - arn                                            = "arn:aws:ec2:ap-southeast-2:499567237930:subnet/subnet-0b0d5cee50b0a2ac5" -> null
+      - assign_ipv6_address_on_creation                = false -> null
+      - availability_zone                              = "ap-southeast-2b" -> null
+      - availability_zone_id                           = "apse2-az3" -> null
+      - cidr_block                                     = "10.21.1.0/24" -> null
+      - enable_dns64                                   = false -> null
+      - enable_lni_at_device_index                     = 0 -> null
+      - enable_resource_name_dns_a_record_on_launch    = false -> null
+      - enable_resource_name_dns_aaaa_record_on_launch = false -> null
+      - id                                             = "subnet-0b0d5cee50b0a2ac5" -> null
+      - ipv6_native                                    = false -> null
+      - map_customer_owned_ip_on_launch                = false -> null
+      - map_public_ip_on_launch                        = true -> null
+      - owner_id                                       = "499567237930" -> null
+      - private_dns_hostname_type_on_launch            = "ip-name" -> null
+      - region                                         = "ap-southeast-2" -> null
+      - tags                                           = {
+          - "Name"                   = "labledger-session21-public-1"
+          - "kubernetes.io/role/elb" = "1"
+        } -> null
+      - tags_all                                       = {
+          - "Environment"            = "classroom"
+          - "ManagedBy"              = "Terraform"
+          - "Name"                   = "labledger-session21-public-1"
+          - "Project"                = "labledger-session21"
+          - "kubernetes.io/role/elb" = "1"
+        } -> null
+      - vpc_id                                         = "vpc-0aa6e982ce3b9bc74" -> null
+        # (4 unchanged attributes hidden)
+    }
+
+  # aws_vpc.lab will be destroyed
+  - resource "aws_vpc" "lab" {
+      - arn                                  = "arn:aws:ec2:ap-southeast-2:499567237930:vpc/vpc-0aa6e982ce3b9bc74" -> null
+      - assign_generated_ipv6_cidr_block     = false -> null
+      - cidr_block                           = "10.21.0.0/16" -> null
+      - default_network_acl_id               = "acl-004f3933ae715d06c" -> null
+      - default_route_table_id               = "rtb-00d243843804c2963" -> null
+      - default_security_group_id            = "sg-02b60e0a2adeff788" -> null
+      - dhcp_options_id                      = "dopt-014971dea24f4f8d2" -> null
+      - enable_dns_hostnames                 = true -> null
+      - enable_dns_support                   = true -> null
+      - enable_network_address_usage_metrics = false -> null
+      - id                                   = "vpc-0aa6e982ce3b9bc74" -> null
+      - instance_tenancy                     = "default" -> null
+      - ipv6_netmask_length                  = 0 -> null
+      - main_route_table_id                  = "rtb-00d243843804c2963" -> null
+      - owner_id                             = "499567237930" -> null
+      - region                               = "ap-southeast-2" -> null
+      - tags                                 = {
+          - "Name" = "labledger-session21"
+        } -> null
+      - tags_all                             = {
+          - "Environment" = "classroom"
+          - "ManagedBy"   = "Terraform"
+          - "Name"        = "labledger-session21"
+          - "Project"     = "labledger-session21"
+        } -> null
+        # (4 unchanged attributes hidden)
+    }
+
+Plan: 0 to add, 0 to change, 21 to destroy.
+
+Changes to Outputs:
+  - cluster_endpoint  = "https://5468BBF11D82F848AF49F1DFF271D867.gr7.ap-southeast-2.eks.amazonaws.com" -> null
+  - cluster_name      = "labledger-session21" -> null
+  - kubectl_command   = "aws eks update-kubeconfig --name labledger-session21 --region ap-southeast-2 --profile scaler-sst --kubeconfig ../.local/kubeconfig" -> null
+  - node_group        = "classroom" -> null
+  - public_subnet_ids = [
+      - "subnet-020717b1a70980817",
+      - "subnet-0b0d5cee50b0a2ac5",
+    ] -> null
+  - vpc_id            = "vpc-0aa6e982ce3b9bc74" -> null
+
+─────────────────────────────────────────────────────────────────────────────
+
+Saved the plan to: destroy.tfplan
+
+To perform exactly these actions, run the following command to apply:
+    terraform apply "destroy.tfplan"
+aws_eks_addon.metrics: Destroying... [id=labledger-session21:metrics-server]
+aws_eks_addon.storage: Destroying... [id=labledger-session21:aws-ebs-csi-driver]
+aws_eks_addon.metrics: Destruction complete after 4s
+aws_eks_addon.storage: Still destroying... [id=labledger-session21:aws-ebs-csi-driver, 00m10s elapsed]
+aws_eks_addon.storage: Destruction complete after 10s
+aws_eks_pod_identity_association.ebs: Destroying... [id=a-mba21xoxemofvssjd]
+aws_eks_pod_identity_association.ebs: Destruction complete after 0s
+aws_iam_role_policy_attachment.ebs: Destroying... [id=labledger-session21-ebs-csi/arn:aws:iam::aws:policy/AmazonEBSCSIDriverPolicyV2]
+aws_eks_addon.pod_identity: Destroying... [id=labledger-session21:eks-pod-identity-agent]
+aws_iam_role_policy_attachment.ebs: Destruction complete after 2s
+aws_iam_role.ebs: Destroying... [id=labledger-session21-ebs-csi]
+aws_eks_addon.pod_identity: Destruction complete after 2s
+aws_eks_node_group.lab: Destroying... [id=labledger-session21:classroom]
+aws_iam_role.ebs: Destruction complete after 1s
+aws_eks_node_group.lab: Still destroying... [id=labledger-session21:classroom, 00m10s elapsed]
+aws_eks_node_group.lab: Still destroying... [id=labledger-session21:classroom, 00m20s elapsed]
+aws_eks_node_group.lab: Still destroying... [id=labledger-session21:classroom, 00m30s elapsed]
+aws_eks_node_group.lab: Still destroying... [id=labledger-session21:classroom, 00m40s elapsed]
+aws_eks_node_group.lab: Still destroying... [id=labledger-session21:classroom, 00m50s elapsed]
+aws_eks_node_group.lab: Still destroying... [id=labledger-session21:classroom, 01m00s elapsed]
+aws_eks_node_group.lab: Still destroying... [id=labledger-session21:classroom, 01m10s elapsed]
+aws_eks_node_group.lab: Still destroying... [id=labledger-session21:classroom, 01m20s elapsed]
+aws_eks_node_group.lab: Still destroying... [id=labledger-session21:classroom, 01m30s elapsed]
+aws_eks_node_group.lab: Still destroying... [id=labledger-session21:classroom, 01m40s elapsed]
+aws_eks_node_group.lab: Still destroying... [id=labledger-session21:classroom, 01m50s elapsed]
+aws_eks_node_group.lab: Still destroying... [id=labledger-session21:classroom, 02m00s elapsed]
+aws_eks_node_group.lab: Still destroying... [id=labledger-session21:classroom, 02m10s elapsed]
+aws_eks_node_group.lab: Still destroying... [id=labledger-session21:classroom, 02m20s elapsed]
+aws_eks_node_group.lab: Still destroying... [id=labledger-session21:classroom, 02m30s elapsed]
+aws_eks_node_group.lab: Still destroying... [id=labledger-session21:classroom, 02m40s elapsed]
+aws_eks_node_group.lab: Still destroying... [id=labledger-session21:classroom, 02m50s elapsed]
+aws_eks_node_group.lab: Still destroying... [id=labledger-session21:classroom, 03m00s elapsed]
+aws_eks_node_group.lab: Still destroying... [id=labledger-session21:classroom, 03m10s elapsed]
+aws_eks_node_group.lab: Still destroying... [id=labledger-session21:classroom, 03m20s elapsed]
+aws_eks_node_group.lab: Still destroying... [id=labledger-session21:classroom, 03m30s elapsed]
+aws_eks_node_group.lab: Still destroying... [id=labledger-session21:classroom, 03m40s elapsed]
+aws_eks_node_group.lab: Still destroying... [id=labledger-session21:classroom, 03m50s elapsed]
+aws_eks_node_group.lab: Still destroying... [id=labledger-session21:classroom, 04m00s elapsed]
+aws_eks_node_group.lab: Still destroying... [id=labledger-session21:classroom, 04m10s elapsed]
+aws_eks_node_group.lab: Still destroying... [id=labledger-session21:classroom, 04m20s elapsed]
+aws_eks_node_group.lab: Still destroying... [id=labledger-session21:classroom, 04m30s elapsed]
+aws_eks_node_group.lab: Still destroying... [id=labledger-session21:classroom, 04m40s elapsed]
+aws_eks_node_group.lab: Still destroying... [id=labledger-session21:classroom, 04m50s elapsed]
+aws_eks_node_group.lab: Still destroying... [id=labledger-session21:classroom, 05m00s elapsed]
+aws_eks_node_group.lab: Still destroying... [id=labledger-session21:classroom, 05m10s elapsed]
+aws_eks_node_group.lab: Still destroying... [id=labledger-session21:classroom, 05m20s elapsed]
+aws_eks_node_group.lab: Still destroying... [id=labledger-session21:classroom, 05m30s elapsed]
+aws_eks_node_group.lab: Still destroying... [id=labledger-session21:classroom, 05m40s elapsed]
+aws_eks_node_group.lab: Still destroying... [id=labledger-session21:classroom, 05m50s elapsed]
+aws_eks_node_group.lab: Still destroying... [id=labledger-session21:classroom, 06m00s elapsed]
+aws_eks_node_group.lab: Still destroying... [id=labledger-session21:classroom, 06m10s elapsed]
+aws_eks_node_group.lab: Still destroying... [id=labledger-session21:classroom, 06m20s elapsed]
+aws_eks_node_group.lab: Still destroying... [id=labledger-session21:classroom, 06m30s elapsed]
+aws_eks_node_group.lab: Still destroying... [id=labledger-session21:classroom, 06m40s elapsed]
+aws_eks_node_group.lab: Still destroying... [id=labledger-session21:classroom, 06m50s elapsed]
+aws_eks_node_group.lab: Still destroying... [id=labledger-session21:classroom, 07m00s elapsed]
+aws_eks_node_group.lab: Still destroying... [id=labledger-session21:classroom, 07m10s elapsed]
+aws_eks_node_group.lab: Still destroying... [id=labledger-session21:classroom, 07m20s elapsed]
+aws_eks_node_group.lab: Still destroying... [id=labledger-session21:classroom, 07m30s elapsed]
+aws_eks_node_group.lab: Still destroying... [id=labledger-session21:classroom, 07m40s elapsed]
+aws_eks_node_group.lab: Still destroying... [id=labledger-session21:classroom, 07m50s elapsed]
+aws_eks_node_group.lab: Still destroying... [id=labledger-session21:classroom, 08m00s elapsed]
+aws_eks_node_group.lab: Still destroying... [id=labledger-session21:classroom, 08m10s elapsed]
+aws_eks_node_group.lab: Destruction complete after 8m19s
+aws_iam_role_policy_attachment.node["AmazonEC2ContainerRegistryReadOnly"]: Destroying... [id=labledger-session21-worker/arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly]
+aws_route_table_association.public[0]: Destroying... [id=rtbassoc-0d029f0a319493e28]
+aws_iam_role_policy_attachment.node["AmazonEKS_CNI_Policy"]: Destroying... [id=labledger-session21-worker/arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy]
+aws_iam_role_policy_attachment.node["AmazonEKSWorkerNodePolicy"]: Destroying... [id=labledger-session21-worker/arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy]
+aws_route_table_association.public[1]: Destroying... [id=rtbassoc-03358f3885420d864]
+aws_eks_cluster.lab: Destroying... [id=labledger-session21]
+aws_iam_role_policy_attachment.node["AmazonEKS_CNI_Policy"]: Destruction complete after 2s
+aws_iam_role_policy_attachment.node["AmazonEC2ContainerRegistryReadOnly"]: Destruction complete after 2s
+aws_iam_role_policy_attachment.node["AmazonEKSWorkerNodePolicy"]: Destruction complete after 2s
+aws_iam_role.node: Destroying... [id=labledger-session21-worker]
+aws_route_table_association.public[0]: Destruction complete after 2s
+aws_route_table_association.public[1]: Destruction complete after 2s
+aws_route_table.public: Destroying... [id=rtb-0d060314fd48467b9]
+aws_iam_role.node: Destruction complete after 2s
+aws_route_table.public: Destruction complete after 1s
+aws_internet_gateway.lab: Destroying... [id=igw-072ab9d5158c1089d]
+aws_internet_gateway.lab: Destruction complete after 3s
+aws_eks_cluster.lab: Still destroying... [id=labledger-session21, 00m10s elapsed]
+aws_eks_cluster.lab: Still destroying... [id=labledger-session21, 00m20s elapsed]
+aws_eks_cluster.lab: Still destroying... [id=labledger-session21, 00m30s elapsed]
+aws_eks_cluster.lab: Still destroying... [id=labledger-session21, 00m40s elapsed]
+aws_eks_cluster.lab: Still destroying... [id=labledger-session21, 00m50s elapsed]
+aws_eks_cluster.lab: Still destroying... [id=labledger-session21, 01m00s elapsed]
+aws_eks_cluster.lab: Still destroying... [id=labledger-session21, 01m10s elapsed]
+aws_eks_cluster.lab: Still destroying... [id=labledger-session21, 01m20s elapsed]
+aws_eks_cluster.lab: Still destroying... [id=labledger-session21, 01m30s elapsed]
+aws_eks_cluster.lab: Still destroying... [id=labledger-session21, 01m40s elapsed]
+aws_eks_cluster.lab: Still destroying... [id=labledger-session21, 01m50s elapsed]
+aws_eks_cluster.lab: Still destroying... [id=labledger-session21, 02m00s elapsed]
+aws_eks_cluster.lab: Still destroying... [id=labledger-session21, 02m10s elapsed]
+aws_eks_cluster.lab: Still destroying... [id=labledger-session21, 02m20s elapsed]
+aws_eks_cluster.lab: Still destroying... [id=labledger-session21, 02m30s elapsed]
+aws_eks_cluster.lab: Still destroying... [id=labledger-session21, 02m40s elapsed]
+aws_eks_cluster.lab: Still destroying... [id=labledger-session21, 02m50s elapsed]
+aws_eks_cluster.lab: Still destroying... [id=labledger-session21, 03m00s elapsed]
+aws_eks_cluster.lab: Destruction complete after 3m1s
+aws_iam_role_policy_attachment.cluster: Destroying... [id=labledger-session21-control-plane/arn:aws:iam::aws:policy/AmazonEKSClusterPolicy]
+aws_subnet.public[0]: Destroying... [id=subnet-020717b1a70980817]
+aws_subnet.public[1]: Destroying... [id=subnet-0b0d5cee50b0a2ac5]
+aws_iam_role_policy_attachment.cluster: Destruction complete after 1s
+aws_iam_role.cluster: Destroying... [id=labledger-session21-control-plane]
+aws_subnet.public[0]: Destruction complete after 2s
+aws_subnet.public[1]: Destruction complete after 2s
+aws_vpc.lab: Destroying... [id=vpc-0aa6e982ce3b9bc74]
+aws_iam_role.cluster: Destruction complete after 2s
+aws_vpc.lab: Destruction complete after 2s
+
+Apply complete! Resources: 0 added, 0 changed, 21 destroyed.
+Thu Oct 15 11:53:18 UTC 2026

@@ -112,7 +112,7 @@ resource "aws_iam_role" "ebs" {
 }
 resource "aws_iam_role_policy_attachment" "ebs" {
   role       = aws_iam_role.ebs.name
-  policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy"
+  policy_arn = "arn:aws:iam::aws:policy/AmazonEBSCSIDriverPolicyV2"
 }
 resource "aws_eks_addon" "pod_identity" {
   cluster_name = aws_eks_cluster.lab.name

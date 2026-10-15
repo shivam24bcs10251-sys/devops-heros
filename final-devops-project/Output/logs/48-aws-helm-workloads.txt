@@ -1,0 +1,32 @@
++ date -u '+%Y-%m-%d %H:%M:%S UTC'
+2026-10-15 11:31:08 UTC
++ export KUBECONFIG='/Users/shivamjaiswal/Library/Mobile Documents/com~apple~CloudDocs/iCloud-Keep/Scaler/Semester_5_Term_1/Devops_SWE/devops-heros/aws-scaler-labs/.local/worktrees/session21/final-devops-project/.local/kubeconfig'
++ helm list -n session21
+^[[C^[[C^[[C^[[C^[[CNAME     	NAMESPACE	REVISION	UPDATED                             	STATUS  	CHART          	APP VERSION
+labledger	session21	1       	2026-10-15 16:55:31.137104 +0530 IST	deployed	labledger-1.0.0	1.0.0
++ kubectl get deploy,statefulset -n session21
+NAME                                   READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/labledger-backend      2/2     2            2           5m34s
+deployment.apps/labledger-frontend     2/2     2            2           5m34s
+deployment.apps/session21-grafana      1/1     1            1           4m42s
+deployment.apps/session21-prometheus   1/1     1            1           4m40s
+
+NAME                                  READY   AGE
+statefulset.apps/labledger-postgres   1/1     5m35s
++ kubectl get pods -n session21
+NAME                                   READY   STATUS      RESTARTS   AGE
+labledger-backend-fd4fb4c87-gphqz      1/1     Running     0          5m23s
+labledger-backend-fd4fb4c87-ztzll      1/1     Running     0          5m38s
+labledger-frontend-6c79c8f78d-6cqdz    1/1     Running     0          5m38s
+labledger-frontend-6c79c8f78d-pc6mr    1/1     Running     0          5m38s
+labledger-migrate-9faeab4771c5-pp9tr   0/1     Completed   2          5m37s
+labledger-postgres-0                   1/1     Running     0          5m38s
+session21-grafana-76cc65654b-4svpd     1/1     Running     0          4m46s
+session21-prometheus-5c55b8f5c-m85gs   1/1     Running     0          4m44s
++ kubectl get svc -n session21
+NAME                   TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)    AGE
+backend                ClusterIP   172.20.180.81    <none>        8000/TCP   5m42s
+frontend               ClusterIP   172.20.215.15    <none>        80/TCP     5m42s
+postgres               ClusterIP   172.20.163.8     <none>        5432/TCP   5m42s
+session21-grafana      ClusterIP   172.20.31.164    <none>        3000/TCP   4m48s
+session21-prometheus   ClusterIP   172.20.223.147   <none>        9090/TCP   4m46s

@@ -1,10 +1,10 @@
 variable "aws_region" {
   type    = string
-  default = "ap-south-1"
+  default = "ap-southeast-2"
 }
 variable "aws_profile" {
   type    = string
-  default = "default"
+  default = "scaler-sst"
 }
 variable "cluster_name" {
   type    = string
@@ -24,5 +24,15 @@ variable "admin_cidr" {
 }
 variable "node_type" {
   type    = string
-  default = "t3.medium"
+  default = "c7i-flex.large"
+}
+
+variable "expected_account_id" {
+  description = "Only this AWS account may be used for the submission labs."
+  type        = string
+  default     = "499567237930"
+  validation {
+    condition     = can(regex("^[0-9]{12}$", var.expected_account_id))
+    error_message = "Provide a 12-digit AWS account ID."
+  }
 }

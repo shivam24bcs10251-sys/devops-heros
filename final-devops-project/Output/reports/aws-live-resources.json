@@ -1,0 +1,953 @@
+{
+  "recorded_at_utc": "2026-10-15T11:31:12.386278+00:00",
+  "account": "499567237930",
+  "region": "ap-southeast-2",
+  "cluster": {
+    "name": "labledger-session21",
+    "arn": "arn:aws:eks:ap-southeast-2:499567237930:cluster/labledger-session21",
+    "createdAt": "2026-10-15T16:42:12.742000+05:30",
+    "version": "1.35",
+    "endpoint": "https://5468BBF11D82F848AF49F1DFF271D867.gr7.ap-southeast-2.eks.amazonaws.com",
+    "roleArn": "arn:aws:iam::499567237930:role/labledger-session21-control-plane",
+    "resourcesVpcConfig": {
+      "subnetIds": [
+        "subnet-0b0d5cee50b0a2ac5",
+        "subnet-020717b1a70980817"
+      ],
+      "securityGroupIds": [],
+      "clusterSecurityGroupId": "sg-054bc1f2d50fbfc48",
+      "vpcId": "vpc-0aa6e982ce3b9bc74",
+      "endpointPublicAccess": true,
+      "endpointPrivateAccess": true,
+      "publicAccessCidrs": [
+        "106.216.236.253/32"
+      ]
+    },
+    "kubernetesNetworkConfig": {
+      "serviceIpv4Cidr": "172.20.0.0/16",
+      "ipFamily": "ipv4",
+      "elasticLoadBalancing": {
+        "enabled": false
+      }
+    },
+    "logging": {
+      "clusterLogging": [
+        {
+          "types": [
+            "api",
+            "audit",
+            "authenticator",
+            "controllerManager",
+            "scheduler"
+          ],
+          "enabled": false
+        }
+      ]
+    },
+    "identity": {
+      "oidc": {
+        "issuer": "https://oidc.eks.ap-southeast-2.amazonaws.com/id/5468BBF11D82F848AF49F1DFF271D867"
+      }
+    },
+    "status": "ACTIVE",
+    "certificateAuthority": {
+      "data": "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURNVENDQWhtZ0F3SUJBZ0lRZmlRamovTC9WQjNCc3pOU0dnMFI3REFOQmdrcWhraUc5dzBCQVFzRkFEQW4KTVJBd0RnWURWUVFLRXdkQlYxTWdSVXRUTVJNd0VRWURWUVFERXdwcmRXSmxjbTVsZEdWek1CNFhEVEkyTVRBeApOVEV4TVRJek1Wb1hEVE14TVRBeE5ERXhNVEl6TVZvd0p6RVFNQTRHQTFVRUNoTUhRVmRUSUVWTFV6RVRNQkVHCkExVUVBeE1LYTNWaVpYSnVaWFJsY3pDQ0FTSXdEUVlKS29aSWh2Y05BUUVCQlFBRGdnRVBBRENDQVFvQ2dnRUIKQU5GaGRxOHZHVDhKeGtWeVhOY1d0dDU5bTl3TkNSQ1FwWDIvU2pXNS91YlNORmJyZk41Q2kwck41bGpjZU44NQpKYUZKdXRkanllWlJsck9TNkcyRmh3OXdoVFVKUlBONmxyRnZ6Ui9ZNUR6amVNNXZaS3FmdHZ5alpKNWpxaTZVCk1ZckJaYnhLMU5LMHloemhVM1FFVDZKR3BMYkNiRkU1TTdlU2VBck4rRkNySWpnZS9UM0x0OS9ieWFHaFlzbUkKbUM4U3NKcTB6dm1IVVp4WWQ4aGl1Zk52TldpUk9lYkU0dnk1M2g3ODZ5Q3Z5TmlSQkUwYkE5TURUNzZKS3RkdQpwaHlnWFVqZGo4Nkt4N2hxcW9MWWZacS9jL0NqMzc3NWs1WTY5UnlMZGJwLzNTZHMremxwbFFLakUrQUxmS3U5Cm4yWE03WWorK2w4emJ5cVlzR2ZjQVlNQ0F3RUFBYU5aTUZjd0RnWURWUjBQQVFIL0JBUURBZ0trTUE4R0ExVWQKRXdFQi93UUZNQU1CQWY4d0hRWURWUjBPQkJZRUZCbnhrUy9kaVpweTgxSGc4UGU0SkZKNlJuYnBNQlVHQTFVZApFUVFPTUF5Q0NtdDFZbVZ5Ym1WMFpYTXdEUVlKS29aSWh2Y05BUUVMQlFBRGdnRUJBTGdQekg5UXQ3b3c4OVEyCnloNWt0RnNvUmFNM1JRZXBnYVRJYU5scWUyZE5QdVdpR2ZnM1liOStiZVJvcWNRZmxyTVRJc05nS2F3SHBEK0EKWnA4YmQ4MUtXbGZYVFRJblZhQlNwdVdzQkZUd2h2TERyakJjODlKVGFHSS9hY013b2htaHN5ZDhDZVFaeVdPQwpDc0I0czlVOGVMeVkzZmlMQzViWFFISGlicnZLTTZvR0ZpUnZzWWZzNDRhOU9GMDdsVnJSQlhBWEg1bDZIdGF2CkxJM2UyM2h0ZGF3VG92SzVqWkdsaUVwNThPZTM2L3doQWtpYmlxUDFJVS9Nb1JQd0lFcHJXNlNrMUtJeVlWSC8KTW51cG9GclNZeFA2MTZsdzlJOFZ6Tm9DVUpFZ1RkWnoybExxdlU0U1VJUEdKcU54STkxcmgzZDR5UkZPbCtLYwpMajQ5K2dNPQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg=="
+    },
+    "platformVersion": "eks.24",
+    "tags": {
+      "Project": "labledger-session21",
+      "Environment": "classroom",
+      "ManagedBy": "Terraform"
+    },
+    "accessConfig": {
+      "authenticationMode": "API_AND_CONFIG_MAP"
+    },
+    "upgradePolicy": {
+      "supportType": "EXTENDED"
+    },
+    "computeConfig": {
+      "enabled": false,
+      "nodePools": []
+    },
+    "storageConfig": {
+      "blockStorage": {
+        "enabled": false
+      }
+    },
+    "deletionProtection": false,
+    "controlPlaneScalingConfig": {
+      "tier": "standard"
+    }
+  },
+  "nodegroup": {
+    "nodegroupName": "classroom",
+    "nodegroupArn": "arn:aws:eks:ap-southeast-2:499567237930:nodegroup/labledger-session21/classroom/80d09fa5-ad5f-405d-4241-58afd2c1c76b",
+    "clusterName": "labledger-session21",
+    "version": "1.35",
+    "releaseVersion": "1.35.8-20261012",
+    "createdAt": "2026-10-15T16:51:08.023000+05:30",
+    "modifiedAt": "2026-10-15T16:52:24.206000+05:30",
+    "status": "ACTIVE",
+    "capacityType": "ON_DEMAND",
+    "scalingConfig": {
+      "minSize": 1,
+      "maxSize": 2,
+      "desiredSize": 1
+    },
+    "instanceTypes": [
+      "c7i-flex.large"
+    ],
+    "subnets": [
+      "subnet-0b0d5cee50b0a2ac5",
+      "subnet-020717b1a70980817"
+    ],
+    "amiType": "AL2023_x86_64_STANDARD",
+    "nodeRole": "arn:aws:iam::499567237930:role/labledger-session21-worker",
+    "labels": {},
+    "resources": {
+      "autoScalingGroups": [
+        {
+          "name": "eks-classroom-80d09fa5-ad5f-405d-4241-58afd2c1c76b"
+        }
+      ]
+    },
+    "diskSize": 20,
+    "health": {
+      "issues": []
+    },
+    "updateConfig": {
+      "maxUnavailable": 1
+    },
+    "tags": {
+      "Project": "labledger-session21",
+      "Environment": "classroom",
+      "ManagedBy": "Terraform"
+    }
+  },
+  "vpc": [
+    {
+      "OwnerId": "499567237930",
+      "InstanceTenancy": "default",
+      "CidrBlockAssociationSet": [
+        {
+          "AssociationId": "vpc-cidr-assoc-0720921334032fc5d",
+          "CidrBlock": "10.21.0.0/16",
+          "CidrBlockState": {
+            "State": "associated"
+          }
+        }
+      ],
+      "IsDefault": false,
+      "Tags": [
+        {
+          "Key": "Environment",
+          "Value": "classroom"
+        },
+        {
+          "Key": "Name",
+          "Value": "labledger-session21"
+        },
+        {
+          "Key": "ManagedBy",
+          "Value": "Terraform"
+        },
+        {
+          "Key": "Project",
+          "Value": "labledger-session21"
+        }
+      ],
+      "BlockPublicAccessStates": {
+        "InternetGatewayBlockMode": "off"
+      },
+      "VpcId": "vpc-0aa6e982ce3b9bc74",
+      "State": "available",
+      "CidrBlock": "10.21.0.0/16",
+      "DhcpOptionsId": "dopt-014971dea24f4f8d2"
+    }
+  ],
+  "subnets": [
+    {
+      "AvailabilityZoneId": "apse2-az1",
+      "MapCustomerOwnedIpOnLaunch": false,
+      "OwnerId": "499567237930",
+      "AssignIpv6AddressOnCreation": false,
+      "Ipv6CidrBlockAssociationSet": [],
+      "Tags": [
+        {
+          "Key": "Environment",
+          "Value": "classroom"
+        },
+        {
+          "Key": "Name",
+          "Value": "labledger-session21-public-0"
+        },
+        {
+          "Key": "Project",
+          "Value": "labledger-session21"
+        },
+        {
+          "Key": "ManagedBy",
+          "Value": "Terraform"
+        },
+        {
+          "Key": "kubernetes.io/role/elb",
+          "Value": "1"
+        }
+      ],
+      "SubnetArn": "arn:aws:ec2:ap-southeast-2:499567237930:subnet/subnet-020717b1a70980817",
+      "EnableDns64": false,
+      "Ipv6Native": false,
+      "PrivateDnsNameOptionsOnLaunch": {
+        "HostnameType": "ip-name",
+        "EnableResourceNameDnsARecord": false,
+        "EnableResourceNameDnsAAAARecord": false
+      },
+      "BlockPublicAccessStates": {
+        "InternetGatewayBlockMode": "off"
+      },
+      "SubnetId": "subnet-020717b1a70980817",
+      "State": "available",
+      "VpcId": "vpc-0aa6e982ce3b9bc74",
+      "CidrBlock": "10.21.0.0/24",
+      "AvailableIpAddressCount": 249,
+      "AvailabilityZone": "ap-southeast-2a",
+      "DefaultForAz": false,
+      "MapPublicIpOnLaunch": true
+    },
+    {
+      "AvailabilityZoneId": "apse2-az3",
+      "MapCustomerOwnedIpOnLaunch": false,
+      "OwnerId": "499567237930",
+      "AssignIpv6AddressOnCreation": false,
+      "Ipv6CidrBlockAssociationSet": [],
+      "Tags": [
+        {
+          "Key": "Name",
+          "Value": "labledger-session21-public-1"
+        },
+        {
+          "Key": "Project",
+          "Value": "labledger-session21"
+        },
+        {
+          "Key": "ManagedBy",
+          "Value": "Terraform"
+        },
+        {
+          "Key": "Environment",
+          "Value": "classroom"
+        },
+        {
+          "Key": "kubernetes.io/role/elb",
+          "Value": "1"
+        }
+      ],
+      "SubnetArn": "arn:aws:ec2:ap-southeast-2:499567237930:subnet/subnet-0b0d5cee50b0a2ac5",
+      "EnableDns64": false,
+      "Ipv6Native": false,
+      "PrivateDnsNameOptionsOnLaunch": {
+        "HostnameType": "ip-name",
+        "EnableResourceNameDnsARecord": false,
+        "EnableResourceNameDnsAAAARecord": false
+      },
+      "BlockPublicAccessStates": {
+        "InternetGatewayBlockMode": "off"
+      },
+      "SubnetId": "subnet-0b0d5cee50b0a2ac5",
+      "State": "available",
+      "VpcId": "vpc-0aa6e982ce3b9bc74",
+      "CidrBlock": "10.21.1.0/24",
+      "AvailableIpAddressCount": 219,
+      "AvailabilityZone": "ap-southeast-2b",
+      "DefaultForAz": false,
+      "MapPublicIpOnLaunch": true
+    }
+  ],
+  "worker_instances": {
+    "Reservations": [
+      {
+        "ReservationId": "r-0b72bbbb8802e9056",
+        "OwnerId": "499567237930",
+        "RequesterId": "458534499037",
+        "Groups": [],
+        "Instances": [
+          {
+            "Architecture": "x86_64",
+            "BlockDeviceMappings": [
+              {
+                "DeviceName": "/dev/xvda",
+                "Ebs": {
+                  "AttachTime": "2026-10-15T11:21:55+00:00",
+                  "DeleteOnTermination": true,
+                  "Status": "attached",
+                  "VolumeId": "vol-09bad0d8c4a79ce6f",
+                  "EbsCardIndex": 0
+                }
+              },
+              {
+                "DeviceName": "/dev/xvdaa",
+                "Ebs": {
+                  "AttachTime": "2026-10-15T11:25:45.101000+00:00",
+                  "DeleteOnTermination": false,
+                  "Status": "attached",
+                  "VolumeId": "vol-0161ab3c9dd4831d9",
+                  "EbsCardIndex": 0
+                }
+              }
+            ],
+            "ClientToken": "fleet-bf1e518d-a104-ce1c-0c38-2f8a831868cf-0",
+            "EbsOptimized": false,
+            "EnaSupport": true,
+            "Hypervisor": "xen",
+            "IamInstanceProfile": {
+              "Arn": "arn:aws:iam::499567237930:instance-profile/eks-80d09fa5-ad5f-405d-4241-58afd2c1c76b",
+              "Id": "AIPAXIUEHDMVAHZ2BWKT2"
+            },
+            "NetworkInterfaces": [
+              {
+                "Attachment": {
+                  "AttachTime": "2026-10-15T11:22:26+00:00",
+                  "AttachmentId": "eni-attach-060a73e7e24db2733",
+                  "DeleteOnTermination": true,
+                  "DeviceIndex": 1,
+                  "Status": "attached",
+                  "NetworkCardIndex": 0
+                },
+                "Description": "aws-K8S-i-0642252a91acb2475",
+                "Groups": [
+                  {
+                    "GroupId": "sg-054bc1f2d50fbfc48",
+                    "GroupName": "eks-cluster-sg-labledger-session21-1521795966"
+                  }
+                ],
+                "Ipv6Addresses": [],
+                "MacAddress": "06:ff:cb:08:23:93",
+                "NetworkInterfaceId": "eni-0f46ce102662ad8bc",
+                "OwnerId": "499567237930",
+                "PrivateDnsName": "ip-10-21-1-165.ap-southeast-2.compute.internal",
+                "PrivateIpAddress": "10.21.1.165",
+                "PrivateIpAddresses": [
+                  {
+                    "Primary": true,
+                    "PrivateDnsName": "ip-10-21-1-165.ap-southeast-2.compute.internal",
+                    "PrivateIpAddress": "10.21.1.165"
+                  },
+                  {
+                    "Primary": false,
+                    "PrivateDnsName": "ip-10-21-1-7.ap-southeast-2.compute.internal",
+                    "PrivateIpAddress": "10.21.1.7"
+                  },
+                  {
+                    "Primary": false,
+                    "PrivateDnsName": "ip-10-21-1-167.ap-southeast-2.compute.internal",
+                    "PrivateIpAddress": "10.21.1.167"
+                  },
+                  {
+                    "Primary": false,
+                    "PrivateDnsName": "ip-10-21-1-103.ap-southeast-2.compute.internal",
+                    "PrivateIpAddress": "10.21.1.103"
+                  },
+                  {
+                    "Primary": false,
+                    "PrivateDnsName": "ip-10-21-1-81.ap-southeast-2.compute.internal",
+                    "PrivateIpAddress": "10.21.1.81"
+                  },
+                  {
+                    "Primary": false,
+                    "PrivateDnsName": "ip-10-21-1-227.ap-southeast-2.compute.internal",
+                    "PrivateIpAddress": "10.21.1.227"
+                  },
+                  {
+                    "Primary": false,
+                    "PrivateDnsName": "ip-10-21-1-34.ap-southeast-2.compute.internal",
+                    "PrivateIpAddress": "10.21.1.34"
+                  },
+                  {
+                    "Primary": false,
+                    "PrivateDnsName": "ip-10-21-1-253.ap-southeast-2.compute.internal",
+                    "PrivateIpAddress": "10.21.1.253"
+                  },
+                  {
+                    "Primary": false,
+                    "PrivateDnsName": "ip-10-21-1-222.ap-southeast-2.compute.internal",
+                    "PrivateIpAddress": "10.21.1.222"
+                  },
+                  {
+                    "Primary": false,
+                    "PrivateDnsName": "ip-10-21-1-137.ap-southeast-2.compute.internal",
+                    "PrivateIpAddress": "10.21.1.137"
+                  }
+                ],
+                "SourceDestCheck": true,
+                "Status": "in-use",
+                "SubnetId": "subnet-0b0d5cee50b0a2ac5",
+                "VpcId": "vpc-0aa6e982ce3b9bc74",
+                "InterfaceType": "interface",
+                "Operator": {
+                  "Managed": false
+                }
+              },
+              {
+                "Attachment": {
+                  "AttachTime": "2026-10-15T11:25:41+00:00",
+                  "AttachmentId": "eni-attach-0cbe362c6cf2700d5",
+                  "DeleteOnTermination": true,
+                  "DeviceIndex": 2,
+                  "Status": "attached",
+                  "NetworkCardIndex": 0
+                },
+                "Description": "aws-K8S-i-0642252a91acb2475",
+                "Groups": [
+                  {
+                    "GroupId": "sg-054bc1f2d50fbfc48",
+                    "GroupName": "eks-cluster-sg-labledger-session21-1521795966"
+                  }
+                ],
+                "Ipv6Addresses": [],
+                "MacAddress": "06:ff:f5:68:b4:27",
+                "NetworkInterfaceId": "eni-0f68a6a0060055a9a",
+                "OwnerId": "499567237930",
+                "PrivateDnsName": "ip-10-21-1-87.ap-southeast-2.compute.internal",
+                "PrivateIpAddress": "10.21.1.87",
+                "PrivateIpAddresses": [
+                  {
+                    "Primary": true,
+                    "PrivateDnsName": "ip-10-21-1-87.ap-southeast-2.compute.internal",
+                    "PrivateIpAddress": "10.21.1.87"
+                  },
+                  {
+                    "Primary": false,
+                    "PrivateDnsName": "ip-10-21-1-198.ap-southeast-2.compute.internal",
+                    "PrivateIpAddress": "10.21.1.198"
+                  },
+                  {
+                    "Primary": false,
+                    "PrivateDnsName": "ip-10-21-1-241.ap-southeast-2.compute.internal",
+                    "PrivateIpAddress": "10.21.1.241"
+                  },
+                  {
+                    "Primary": false,
+                    "PrivateDnsName": "ip-10-21-1-66.ap-southeast-2.compute.internal",
+                    "PrivateIpAddress": "10.21.1.66"
+                  },
+                  {
+                    "Primary": false,
+                    "PrivateDnsName": "ip-10-21-1-31.ap-southeast-2.compute.internal",
+                    "PrivateIpAddress": "10.21.1.31"
+                  },
+                  {
+                    "Primary": false,
+                    "PrivateDnsName": "ip-10-21-1-217.ap-southeast-2.compute.internal",
+                    "PrivateIpAddress": "10.21.1.217"
+                  },
+                  {
+                    "Primary": false,
+                    "PrivateDnsName": "ip-10-21-1-216.ap-southeast-2.compute.internal",
+                    "PrivateIpAddress": "10.21.1.216"
+                  },
+                  {
+                    "Primary": false,
+                    "PrivateDnsName": "ip-10-21-1-219.ap-southeast-2.compute.internal",
+                    "PrivateIpAddress": "10.21.1.219"
+                  },
+                  {
+                    "Primary": false,
+                    "PrivateDnsName": "ip-10-21-1-154.ap-southeast-2.compute.internal",
+                    "PrivateIpAddress": "10.21.1.154"
+                  },
+                  {
+                    "Primary": false,
+                    "PrivateDnsName": "ip-10-21-1-186.ap-southeast-2.compute.internal",
+                    "PrivateIpAddress": "10.21.1.186"
+                  }
+                ],
+                "SourceDestCheck": true,
+                "Status": "in-use",
+                "SubnetId": "subnet-0b0d5cee50b0a2ac5",
+                "VpcId": "vpc-0aa6e982ce3b9bc74",
+                "InterfaceType": "interface",
+                "Operator": {
+                  "Managed": false
+                }
+              },
+              {
+                "Association": {
+                  "IpOwnerId": "amazon",
+                  "PublicDnsName": "ec2-54-252-219-252.ap-southeast-2.compute.amazonaws.com",
+                  "PublicIp": "54.252.219.252"
+                },
+                "Attachment": {
+                  "AttachTime": "2026-10-15T11:21:55+00:00",
+                  "AttachmentId": "eni-attach-0d49b5da76233295f",
+                  "DeleteOnTermination": true,
+                  "DeviceIndex": 0,
+                  "Status": "attached",
+                  "NetworkCardIndex": 0
+                },
+                "Description": "",
+                "Groups": [
+                  {
+                    "GroupId": "sg-054bc1f2d50fbfc48",
+                    "GroupName": "eks-cluster-sg-labledger-session21-1521795966"
+                  }
+                ],
+                "Ipv6Addresses": [],
+                "MacAddress": "06:ff:ec:b6:9f:af",
+                "NetworkInterfaceId": "eni-023c9667f23ee8a1d",
+                "OwnerId": "499567237930",
+                "PrivateDnsName": "ip-10-21-1-26.ap-southeast-2.compute.internal",
+                "PrivateIpAddress": "10.21.1.26",
+                "PrivateIpAddresses": [
+                  {
+                    "Association": {
+                      "IpOwnerId": "amazon",
+                      "PublicDnsName": "ec2-54-252-219-252.ap-southeast-2.compute.amazonaws.com",
+                      "PublicIp": "54.252.219.252"
+                    },
+                    "Primary": true,
+                    "PrivateDnsName": "ip-10-21-1-26.ap-southeast-2.compute.internal",
+                    "PrivateIpAddress": "10.21.1.26"
+                  },
+                  {
+                    "Primary": false,
+                    "PrivateDnsName": "ip-10-21-1-4.ap-southeast-2.compute.internal",
+                    "PrivateIpAddress": "10.21.1.4"
+                  },
+                  {
+                    "Primary": false,
+                    "PrivateDnsName": "ip-10-21-1-22.ap-southeast-2.compute.internal",
+                    "PrivateIpAddress": "10.21.1.22"
+                  },
+                  {
+                    "Primary": false,
+                    "PrivateDnsName": "ip-10-21-1-70.ap-southeast-2.compute.internal",
+                    "PrivateIpAddress": "10.21.1.70"
+                  },
+                  {
+                    "Primary": false,
+                    "PrivateDnsName": "ip-10-21-1-49.ap-southeast-2.compute.internal",
+                    "PrivateIpAddress": "10.21.1.49"
+                  },
+                  {
+                    "Primary": false,
+                    "PrivateDnsName": "ip-10-21-1-67.ap-southeast-2.compute.internal",
+                    "PrivateIpAddress": "10.21.1.67"
+                  },
+                  {
+                    "Primary": false,
+                    "PrivateDnsName": "ip-10-21-1-45.ap-southeast-2.compute.internal",
+                    "PrivateIpAddress": "10.21.1.45"
+                  },
+                  {
+                    "Primary": false,
+                    "PrivateDnsName": "ip-10-21-1-63.ap-southeast-2.compute.internal",
+                    "PrivateIpAddress": "10.21.1.63"
+                  },
+                  {
+                    "Primary": false,
+                    "PrivateDnsName": "ip-10-21-1-239.ap-southeast-2.compute.internal",
+                    "PrivateIpAddress": "10.21.1.239"
+                  },
+                  {
+                    "Primary": false,
+                    "PrivateDnsName": "ip-10-21-1-168.ap-southeast-2.compute.internal",
+                    "PrivateIpAddress": "10.21.1.168"
+                  }
+                ],
+                "SourceDestCheck": true,
+                "Status": "in-use",
+                "SubnetId": "subnet-0b0d5cee50b0a2ac5",
+                "VpcId": "vpc-0aa6e982ce3b9bc74",
+                "InterfaceType": "interface",
+                "Operator": {
+                  "Managed": false
+                }
+              }
+            ],
+            "RootDeviceName": "/dev/xvda",
+            "RootDeviceType": "ebs",
+            "SecurityGroups": [
+              {
+                "GroupId": "sg-054bc1f2d50fbfc48",
+                "GroupName": "eks-cluster-sg-labledger-session21-1521795966"
+              }
+            ],
+            "SourceDestCheck": true,
+            "Tags": [
+              {
+                "Key": "k8s.io/cluster-autoscaler/labledger-session21",
+                "Value": "owned"
+              },
+              {
+                "Key": "aws:ec2launchtemplate:version",
+                "Value": "1"
+              },
+              {
+                "Key": "eks:cluster-name",
+                "Value": "labledger-session21"
+              },
+              {
+                "Key": "aws:ec2launchtemplate:id",
+                "Value": "lt-00f9faf04ea109b1a"
+              },
+              {
+                "Key": "eks:nodegroup-name",
+                "Value": "classroom"
+              },
+              {
+                "Key": "aws:autoscaling:groupName",
+                "Value": "eks-classroom-80d09fa5-ad5f-405d-4241-58afd2c1c76b"
+              },
+              {
+                "Key": "k8s.io/cluster-autoscaler/enabled",
+                "Value": "true"
+              },
+              {
+                "Key": "aws:eks:cluster-name",
+                "Value": "labledger-session21"
+              },
+              {
+                "Key": "kubernetes.io/cluster/labledger-session21",
+                "Value": "owned"
+              },
+              {
+                "Key": "aws:ec2:fleet-id",
+                "Value": "fleet-bf1e518d-a104-ce1c-0c38-2f8a831868cf"
+              }
+            ],
+            "VirtualizationType": "hvm",
+            "CpuOptions": {
+              "CoreCount": 1,
+              "ThreadsPerCore": 2
+            },
+            "CapacityReservationSpecification": {
+              "CapacityReservationPreference": "open"
+            },
+            "HibernationOptions": {
+              "Configured": false
+            },
+            "MetadataOptions": {
+              "State": "applied",
+              "HttpTokens": "required",
+              "HttpPutResponseHopLimit": 1,
+              "HttpEndpoint": "enabled",
+              "HttpProtocolIpv6": "disabled",
+              "InstanceMetadataTags": "disabled"
+            },
+            "EnclaveOptions": {
+              "Enabled": false
+            },
+            "BootMode": "uefi-preferred",
+            "PlatformDetails": "Linux/UNIX",
+            "UsageOperation": "RunInstances",
+            "UsageOperationUpdateTime": "2026-10-15T11:21:55+00:00",
+            "PrivateDnsNameOptions": {
+              "HostnameType": "ip-name",
+              "EnableResourceNameDnsARecord": false,
+              "EnableResourceNameDnsAAAARecord": false
+            },
+            "MaintenanceOptions": {
+              "AutoRecovery": "default",
+              "RebootMigration": "default"
+            },
+            "CurrentInstanceBootMode": "uefi",
+            "NetworkPerformanceOptions": {
+              "BandwidthWeighting": "default"
+            },
+            "Operator": {
+              "Managed": false
+            },
+            "InstanceId": "i-0642252a91acb2475",
+            "ImageId": "ami-0d6d708bae09b0040",
+            "State": {
+              "Code": 16,
+              "Name": "running"
+            },
+            "PrivateDnsName": "ip-10-21-1-26.ap-southeast-2.compute.internal",
+            "PublicDnsName": "ec2-54-252-219-252.ap-southeast-2.compute.amazonaws.com",
+            "StateTransitionReason": "",
+            "AmiLaunchIndex": 0,
+            "ProductCodes": [],
+            "InstanceType": "c7i-flex.large",
+            "LaunchTime": "2026-10-15T11:21:55+00:00",
+            "Placement": {
+              "AvailabilityZoneId": "apse2-az3",
+              "GroupName": "",
+              "Tenancy": "default",
+              "AvailabilityZone": "ap-southeast-2b"
+            },
+            "Monitoring": {
+              "State": "disabled"
+            },
+            "SubnetId": "subnet-0b0d5cee50b0a2ac5",
+            "VpcId": "vpc-0aa6e982ce3b9bc74",
+            "PrivateIpAddress": "10.21.1.26",
+            "PublicIpAddress": "54.252.219.252"
+          }
+        ]
+      }
+    ]
+  },
+  "worker_instance_ids": [
+    "i-0642252a91acb2475"
+  ],
+  "database_volume": {
+    "AvailabilityZoneId": "apse2-az3",
+    "Iops": 3000,
+    "Tags": [
+      {
+        "Key": "ebs.csi.aws.com/cluster-name",
+        "Value": "labledger-session21"
+      },
+      {
+        "Key": "kubernetes.io/created-for/pvc/namespace",
+        "Value": "session21"
+      },
+      {
+        "Key": "CSIVolumeName",
+        "Value": "pvc-4a38ed98-c05d-47d9-994b-20314425fa43"
+      },
+      {
+        "Key": "kubernetes.io/cluster/labledger-session21",
+        "Value": "owned"
+      },
+      {
+        "Key": "Name",
+        "Value": "labledger-session21-dynamic-pvc-4a38ed98-c05d-47d9-994b-20314425fa43"
+      },
+      {
+        "Key": "ebs.csi.aws.com/cluster",
+        "Value": "true"
+      },
+      {
+        "Key": "kubernetes.io/created-for/pv/name",
+        "Value": "pvc-4a38ed98-c05d-47d9-994b-20314425fa43"
+      },
+      {
+        "Key": "KubernetesCluster",
+        "Value": "labledger-session21"
+      },
+      {
+        "Key": "kubernetes.io/created-for/pvc/name",
+        "Value": "data-labledger-postgres-0"
+      }
+    ],
+    "VolumeType": "gp3",
+    "MultiAttachEnabled": false,
+    "Throughput": 125,
+    "Operator": {
+      "Managed": false
+    },
+    "VolumeId": "vol-0161ab3c9dd4831d9",
+    "Size": 2,
+    "SnapshotId": "",
+    "AvailabilityZone": "ap-southeast-2b",
+    "State": "in-use",
+    "CreateTime": "2026-10-15T11:25:41.342000+00:00",
+    "Attachments": [
+      {
+        "DeleteOnTermination": false,
+        "EbsCardIndex": 0,
+        "VolumeId": "vol-0161ab3c9dd4831d9",
+        "InstanceId": "i-0642252a91acb2475",
+        "Device": "/dev/xvdaa",
+        "State": "attached",
+        "AttachTime": "2026-10-15T11:25:45+00:00"
+      }
+    ],
+    "Encrypted": true,
+    "KmsKeyId": "arn:aws:kms:ap-southeast-2:499567237930:key/5d5b60ce-ebd2-4d03-8b5d-5c23830d6528"
+  },
+  "persistent_volume": {
+    "apiVersion": "v1",
+    "kind": "PersistentVolume",
+    "metadata": {
+      "annotations": {
+        "pv.kubernetes.io/provisioned-by": "ebs.csi.aws.com",
+        "volume.kubernetes.io/provisioner-deletion-secret-name": "",
+        "volume.kubernetes.io/provisioner-deletion-secret-namespace": ""
+      },
+      "creationTimestamp": "2026-10-15T11:25:43Z",
+      "finalizers": [
+        "external-provisioner.volume.kubernetes.io/finalizer",
+        "kubernetes.io/pv-protection",
+        "external-attacher/ebs-csi-aws-com"
+      ],
+      "name": "pvc-4a38ed98-c05d-47d9-994b-20314425fa43",
+      "resourceVersion": "2218",
+      "uid": "97b9d016-eb25-40ff-a8fc-7c8656683d74"
+    },
+    "spec": {
+      "accessModes": [
+        "ReadWriteOnce"
+      ],
+      "capacity": {
+        "storage": "2Gi"
+      },
+      "claimRef": {
+        "apiVersion": "v1",
+        "kind": "PersistentVolumeClaim",
+        "name": "data-labledger-postgres-0",
+        "namespace": "session21",
+        "resourceVersion": "2184",
+        "uid": "4a38ed98-c05d-47d9-994b-20314425fa43"
+      },
+      "csi": {
+        "driver": "ebs.csi.aws.com",
+        "fsType": "ext4",
+        "volumeAttributes": {
+          "storage.kubernetes.io/csiProvisionerIdentity": "1792063392666-5339-ebs.csi.aws.com"
+        },
+        "volumeHandle": "vol-0161ab3c9dd4831d9"
+      },
+      "nodeAffinity": {
+        "required": {
+          "nodeSelectorTerms": [
+            {
+              "matchExpressions": [
+                {
+                  "key": "topology.kubernetes.io/zone",
+                  "operator": "In",
+                  "values": [
+                    "ap-southeast-2b"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "persistentVolumeReclaimPolicy": "Delete",
+      "storageClassName": "labledger-gp3",
+      "volumeMode": "Filesystem"
+    },
+    "status": {
+      "lastPhaseTransitionTime": "2026-10-15T11:25:43Z",
+      "phase": "Bound"
+    }
+  },
+  "load_balancer": {
+    "LoadBalancerName": "a8ea0bdf04a1744448c3028e6dfef7f0",
+    "DNSName": "a8ea0bdf04a1744448c3028e6dfef7f0-1528119114.ap-southeast-2.elb.amazonaws.com",
+    "CanonicalHostedZoneName": "a8ea0bdf04a1744448c3028e6dfef7f0-1528119114.ap-southeast-2.elb.amazonaws.com",
+    "CanonicalHostedZoneNameID": "Z1GM3OXH4ZPM65",
+    "ListenerDescriptions": [
+      {
+        "Listener": {
+          "Protocol": "TCP",
+          "LoadBalancerPort": 443,
+          "InstanceProtocol": "TCP",
+          "InstancePort": 32054
+        },
+        "PolicyNames": []
+      },
+      {
+        "Listener": {
+          "Protocol": "TCP",
+          "LoadBalancerPort": 80,
+          "InstanceProtocol": "TCP",
+          "InstancePort": 32150
+        },
+        "PolicyNames": []
+      }
+    ],
+    "Policies": {
+      "AppCookieStickinessPolicies": [],
+      "LBCookieStickinessPolicies": [],
+      "OtherPolicies": []
+    },
+    "BackendServerDescriptions": [],
+    "AvailabilityZones": [
+      "ap-southeast-2b",
+      "ap-southeast-2a"
+    ],
+    "Subnets": [
+      "subnet-020717b1a70980817",
+      "subnet-0b0d5cee50b0a2ac5"
+    ],
+    "VPCId": "vpc-0aa6e982ce3b9bc74",
+    "Instances": [
+      {
+        "InstanceId": "i-0642252a91acb2475"
+      }
+    ],
+    "HealthCheck": {
+      "Target": "TCP:32150",
+      "Interval": 10,
+      "Timeout": 5,
+      "UnhealthyThreshold": 6,
+      "HealthyThreshold": 2
+    },
+    "SourceSecurityGroup": {
+      "OwnerAlias": "499567237930",
+      "GroupName": "k8s-elb-a8ea0bdf04a1744448c3028e6dfef7f0"
+    },
+    "SecurityGroups": [
+      "sg-09cf5a8ed98b8084a"
+    ],
+    "CreatedTime": "2026-10-15T11:24:55.270000+00:00",
+    "Scheme": "internet-facing"
+  },
+  "addons": [
+    {
+      "addonName": "aws-ebs-csi-driver",
+      "clusterName": "labledger-session21",
+      "status": "ACTIVE",
+      "addonVersion": "v1.67.0-eksbuild.1",
+      "health": {
+        "issues": []
+      },
+      "addonArn": "arn:aws:eks:ap-southeast-2:499567237930:addon/labledger-session21/aws-ebs-csi-driver/6cd09fa6-8952-bbe6-d6e0-7603dd33c5d4",
+      "createdAt": "2026-10-15T16:52:58.250000+05:30",
+      "modifiedAt": "2026-10-15T16:53:38.966000+05:30",
+      "tags": {
+        "Project": "labledger-session21",
+        "Environment": "classroom",
+        "ManagedBy": "Terraform"
+      },
+      "namespaceConfig": {
+        "namespace": "kube-system"
+      }
+    },
+    {
+      "addonName": "eks-pod-identity-agent",
+      "clusterName": "labledger-session21",
+      "status": "ACTIVE",
+      "addonVersion": "v1.3.10-eksbuild.3",
+      "health": {
+        "issues": []
+      },
+      "addonArn": "arn:aws:eks:ap-southeast-2:499567237930:addon/labledger-session21/eks-pod-identity-agent/c6d09fa6-4de1-2847-41a0-5c603876670e",
+      "createdAt": "2026-10-15T16:52:27.847000+05:30",
+      "modifiedAt": "2026-10-15T16:52:53.772000+05:30",
+      "tags": {
+        "Project": "labledger-session21",
+        "Environment": "classroom",
+        "ManagedBy": "Terraform"
+      },
+      "namespaceConfig": {
+        "namespace": "kube-system"
+      }
+    },
+    {
+      "addonName": "metrics-server",
+      "clusterName": "labledger-session21",
+      "status": "ACTIVE",
+      "addonVersion": "v0.9.0-eksbuild.12",
+      "health": {
+        "issues": []
+      },
+      "addonArn": "arn:aws:eks:ap-southeast-2:499567237930:addon/labledger-session21/metrics-server/b8d09fa6-4dec-1e15-0689-cb5fd1ee385e",
+      "createdAt": "2026-10-15T16:52:27.834000+05:30",
+      "modifiedAt": "2026-10-15T16:53:03.269000+05:30",
+      "tags": {
+        "Project": "labledger-session21",
+        "Environment": "classroom",
+        "ManagedBy": "Terraform"
+      },
+      "namespaceConfig": {
+        "namespace": "kube-system"
+      }
+    }
+  ]
+}

@@ -1,0 +1,19 @@
++ date -u '+%Y-%m-%d %H:%M:%S UTC'
+2026-10-15 11:53:56 UTC
++ python3 Output/logs/aws-verify-cleanup.py
+PASS cluster_absent
+PASS vpc_absent
+PASS subnets_absent
+PASS security_groups_absent
+PASS network_interfaces_absent
+PASS recorded_volumes_absent
+PASS load_balancer_absent
+PASS worker_terminated
+PASS project_iam_roles_absent
+PASS terraform_state_empty
+PASS session18_bucket_absent
+PASS session19_bucket_absent
+PASS session19_vpc_absent
+PASS session19_instances_terminated
+PASS earlier_taskboard_cluster_preserved
+ALL AWS CLEANUP CHECKS PASSED; earlier TaskBoard cluster remains ACTIVE

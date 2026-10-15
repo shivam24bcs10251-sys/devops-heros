@@ -1,0 +1,10 @@
++ date -u '+%Y-%m-%d %H:%M:%S UTC'
+2026-10-15 11:32:19 UTC
++ python3 scripts/verify.py --base http://a8ea0bdf04a1744448c3028e6dfef7f0-1528119114.ap-southeast-2.elb.amazonaws.com --version 9faeab4771c5eaddc22d8b201415fc20b33476cf
+PASS health, expected release and PostgreSQL readiness
+PASS create, read and edit inventory
+PASS checkout decrements stock; insufficient stock and unsafe edits return 409
+PASS return restores stock once; lending history is retained
+PASS concurrent PostgreSQL checkouts cannot oversubscribe a single unit
+PASS delete unused inventory and missing-record behavior
+ALL LIVE BUSINESS CHECKS PASSED

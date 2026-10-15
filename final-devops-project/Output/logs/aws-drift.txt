@@ -1,0 +1,34 @@
+data.aws_iam_policy_document.pod_trust: Reading...
+data.aws_availability_zones.available: Reading...
+data.aws_iam_policy_document.cluster_trust: Reading...
+data.aws_iam_policy_document.node_trust: Reading...
+aws_vpc.lab: Refreshing state... [id=vpc-0aa6e982ce3b9bc74]
+data.aws_iam_policy_document.cluster_trust: Read complete after 0s [id=3552664922]
+data.aws_iam_policy_document.node_trust: Read complete after 0s [id=2851119427]
+data.aws_iam_policy_document.pod_trust: Read complete after 0s [id=819195744]
+aws_iam_role.ebs: Refreshing state... [id=labledger-session21-ebs-csi]
+aws_iam_role.cluster: Refreshing state... [id=labledger-session21-control-plane]
+aws_iam_role.node: Refreshing state... [id=labledger-session21-worker]
+data.aws_availability_zones.available: Read complete after 2s [id=ap-southeast-2]
+aws_iam_role_policy_attachment.cluster: Refreshing state... [id=labledger-session21-control-plane/arn:aws:iam::aws:policy/AmazonEKSClusterPolicy]
+aws_iam_role_policy_attachment.node["AmazonEKSWorkerNodePolicy"]: Refreshing state... [id=labledger-session21-worker/arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy]
+aws_iam_role_policy_attachment.node["AmazonEC2ContainerRegistryReadOnly"]: Refreshing state... [id=labledger-session21-worker/arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly]
+aws_iam_role_policy_attachment.node["AmazonEKS_CNI_Policy"]: Refreshing state... [id=labledger-session21-worker/arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy]
+aws_iam_role_policy_attachment.ebs: Refreshing state... [id=labledger-session21-ebs-csi/arn:aws:iam::aws:policy/AmazonEBSCSIDriverPolicyV2]
+aws_internet_gateway.lab: Refreshing state... [id=igw-072ab9d5158c1089d]
+aws_subnet.public[0]: Refreshing state... [id=subnet-020717b1a70980817]
+aws_subnet.public[1]: Refreshing state... [id=subnet-0b0d5cee50b0a2ac5]
+aws_route_table.public: Refreshing state... [id=rtb-0d060314fd48467b9]
+aws_route_table_association.public[0]: Refreshing state... [id=rtbassoc-0d029f0a319493e28]
+aws_route_table_association.public[1]: Refreshing state... [id=rtbassoc-03358f3885420d864]
+aws_eks_cluster.lab: Refreshing state... [id=labledger-session21]
+aws_eks_node_group.lab: Refreshing state... [id=labledger-session21:classroom]
+aws_eks_addon.metrics: Refreshing state... [id=labledger-session21:metrics-server]
+aws_eks_addon.pod_identity: Refreshing state... [id=labledger-session21:eks-pod-identity-agent]
+aws_eks_pod_identity_association.ebs: Refreshing state... [id=a-mba21xoxemofvssjd]
+aws_eks_addon.storage: Refreshing state... [id=labledger-session21:aws-ebs-csi-driver]
+
+No changes. Your infrastructure matches the configuration.
+
+Terraform has compared your real infrastructure against your configuration
+and found no differences, so no changes are needed.

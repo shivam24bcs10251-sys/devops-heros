@@ -1,0 +1,21 @@
++ date -u '+%Y-%m-%d %H:%M:%S UTC'
+2026-10-15 11:54:53 UTC
++ tail -17 Output/logs/aws-destroy-full.txt
+aws_eks_cluster.lab: Still destroying... [id=labledger-session21, 02m40s elapsed]
+aws_eks_cluster.lab: Still destroying... [id=labledger-session21, 02m50s elapsed]
+aws_eks_cluster.lab: Still destroying... [id=labledger-session21, 03m00s elapsed]
+aws_eks_cluster.lab: Destruction complete after 3m1s
+aws_iam_role_policy_attachment.cluster: Destroying... [id=labledger-session21-control-plane/arn:aws:iam::aws:policy/AmazonEKSClusterPolicy]
+aws_subnet.public[0]: Destroying... [id=subnet-020717b1a70980817]
+aws_subnet.public[1]: Destroying... [id=subnet-0b0d5cee50b0a2ac5]
+aws_iam_role_policy_attachment.cluster: Destruction complete after 1s
+aws_iam_role.cluster: Destroying... [id=labledger-session21-control-plane]
+aws_subnet.public[0]: Destruction complete after 2s
+aws_subnet.public[1]: Destruction complete after 2s
+aws_vpc.lab: Destroying... [id=vpc-0aa6e982ce3b9bc74]
+aws_iam_role.cluster: Destruction complete after 2s
+aws_vpc.lab: Destruction complete after 2s
+
+Apply complete! Resources: 0 added, 0 changed, 21 destroyed.
+Thu Oct 15 11:53:18 UTC 2026
++ terraform '-chdir=terraform' state list

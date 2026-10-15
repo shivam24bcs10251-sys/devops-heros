@@ -1,0 +1,41 @@
++ date -u '+%Y-%m-%d %H:%M:%S UTC'
+2026-10-15 11:30:34 UTC
++ export KUBECONFIG='/Users/shivamjaiswal/Library/Mobile Documents/com~apple~CloudDocs/iCloud-Keep/Scaler/Semester_5_Term_1/Devops_SWE/devops-heros/aws-scaler-labs/.local/worktrees/session21/final-devops-project/.local/kubeconfig'
++ kubectl get nodes
+NAME                                            STATUS   ROLES    AGE     VERSION
+ip-10-21-1-26.ap-southeast-2.compute.internal   Ready    <none>   8m26s   v1.35.8-eks-b9510e3
++ aws eks list-addons --cluster-name labledger-session21
+{
+    "addons": [
+        "aws-ebs-csi-driver",
+        "eks-pod-identity-agent",
+        "metrics-server"
+    ]
+}
++ addon=aws-ebs-csi-driver
++ aws eks describe-addon --cluster-name labledger-session21 --addon-name aws-ebs-csi-driver --query 'addon.{Name:addonName,Status:status,Version:addonVersion}' --output table
+--------------------------------------------------------
+|                     DescribeAddon                    |
++---------------------+---------+----------------------+
+|        Name         | Status  |       Version        |
++---------------------+---------+----------------------+
+|  aws-ebs-csi-driver |  ACTIVE |  v1.67.0-eksbuild.1  |
++---------------------+---------+----------------------+
++ addon=eks-pod-identity-agent
++ aws eks describe-addon --cluster-name labledger-session21 --addon-name eks-pod-identity-agent --query 'addon.{Name:addonName,Status:status,Version:addonVersion}' --output table
+------------------------------------------------------------
+|                       DescribeAddon                      |
++-------------------------+---------+----------------------+
+|          Name           | Status  |       Version        |
++-------------------------+---------+----------------------+
+|  eks-pod-identity-agent |  ACTIVE |  v1.3.10-eksbuild.3  |
++-------------------------+---------+----------------------+
++ addon=metrics-server
++ aws eks describe-addon --cluster-name labledger-session21 --addon-name metrics-server --query 'addon.{Name:addonName,Status:status,Version:addonVersion}' --output table
+----------------------------------------------------
+|                   DescribeAddon                  |
++-----------------+---------+----------------------+
+|      Name       | Status  |       Version        |
++-----------------+---------+----------------------+
+|  metrics-server |  ACTIVE |  v0.9.0-eksbuild.12  |
++-----------------+---------+----------------------+

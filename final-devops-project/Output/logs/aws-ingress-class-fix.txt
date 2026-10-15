@@ -1,0 +1,10 @@
+Release "labledger-ingress" has been upgraded. Happy Helming!
+NAME: labledger-ingress
+LAST DEPLOYED: Thu Oct 15 16:59:21 2026
+NAMESPACE: labledger-ingress
+STATUS: deployed
+REVISION: 2
+DESCRIPTION: Upgrade complete
+TEST SUITE: None
+NOTES:
+labledger-ingress with docker.io/traefik:v3.7.13 has been deployed successfully on labledger-ingress namespace!

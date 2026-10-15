@@ -15,3 +15,5 @@ dist/
 *.tfvars
 !terraform.tfvars.example
 crash.log
+
+.local/
