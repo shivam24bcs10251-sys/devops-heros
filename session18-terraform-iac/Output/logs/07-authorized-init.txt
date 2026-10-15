@@ -25,4 +25,3 @@ commands will detect it and remind you to do so if necessary.
 + terraform fmt -check
 + terraform validate -no-color
 Success! The configuration is valid.
-

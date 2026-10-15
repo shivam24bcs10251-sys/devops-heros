@@ -1,28 +1,51 @@
 + date -u '+%Y-%m-%d %H:%M:%S UTC'
 2026-10-15 11:20:38 UTC
 + sed -n 3,22p Output/logs/aws-security-original.txt
-+ aws s3api get-public-access-block --bucket devops-session18-499567237930-20261015
-{
-    "PublicAccessBlockConfiguration": {
-        "BlockPublicAcls": true,
-        "IgnorePublicAcls": true,
-        "BlockPublicPolicy": true,
-        "RestrictPublicBuckets": true
-    }
-}
-+ aws s3api get-bucket-encryption --bucket devops-session18-499567237930-20261015 --query 'ServerSideEncryptionConfiguration.Rules[].ApplyServerSideEncryptionByDefault'
-[
-    {
-        "SSEAlgorithm": "AES256"
-    }
-]
-+ aws s3api get-bucket-versioning --bucket devops-session18-499567237930-20261015
-{
-    "Status": "Enabled"
-}
-+ cd terraform-s3-demo
++ aws s3api get-public-access-block --bucket devops-session18-499567237930-20261015
+
+{
+
+    "PublicAccessBlockConfiguration": {
+
+        "BlockPublicAcls": true,
+
+        "IgnorePublicAcls": true,
+
+        "BlockPublicPolicy": true,
+
+        "RestrictPublicBuckets": true
+
+    }
+
+}
+
++ aws s3api get-bucket-encryption --bucket devops-session18-499567237930-20261015 --query 'ServerSideEncryptionConfiguration.Rules[].ApplyServerSideEncryptionByDefault'
+
+[
+
+    {
+
+        "SSEAlgorithm": "AES256"
+
+    }
+
+]
+
++ aws s3api get-bucket-versioning --bucket devops-session18-499567237930-20261015
+
+{
+
+    "Status": "Enabled"
+
+}
+
++ cd terraform-s3-demo
+
 + sed -n '/^No changes/,$p' Output/logs/aws-security-original.txt
-No changes. Your infrastructure matches the configuration.
-
-Terraform has compared your real infrastructure against your configuration
-and found no differences, so no changes are needed.
+No changes. Your infrastructure matches the configuration.
+
+
+
+Terraform has compared your real infrastructure against your configuration
+
+and found no differences, so no changes are needed.
