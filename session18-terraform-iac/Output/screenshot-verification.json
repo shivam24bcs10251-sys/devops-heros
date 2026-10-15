@@ -1,0 +1,93 @@
+{
+  "verified_at_utc": "2026-10-15T12:09:58.749669+00:00",
+  "scope": "New AWS screenshots recorded on 15 October 2026; original earlier screenshots are outside this visual review",
+  "count": 6,
+  "method": [
+    "Opened and visually inspected every listed PNG",
+    "Decoded PNG file and inspected native Screenshot EXIF comment",
+    "Reviewed original macOS screencapture helper implementation",
+    "Cross-checked visible resource identifiers and recorded command transcripts",
+    "Matched original retained images to their committed session-branch blobs"
+  ],
+  "pixel_edits_performed": false,
+  "images": [
+    {
+      "file": "07-authorized-init.png",
+      "sha256": "382354968089fdad7c79092a2cfd1a6cbf610d6e8cb28d86b84f5c1e8f3e7c7a",
+      "format": "PNG",
+      "pixel_dimensions": [
+        1440,
+        940
+      ],
+      "native_exif_comment": "Screenshot",
+      "visually_reviewed": true,
+      "content": "Terminal: actual commands and results",
+      "result": "pass"
+    },
+    {
+      "file": "08-s3-plan.png",
+      "sha256": "81a7f7a2c18e5db88737894f2e9883add46ab8df83e0e15c6e569e048426e105",
+      "format": "PNG",
+      "pixel_dimensions": [
+        1440,
+        940
+      ],
+      "native_exif_comment": "Screenshot",
+      "visually_reviewed": true,
+      "content": "Terminal: actual commands and results",
+      "result": "pass"
+    },
+    {
+      "file": "09-apply-and-state.png",
+      "sha256": "c762f331d6df50e193ae21aa10cc97107b504bbb86f289388af799db1810fc60",
+      "format": "PNG",
+      "pixel_dimensions": [
+        1440,
+        940
+      ],
+      "native_exif_comment": "Screenshot",
+      "visually_reviewed": true,
+      "content": "Terminal: original apply log plus live Terraform state/outputs",
+      "result": "pass"
+    },
+    {
+      "file": "10-s3-security.png",
+      "sha256": "d9c5fc51fa41f567bc861c48dbddfb9809256a4f405cbcd8f78fd1025f6030f5",
+      "format": "PNG",
+      "pixel_dimensions": [
+        1181,
+        788
+      ],
+      "native_exif_comment": "Screenshot",
+      "visually_reviewed": true,
+      "content": "Terminal: recorded AWS security checks and no-change plan",
+      "result": "pass"
+    },
+    {
+      "file": "11-s3-console.png",
+      "sha256": "a76bf86f7214bb4f67a11a1fcf2b7dbb498710ea3d16aa6f6d397cd47ff83faf",
+      "format": "PNG",
+      "pixel_dimensions": [
+        2880,
+        1654
+      ],
+      "native_exif_comment": "Screenshot",
+      "visually_reviewed": true,
+      "content": "Chrome: loaded real service/resource page with browser chrome",
+      "result": "pass"
+    },
+    {
+      "file": "12-destroy-verified.png",
+      "sha256": "50c6775b485246805cf3f7b4b79b309260133bd4b1c611c4b2db895f36cfc282",
+      "format": "PNG",
+      "pixel_dimensions": [
+        1181,
+        788
+      ],
+      "native_exif_comment": "Screenshot",
+      "visually_reviewed": true,
+      "content": "Terminal: actual commands and results",
+      "result": "pass"
+    }
+  ]
+}

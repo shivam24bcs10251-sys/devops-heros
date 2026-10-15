@@ -107,3 +107,5 @@ These are real Terminal and Chrome window captures, following the earlier sessio
 The 7 October attempt used a different identity and was denied `s3:CreateBucket`. Its original screenshots `01`–`06` and [failed-apply transcript](Output/logs/05-apply.txt) remain as historical troubleshooting evidence. They do not describe this completed run. The blocker was resolved by using the authorized Scaler account; no permission changes were made to the old identity. [IAM notes](iam/README.md) explain the distinction between authenticating and being authorized to provision resources.
 
 Text transcripts use LF line endings with terminal color/control codes removed for readability. Commands and result values are preserved; screenshots remain the original native window captures.
+
+[Visual screenshot verification and file hashes](Output/SCREENSHOT-VERIFICATION.md).
