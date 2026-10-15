@@ -249,7 +249,7 @@ The old IAM-only identity in screenshot 08 was a historical access blocker. The 
 | Monitoring | Dedicated Prometheus/Grafana; both backend targets UP |
 | Final disposition | Temporary AWS deployment removed after the demonstration |
 
-Historical demonstration URL: `http://a8ea0bdf04a1744448c3028e6dfef7f0-1528119114.ap-southeast-2.elb.amazonaws.com`. It is not a permanent hosted service after teardown. [AWS resource snapshot](Output/reports/aws-live-resources.json) records the actual cluster, nodes, subnets, EBS and load balancer; [cleanup report](Output/reports/aws-cleanup-verification.json) records their later absence.
+Historical demonstration URL: `http://a8ea0bdf04a1744448c3028e6dfef7f0-1528119114.ap-southeast-2.elb.amazonaws.com`. It is not a permanent hosted service after teardown. [AWS resource snapshot](Output/reports/aws-live-resources.json) records the actual cluster, nodes, subnets, EBS and load balancer (the EC2 request `ClientToken` is omitted); [cleanup report](Output/reports/aws-cleanup-verification.json) records their later absence.
 
 ### Reproduce the cloud deployment
 

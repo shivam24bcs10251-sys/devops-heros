@@ -15,7 +15,7 @@ All PNGs are real native Terminal or Chrome window screenshots. Capture helpers 
 
 ## Reading the cloud record
 
-- `reports/aws-live-resources.json`: AWS/Kubernetes metadata while the LabLedger lab existed.
+- `reports/aws-live-resources.json`: AWS/Kubernetes metadata while the LabLedger lab existed. The EC2 request `ClientToken` field is omitted from the public report.
 - `logs/aws-plan.txt` and `logs/aws-apply.txt`: full original 21-resource creation records.
 - `logs/aws-labledger-deploy.txt`: completed reproducible deployment and PostgreSQL verification.
 - `logs/aws-read-only-traffic.txt`: bounded inventory traffic used to populate monitoring; 644 successful requests and zero errors.

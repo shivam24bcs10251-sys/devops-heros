@@ -295,7 +295,6 @@
                 }
               }
             ],
-            "ClientToken": "fleet-bf1e518d-a104-ce1c-0c38-2f8a831868cf-0",
             "EbsOptimized": false,
             "EnaSupport": true,
             "Hypervisor": "xen",
