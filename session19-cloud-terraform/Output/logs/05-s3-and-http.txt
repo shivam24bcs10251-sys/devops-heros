@@ -1,0 +1,22 @@
++ date -u '+%Y-%m-%d %H:%M:%S UTC'
+2026-10-15 11:24:31 UTC
++ aws s3api get-public-access-block --bucket devops-session19-499567237930-20261015
+{
+    "PublicAccessBlockConfiguration": {
+        "BlockPublicAcls": true,
+        "IgnorePublicAcls": true,
+        "BlockPublicPolicy": true,
+        "RestrictPublicBuckets": true
+    }
+}
++ aws s3api get-bucket-encryption --bucket devops-session19-499567237930-20261015 --query 'ServerSideEncryptionConfiguration.Rules[0].ApplyServerSideEncryptionByDefault.SSEAlgorithm'
+"AES256"
++ aws s3api get-bucket-versioning --bucket devops-session19-499567237930-20261015
+{
+    "Status": "Enabled"
+}
++ curl --fail --silent http://54.153.170.46
++ sed -n '/Shivam Jaiswal/p'
+  <h1>Shivam Jaiswal — Session 19</h1>
++ tail -1 Output/logs/aws-verification.txt
+Session 19 cloud verification passed.

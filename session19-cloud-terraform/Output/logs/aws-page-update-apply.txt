@@ -1,0 +1,22 @@
+aws_instance.web: Destroying... [id=i-07925ab838a87caa0]
+aws_instance.web: Still destroying... [id=i-07925ab838a87caa0, 00m10s elapsed]
+aws_instance.web: Still destroying... [id=i-07925ab838a87caa0, 00m20s elapsed]
+aws_instance.web: Destruction complete after 22s
+aws_instance.web: Creating...
+aws_instance.web: Still creating... [00m10s elapsed]
+aws_instance.web: Creation complete after 17s [id=i-0522f5d4ea618a6f5]
+
+Apply complete! Resources: 1 added, 0 changed, 1 destroyed.
+
+Outputs:
+
+aws_profile = "scaler-sst"
+bucket_name = "devops-session19-499567237930-20261015"
+instance_id = "i-0522f5d4ea618a6f5"
+public_ip = "54.153.170.46"
+region = "ap-southeast-2"
+security_group_id = "sg-0e069ef5910995b1d"
+subnet_id = "subnet-0c184d8abf3926c39"
+vpc_cidr = "10.20.0.0/16"
+vpc_id = "vpc-028b9710ea8609a72"
+website_url = "http://54.153.170.46"

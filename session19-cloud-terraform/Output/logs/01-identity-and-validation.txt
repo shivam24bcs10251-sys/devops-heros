@@ -1,0 +1,27 @@
++ date -u '+%Y-%m-%d %H:%M:%S UTC'
+2026-10-15 11:17:11 UTC
++ aws sts get-caller-identity --query '{Account:Account,ARN:Arn}'
+{
+    "Account": "499567237930",
+    "ARN": "arn:aws:sts::499567237930:assumed-role/AccountFullAccessRole/b4b884c8-c0f1-7081-c084-6cfa5c6931c9"
+}
++ cd 08-mini-project
++ terraform init '-input=false' -no-color
++ tail -5
+should now work.
+
+If you ever set or change modules or backend configuration for Terraform,
+rerun this command to reinitialize your working directory. If you forget, other
+commands will detect it and remind you to do so if necessary.
++ terraform fmt -check
++ terraform validate -no-color
+Success! The configuration is valid.
+
++ terraform test -no-color
+tests/security.tftest.hcl... in progress
+  run "security_contract"... pass
+  run "reject_world_open_http"... pass
+tests/security.tftest.hcl... tearing down
+tests/security.tftest.hcl... pass
+
+Success! 2 passed, 0 failed.

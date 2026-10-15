@@ -1,0 +1,20 @@
+aws_security_group.web: Creating...
+aws_security_group.web: Creation complete after 8s [id=sg-0e069ef5910995b1d]
+aws_instance.web: Creating...
+aws_instance.web: Still creating... [00m10s elapsed]
+aws_instance.web: Creation complete after 17s [id=i-07925ab838a87caa0]
+
+Apply complete! Resources: 2 added, 0 changed, 0 destroyed.
+
+Outputs:
+
+aws_profile = "scaler-sst"
+bucket_name = "devops-session19-499567237930-20261015"
+instance_id = "i-07925ab838a87caa0"
+public_ip = "13.239.139.179"
+region = "ap-southeast-2"
+security_group_id = "sg-0e069ef5910995b1d"
+subnet_id = "subnet-0c184d8abf3926c39"
+vpc_cidr = "10.20.0.0/16"
+vpc_id = "vpc-028b9710ea8609a72"
+website_url = "http://13.239.139.179"

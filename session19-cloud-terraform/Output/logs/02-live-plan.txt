@@ -1,0 +1,18 @@
++ date -u '+%Y-%m-%d %H:%M:%S UTC'
+2026-10-15 11:17:36 UTC
++ cd 08-mini-project
++ terraform show -no-color initial.tfplan
++ sed -n '/^Plan:/,$p'
+Plan: 11 to add, 0 to change, 0 to destroy.
+
+Changes to Outputs:
+  + aws_profile       = "scaler-sst"
+  + bucket_name       = (known after apply)
+  + instance_id       = (known after apply)
+  + public_ip         = (known after apply)
+  + region            = "ap-southeast-2"
+  + security_group_id = (known after apply)
+  + subnet_id         = (known after apply)
+  + vpc_cidr          = "10.20.0.0/16"
+  + vpc_id            = (known after apply)
+  + website_url       = (known after apply)

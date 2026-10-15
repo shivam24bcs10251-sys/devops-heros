@@ -1,0 +1,28 @@
++ date -u '+%Y-%m-%d %H:%M:%S UTC'
+2026-10-15 11:28:04 UTC
++ cd 08-mini-project
++ terraform destroy '-input=false' -auto-approve -no-color
+^[[D^[[D+ tail -8 ../Output/logs/aws-destroy-full.txt
+aws_subnet.public: Destruction complete after 1s
+aws_route_table.public: Destruction complete after 2s
+aws_internet_gateway.main: Destroying... [id=igw-053846a63b633fba7]
+aws_internet_gateway.main: Destruction complete after 2s
+aws_vpc.main: Destroying... [id=vpc-028b9710ea8609a72]
+aws_vpc.main: Destruction complete after 2s
+
+Destroy complete! Resources: 11 destroyed.
++ terraform state list
++ aws ec2 describe-vpcs --filters 'Name=vpc-id,Values=vpc-028b9710ea8609a72' --query 'Vpcs[].VpcId'
+[]
++ aws s3api list-buckets --query 'Buckets[?Name=='\''devops-session19-499567237930-20261015'\''].Name'
+[]
++ aws ec2 describe-instances --instance-ids i-0522f5d4ea618a6f5 i-07925ab838a87caa0 --query 'Reservations[].Instances[].{ID:InstanceId,State:State.Name}' --output table
+---------------------------------------
+[0m[0m|          DescribeInstances          |[0m[0m
+[0m[0m+----------------------+--------------+[0m[0m
+[0m[0m|          ID          |    State     |[0m[0m
+[0m[0m+----------------------+--------------+[0m[0m
+[0m[0m|  [1m[34mi-0522f5d4ea618a6f5[0m |  [1m[34mterminated[0m  |[0m[0m
+[0m[0m|  [1m[34mi-07925ab838a87caa0[0m |  [1m[34mterminated[0m  |[0m[0m
+[0m[0m+----------------------+--------------+[0m[0m
+[0m[0m

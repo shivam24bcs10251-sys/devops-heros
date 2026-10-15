@@ -1,0 +1,189 @@
+data.aws_ami.amazon_linux: Reading...
+aws_vpc.main: Refreshing state... [id=vpc-028b9710ea8609a72]
+aws_s3_bucket.demo: Refreshing state... [id=devops-session19-499567237930-20261015]
+data.aws_ami.amazon_linux: Read complete after 2s [id=ami-07285d73c94abad89]
+aws_internet_gateway.main: Refreshing state... [id=igw-053846a63b633fba7]
+aws_subnet.public: Refreshing state... [id=subnet-0c184d8abf3926c39]
+aws_security_group.web: Refreshing state... [id=sg-0e069ef5910995b1d]
+aws_route_table.public: Refreshing state... [id=rtb-088ff5273bbcabc25]
+aws_route_table_association.public: Refreshing state... [id=rtbassoc-02809cddbc17ced9d]
+aws_instance.web: Refreshing state... [id=i-07925ab838a87caa0]
+aws_s3_bucket_versioning.demo: Refreshing state... [id=devops-session19-499567237930-20261015]
+aws_s3_bucket_public_access_block.demo: Refreshing state... [id=devops-session19-499567237930-20261015]
+aws_s3_bucket_server_side_encryption_configuration.demo: Refreshing state... [id=devops-session19-499567237930-20261015]
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+-/+ destroy and then create replacement
+
+Terraform will perform the following actions:
+
+  # aws_instance.web must be replaced
+-/+ resource "aws_instance" "web" {
+      ~ arn                                  = "arn:aws:ec2:ap-southeast-2:499567237930:instance/i-07925ab838a87caa0" -> (known after apply)
+      ~ availability_zone                    = "ap-southeast-2a" -> (known after apply)
+      ~ disable_api_stop                     = false -> (known after apply)
+      ~ disable_api_termination              = false -> (known after apply)
+      ~ ebs_optimized                        = false -> (known after apply)
+      + enable_primary_ipv6                  = (known after apply)
+      - hibernation                          = false -> null
+      + host_id                              = (known after apply)
+      + host_resource_group_arn              = (known after apply)
+      + iam_instance_profile                 = (known after apply)
+      ~ id                                   = "i-07925ab838a87caa0" -> (known after apply)
+      ~ instance_initiated_shutdown_behavior = "stop" -> (known after apply)
+      + instance_lifecycle                   = (known after apply)
+      ~ instance_state                       = "running" -> (known after apply)
+      ~ ipv6_address_count                   = 0 -> (known after apply)
+      ~ ipv6_addresses                       = [] -> (known after apply)
+      + key_name                             = (known after apply)
+      ~ monitoring                           = false -> (known after apply)
+      + outpost_arn                          = (known after apply)
+      + password_data                        = (known after apply)
+      + placement_group                      = (known after apply)
+      + placement_group_id                   = (known after apply)
+      ~ placement_partition_number           = 0 -> (known after apply)
+      ~ primary_network_interface_id         = "eni-00f12417024a25303" -> (known after apply)
+      ~ private_dns                          = "ip-10-20-1-14.ap-southeast-2.compute.internal" -> (known after apply)
+      ~ private_ip                           = "10.20.1.14" -> (known after apply)
+      ~ public_dns                           = "ec2-13-239-139-179.ap-southeast-2.compute.amazonaws.com" -> (known after apply)
+      ~ public_ip                            = "13.239.139.179" -> (known after apply)
+      ~ secondary_private_ips                = [] -> (known after apply)
+      ~ security_groups                      = [] -> (known after apply)
+      + spot_instance_request_id             = (known after apply)
+        tags                                 = {
+            "Name" = "session19-mini-web"
+        }
+      ~ tenancy                              = "default" -> (known after apply)
+      ~ user_data                            = <<-EOT # forces replacement
+            #!/usr/bin/env bash
+            set -euo pipefail
+            dnf install -y nginx
+            cat > /usr/share/nginx/html/index.html <<'HTML'
+            <!doctype html>
+          - <html><head><title>Session 19 Terraform cloud lab</title></head>
+          - <body><h1>Shivam Jaiswal — Session 19</h1>
+          - <p>Terraform provisioned this EC2 web server, VPC, subnet, security group and S3 lab bucket.</p></body></html>
+          + <html lang="en">
+          + <head>
+          +   <meta charset="utf-8">
+          +   <meta name="viewport" content="width=device-width, initial-scale=1">
+          +   <title>Session 19 Terraform cloud lab</title>
+          +   <style>
+          +     * { box-sizing: border-box; }
+          +     body { margin: 0; background: #f3f6fb; color: #172238; font-family: system-ui, sans-serif; }
+          +     main { max-width: 1000px; margin: 8vh auto; padding: 40px; }
+          +     .eyebrow { color: #3d63b8; font-size: 13px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+          +     h1 { font-size: clamp(28px, 4vw, 44px); line-height: 1.2; margin: 18px 0; letter-spacing: -.03em; }
+          +     .intro { color: #54627b; max-width: 680px; line-height: 1.8; }
+          +     .status { display: inline-block; background: #e0f3e8; color: #256443; border-radius: 20px; padding: 8px 14px; margin: 14px 0 30px; font-size: 13px; font-weight: 600; }
+          +     .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 16px; }
+          +     article { background: white; border: 1px solid #e0e6f0; border-radius: 14px; padding: 24px; }
+          +     h2 { font-size: 17px; margin: 0 0 12px; }
+          +     article p, footer { color: #64718a; font-size: 14px; line-height: 1.6; }
+          +     footer { margin-top: 28px; }
+          +   </style>
+          + </head>
+          + <body><main>
+          +   <div class="eyebrow">DevOps · Infrastructure as Code</div>
+          +   <h1>Shivam Jaiswal — Session 19</h1>
+          +   <p class="intro">Terraform provisioned this EC2 web server, VPC, subnet, security group and S3 lab bucket. This page is served by Nginx on Amazon Linux 2023.</p>
+          +   <div class="status">● HTTP request reached the cloud web server</div>
+          +   <section class="grid">
+          +     <article><h2>Network</h2><p>Dedicated VPC, public subnet, internet gateway and route table.</p></article>
+          +     <article><h2>Compute</h2><p>EC2 t3.micro with an encrypted gp3 root disk and IMDSv2.</p></article>
+          +     <article><h2>Storage</h2><p>Private S3 bucket with AES256 encryption and versioning.</p></article>
+          +     <article><h2>Access</h2><p>HTTP restricted to the workstation's public IPv4 /32. No SSH ingress.</p></article>
+          +   </section>
+          +   <footer>Session 19 cloud lab · Terraform-managed infrastructure · Verified before teardown</footer>
+          + </main></body></html>
+            HTML
+            systemctl enable --now nginx
+        EOT
+      + user_data_base64                     = (known after apply)
+        # (11 unchanged attributes hidden)
+
+      ~ capacity_reservation_specification (known after apply)
+      - capacity_reservation_specification {
+          - capacity_reservation_preference = "open" -> null
+        }
+
+      ~ cpu_options (known after apply)
+      - cpu_options {
+          - core_count            = 1 -> null
+          - threads_per_core      = 2 -> null
+            # (2 unchanged attributes hidden)
+        }
+
+      - credit_specification {
+          - cpu_credits = "unlimited" -> null
+        }
+
+      ~ ebs_block_device (known after apply)
+
+      ~ enclave_options (known after apply)
+      - enclave_options {
+          - enabled = false -> null
+        }
+
+      ~ ephemeral_block_device (known after apply)
+
+      ~ instance_market_options (known after apply)
+
+      ~ maintenance_options (known after apply)
+      - maintenance_options {
+          - auto_recovery = "default" -> null
+        }
+
+      ~ metadata_options {
+          ~ http_put_response_hop_limit = 2 -> (known after apply)
+          ~ instance_metadata_tags      = "disabled" -> (known after apply)
+            # (3 unchanged attributes hidden)
+        }
+
+      ~ network_interface (known after apply)
+
+      ~ primary_network_interface (known after apply)
+      - primary_network_interface {
+          - delete_on_termination = true -> null
+          - network_interface_id  = "eni-00f12417024a25303" -> null
+        }
+
+      ~ private_dns_name_options (known after apply)
+      - private_dns_name_options {
+          - enable_resource_name_dns_a_record    = false -> null
+          - enable_resource_name_dns_aaaa_record = false -> null
+          - hostname_type                        = "ip-name" -> null
+        }
+
+      ~ root_block_device {
+          ~ device_name           = "/dev/xvda" -> (known after apply)
+          ~ iops                  = 3000 -> (known after apply)
+          ~ kms_key_id            = "arn:aws:kms:ap-southeast-2:499567237930:key/5d5b60ce-ebd2-4d03-8b5d-5c23830d6528" -> (known after apply)
+          - tags                  = {} -> null
+          ~ tags_all              = {
+              - "ManagedBy" = "Terraform"
+              - "Owner"     = "ShivamJaiswal"
+              - "Project"   = "Session19"
+            } -> (known after apply)
+          ~ throughput            = 125 -> (known after apply)
+          ~ volume_id             = "vol-0970f0bce345d44a3" -> (known after apply)
+            # (4 unchanged attributes hidden)
+        }
+
+      ~ secondary_network_interface (known after apply)
+    }
+
+Plan: 1 to add, 0 to change, 1 to destroy.
+
+Changes to Outputs:
+  ~ instance_id       = "i-07925ab838a87caa0" -> (known after apply)
+  ~ public_ip         = "13.239.139.179" -> (known after apply)
+  ~ website_url       = "http://13.239.139.179" -> (known after apply)
+
+─────────────────────────────────────────────────────────────────────────────
+
+Saved the plan to: page-update.tfplan
+
+To perform exactly these actions, run the following command to apply:
+    terraform apply "page-update.tfplan"

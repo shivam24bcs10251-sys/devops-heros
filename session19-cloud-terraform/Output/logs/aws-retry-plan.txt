@@ -1,0 +1,194 @@
+data.aws_ami.amazon_linux: Reading...
+aws_vpc.main: Refreshing state... [id=vpc-028b9710ea8609a72]
+aws_s3_bucket.demo: Refreshing state... [id=devops-session19-499567237930-20261015]
+data.aws_ami.amazon_linux: Read complete after 2s [id=ami-07285d73c94abad89]
+aws_subnet.public: Refreshing state... [id=subnet-0c184d8abf3926c39]
+aws_internet_gateway.main: Refreshing state... [id=igw-053846a63b633fba7]
+aws_route_table.public: Refreshing state... [id=rtb-088ff5273bbcabc25]
+aws_route_table_association.public: Refreshing state... [id=rtbassoc-02809cddbc17ced9d]
+aws_s3_bucket_versioning.demo: Refreshing state... [id=devops-session19-499567237930-20261015]
+aws_s3_bucket_public_access_block.demo: Refreshing state... [id=devops-session19-499567237930-20261015]
+aws_s3_bucket_server_side_encryption_configuration.demo: Refreshing state... [id=devops-session19-499567237930-20261015]
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # aws_instance.web will be created
+  + resource "aws_instance" "web" {
+      + ami                                  = "ami-07285d73c94abad89"
+      + arn                                  = (known after apply)
+      + associate_public_ip_address          = true
+      + availability_zone                    = (known after apply)
+      + disable_api_stop                     = (known after apply)
+      + disable_api_termination              = (known after apply)
+      + ebs_optimized                        = (known after apply)
+      + enable_primary_ipv6                  = (known after apply)
+      + force_destroy                        = false
+      + get_password_data                    = false
+      + host_id                              = (known after apply)
+      + host_resource_group_arn              = (known after apply)
+      + iam_instance_profile                 = (known after apply)
+      + id                                   = (known after apply)
+      + instance_initiated_shutdown_behavior = (known after apply)
+      + instance_lifecycle                   = (known after apply)
+      + instance_state                       = (known after apply)
+      + instance_type                        = "t3.micro"
+      + ipv6_address_count                   = (known after apply)
+      + ipv6_addresses                       = (known after apply)
+      + key_name                             = (known after apply)
+      + monitoring                           = (known after apply)
+      + outpost_arn                          = (known after apply)
+      + password_data                        = (known after apply)
+      + placement_group                      = (known after apply)
+      + placement_group_id                   = (known after apply)
+      + placement_partition_number           = (known after apply)
+      + primary_network_interface_id         = (known after apply)
+      + private_dns                          = (known after apply)
+      + private_ip                           = (known after apply)
+      + public_dns                           = (known after apply)
+      + public_ip                            = (known after apply)
+      + region                               = "ap-southeast-2"
+      + secondary_private_ips                = (known after apply)
+      + security_groups                      = (known after apply)
+      + source_dest_check                    = true
+      + spot_instance_request_id             = (known after apply)
+      + subnet_id                            = "subnet-0c184d8abf3926c39"
+      + tags                                 = {
+          + "Name" = "session19-mini-web"
+        }
+      + tags_all                             = {
+          + "ManagedBy" = "Terraform"
+          + "Name"      = "session19-mini-web"
+          + "Owner"     = "ShivamJaiswal"
+          + "Project"   = "Session19"
+        }
+      + tenancy                              = (known after apply)
+      + user_data                            = <<-EOT
+            #!/usr/bin/env bash
+            set -euo pipefail
+            dnf install -y nginx
+            cat > /usr/share/nginx/html/index.html <<'HTML'
+            <!doctype html>
+            <html><head><title>Session 19 Terraform cloud lab</title></head>
+            <body><h1>Shivam Jaiswal — Session 19</h1>
+            <p>Terraform provisioned this EC2 web server, VPC, subnet, security group and S3 lab bucket.</p></body></html>
+            HTML
+            systemctl enable --now nginx
+        EOT
+      + user_data_base64                     = (known after apply)
+      + user_data_replace_on_change          = true
+      + vpc_security_group_ids               = (known after apply)
+
+      + capacity_reservation_specification (known after apply)
+
+      + cpu_options (known after apply)
+
+      + ebs_block_device (known after apply)
+
+      + enclave_options (known after apply)
+
+      + ephemeral_block_device (known after apply)
+
+      + instance_market_options (known after apply)
+
+      + maintenance_options (known after apply)
+
+      + metadata_options {
+          + http_endpoint               = "enabled"
+          + http_protocol_ipv6          = "disabled"
+          + http_put_response_hop_limit = (known after apply)
+          + http_tokens                 = "required"
+          + instance_metadata_tags      = (known after apply)
+        }
+
+      + network_interface (known after apply)
+
+      + primary_network_interface (known after apply)
+
+      + private_dns_name_options (known after apply)
+
+      + root_block_device {
+          + delete_on_termination = true
+          + device_name           = (known after apply)
+          + encrypted             = true
+          + iops                  = (known after apply)
+          + kms_key_id            = (known after apply)
+          + tags_all              = (known after apply)
+          + throughput            = (known after apply)
+          + volume_id             = (known after apply)
+          + volume_size           = 8
+          + volume_type           = "gp3"
+        }
+
+      + secondary_network_interface (known after apply)
+    }
+
+  # aws_security_group.web will be created
+  + resource "aws_security_group" "web" {
+      + arn                    = (known after apply)
+      + description            = "HTTP only from the student current public IPv4 address"
+      + egress                 = [
+          + {
+              + cidr_blocks      = [
+                  + "0.0.0.0/0",
+                ]
+              + description      = "Outbound for package installation and return traffic"
+              + from_port        = 0
+              + ipv6_cidr_blocks = []
+              + prefix_list_ids  = []
+              + protocol         = "-1"
+              + security_groups  = []
+              + self             = false
+              + to_port          = 0
+            },
+        ]
+      + id                     = (known after apply)
+      + ingress                = [
+          + {
+              + cidr_blocks      = [
+                  + "106.216.236.253/32",
+                ]
+              + description      = "Restricted lab HTTP"
+              + from_port        = 80
+              + ipv6_cidr_blocks = []
+              + prefix_list_ids  = []
+              + protocol         = "tcp"
+              + security_groups  = []
+              + self             = false
+              + to_port          = 80
+            },
+        ]
+      + name                   = (known after apply)
+      + name_prefix            = "session19-web-"
+      + owner_id               = (known after apply)
+      + region                 = "ap-southeast-2"
+      + revoke_rules_on_delete = false
+      + tags                   = {
+          + "Name" = "session19-mini-web-sg"
+        }
+      + tags_all               = {
+          + "ManagedBy" = "Terraform"
+          + "Name"      = "session19-mini-web-sg"
+          + "Owner"     = "ShivamJaiswal"
+          + "Project"   = "Session19"
+        }
+      + vpc_id                 = "vpc-028b9710ea8609a72"
+    }
+
+Plan: 2 to add, 0 to change, 0 to destroy.
+
+Changes to Outputs:
+  + instance_id       = (known after apply)
+  + public_ip         = (known after apply)
+  + security_group_id = (known after apply)
+  + website_url       = (known after apply)
+
+─────────────────────────────────────────────────────────────────────────────
+
+Saved the plan to: create.tfplan
+
+To perform exactly these actions, run the following command to apply:
+    terraform apply "create.tfplan"

@@ -1,0 +1,27 @@
++ date -u '+%Y-%m-%d %H:%M:%S UTC'
+2026-10-15 11:24:07 UTC
++ aws ec2 describe-vpcs --vpc-ids vpc-028b9710ea8609a72 --query 'Vpcs[].{ID:VpcId,CIDR:CidrBlock,State:State}' --output table
+--------------------------------------------------------
+[0m[0m|                     DescribeVpcs                     |[0m[0m
+[0m[0m+---------------+-------------------------+------------+[0m[0m
+[0m[0m|     CIDR      |           ID            |   State    |[0m[0m
+[0m[0m+---------------+-------------------------+------------+[0m[0m
+[0m[0m|  [1m[34m10.20.0.0/16[0m |  [1m[34mvpc-028b9710ea8609a72[0m  |  [1m[34mavailable[0m |[0m[0m
+[0m[0m+---------------+-------------------------+------------+[0m[0m
+[0m[0m+ aws ec2 describe-instances --instance-ids i-0522f5d4ea618a6f5 --query 'Reservations[].Instances[].{Instance:InstanceId,State:State.Name,Type:InstanceType,IMDSv2:MetadataOptions.HttpTokens}' --output table
+------------------------------------------------------------
+[0m[0m|                     DescribeInstances                    |[0m[0m
+[0m[0m+----------+-----------------------+----------+------------+[0m[0m
+[0m[0m|  IMDSv2  |       Instance        |  State   |   Type     |[0m[0m
+[0m[0m+----------+-----------------------+----------+------------+[0m[0m
+[0m[0m|  [1m[34mrequired[0m|  [1m[34mi-0522f5d4ea618a6f5[0m  |  [1m[34mrunning[0m |  [1m[34mt3.micro[0m  |[0m[0m
+[0m[0m+----------+-----------------------+----------+------------+[0m[0m
+[0m[0m+ aws ec2 describe-instance-status --instance-ids i-0522f5d4ea618a6f5 --query 'InstanceStatuses[].{Instance:InstanceStatus.Status,System:SystemStatus.Status}' --output table
+------------------------
+[0m[0m|DescribeInstanceStatus|[0m[0m
+[0m[0m+-----------+----------+[0m[0m
+[0m[0m| Instance  | System   |[0m[0m
+[0m[0m+-----------+----------+[0m[0m
+[0m[0m|  [1m[34mok[0m       |  [1m[34mok[0m      |[0m[0m
+[0m[0m+-----------+----------+[0m[0m
+[0m[0m

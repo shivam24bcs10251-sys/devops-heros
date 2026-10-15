@@ -1,0 +1,18 @@
+data.aws_ami.amazon_linux: Reading...
+aws_vpc.main: Refreshing state... [id=vpc-028b9710ea8609a72]
+aws_s3_bucket.demo: Refreshing state... [id=devops-session19-499567237930-20261015]
+data.aws_ami.amazon_linux: Read complete after 3s [id=ami-07285d73c94abad89]
+aws_subnet.public: Refreshing state... [id=subnet-0c184d8abf3926c39]
+aws_internet_gateway.main: Refreshing state... [id=igw-053846a63b633fba7]
+aws_security_group.web: Refreshing state... [id=sg-0e069ef5910995b1d]
+aws_route_table.public: Refreshing state... [id=rtb-088ff5273bbcabc25]
+aws_route_table_association.public: Refreshing state... [id=rtbassoc-02809cddbc17ced9d]
+aws_instance.web: Refreshing state... [id=i-0522f5d4ea618a6f5]
+aws_s3_bucket_public_access_block.demo: Refreshing state... [id=devops-session19-499567237930-20261015]
+aws_s3_bucket_server_side_encryption_configuration.demo: Refreshing state... [id=devops-session19-499567237930-20261015]
+aws_s3_bucket_versioning.demo: Refreshing state... [id=devops-session19-499567237930-20261015]
+
+No changes. Your infrastructure matches the configuration.
+
+Terraform has compared your real infrastructure against your configuration
+and found no differences, so no changes are needed.

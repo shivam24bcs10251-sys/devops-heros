@@ -49,7 +49,7 @@ resource "aws_route_table_association" "public" {
 }
 resource "aws_security_group" "web" {
   name_prefix = "session19-web-"
-  description = "HTTP only from the student's current public IPv4 address"
+  description = "HTTP only from the student current public IPv4 address"
   vpc_id      = aws_vpc.main.id
   ingress {
     description = "Restricted lab HTTP"
